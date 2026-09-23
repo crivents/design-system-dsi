@@ -1,0 +1,127 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as LinkStories from "./Link.stories";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={LinkStories} />
+
+# Lien
+
+Le lien est un système de navigation secondaire qui permet à l’usager de se déplacer au sein d’une même page, entre deux pages d’un même site ou vers un site externe.
+
+<Canvas of={LinkStories.Default} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+Proposer le lien pour permettre à l’usager de naviguer au sein d’un site, en complément de la navigation principale .
+
+<Message status="info">
+  <span>
+ Bien différencier le lien des autres composant permettant une interaction avec l’interface.
+
+</span>
+</Message>
+
+Le lien a vocation à faciliter la navigation vers d’autres contenus. Pour les actions d’un autre type, comme la soumission d’un formulaire par exemple, il faut utiliser le bouton .
+
+### Comment utiliser ce composant ?
+
+- **Utiliser le lien pour renvoyer l’usager vers davantage de contenus.**
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Link\assets\do-1.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+     Proposer un lien pour consulter plus d’actualités.
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Link\assets\dont-1.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+Ne pas utiliser un bouton pour renvoyer vers davantage de contenus.
+
+  </DoDont>
+</div>
+
+- **Adapter le type de lien choisi au besoin rencontré.** Par exemple, le lien simple ne doit pas être utilisé au sein d’un paragraphe mais bien en dehors de tout contenu. Pour insérer un lien dans un paragraphe, utiliser les liens contextuels au fil du texte.
+- **Eviter de démultiplier les liens** au sein d’une même page afin de préserver une navigation simple et claire par l’usager.
+
+### Règles éditoriales
+
+- **Privilégier des liens courts et explicites** garantissant la compréhension de l’usager.
+
+## Accéssibilité
+
+### Intéraction clavier
+
+Lorsque le focus est positionné sur le Lien :
+
+- **Entrée** :
+  - actionne le lien,
+  - `redirige` vers la destination définie par l’attribut href,
+  - déplace le focus vers la page de destination,
+  - si le lien est en target="\_blank" ouvre la destination dans un nouvel onglet.
+- `Tab` : place le focus sur le prochain élément focalisable.
+- `Maj` + `Tab` : place le focus sur l'élément focalisable précédent.
+
+### Règles d’accessibilité
+
+#### Structuration
+
+- Le lien doit avoir un attribut `href`.
+- Le lien doit avoir un **intitulé accessible**.
+- Si une information complémentaire au lien est présente, la lier au lien avec un `aria-describedby` défini sur l'ID de l'élément contenant l’information.
+
+#### Intitulé du lien
+
+- L’intitulé doit être explicite, l’utilisateur doit comprendre la destination ou la fonction du lien.
+- Un lien peut être rendu explicite grâce à son contexte : RGAA 4 : contexte du lien
+
+#### Lien-icône
+
+- Un lien avec icône seule doivent avoir un nom accessible pertinent.
+- Un attribut `title` identique à l’intitulé du lien peut être ajouté pour expliciter l’icône.
+
+#### Lien de téléchargement
+
+- **Le lien de téléchargement** doit contenir la mention "Télécharger".
+- Indiquer des informations sur le fichier dans la partie détail avec notamment le type ou l'extension du fichier, son poids, et sa langue si différente de la page est une bonne pratique et un critère d’accessibilité de niveau AAA.
+
+#### Groupe de liens
+
+Une succession de liens doit être structuré dans une liste `ul` `li`.
+
+#### Lien désactivé
+
+Pour **désactiver** un lien :
+
+- retirer l’attribut `href`,
+- ajouter les attributs `role="link"` et `aria-disabled="true"` pour indiquer aux technologies d'assistance qu’il s'agit d'un lien désactivé.
+
+#### Boutons ou lien ?
+
+<Message status="info">
+  <span>
+Il est nécessaire de distinguer un bouton d’un lien.
+
+Un bouton permet de **déclencher une action ou un événement** :
+
+- **nativement** en fonction du type du bouton : envoi d’un formulaire (`submit`), suppression de contenu de champs de formulaire (`reset`) ;
+- en **JavaScript** : ouverture d’une fenêtre modale, fermeture d’un contenu, modification de la page…
+
+Un lien `<a href>` permet de rediriger vers une autre page ou à un autre endroit dans la page (ancre).
+
+</span>
+</Message>

@@ -1,0 +1,18 @@
+import colorsData from "../data/colors.json";
+import ColorPalette from "../components/docs/ColorPalette";
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/Couleurs" />
+
+# Couleurs
+
+{Object.entries(colorsData).map(([category, colors]) => (
+category !== "Primitives" &&
+
+  <ColorPalette key={category} title={category} colors={colors} />
+))}
+{Object.entries(colorsData).map(([category, colors]) => (
+category === "Primitives" &&
+
+  <ColorPalette key={category} title={category} colors={colors} />
+))}

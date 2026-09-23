@@ -1,0 +1,90 @@
+/* ==========================================================================
+   COMPOSANT DOCUMENTATION - DO/DON'T
+   ========================================================================== */
+
+.do-dont {
+  margin: var(--spacing-5) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-background-default);
+  max-width: 354px;
+}
+
+/* En-tête */
+.do-dont__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+/* Icône */
+.do-dont__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+/* Statut */
+.do-dont__status {
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+}
+
+/* Titre */
+.do-dont__title {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  margin-left: var(--spacing-2);
+}
+
+/* Image */
+.do-dont__image-wrapper {
+  padding: var(--spacing-4);
+  background-color: var(--color-background-alt);
+}
+
+.do-dont__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+/* Contenu texte */
+.do-dont__content {
+  font-size: var(--font-size-md);
+}
+
+/* Variantes */
+.do-dont__title--do {
+  color: #18794e;
+}
+
+.do-dont__title--dont {
+  color: #d9534f;
+}
+
+.do-dont--do {
+  border: 1px solid #18794e;
+}
+
+.do-dont--do .do-dont__icon {
+  background-color: #18794e;
+}
+
+.do-dont--dont {
+  border: 1px solid #d9534f;
+}
+
+.do-dont--dont .do-dont__icon {
+  background-color: #d9534f;
+}

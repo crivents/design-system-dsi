@@ -1,0 +1,322 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as ButtonStories from "./Button.stories";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={ButtonStories} />
+
+# Bouton
+
+Le bouton est un élément d’interaction avec l’interface permettant à l’usager d’effectuer une action.
+
+<Canvas of={ButtonStories.Primary} />
+
+## Présentation
+
+### Variantes
+
+- **Bouton primaire** : utilisé pour les actions principales de la page. Il est recommandé de limiter son usage à un bouton primaire par page.
+- **Bouton Cnam** : utilisé pour les actions principales de la page, avec un style spécifique à l'identité visuelle du CNAM. (Exemple : bouton de connexion)
+- **Bouton secondaire** : utilisé pour les actions secondaires de la page.
+- **Bouton tertiaire** : utilisé pour les actions contextuelles ou alternatives de la page.
+- **Bouton danger** : utilisé pour les actions destructrices ou irréversibles de la page.
+
+### Quand utiliser ce composant ?
+
+Utiliser le bouton pour déclencher une action dans la page. Il faut bien différencier les boutons des liens. Le lien est utilisé pour naviguer à l’intérieur (ou à l’extérieur) de votre site.
+
+- **Utiliser le bouton primaire pour les actions principales** (soumettre un formulaire, rediriger vers un contenu priorisé, etc.). Il est recommandé de limiter son usage à un bouton primaire par page.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-1.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Aligner un bouton primaire avec un bouton secondaire ou un lien. 
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-1.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+  >
+    Ne pas utiliser deux boutons primaires côte à côte.
+  </DoDont>
+</div>
+
+- **Choisir le bouton secondaire pour des actions moins importantes** (réinitialiser les valeurs d’un formulaire, par exemple)
+- **Réserver le bouton tertiaire pour des actions contextuelles ou alternatives** (fermeture de modale, annuler, partager, suivre sur un réseau social, copier un lien, etc.)
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-2bis.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+  >
+    Ne pas indiquer une hiérarchie entre 2 boutons tertiaires via la présence ou
+    non de contour.
+  </DoDont>
+
+- **Attention à hiérarchiser les actions proposées à l’usager.** Utiliser une combinaison de bouton de styles différents pour maintenir l’attention sur l’action principale (cf. composant “Groupe de boutons”).
+- **Utiliser uniquement la couleur bleue.** Cette couleur est utilisée pour signaler une interaction sur les éléments principaux (cf. couleurs).
+
+### Règles éditoriales
+
+- **Rédiger un texte concis et explicite sur l’action** que le bouton va initier.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-3.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Rédiger un texte clair, explicite et prévisible. L’usager doit savoir ce qui va se passer. 
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-3.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+  >
+    Ne pas tromper l’usager. Fournir le contexte que l’usager sache quelle action va être réalisée. 
+  </DoDont>
+</div>
+
+<DoDont
+  status="dont"
+  title="Éviter les libellés vagues"
+  imageSrc="src\components\Button\assets\dont-3-5.png"
+  imageAlt="Bouton avec libellé 'Cliquez ici'"
+>
+  Ne pas rédiger des libellés trop longs pour éviter le passage du bouton sur 2
+  lignes.
+</DoDont>
+
+- **Indiquer ce que l’usager va faire**, sans nommer le bouton ou sa localisation.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-4.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Se concentrer sur l’action principale, en restant concis et clair. 
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-4.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+    Ne pas mentionner le composant bouton, ni sa localisation.
+
+  </DoDont>
+</div>
+
+- **Commencer les textes des boutons avec un verbe d’action.**
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-5.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Commencer les textes des boutons avec un verbe d’action à l’infinitif. 
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-5.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+    Ne pas utiliser  “Je” ou ne pas conjuguer le verbe.
+
+  </DoDont>
+</div>
+
+- **Conserver une unité** dans le format d’écriture de tous vos libellés de boutons.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-6.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Mettre des majuscules en début de phrase.
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-6.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+    Ne pas rédiger les libellés de vos boutons en lettres capitales.
+
+  </DoDont>
+</div>
+
+- **Éviter les redondances** entre instructions et boutons. Ces éléments sont complémentaires.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-7.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Accompagner vos boutons d’instructions pour garantir la bonne compréhension de l’usager, lorsque nécessaire. 
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-7.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+    Ne pas créer de redondances entre instructions et boutons. Ces éléments sont complémentaires.
+
+  </DoDont>
+</div>
+
+## Accessibilité
+
+Le composant **Bouton** est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+Lorsque le focus est positionné sur le composant :
+
+- **Entrée** : actionne le bouton.
+- **Espace** : actionne le bouton.
+
+### Règles d'accessibilité
+
+#### Intitulé pertinent : nom accessible
+
+Un bouton doit avoir un **intitulé pertinent**. On doit en comprendre la fonction sans ambiguïté.
+Son nom accessible est calculé par ordre de priorité à partir de :
+
+- l’attribut `aria-labelledby`
+- l’attribut `aria-label`
+- le contenu textuel à l’intérieur du bouton
+- l’attribut `title` en l’absence d’une autre méthode de nommage.
+
+**Privilégier le contenu textuel** pour nommer le composant Bouton.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\do-8.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+    Utiliser un intitulé textuel précis. 
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-8.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+Utiliser un intitulé générique et ambigu.
+
+  </DoDont>
+</div>
+
+#### Nom visible et nom accessible
+
+En cas d’utilisation des attributs **aria-labelledby** ou **aria-label** sur des boutons textuels, le **nom visible doit être repris dans le nom accessible** afin de répondre aux besoins des personnes qui utilisent la commande vocale.
+
+#### Information complémentaire : description
+
+Il est possible de compléter et d’expliciter l’intitulé d’un bouton avec une description en utilisant :
+
+- l’attribut `aria-describedby` avec une valeur d’id qui référence un passage de texte ;
+- l’attribut `title`.
+
+#### Bouton avec icône seule
+
+Dans le cas des **boutons avec icône seule**, un attribut `title`, qui reprend l’intitulé du bouton, peut être ajouté afin d’expliciter le sens de l’icône pour les personnes qui en ont besoin.
+
+<Message status="warning">
+  <span>
+    L’attribut title n’apparaît pas à la navigation au clavier et le contenu de
+    l’infobulle ne s’agrandit pas lorsque la page est zoomée. Limiter l’usage
+    des boutons avec icône seule et les utiliser uniquement pour les actions
+    récurrentes et facilement identifiables (ex. engrenage pour les paramètres
+    ou loupe pour la recherche).
+  </span>
+</Message>
+
+#### État désactivé
+
+<Message status="warning">
+  <span>
+  L’état désactivé d’un bouton peut poser des problèmes d’utilisabilité et d’accessibilité pour les personnes handicapées (personnes aveugles, déficientes visuelles, handicapées motrices qui naviguent au clavier ainsi que les personnes qui ont un handicap cognitif ou mental).
+
+- Le texte des boutons désactivés est insuffisamment contrasté. Il ne s’agit néanmoins pas d’une non-conformité au RGAA (cas particulier).
+- Lorsqu’un bouton est désactivé avec l’attribut disabled, il ne prend pas le focus au clavier.
+
+</span>
+</Message>
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="dont"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Button\assets\dont-9.png"
+    imageAlt="Bouton avec libellé 'Télécharger'"
+  >
+     Ne pas désactiver un bouton avec une infobulle (tooltip). 
+  </DoDont>
+
+    <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Button\assets\dont-9-2.png"
+    imageAlt="Bouton avec libellé 'Cliquez ici'"
+
+>
+
+Ne pas désactiver un bouton de soumission d’un formulaire.
+
+  </DoDont>
+</div>
+
+#### Bouton ou lien ?
+
+<Message status="info">
+  <span>
+  Il est nécessaire de distinguer un bouton d’un lien.
+
+Un bouton permet de déclencher **une action ou un événement** :
+
+- **nativement** en fonction du type du bouton : envoi d’un formulaire (submit), suppression de contenu de champs de formulaire (reset) ;
+- **en JavaScript** : ouverture d’une fenêtre modale, fermeture d’un contenu, modification de la page…
+
+Un lien permet de rediriger vers une autre page ou à un autre endroit dans la page (ancre).
+
+  </span>
+</Message>
