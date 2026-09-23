@@ -1,0 +1,46 @@
+{
+  "name": "design-system-cnam",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build:css": "sass src/styles/main.scss dist/main.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch src/styles/main.scss dist/main.css --no-source-map",
+    "dev:css": "sass --watch src/styles/main.scss dist/main.css --style=expanded",
+    "extract:colors": "node extract-colors.js"
+  },
+  "dependencies": {
+    "lucide-react": "^1.34.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.5.9",
+    "@storybook/addon-docs": "^10.5.9",
+    "@storybook/addon-onboarding": "^10.5.9",
+    "@storybook/addon-vitest": "^10.5.9",
+    "@storybook/react-vite": "^10.5.9",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest",
+    "@whitespace/storybook-addon-html": "^9.0.0",
+    "oxlint": "^1.75.0",
+    "playwright": "latest",
+    "storybook": "^10.5.9",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0",
+    "vitest": "latest"
+  }
+}

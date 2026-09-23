@@ -1,0 +1,32 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as IconStories from "./Icon.stories";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={IconStories} />
+
+# Icon
+
+Les icônes fonctionnelles sont des symboles visuels qui accompagnent l’utilisateur dans ses actions et qui aident à sa compréhension de l’interface.
+
+<Canvas of={IconStories.Default} />
+
+## Documentation
+
+La bibliothèque d'icons provient du Lucid-React.
+
+## Règles d’utilisation
+
+Les icônes fonctionnelles sont des symboles visuels utilisés pour représenter des idées, des objets ou des actions.
+
+Les icônes doivent être utilisées pour attirer l'attention sur les actions, les ensembles de contenus importants ou les zones clés, il faut éviter d’en utiliser trop sur une même page pour ne pas créer de confusion. Un concept doit être représenté par la même icône sur l'ensemble du site et de l'écosystème numérique du Cnam.
+
+## Couleur
+
+La couleur choisie pour vos icônes doit être issue des couleurs de la charte. Lorsqu’une icône est rattachée à un libellé ou composant, elle prend automatiquement la couleur de ce libellé.
+
+## Accessibilité
+
+Les icônes sont uniquement illustratives et ne doivent pas être utilisées seules, mais accompagnées d’un libellé explicite.
