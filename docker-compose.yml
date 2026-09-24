@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+    server:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - 6006:6006
+        # env_file:
+        #     - ./config/${NODE_ENV}.env
+        environment:
+            CI: $CI
+        working_dir: '/app/'
+        volumes:
+            - ./:/app
+        command: npm run storybook
