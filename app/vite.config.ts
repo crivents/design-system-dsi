@@ -36,7 +36,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(dirname, 'src/index.ts'),
+      entry: path.resolve(dirname, 'src/index.tsx'),
       name: 'DesignSystemCnam',
       fileName: 'design-system-cnam',
       cssFileName: 'design-system-cnam',

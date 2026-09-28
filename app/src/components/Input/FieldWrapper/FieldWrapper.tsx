@@ -46,8 +46,8 @@ const FieldWrapper: React.FC<FieldWrapperProps> = ({
   message,
   status,
   className = "",
-  name = "",
-  disabled = false,
+//  name = "",
+//  disabled = false,
   readOnly,
   showMessages = true,
 }) => {

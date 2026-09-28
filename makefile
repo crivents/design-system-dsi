@@ -17,3 +17,6 @@ delete-local-node-dependencies:
 
 delete-images:
 	docker rmi design-system-dsi-server
+
+build-design-system-library:
+	docker compose -f docker-compose.yml run --rm --no-deps server ash -ci 'npm run build'
