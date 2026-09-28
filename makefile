@@ -12,6 +12,7 @@ start-with-local-node-binaries:
 	npm run storybook
 
 delete-local-node-dependencies:
+	rm -rf ./app/node_modules
 	rm -rf ./node_modules
 
 delete-images:

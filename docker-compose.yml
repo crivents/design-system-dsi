@@ -3,7 +3,7 @@ version: '3.4'
 services:
     server:
         build:
-            context: ./
+            context: ./docker/node
             dockerfile: Dockerfile
         ports:
             - 6006:6006

@@ -1,0 +1,84 @@
+{
+    "parser": "@babel/eslint-parser",
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "parser": "@babel/eslint-parser",
+        "requireConfigFile": false,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+        }
+    },
+    "extends": [
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react/jsx-runtime"
+    ],
+    "plugins": [
+        "react",
+        "jsx-a11y"
+    ],
+    "rules": {
+        "no-console": [
+            "error",
+            {
+                "allow": [
+                    "warn",
+                    "error"
+                ]
+            }
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "ignoreRestSiblings": true
+            }
+        ],
+        "no-undef": [
+            "error"
+        ],
+        "import/no-named-as-default": 0,
+        "import/no-unresolved": [
+            "error",
+            {
+                "ignore": [
+                    "@cep/editions-diplomation-common"
+                ]
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.{js,jsx,mjs,cjs,ts,tsx}"
+                //"**/*.test.js"
+            ],
+            "rules": {
+                "react/prop-types": [
+                    "off"
+                ],
+                "react/no-is-mounted": [
+                    "off"
+                ],
+            }
+        }
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+              "extensions": [".js",".jsx",".ts",".tsx"]
+            }
+          }
+    }
+}
