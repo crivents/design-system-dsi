@@ -18,6 +18,8 @@ export interface RadioOption {
   disabled?: boolean;
   /** Message du radio */
   message?: ReactNode;
+  /** Icone */
+  icon?: string;
 }
 
 export interface RadioGroupProps extends Omit<
