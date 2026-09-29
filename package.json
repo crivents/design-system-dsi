@@ -1,5 +1,8 @@
 {
-    "private": true,
+    "name": "design-system-cnam",
+    "main": "./dist/design-system-cnam.cjs",
+    "module": "./dist/design-system-cnam.js",
+    "private": false,
     "version": "1.0.0",
     "scripts": {
         "linting:check": "eslint app/",
@@ -10,5 +13,12 @@
     ],
     "devDependencies": {
         "@babel/preset-react": "7.23.3"
+    },
+    "exports": {
+    ".": {
+      "import": "./dist/design-system-cnam.js",
+      "require": "./dist/design-system-cnam.cjs"
+    },
+    "./style.css": "./dist/design-system-cnam.css"
     }
 }
