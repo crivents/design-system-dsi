@@ -54780,4 +54780,4 @@ var $ = {
 	});
 };
 //#endregion
-export { bie as Button, Tie as From, Die as InputText };
+export { bie as Button, Tie as Form, Die as InputText };
