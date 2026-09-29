@@ -12,7 +12,7 @@ var c = Object.defineProperty, l = (e, t) => () => (t || (e((t = { exports: {} }
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), d = (e) => e?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
+//#region node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
 function te(e, t, n = []) {
 	if (t == null) throw Error("[lucide]: iconNode is required when icon name is used");
 	return {
@@ -23,7 +23,7 @@ function te(e, t, n = []) {
 	};
 }
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
+//#region node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
 var f = (e) => {
 	let t = "", n = !1;
 	for (let r of e) {
@@ -49,7 +49,7 @@ var f = (e) => {
 	"stroke-linejoin": "round"
 };
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
+//#region node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
 function h(e) {
 	return e != null;
 }
@@ -86,7 +86,7 @@ function re(e, t = {}) {
 	];
 }
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
+//#region node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
 function ie(e, t = {}) {
 	return re(e, {
 		...t,
@@ -101,7 +101,7 @@ function ie(e, t = {}) {
 	});
 }
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
+//#region node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
 var ae = (e) => {
 	for (let t in e) if (t.startsWith("aria-") || t === "role" || t === "title") return !0;
 	return !1;
@@ -146,7 +146,7 @@ var ce = () => i(oe), le = n(({ color: e, size: n, width: r, height: i, strokeWi
 	}, [...ue.map(([e, n]) => t(e, n)), ...Array.isArray(l) ? l : [l]]);
 });
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/createLucideIcon.mjs
+//#region node_modules/lucide-react/dist/esm/createLucideIcon.mjs
 function g(e, r = [], i = []) {
 	let a = typeof e == "string" ? te(e, r, i) : e, o = n(({ className: e, ...n }, r) => t(le, {
 		ref: r,
@@ -157,7 +157,7 @@ function g(e, r = [], i = []) {
 	return a.name && (o.displayName = p(a.name)), o;
 }
 //#endregion
-//#region ../node_modules/lucide-react/dist/esm/icons/a-arrow-up.mjs
+//#region node_modules/lucide-react/dist/esm/icons/a-arrow-up.mjs
 var ue = {
 	name: "a-arrow-up",
 	size: 24,
