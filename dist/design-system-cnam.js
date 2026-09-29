@@ -1,22 +1,20 @@
 import { createContext as e, createElement as t, forwardRef as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useRef as s } from "react";
+import { jsx as c, jsxs as l } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var c = Object.defineProperty, l = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), u = (e, t) => {
+var u = Object.defineProperty, ee = (e, t) => {
 	let n = {};
-	for (var r in e) c(n, r, {
+	for (var r in e) u(n, r, {
 		get: e[r],
 		enumerable: !0
 	});
-	return t || c(n, Symbol.toStringTag, { value: "Module" }), n;
-}, ee = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
-	if (typeof require < "u") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), d = (e) => e?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+	return t || u(n, Symbol.toStringTag, { value: "Module" }), n;
+}, te = (e) => e?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 //#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
-function te(e, t, n = []) {
+function ne(e, t, n = []) {
 	if (t == null) throw Error("[lucide]: iconNode is required when icon name is used");
 	return {
-		name: d(e),
+		name: te(e),
 		size: 24,
 		node: t,
 		...n.length > 0 ? { aliases: n } : {}
@@ -24,7 +22,7 @@ function te(e, t, n = []) {
 }
 //#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
-var f = (e) => {
+var re = (e) => {
 	let t = "", n = !1;
 	for (let r of e) {
 		if (r === "-" || r === "_" || r <= " ") {
@@ -34,10 +32,10 @@ var f = (e) => {
 		t.length === 0 ? t += r.toLowerCase() : t += n ? r.toUpperCase() : r, n = !1;
 	}
 	return t;
-}, p = (e) => {
-	let t = f(e);
+}, ie = (e) => {
+	let t = re(e);
 	return t.charAt(0).toUpperCase() + t.slice(1);
-}, ne = (...e) => e.filter((e, t, n) => !!e && e.trim() !== "" && n.indexOf(e) === t).join(" ").trim(), m = {
+}, ae = (...e) => e.filter((e, t, n) => !!e && e.trim() !== "" && n.indexOf(e) === t).join(" ").trim(), d = {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
@@ -50,22 +48,22 @@ var f = (e) => {
 };
 //#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
-function h(e) {
+function oe(e) {
 	return e != null;
 }
-function re(e, t = {}) {
-	let n = t.attributeNames ?? {}, r = (e) => n[e] ?? e, i = e.size ?? e.width ?? m.width, a = e.size ?? e.height ?? m.height, o = e.aliases?.filter((e) => typeof e == "string" && e.trim() !== "").map((e) => `lucide-${e}`) ?? [], s = [...e.name ? [`lucide-${e.name}`] : [], ...o], c = t.className?.split(" ").filter(Boolean) ?? [], l = t.includeDefaultClasses === !1 ? ne(...c) : ne("lucide", ...s, ...c), u = t.absoluteStrokeWidth ? Number(t.strokeWidth ?? m["stroke-width"]) * Number(e.size ?? e.width ?? m.width) / Number(t.size ?? t.width ?? m.width) : t.strokeWidth ?? m["stroke-width"];
+function se(e, t = {}) {
+	let n = t.attributeNames ?? {}, r = (e) => n[e] ?? e, i = e.size ?? e.width ?? d.width, a = e.size ?? e.height ?? d.height, o = e.aliases?.filter((e) => typeof e == "string" && e.trim() !== "").map((e) => `lucide-${e}`) ?? [], s = [...e.name ? [`lucide-${e.name}`] : [], ...o], c = t.className?.split(" ").filter(Boolean) ?? [], l = t.includeDefaultClasses === !1 ? ae(...c) : ae("lucide", ...s, ...c), u = t.absoluteStrokeWidth ? Number(t.strokeWidth ?? d["stroke-width"]) * Number(e.size ?? e.width ?? d.width) / Number(t.size ?? t.width ?? d.width) : t.strokeWidth ?? d["stroke-width"];
 	return [
 		"svg",
 		{
-			...Object.entries(m).reduce((e, [t, n]) => (e[r(t)] = n, e), {}),
+			...Object.entries(d).reduce((e, [t, n]) => (e[r(t)] = n, e), {}),
 			..."color" in t && t.color && { [r("stroke")]: t.color },
-			..."size" in t && h(t.size) && {
+			..."size" in t && oe(t.size) && {
 				[r("width")]: t.size,
 				[r("height")]: t.size
 			},
-			..."width" in t && h(t.width) && { [r("width")]: t.width },
-			..."height" in t && h(t.height) && { [r("height")]: t.height },
+			..."width" in t && oe(t.width) && { [r("width")]: t.width },
+			..."height" in t && oe(t.height) && { [r("height")]: t.height },
 			[r("stroke-width")]: u,
 			...l && { [r("class")]: l },
 			[r("viewBox")]: `0 0 ${i} ${a}`,
@@ -87,8 +85,8 @@ function re(e, t = {}) {
 }
 //#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
-function ie(e, t = {}) {
-	return re(e, {
+function ce(e, t = {}) {
+	return se(e, {
 		...t,
 		attributeNames: {
 			...t.attributeNames,
@@ -102,11 +100,11 @@ function ie(e, t = {}) {
 }
 //#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
-var ae = (e) => {
+var le = (e) => {
 	for (let t in e) if (t.startsWith("aria-") || t === "role" || t === "title") return !0;
 	return !1;
-}, oe = e({});
-function se({ children: e, size: n, color: r, strokeWidth: i, absoluteStrokeWidth: a, nonScalingStroke: s, className: c }) {
+}, ue = e({});
+function de({ children: e, size: n, color: r, strokeWidth: i, absoluteStrokeWidth: a, nonScalingStroke: s, className: c }) {
 	let l = o(() => ({
 		size: n,
 		color: r,
@@ -122,43 +120,43 @@ function se({ children: e, size: n, color: r, strokeWidth: i, absoluteStrokeWidt
 		s,
 		c
 	]);
-	return t(oe.Provider, { value: l }, e);
+	return t(ue.Provider, { value: l }, e);
 }
-var ce = () => i(oe), le = n(({ color: e, size: n, width: r, height: i, strokeWidth: a, absoluteStrokeWidth: o, nonScalingStroke: s, className: c = "", children: l, iconNode: u = [], icon: ee = {
+var fe = () => i(ue), pe = n(({ color: e, size: n, width: r, height: i, strokeWidth: a, absoluteStrokeWidth: o, nonScalingStroke: s, className: c = "", children: l, iconNode: u = [], icon: ee = {
 	node: u,
 	aliases: [],
 	size: 24
-}, ...d }, te) => {
-	let { size: f = 24, strokeWidth: p = 2, absoluteStrokeWidth: m = !1, nonScalingStroke: h = !1, color: re = "currentColor", className: oe = "" } = ce() ?? {}, se = !!l || ae(d), [le, g, ue = []] = ie(ee, {
-		color: e ?? re,
-		width: r ?? n ?? f,
-		height: i ?? n ?? f,
-		strokeWidth: a ?? p,
-		absoluteStrokeWidth: o ?? m,
-		nonScalingStroke: s ?? h,
-		className: ne(oe, c),
-		hasA11yProp: se,
-		attributes: d
+}, ...te }, ne) => {
+	let { size: re = 24, strokeWidth: ie = 2, absoluteStrokeWidth: d = !1, nonScalingStroke: oe = !1, color: se = "currentColor", className: ue = "" } = fe() ?? {}, de = !!l || le(te), [pe, f, me = []] = ce(ee, {
+		color: e ?? se,
+		width: r ?? n ?? re,
+		height: i ?? n ?? re,
+		strokeWidth: a ?? ie,
+		absoluteStrokeWidth: o ?? d,
+		nonScalingStroke: s ?? oe,
+		className: ae(ue, c),
+		hasA11yProp: de,
+		attributes: te
 	});
-	return t(le, {
-		ref: te,
-		...g
-	}, [...ue.map(([e, n]) => t(e, n)), ...Array.isArray(l) ? l : [l]]);
+	return t(pe, {
+		ref: ne,
+		...f
+	}, [...me.map(([e, n]) => t(e, n)), ...Array.isArray(l) ? l : [l]]);
 });
 //#endregion
 //#region node_modules/lucide-react/dist/esm/createLucideIcon.mjs
-function g(e, r = [], i = []) {
-	let a = typeof e == "string" ? te(e, r, i) : e, o = n(({ className: e, ...n }, r) => t(le, {
+function f(e, r = [], i = []) {
+	let a = typeof e == "string" ? ne(e, r, i) : e, o = n(({ className: e, ...n }, r) => t(pe, {
 		ref: r,
 		icon: a,
 		className: e,
 		...n
 	}));
-	return a.name && (o.displayName = p(a.name)), o;
+	return a.name && (o.displayName = ie(a.name)), o;
 }
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/a-arrow-up.mjs
-var ue = {
+var me = {
 	name: "a-arrow-up",
 	size: 24,
 	node: [
@@ -180,8 +178,8 @@ var ue = {
 		}]
 	]
 };
-ue.node;
-var de = g(ue), fe = {
+me.node;
+var he = f(me), eee = {
 	name: "a-large-small",
 	size: 24,
 	node: [
@@ -203,8 +201,8 @@ var de = g(ue), fe = {
 		}]
 	]
 };
-fe.node;
-var pe = g(fe), me = {
+eee.node;
+var ge = f(eee), _e = {
 	name: "a-arrow-down",
 	size: 24,
 	node: [
@@ -226,8 +224,8 @@ var pe = g(fe), me = {
 		}]
 	]
 };
-me.node;
-var he = g(me), ge = {
+_e.node;
+var ve = f(_e), ye = {
 	name: "activity",
 	size: 24,
 	node: [["path", {
@@ -235,8 +233,8 @@ var he = g(me), ge = {
 		key: "169zse"
 	}]]
 };
-ge.node;
-var _e = g(ge), ve = {
+ye.node;
+var be = f(ye), xe = {
 	name: "accessibility",
 	size: 24,
 	node: [
@@ -264,8 +262,8 @@ var _e = g(ge), ve = {
 		}]
 	]
 };
-ve.node;
-var ye = g(ve), be = {
+xe.node;
+var Se = f(xe), Ce = {
 	name: "ad",
 	size: 24,
 	node: [
@@ -291,8 +289,8 @@ var ye = g(ve), be = {
 		}]
 	]
 };
-be.node;
-var xe = g(be), Se = {
+Ce.node;
+var we = f(Ce), Te = {
 	name: "air-vent",
 	size: 24,
 	node: [
@@ -314,8 +312,8 @@ var xe = g(be), Se = {
 		}]
 	]
 };
-Se.node;
-var Ce = g(Se), eee = {
+Te.node;
+var Ee = f(Te), De = {
 	name: "airplay",
 	size: 24,
 	node: [["path", {
@@ -326,8 +324,8 @@ var Ce = g(Se), eee = {
 		key: "14qnn2"
 	}]]
 };
-eee.node;
-var we = g(eee), Te = {
+De.node;
+var Oe = f(De), ke = {
 	name: "alarm-clock-check",
 	size: 24,
 	node: [
@@ -360,8 +358,8 @@ var we = g(eee), Te = {
 	],
 	aliases: ["alarm-check"]
 };
-Te.node;
-var Ee = g(Te), De = {
+ke.node;
+var Ae = f(ke), je = {
 	name: "alarm-clock-off",
 	size: 24,
 	node: [
@@ -391,8 +389,8 @@ var Ee = g(Te), De = {
 		}]
 	]
 };
-De.node;
-var Oe = g(De), ke = {
+je.node;
+var Me = f(je), Ne = {
 	name: "alarm-clock-minus",
 	size: 24,
 	node: [
@@ -425,8 +423,8 @@ var Oe = g(De), ke = {
 	],
 	aliases: ["alarm-minus"]
 };
-ke.node;
-var Ae = g(ke), je = {
+Ne.node;
+var Pe = f(Ne), Fe = {
 	name: "alarm-clock",
 	size: 24,
 	node: [
@@ -458,8 +456,8 @@ var Ae = g(ke), je = {
 		}]
 	]
 };
-je.node;
-var Me = g(je), Ne = {
+Fe.node;
+var Ie = f(Fe), Le = {
 	name: "alarm-clock-plus",
 	size: 24,
 	node: [
@@ -496,8 +494,8 @@ var Me = g(je), Ne = {
 	],
 	aliases: ["alarm-plus"]
 };
-Ne.node;
-var Pe = g(Ne), Fe = {
+Le.node;
+var Re = f(Le), ze = {
 	name: "alarm-smoke",
 	size: 24,
 	node: [
@@ -523,8 +521,8 @@ var Pe = g(Ne), Fe = {
 		}]
 	]
 };
-Fe.node;
-var Ie = g(Fe), Le = {
+ze.node;
+var Be = f(ze), Ve = {
 	name: "align-center-horizontal",
 	size: 24,
 	node: [
@@ -550,8 +548,8 @@ var Ie = g(Fe), Le = {
 		}]
 	]
 };
-Le.node;
-var Re = g(Le), ze = {
+Ve.node;
+var He = f(Ve), Ue = {
 	name: "align-center-vertical",
 	size: 24,
 	node: [
@@ -577,8 +575,8 @@ var Re = g(Le), ze = {
 		}]
 	]
 };
-ze.node;
-var Be = g(ze), Ve = {
+Ue.node;
+var We = f(Ue), Ge = {
 	name: "align-end-vertical",
 	size: 24,
 	node: [
@@ -604,8 +602,8 @@ var Be = g(ze), Ve = {
 		}]
 	]
 };
-Ve.node;
-var He = g(Ve), Ue = {
+Ge.node;
+var Ke = f(Ge), qe = {
 	name: "align-end-horizontal",
 	size: 24,
 	node: [
@@ -631,8 +629,8 @@ var He = g(Ve), Ue = {
 		}]
 	]
 };
-Ue.node;
-var We = g(Ue), Ge = {
+qe.node;
+var Je = f(qe), Ye = {
 	name: "align-horizontal-distribute-center",
 	size: 24,
 	node: [
@@ -670,8 +668,8 @@ var We = g(Ue), Ge = {
 		}]
 	]
 };
-Ge.node;
-var Ke = g(Ge), qe = {
+Ye.node;
+var Xe = f(Ye), Ze = {
 	name: "align-horizontal-distribute-end",
 	size: 24,
 	node: [
@@ -701,8 +699,8 @@ var Ke = g(Ge), qe = {
 		}]
 	]
 };
-qe.node;
-var Je = g(qe), Ye = {
+Ze.node;
+var Qe = f(Ze), $e = {
 	name: "align-horizontal-distribute-start",
 	size: 24,
 	node: [
@@ -732,8 +730,8 @@ var Je = g(qe), Ye = {
 		}]
 	]
 };
-Ye.node;
-var Xe = g(Ye), Ze = {
+$e.node;
+var et = f($e), tt = {
 	name: "align-horizontal-justify-center",
 	size: 24,
 	node: [
@@ -759,8 +757,8 @@ var Xe = g(Ye), Ze = {
 		}]
 	]
 };
-Ze.node;
-var Qe = g(Ze), $e = {
+tt.node;
+var nt = f(tt), rt = {
 	name: "align-horizontal-justify-end",
 	size: 24,
 	node: [
@@ -786,8 +784,8 @@ var Qe = g(Ze), $e = {
 		}]
 	]
 };
-$e.node;
-var et = g($e), tt = {
+rt.node;
+var it = f(rt), at = {
 	name: "align-horizontal-justify-start",
 	size: 24,
 	node: [
@@ -813,8 +811,8 @@ var et = g($e), tt = {
 		}]
 	]
 };
-tt.node;
-var nt = g(tt), rt = {
+at.node;
+var ot = f(at), st = {
 	name: "align-horizontal-space-around",
 	size: 24,
 	node: [
@@ -836,8 +834,8 @@ var nt = g(tt), rt = {
 		}]
 	]
 };
-rt.node;
-var it = g(rt), at = {
+st.node;
+var ct = f(st), lt = {
 	name: "align-horizontal-space-between",
 	size: 24,
 	node: [
@@ -867,8 +865,8 @@ var it = g(rt), at = {
 		}]
 	]
 };
-at.node;
-var ot = g(at), st = {
+lt.node;
+var ut = f(lt), dt = {
 	name: "align-start-horizontal",
 	size: 24,
 	node: [
@@ -894,8 +892,8 @@ var ot = g(at), st = {
 		}]
 	]
 };
-st.node;
-var ct = g(st), lt = {
+dt.node;
+var ft = f(dt), pt = {
 	name: "align-start-vertical",
 	size: 24,
 	node: [
@@ -921,8 +919,8 @@ var ct = g(st), lt = {
 		}]
 	]
 };
-lt.node;
-var ut = g(lt), dt = {
+pt.node;
+var mt = f(pt), ht = {
 	name: "align-vertical-distribute-center",
 	size: 24,
 	node: [
@@ -960,8 +958,8 @@ var ut = g(lt), dt = {
 		}]
 	]
 };
-dt.node;
-var ft = g(dt), pt = {
+ht.node;
+var gt = f(ht), tee = {
 	name: "align-vertical-distribute-end",
 	size: 24,
 	node: [
@@ -991,8 +989,8 @@ var ft = g(dt), pt = {
 		}]
 	]
 };
-pt.node;
-var mt = g(pt), ht = {
+tee.node;
+var _t = f(tee), nee = {
 	name: "align-vertical-distribute-start",
 	size: 24,
 	node: [
@@ -1022,8 +1020,8 @@ var mt = g(pt), ht = {
 		}]
 	]
 };
-ht.node;
-var gt = g(ht), _t = {
+nee.node;
+var vt = f(nee), yt = {
 	name: "align-vertical-justify-center",
 	size: 24,
 	node: [
@@ -1049,8 +1047,8 @@ var gt = g(ht), _t = {
 		}]
 	]
 };
-_t.node;
-var vt = g(_t), yt = {
+yt.node;
+var bt = f(yt), xt = {
 	name: "align-vertical-justify-end",
 	size: 24,
 	node: [
@@ -1076,8 +1074,8 @@ var vt = g(_t), yt = {
 		}]
 	]
 };
-yt.node;
-var bt = g(yt), xt = {
+xt.node;
+var St = f(xt), Ct = {
 	name: "align-vertical-justify-start",
 	size: 24,
 	node: [
@@ -1103,8 +1101,8 @@ var bt = g(yt), xt = {
 		}]
 	]
 };
-xt.node;
-var St = g(xt), tee = {
+Ct.node;
+var wt = f(Ct), Tt = {
 	name: "align-vertical-space-around",
 	size: 24,
 	node: [
@@ -1126,8 +1124,8 @@ var St = g(xt), tee = {
 		}]
 	]
 };
-tee.node;
-var Ct = g(tee), nee = {
+Tt.node;
+var Et = f(Tt), Dt = {
 	name: "align-vertical-space-between",
 	size: 24,
 	node: [
@@ -1157,8 +1155,8 @@ var Ct = g(tee), nee = {
 		}]
 	]
 };
-nee.node;
-var wt = g(nee), ree = {
+Dt.node;
+var Ot = f(Dt), kt = {
 	name: "ambulance",
 	size: 24,
 	node: [
@@ -1196,8 +1194,8 @@ var wt = g(nee), ree = {
 		}]
 	]
 };
-ree.node;
-var Tt = g(ree), Et = {
+kt.node;
+var At = f(kt), jt = {
 	name: "ampersand",
 	size: 24,
 	node: [["path", {
@@ -1208,8 +1206,8 @@ var Tt = g(ree), Et = {
 		key: "nfoe1t"
 	}]]
 };
-Et.node;
-var Dt = g(Et), Ot = {
+jt.node;
+var Mt = f(jt), Nt = {
 	name: "ampersands",
 	size: 24,
 	node: [["path", {
@@ -1220,8 +1218,8 @@ var Dt = g(Et), Ot = {
 		key: "173c68"
 	}]]
 };
-Ot.node;
-var kt = g(Ot), At = {
+Nt.node;
+var Pt = f(Nt), Ft = {
 	name: "amphora",
 	size: 24,
 	node: [
@@ -1251,8 +1249,8 @@ var kt = g(Ot), At = {
 		}]
 	]
 };
-At.node;
-var jt = g(At), Mt = {
+Ft.node;
+var It = f(Ft), Lt = {
 	name: "angle",
 	size: 24,
 	node: [["path", {
@@ -1263,8 +1261,8 @@ var jt = g(At), Mt = {
 		key: "jhvw44"
 	}]]
 };
-Mt.node;
-var Nt = g(Mt), Pt = {
+Lt.node;
+var Rt = f(Lt), zt = {
 	name: "antenna",
 	size: 24,
 	node: [
@@ -1294,8 +1292,8 @@ var Nt = g(Mt), Pt = {
 		}]
 	]
 };
-Pt.node;
-var Ft = g(Pt), It = {
+zt.node;
+var Bt = f(zt), Vt = {
 	name: "anchor",
 	size: 24,
 	node: [
@@ -1319,8 +1317,8 @@ var Ft = g(Pt), It = {
 		}]
 	]
 };
-It.node;
-var Lt = g(It), Rt = {
+Vt.node;
+var Ht = f(Vt), Ut = {
 	name: "anvil",
 	size: 24,
 	node: [
@@ -1346,8 +1344,8 @@ var Lt = g(It), Rt = {
 		}]
 	]
 };
-Rt.node;
-var zt = g(Rt), Bt = {
+Ut.node;
+var Wt = f(Ut), Gt = {
 	name: "aperture",
 	size: 24,
 	node: [
@@ -1383,8 +1381,8 @@ var zt = g(Rt), Bt = {
 		}]
 	]
 };
-Bt.node;
-var Vt = g(Bt), Ht = {
+Gt.node;
+var Kt = f(Gt), qt = {
 	name: "app-window-mac",
 	size: 24,
 	node: [
@@ -1410,8 +1408,8 @@ var Vt = g(Bt), Ht = {
 		}]
 	]
 };
-Ht.node;
-var Ut = g(Ht), Wt = {
+qt.node;
+var Jt = f(qt), Yt = {
 	name: "app-window",
 	size: 24,
 	node: [
@@ -1437,8 +1435,8 @@ var Ut = g(Ht), Wt = {
 		}]
 	]
 };
-Wt.node;
-var Gt = g(Wt), Kt = {
+Yt.node;
+var Xt = f(Yt), Zt = {
 	name: "apple",
 	size: 24,
 	node: [["path", {
@@ -1449,8 +1447,8 @@ var Gt = g(Wt), Kt = {
 		key: "110c12"
 	}]]
 };
-Kt.node;
-var qt = g(Kt), Jt = {
+Zt.node;
+var Qt = f(Zt), $t = {
 	name: "archive-restore",
 	size: 24,
 	node: [
@@ -1480,8 +1478,8 @@ var qt = g(Kt), Jt = {
 		}]
 	]
 };
-Jt.node;
-var Yt = g(Jt), Xt = {
+$t.node;
+var en = f($t), tn = {
 	name: "archive-x",
 	size: 24,
 	node: [
@@ -1507,8 +1505,8 @@ var Yt = g(Jt), Xt = {
 		}]
 	]
 };
-Xt.node;
-var Zt = g(Xt), Qt = {
+tn.node;
+var nn = f(tn), rn = {
 	name: "archive",
 	size: 24,
 	node: [
@@ -1530,8 +1528,8 @@ var Zt = g(Xt), Qt = {
 		}]
 	]
 };
-Qt.node;
-var $t = g(Qt), en = {
+rn.node;
+var an = f(rn), on = {
 	name: "armchair",
 	size: 24,
 	node: [
@@ -1553,8 +1551,8 @@ var $t = g(Qt), en = {
 		}]
 	]
 };
-en.node;
-var tn = g(en), nn = {
+on.node;
+var sn = f(on), cn = {
 	name: "arrow-big-down",
 	size: 24,
 	node: [["path", {
@@ -1562,8 +1560,8 @@ var tn = g(en), nn = {
 		key: "1o3tkq"
 	}]]
 };
-nn.node;
-var rn = g(nn), an = {
+cn.node;
+var ln = f(cn), un = {
 	name: "arrow-big-down-dash",
 	size: 24,
 	node: [["path", {
@@ -1574,8 +1572,8 @@ var rn = g(nn), an = {
 		key: "10am2s"
 	}]]
 };
-an.node;
-var on = g(an), sn = {
+un.node;
+var dn = f(un), fn = {
 	name: "arrow-big-left-dash",
 	size: 24,
 	node: [["path", {
@@ -1586,8 +1584,8 @@ var on = g(an), sn = {
 		key: "14roy0"
 	}]]
 };
-sn.node;
-var cn = g(sn), ln = {
+fn.node;
+var pn = f(fn), mn = {
 	name: "arrow-big-left",
 	size: 24,
 	node: [["path", {
@@ -1595,8 +1593,8 @@ var cn = g(sn), ln = {
 		key: "qbhtmx"
 	}]]
 };
-ln.node;
-var un = g(ln), dn = {
+mn.node;
+var hn = f(mn), gn = {
 	name: "arrow-big-right-dash",
 	size: 24,
 	node: [["path", {
@@ -1607,8 +1605,8 @@ var un = g(ln), dn = {
 		key: "bns7oa"
 	}]]
 };
-dn.node;
-var fn = g(dn), pn = {
+gn.node;
+var _n = f(gn), ree = {
 	name: "arrow-big-right",
 	size: 24,
 	node: [["path", {
@@ -1616,8 +1614,8 @@ var fn = g(dn), pn = {
 		key: "zee3eo"
 	}]]
 };
-pn.node;
-var mn = g(pn), hn = {
+ree.node;
+var vn = f(ree), iee = {
 	name: "arrow-big-up-dash",
 	size: 24,
 	node: [["path", {
@@ -1628,8 +1626,8 @@ var mn = g(pn), hn = {
 		key: "s66wpe"
 	}]]
 };
-hn.node;
-var gn = g(hn), _n = {
+iee.node;
+var yn = f(iee), bn = {
 	name: "arrow-big-up",
 	size: 24,
 	node: [["path", {
@@ -1637,8 +1635,8 @@ var gn = g(hn), _n = {
 		key: "106j91"
 	}]]
 };
-_n.node;
-var vn = g(_n), yn = {
+bn.node;
+var xn = f(bn), Sn = {
 	name: "arrow-down-0-1",
 	size: 24,
 	node: [
@@ -1669,8 +1667,8 @@ var vn = g(_n), yn = {
 	],
 	aliases: ["arrow-down-01"]
 };
-yn.node;
-var bn = g(yn), xn = {
+Sn.node;
+var Cn = f(Sn), wn = {
 	name: "arrow-down-1-0",
 	size: 24,
 	node: [
@@ -1701,8 +1699,8 @@ var bn = g(yn), xn = {
 	],
 	aliases: ["arrow-down-10"]
 };
-xn.node;
-var Sn = g(xn), Cn = {
+wn.node;
+var Tn = f(wn), En = {
 	name: "arrow-down-a-z",
 	size: 24,
 	node: [
@@ -1729,8 +1727,8 @@ var Sn = g(xn), Cn = {
 	],
 	aliases: ["arrow-down-az"]
 };
-Cn.node;
-var wn = g(Cn), iee = {
+En.node;
+var Dn = f(En), On = {
 	name: "arrow-down-from-line",
 	size: 24,
 	node: [
@@ -1748,8 +1746,8 @@ var wn = g(Cn), iee = {
 		}]
 	]
 };
-iee.node;
-var Tn = g(iee), En = {
+On.node;
+var kn = f(On), An = {
 	name: "arrow-down-left",
 	size: 24,
 	node: [["path", {
@@ -1760,8 +1758,8 @@ var Tn = g(iee), En = {
 		key: "1org7z"
 	}]]
 };
-En.node;
-var Dn = g(En), On = {
+An.node;
+var jn = f(An), Mn = {
 	name: "arrow-down-narrow-wide",
 	size: 24,
 	node: [
@@ -1787,8 +1785,8 @@ var Dn = g(En), On = {
 		}]
 	]
 };
-On.node;
-var kn = g(On), An = {
+Mn.node;
+var Nn = f(Mn), Pn = {
 	name: "arrow-down-right",
 	size: 24,
 	node: [["path", {
@@ -1799,8 +1797,8 @@ var kn = g(On), An = {
 		key: "6fjiku"
 	}]]
 };
-An.node;
-var jn = g(An), Mn = {
+Pn.node;
+var Fn = f(Pn), In = {
 	name: "arrow-down-to-dot",
 	size: 24,
 	node: [
@@ -1820,8 +1818,8 @@ var jn = g(An), Mn = {
 		}]
 	]
 };
-Mn.node;
-var Nn = g(Mn), Pn = {
+In.node;
+var Ln = f(In), Rn = {
 	name: "arrow-down-to-line",
 	size: 24,
 	node: [
@@ -1839,8 +1837,8 @@ var Nn = g(Mn), Pn = {
 		}]
 	]
 };
-Pn.node;
-var Fn = g(Pn), In = {
+Rn.node;
+var zn = f(Rn), Bn = {
 	name: "arrow-down-up",
 	size: 24,
 	node: [
@@ -1862,8 +1860,8 @@ var Fn = g(Pn), In = {
 		}]
 	]
 };
-In.node;
-var Ln = g(In), Rn = {
+Bn.node;
+var Vn = f(Bn), Hn = {
 	name: "arrow-down-wide-narrow",
 	size: 24,
 	node: [
@@ -1890,8 +1888,8 @@ var Ln = g(In), Rn = {
 	],
 	aliases: ["sort-desc"]
 };
-Rn.node;
-var zn = g(Rn), Bn = {
+Hn.node;
+var Un = f(Hn), Wn = {
 	name: "arrow-down-z-a",
 	size: 24,
 	node: [
@@ -1918,8 +1916,8 @@ var zn = g(Rn), Bn = {
 	],
 	aliases: ["arrow-down-za"]
 };
-Bn.node;
-var _ = g(Bn), Vn = {
+Wn.node;
+var Gn = f(Wn), Kn = {
 	name: "arrow-down",
 	size: 24,
 	node: [["path", {
@@ -1930,8 +1928,8 @@ var _ = g(Bn), Vn = {
 		key: "1idqje"
 	}]]
 };
-Vn.node;
-var Hn = g(Vn), Un = {
+Kn.node;
+var qn = f(Kn), Jn = {
 	name: "arrow-left-from-line",
 	size: 24,
 	node: [
@@ -1949,8 +1947,8 @@ var Hn = g(Vn), Un = {
 		}]
 	]
 };
-Un.node;
-var Wn = g(Un), Gn = {
+Jn.node;
+var Yn = f(Jn), Xn = {
 	name: "arrow-left-right",
 	size: 24,
 	node: [
@@ -1972,8 +1970,8 @@ var Wn = g(Un), Gn = {
 		}]
 	]
 };
-Gn.node;
-var Kn = g(Gn), qn = {
+Xn.node;
+var Zn = f(Xn), Qn = {
 	name: "arrow-left-to-line",
 	size: 24,
 	node: [
@@ -1991,8 +1989,8 @@ var Kn = g(Gn), qn = {
 		}]
 	]
 };
-qn.node;
-var Jn = g(qn), Yn = {
+Qn.node;
+var $n = f(Qn), er = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -2003,8 +2001,8 @@ var Jn = g(qn), Yn = {
 		key: "x3x0zl"
 	}]]
 };
-Yn.node;
-var Xn = g(Yn), Zn = {
+er.node;
+var tr = f(er), nr = {
 	name: "arrow-right-from-line",
 	size: 24,
 	node: [
@@ -2022,8 +2020,8 @@ var Xn = g(Yn), Zn = {
 		}]
 	]
 };
-Zn.node;
-var Qn = g(Zn), $n = {
+nr.node;
+var rr = f(nr), ir = {
 	name: "arrow-right-left",
 	size: 24,
 	node: [
@@ -2045,8 +2043,8 @@ var Qn = g(Zn), $n = {
 		}]
 	]
 };
-$n.node;
-var er = g($n), tr = {
+ir.node;
+var ar = f(ir), or = {
 	name: "arrow-right-to-line",
 	size: 24,
 	node: [
@@ -2064,8 +2062,8 @@ var er = g($n), tr = {
 		}]
 	]
 };
-tr.node;
-var nr = g(tr), rr = {
+or.node;
+var sr = f(or), cr = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -2076,8 +2074,8 @@ var nr = g(tr), rr = {
 		key: "xquz4c"
 	}]]
 };
-rr.node;
-var ir = g(rr), ar = {
+cr.node;
+var lr = f(cr), ur = {
 	name: "arrow-up-0-1",
 	size: 24,
 	node: [
@@ -2108,8 +2106,8 @@ var ir = g(rr), ar = {
 	],
 	aliases: ["arrow-up-01"]
 };
-ar.node;
-var or = g(ar), sr = {
+ur.node;
+var dr = f(ur), fr = {
 	name: "arrow-up-1-0",
 	size: 24,
 	node: [
@@ -2140,8 +2138,8 @@ var or = g(ar), sr = {
 	],
 	aliases: ["arrow-up-10"]
 };
-sr.node;
-var cr = g(sr), lr = {
+fr.node;
+var pr = f(fr), mr = {
 	name: "arrow-up-a-z",
 	size: 24,
 	node: [
@@ -2168,8 +2166,8 @@ var cr = g(sr), lr = {
 	],
 	aliases: ["arrow-up-az"]
 };
-lr.node;
-var v = g(lr), ur = {
+mr.node;
+var hr = f(mr), gr = {
 	name: "arrow-up-down",
 	size: 24,
 	node: [
@@ -2191,8 +2189,8 @@ var v = g(lr), ur = {
 		}]
 	]
 };
-ur.node;
-var dr = g(ur), fr = {
+gr.node;
+var _r = f(gr), vr = {
 	name: "arrow-up-from-dot",
 	size: 24,
 	node: [
@@ -2212,8 +2210,8 @@ var dr = g(ur), fr = {
 		}]
 	]
 };
-fr.node;
-var pr = g(fr), mr = {
+vr.node;
+var yr = f(vr), br = {
 	name: "arrow-up-from-line",
 	size: 24,
 	node: [
@@ -2231,8 +2229,8 @@ var pr = g(fr), mr = {
 		}]
 	]
 };
-mr.node;
-var hr = g(mr), gr = {
+br.node;
+var xr = f(br), Sr = {
 	name: "arrow-up-left",
 	size: 24,
 	node: [["path", {
@@ -2243,8 +2241,8 @@ var hr = g(mr), gr = {
 		key: "2786uv"
 	}]]
 };
-gr.node;
-var _r = g(gr), vr = {
+Sr.node;
+var Cr = f(Sr), wr = {
 	name: "arrow-up-narrow-wide",
 	size: 24,
 	node: [
@@ -2271,8 +2269,8 @@ var _r = g(gr), vr = {
 	],
 	aliases: ["sort-asc"]
 };
-vr.node;
-var y = g(vr), yr = {
+wr.node;
+var Tr = f(wr), Er = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -2283,8 +2281,8 @@ var y = g(vr), yr = {
 		key: "1vkiza"
 	}]]
 };
-yr.node;
-var br = g(yr), xr = {
+Er.node;
+var Dr = f(Er), Or = {
 	name: "arrow-up-to-line",
 	size: 24,
 	node: [
@@ -2302,8 +2300,8 @@ var br = g(yr), xr = {
 		}]
 	]
 };
-xr.node;
-var Sr = g(xr), Cr = {
+Or.node;
+var kr = f(Or), Ar = {
 	name: "arrow-up-wide-narrow",
 	size: 24,
 	node: [
@@ -2329,8 +2327,8 @@ var Sr = g(xr), Cr = {
 		}]
 	]
 };
-Cr.node;
-var wr = g(Cr), Tr = {
+Ar.node;
+var jr = f(Ar), Mr = {
 	name: "arrow-up-z-a",
 	size: 24,
 	node: [
@@ -2357,8 +2355,8 @@ var wr = g(Cr), Tr = {
 	],
 	aliases: ["arrow-up-za"]
 };
-Tr.node;
-var b = g(Tr), Er = {
+Mr.node;
+var Nr = f(Mr), Pr = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -2369,8 +2367,8 @@ var b = g(Tr), Er = {
 		key: "x0mq9r"
 	}]]
 };
-Er.node;
-var Dr = g(Er), Or = {
+Pr.node;
+var Fr = f(Pr), Ir = {
 	name: "arrows-up-from-line",
 	size: 24,
 	node: [
@@ -2396,8 +2394,8 @@ var Dr = g(Er), Or = {
 		}]
 	]
 };
-Or.node;
-var kr = g(Or), Ar = {
+Ir.node;
+var Lr = f(Ir), Rr = {
 	name: "asterisk",
 	size: 24,
 	node: [
@@ -2415,8 +2413,8 @@ var kr = g(Or), Ar = {
 		}]
 	]
 };
-Ar.node;
-var jr = g(Ar), Mr = {
+Rr.node;
+var zr = f(Rr), Br = {
 	name: "astroid",
 	size: 24,
 	node: [["path", {
@@ -2424,8 +2422,8 @@ var jr = g(Ar), Mr = {
 		key: "1tipus"
 	}]]
 };
-Mr.node;
-var Nr = g(Mr), Pr = {
+Br.node;
+var Vr = f(Br), Hr = {
 	name: "at-sign",
 	size: 24,
 	node: [["circle", {
@@ -2438,8 +2436,8 @@ var Nr = g(Mr), Pr = {
 		key: "7n84p3"
 	}]]
 };
-Pr.node;
-var Fr = g(Pr), Ir = {
+Hr.node;
+var Ur = f(Hr), Wr = {
 	name: "atom",
 	size: 24,
 	node: [
@@ -2459,8 +2457,8 @@ var Fr = g(Pr), Ir = {
 		}]
 	]
 };
-Ir.node;
-var Lr = g(Ir), Rr = {
+Wr.node;
+var Gr = f(Wr), Kr = {
 	name: "audio-lines-off",
 	size: 24,
 	node: [
@@ -2502,8 +2500,8 @@ var Lr = g(Ir), Rr = {
 		}]
 	]
 };
-Rr.node;
-var zr = g(Rr), Br = {
+Kr.node;
+var qr = f(Kr), Jr = {
 	name: "audio-lines-x",
 	size: 24,
 	node: [
@@ -2541,8 +2539,8 @@ var zr = g(Rr), Br = {
 		}]
 	]
 };
-Br.node;
-var Vr = g(Br), Hr = {
+Jr.node;
+var Yr = f(Jr), Xr = {
 	name: "audio-lines",
 	size: 24,
 	node: [
@@ -2572,8 +2570,8 @@ var Vr = g(Br), Hr = {
 		}]
 	]
 };
-Hr.node;
-var Ur = g(Hr), Wr = {
+Xr.node;
+var Zr = f(Xr), Qr = {
 	name: "audio-waveform",
 	size: 24,
 	node: [["path", {
@@ -2581,8 +2579,8 @@ var Ur = g(Hr), Wr = {
 		key: "57tc96"
 	}]]
 };
-Wr.node;
-var Gr = g(Wr), Kr = {
+Qr.node;
+var $r = f(Qr), ei = {
 	name: "award",
 	size: 24,
 	node: [["path", {
@@ -2595,8 +2593,8 @@ var Gr = g(Wr), Kr = {
 		key: "1vp47v"
 	}]]
 };
-Kr.node;
-var qr = g(Kr), Jr = {
+ei.node;
+var ti = f(ei), ni = {
 	name: "axe",
 	size: 24,
 	node: [["path", {
@@ -2607,8 +2605,8 @@ var qr = g(Kr), Jr = {
 		key: "19zklq"
 	}]]
 };
-Jr.node;
-var Yr = g(Jr), Xr = {
+ni.node;
+var ri = f(ni), ii = {
 	name: "baby",
 	size: 24,
 	node: [
@@ -2630,8 +2628,8 @@ var Yr = g(Jr), Xr = {
 		}]
 	]
 };
-Xr.node;
-var Zr = g(Xr), Qr = {
+ii.node;
+var ai = f(ii), oi = {
 	name: "axis-3d",
 	size: 24,
 	node: [
@@ -2654,8 +2652,8 @@ var Zr = g(Xr), Qr = {
 	],
 	aliases: ["axis-3-d"]
 };
-Qr.node;
-var x = g(Qr), $r = {
+oi.node;
+var si = f(oi), ci = {
 	name: "backpack",
 	size: 24,
 	node: [
@@ -2681,8 +2679,8 @@ var x = g(Qr), $r = {
 		}]
 	]
 };
-$r.node;
-var ei = g($r), ti = {
+ci.node;
+var li = f(ci), ui = {
 	name: "badge-alert",
 	size: 24,
 	node: [
@@ -2706,8 +2704,8 @@ var ei = g($r), ti = {
 		}]
 	]
 };
-ti.node;
-var ni = g(ti), ri = {
+ui.node;
+var di = f(ui), fi = {
 	name: "badge-cent",
 	size: 24,
 	node: [
@@ -2725,8 +2723,8 @@ var ni = g(ti), ri = {
 		}]
 	]
 };
-ri.node;
-var ii = g(ri), ai = {
+fi.node;
+var pi = f(fi), mi = {
 	name: "badge-check",
 	size: 24,
 	node: [["path", {
@@ -2738,8 +2736,8 @@ var ii = g(ri), ai = {
 	}]],
 	aliases: ["verified"]
 };
-ai.node;
-var S = g(ai), oi = {
+mi.node;
+var p = f(mi), hi = {
 	name: "badge-dollar-sign",
 	size: 24,
 	node: [
@@ -2757,8 +2755,8 @@ var S = g(ai), oi = {
 		}]
 	]
 };
-oi.node;
-var si = g(oi), ci = {
+hi.node;
+var gi = f(hi), _i = {
 	name: "badge-euro",
 	size: 24,
 	node: [
@@ -2776,8 +2774,8 @@ var si = g(oi), ci = {
 		}]
 	]
 };
-ci.node;
-var li = g(ci), ui = {
+_i.node;
+var vi = f(_i), yi = {
 	name: "badge-indian-rupee",
 	size: 24,
 	node: [
@@ -2799,8 +2797,8 @@ var li = g(ci), ui = {
 		}]
 	]
 };
-ui.node;
-var di = g(ui), fi = {
+yi.node;
+var bi = f(yi), xi = {
 	name: "badge-info",
 	size: 24,
 	node: [
@@ -2824,8 +2822,8 @@ var di = g(ui), fi = {
 		}]
 	]
 };
-fi.node;
-var pi = g(fi), mi = {
+xi.node;
+var Si = f(xi), aee = {
 	name: "badge-japanese-yen",
 	size: 24,
 	node: [
@@ -2851,8 +2849,8 @@ var pi = g(fi), mi = {
 		}]
 	]
 };
-mi.node;
-var hi = g(mi), gi = {
+aee.node;
+var Ci = f(aee), oee = {
 	name: "badge-minus",
 	size: 24,
 	node: [["path", {
@@ -2866,8 +2864,8 @@ var hi = g(mi), gi = {
 		key: "1jonct"
 	}]]
 };
-gi.node;
-var _i = g(gi), vi = {
+oee.node;
+var wi = f(oee), see = {
 	name: "badge-percent",
 	size: 24,
 	node: [
@@ -2889,8 +2887,8 @@ var _i = g(gi), vi = {
 		}]
 	]
 };
-vi.node;
-var yi = g(vi), bi = {
+see.node;
+var Ti = f(see), cee = {
 	name: "badge-plus",
 	size: 24,
 	node: [
@@ -2914,8 +2912,8 @@ var yi = g(vi), bi = {
 		}]
 	]
 };
-bi.node;
-var xi = g(bi), Si = {
+cee.node;
+var Ei = f(cee), lee = {
 	name: "badge-pound-sterling",
 	size: 24,
 	node: [
@@ -2937,8 +2935,8 @@ var xi = g(bi), Si = {
 		}]
 	]
 };
-Si.node;
-var Ci = g(Si), aee = {
+lee.node;
+var Di = f(lee), uee = {
 	name: "badge-question-mark",
 	size: 24,
 	node: [
@@ -2960,8 +2958,8 @@ var Ci = g(Si), aee = {
 	],
 	aliases: ["badge-help"]
 };
-aee.node;
-var C = g(aee), oee = {
+uee.node;
+var m = f(uee), dee = {
 	name: "badge-russian-ruble",
 	size: 24,
 	node: [
@@ -2979,8 +2977,8 @@ var C = g(aee), oee = {
 		}]
 	]
 };
-oee.node;
-var wi = g(oee), see = {
+dee.node;
+var Oi = f(dee), ki = {
 	name: "badge-swiss-franc",
 	size: 24,
 	node: [
@@ -3002,8 +3000,8 @@ var wi = g(oee), see = {
 		}]
 	]
 };
-see.node;
-var Ti = g(see), cee = {
+ki.node;
+var Ai = f(ki), ji = {
 	name: "badge-x",
 	size: 24,
 	node: [
@@ -3027,8 +3025,8 @@ var Ti = g(see), cee = {
 		}]
 	]
 };
-cee.node;
-var Ei = g(cee), lee = {
+ji.node;
+var Mi = f(ji), Ni = {
 	name: "badge-turkish-lira",
 	size: 24,
 	node: [
@@ -3046,8 +3044,8 @@ var Ei = g(cee), lee = {
 		}]
 	]
 };
-lee.node;
-var Di = g(lee), uee = {
+Ni.node;
+var Pi = f(Ni), fee = {
 	name: "badge",
 	size: 24,
 	node: [["path", {
@@ -3055,8 +3053,8 @@ var Di = g(lee), uee = {
 		key: "3c2336"
 	}]]
 };
-uee.node;
-var Oi = g(uee), dee = {
+fee.node;
+var Fi = f(fee), Ii = {
 	name: "baggage-claim",
 	size: 24,
 	node: [
@@ -3090,8 +3088,8 @@ var Oi = g(uee), dee = {
 		}]
 	]
 };
-dee.node;
-var ki = g(dee), Ai = {
+Ii.node;
+var Li = f(Ii), Ri = {
 	name: "balloon",
 	size: 24,
 	node: [
@@ -3109,8 +3107,8 @@ var ki = g(dee), Ai = {
 		}]
 	]
 };
-Ai.node;
-var ji = g(Ai), Mi = {
+Ri.node;
+var zi = f(Ri), Bi = {
 	name: "ban",
 	size: 24,
 	node: [["circle", {
@@ -3123,8 +3121,8 @@ var ji = g(Ai), Mi = {
 		key: "196cmz"
 	}]]
 };
-Mi.node;
-var Ni = g(Mi), Pi = {
+Bi.node;
+var Vi = f(Bi), Hi = {
 	name: "banana",
 	size: 24,
 	node: [["path", {
@@ -3135,8 +3133,8 @@ var Ni = g(Mi), Pi = {
 		key: "1y1nbv"
 	}]]
 };
-Pi.node;
-var Fi = g(Pi), fee = {
+Hi.node;
+var Ui = f(Hi), Wi = {
 	name: "bandage",
 	size: 24,
 	node: [
@@ -3174,8 +3172,8 @@ var Fi = g(Pi), fee = {
 		}]
 	]
 };
-fee.node;
-var Ii = g(fee), Li = {
+Wi.node;
+var Gi = f(Wi), Ki = {
 	name: "banknote-arrow-down",
 	size: 24,
 	node: [
@@ -3207,8 +3205,8 @@ var Ii = g(fee), Li = {
 		}]
 	]
 };
-Li.node;
-var Ri = g(Li), zi = {
+Ki.node;
+var qi = f(Ki), pee = {
 	name: "banknote-arrow-up",
 	size: 24,
 	node: [
@@ -3240,8 +3238,8 @@ var Ri = g(Li), zi = {
 		}]
 	]
 };
-zi.node;
-var Bi = g(zi), Vi = {
+pee.node;
+var Ji = f(pee), Yi = {
 	name: "banknote-check",
 	size: 24,
 	node: [
@@ -3269,8 +3267,8 @@ var Bi = g(zi), Vi = {
 		}]
 	]
 };
-Vi.node;
-var Hi = g(Vi), Ui = {
+Yi.node;
+var Xi = f(Yi), Zi = {
 	name: "banknote-x",
 	size: 24,
 	node: [
@@ -3302,8 +3300,8 @@ var Hi = g(Vi), Ui = {
 		}]
 	]
 };
-Ui.node;
-var Wi = g(Ui), Gi = {
+Zi.node;
+var Qi = f(Zi), $i = {
 	name: "banknote",
 	size: 24,
 	node: [
@@ -3327,8 +3325,8 @@ var Wi = g(Ui), Gi = {
 		}]
 	]
 };
-Gi.node;
-var Ki = g(Gi), qi = {
+$i.node;
+var ea = f($i), ta = {
 	name: "barcode",
 	size: 24,
 	node: [
@@ -3354,8 +3352,8 @@ var Ki = g(Gi), qi = {
 		}]
 	]
 };
-qi.node;
-var Ji = g(qi), Yi = {
+ta.node;
+var na = f(ta), ra = {
 	name: "barrel",
 	size: 24,
 	node: [
@@ -3381,8 +3379,8 @@ var Ji = g(qi), Yi = {
 		}]
 	]
 };
-Yi.node;
-var Xi = g(Yi), Zi = {
+ra.node;
+var ia = f(ra), aa = {
 	name: "baseline",
 	size: 24,
 	node: [
@@ -3400,8 +3398,8 @@ var Xi = g(Yi), Zi = {
 		}]
 	]
 };
-Zi.node;
-var Qi = g(Zi), $i = {
+aa.node;
+var oa = f(aa), sa = {
 	name: "bath",
 	size: 24,
 	node: [
@@ -3427,8 +3425,8 @@ var Qi = g(Zi), $i = {
 		}]
 	]
 };
-$i.node;
-var ea = g($i), ta = {
+sa.node;
+var ca = f(sa), la = {
 	name: "battery-charging",
 	size: 24,
 	node: [
@@ -3450,8 +3448,8 @@ var ea = g($i), ta = {
 		}]
 	]
 };
-ta.node;
-var na = g(ta), ra = {
+la.node;
+var ua = f(la), da = {
 	name: "battery-full",
 	size: 24,
 	node: [
@@ -3481,8 +3479,8 @@ var na = g(ta), ra = {
 		}]
 	]
 };
-ra.node;
-var ia = g(ra), aa = {
+da.node;
+var fa = f(da), mee = {
 	name: "battery-low",
 	size: 24,
 	node: [
@@ -3504,8 +3502,8 @@ var ia = g(ra), aa = {
 		}]
 	]
 };
-aa.node;
-var oa = g(aa), sa = {
+mee.node;
+var pa = f(mee), ma = {
 	name: "battery-medium",
 	size: 24,
 	node: [
@@ -3531,8 +3529,8 @@ var oa = g(aa), sa = {
 		}]
 	]
 };
-sa.node;
-var ca = g(sa), la = {
+ma.node;
+var ha = f(ma), ga = {
 	name: "battery-plus",
 	size: 24,
 	node: [
@@ -3558,8 +3556,8 @@ var ca = g(sa), la = {
 		}]
 	]
 };
-la.node;
-var ua = g(la), da = {
+ga.node;
+var _a = f(ga), va = {
 	name: "battery-warning",
 	size: 24,
 	node: [
@@ -3585,8 +3583,8 @@ var ua = g(la), da = {
 		}]
 	]
 };
-da.node;
-var fa = g(da), pa = {
+va.node;
+var ya = f(va), ba = {
 	name: "battery",
 	size: 24,
 	node: [["path", {
@@ -3601,8 +3599,8 @@ var fa = g(da), pa = {
 		key: "13zb55"
 	}]]
 };
-pa.node;
-var ma = g(pa), pee = {
+ba.node;
+var xa = f(ba), Sa = {
 	name: "beaker",
 	size: 24,
 	node: [
@@ -3620,8 +3618,8 @@ var ma = g(pa), pee = {
 		}]
 	]
 };
-pee.node;
-var ha = g(pee), ga = {
+Sa.node;
+var Ca = f(Sa), wa = {
 	name: "bean-off",
 	size: 24,
 	node: [
@@ -3646,8 +3644,8 @@ var ha = g(pee), ga = {
 		}]
 	]
 };
-ga.node;
-var _a = g(ga), va = {
+wa.node;
+var Ta = f(wa), Ea = {
 	name: "bean",
 	size: 24,
 	node: [["path", {
@@ -3658,8 +3656,8 @@ var _a = g(ga), va = {
 		key: "2cyri2"
 	}]]
 };
-va.node;
-var ya = g(va), ba = {
+Ea.node;
+var Da = f(Ea), Oa = {
 	name: "bed-single",
 	size: 24,
 	node: [
@@ -3677,8 +3675,8 @@ var ya = g(va), ba = {
 		}]
 	]
 };
-ba.node;
-var xa = g(ba), Sa = {
+Oa.node;
+var ka = f(Oa), Aa = {
 	name: "bed-double",
 	size: 24,
 	node: [
@@ -3700,8 +3698,8 @@ var xa = g(ba), Sa = {
 		}]
 	]
 };
-Sa.node;
-var Ca = g(Sa), wa = {
+Aa.node;
+var ja = f(Aa), Ma = {
 	name: "bed",
 	size: 24,
 	node: [
@@ -3723,8 +3721,8 @@ var Ca = g(Sa), wa = {
 		}]
 	]
 };
-wa.node;
-var Ta = g(wa), Ea = {
+Ma.node;
+var Na = f(Ma), Pa = {
 	name: "beef-off",
 	size: 24,
 	node: [
@@ -3754,8 +3752,8 @@ var Ta = g(wa), Ea = {
 		}]
 	]
 };
-Ea.node;
-var Da = g(Ea), Oa = {
+Pa.node;
+var Fa = f(Pa), Ia = {
 	name: "beef",
 	size: 24,
 	node: [
@@ -3775,8 +3773,8 @@ var Da = g(Ea), Oa = {
 		}]
 	]
 };
-Oa.node;
-var ka = g(Oa), Aa = {
+Ia.node;
+var La = f(Ia), Ra = {
 	name: "beer-off",
 	size: 24,
 	node: [
@@ -3814,8 +3812,8 @@ var ka = g(Oa), Aa = {
 		}]
 	]
 };
-Aa.node;
-var ja = g(Aa), Ma = {
+Ra.node;
+var za = f(Ra), Ba = {
 	name: "beer",
 	size: 24,
 	node: [
@@ -3841,8 +3839,8 @@ var ja = g(Aa), Ma = {
 		}]
 	]
 };
-Ma.node;
-var Na = g(Ma), Pa = {
+Ba.node;
+var Va = f(Ba), Ha = {
 	name: "bell-check",
 	size: 24,
 	node: [
@@ -3864,8 +3862,8 @@ var Na = g(Ma), Pa = {
 		}]
 	]
 };
-Pa.node;
-var Fa = g(Pa), Ia = {
+Ha.node;
+var Ua = f(Ha), Wa = {
 	name: "bell-dot",
 	size: 24,
 	node: [
@@ -3885,8 +3883,8 @@ var Fa = g(Pa), Ia = {
 		}]
 	]
 };
-Ia.node;
-var La = g(Ia), Ra = {
+Wa.node;
+var Ga = f(Wa), Ka = {
 	name: "bell-electric",
 	size: 24,
 	node: [
@@ -3924,8 +3922,8 @@ var La = g(Ia), Ra = {
 		}]
 	]
 };
-Ra.node;
-var za = g(Ra), Ba = {
+Ka.node;
+var qa = f(Ka), Ja = {
 	name: "bell-minus",
 	size: 24,
 	node: [
@@ -3943,8 +3941,8 @@ var za = g(Ra), Ba = {
 		}]
 	]
 };
-Ba.node;
-var Va = g(Ba), Ha = {
+Ja.node;
+var Ya = f(Ja), hee = {
 	name: "bell-off",
 	size: 24,
 	node: [
@@ -3966,8 +3964,8 @@ var Va = g(Ba), Ha = {
 		}]
 	]
 };
-Ha.node;
-var Ua = g(Ha), Wa = {
+hee.node;
+var Xa = f(hee), gee = {
 	name: "bell-plus",
 	size: 24,
 	node: [
@@ -3989,8 +3987,8 @@ var Ua = g(Ha), Wa = {
 		}]
 	]
 };
-Wa.node;
-var Ga = g(Wa), Ka = {
+gee.node;
+var Za = f(gee), _ee = {
 	name: "bell",
 	size: 24,
 	node: [["path", {
@@ -4001,8 +3999,8 @@ var Ga = g(Wa), Ka = {
 		key: "11g9vi"
 	}]]
 };
-Ka.node;
-var qa = g(Ka), Ja = {
+_ee.node;
+var Qa = f(_ee), $a = {
 	name: "bell-ring",
 	size: 24,
 	node: [
@@ -4024,8 +4022,8 @@ var qa = g(Ka), Ja = {
 		}]
 	]
 };
-Ja.node;
-var Ya = g(Ja), Xa = {
+$a.node;
+var eo = f($a), to = {
 	name: "between-horizontal-end",
 	size: 24,
 	node: [
@@ -4052,8 +4050,8 @@ var Ya = g(Ja), Xa = {
 	],
 	aliases: ["between-horizonal-end"]
 };
-Xa.node;
-var w = g(Xa), mee = {
+to.node;
+var h = f(to), no = {
 	name: "between-horizontal-start",
 	size: 24,
 	node: [
@@ -4080,8 +4078,8 @@ var w = g(Xa), mee = {
 	],
 	aliases: ["between-horizonal-start"]
 };
-mee.node;
-var T = g(mee), hee = {
+no.node;
+var g = f(no), ro = {
 	name: "between-vertical-end",
 	size: 24,
 	node: [
@@ -4107,8 +4105,8 @@ var T = g(mee), hee = {
 		}]
 	]
 };
-hee.node;
-var Za = g(hee), gee = {
+ro.node;
+var io = f(ro), ao = {
 	name: "between-vertical-start",
 	size: 24,
 	node: [
@@ -4134,8 +4132,8 @@ var Za = g(hee), gee = {
 		}]
 	]
 };
-gee.node;
-var Qa = g(gee), $a = {
+ao.node;
+var oo = f(ao), so = {
 	name: "biceps-flexed",
 	size: 24,
 	node: [
@@ -4153,8 +4151,8 @@ var Qa = g(gee), $a = {
 		}]
 	]
 };
-$a.node;
-var eo = g($a), to = {
+so.node;
+var co = f(so), lo = {
 	name: "bike",
 	size: 24,
 	node: [
@@ -4182,8 +4180,8 @@ var eo = g($a), to = {
 		}]
 	]
 };
-to.node;
-var no = g(to), ro = {
+lo.node;
+var uo = f(lo), fo = {
 	name: "binary",
 	size: 24,
 	node: [
@@ -4221,8 +4219,8 @@ var no = g(to), ro = {
 		}]
 	]
 };
-ro.node;
-var io = g(ro), ao = {
+fo.node;
+var po = f(fo), mo = {
 	name: "binoculars",
 	size: 24,
 	node: [
@@ -4252,8 +4250,8 @@ var io = g(ro), ao = {
 		}]
 	]
 };
-ao.node;
-var oo = g(ao), so = {
+mo.node;
+var ho = f(mo), go = {
 	name: "biohazard",
 	size: 24,
 	node: [
@@ -4301,8 +4299,8 @@ var oo = g(ao), so = {
 		}]
 	]
 };
-so.node;
-var co = g(so), lo = {
+go.node;
+var _o = f(go), vo = {
 	name: "bird",
 	size: 24,
 	node: [
@@ -4332,8 +4330,8 @@ var co = g(so), lo = {
 		}]
 	]
 };
-lo.node;
-var uo = g(lo), fo = {
+vo.node;
+var yo = f(vo), bo = {
 	name: "birdhouse",
 	size: 24,
 	node: [
@@ -4365,8 +4363,8 @@ var uo = g(lo), fo = {
 		}]
 	]
 };
-fo.node;
-var po = g(fo), mo = {
+bo.node;
+var xo = f(bo), So = {
 	name: "bitcoin",
 	size: 24,
 	node: [["path", {
@@ -4374,8 +4372,8 @@ var po = g(fo), mo = {
 		key: "yr8idg"
 	}]]
 };
-mo.node;
-var ho = g(mo), go = {
+So.node;
+var Co = f(So), wo = {
 	name: "blend",
 	size: 24,
 	node: [["circle", {
@@ -4390,8 +4388,8 @@ var ho = g(mo), go = {
 		key: "19bs8k"
 	}]]
 };
-go.node;
-var _o = g(go), vo = {
+wo.node;
+var To = f(wo), Eo = {
 	name: "blender",
 	size: 24,
 	node: [
@@ -4421,8 +4419,8 @@ var _o = g(go), vo = {
 		}]
 	]
 };
-vo.node;
-var yo = g(vo), bo = {
+Eo.node;
+var Do = f(Eo), Oo = {
 	name: "blinds",
 	size: 24,
 	node: [
@@ -4458,8 +4456,8 @@ var yo = g(vo), bo = {
 		}]
 	]
 };
-bo.node;
-var xo = g(bo), So = {
+Oo.node;
+var ko = f(Oo), Ao = {
 	name: "blocks",
 	size: 24,
 	node: [["path", {
@@ -4474,8 +4472,8 @@ var xo = g(bo), So = {
 		key: "88lufb"
 	}]]
 };
-So.node;
-var Co = g(So), wo = {
+Ao.node;
+var jo = f(Ao), Mo = {
 	name: "bluetooth-connected",
 	size: 24,
 	node: [
@@ -4499,8 +4497,8 @@ var Co = g(So), wo = {
 		}]
 	]
 };
-wo.node;
-var To = g(wo), Eo = {
+Mo.node;
+var No = f(Mo), Po = {
 	name: "bluetooth-off",
 	size: 24,
 	node: [
@@ -4518,8 +4516,8 @@ var To = g(wo), Eo = {
 		}]
 	]
 };
-Eo.node;
-var Do = g(Eo), Oo = {
+Po.node;
+var Fo = f(Po), Io = {
 	name: "bluetooth-searching",
 	size: 24,
 	node: [
@@ -4537,8 +4535,8 @@ var Do = g(Eo), Oo = {
 		}]
 	]
 };
-Oo.node;
-var ko = g(Oo), Ao = {
+Io.node;
+var Lo = f(Io), Ro = {
 	name: "bluetooth",
 	size: 24,
 	node: [["path", {
@@ -4546,8 +4544,8 @@ var ko = g(Oo), Ao = {
 		key: "1q5490"
 	}]]
 };
-Ao.node;
-var jo = g(Ao), Mo = {
+Ro.node;
+var zo = f(Ro), Bo = {
 	name: "bold",
 	size: 24,
 	node: [["path", {
@@ -4555,8 +4553,8 @@ var jo = g(Ao), Mo = {
 		key: "mg9rjx"
 	}]]
 };
-Mo.node;
-var No = g(Mo), Po = {
+Bo.node;
+var Vo = f(Bo), Ho = {
 	name: "bolt",
 	size: 24,
 	node: [["path", {
@@ -4569,8 +4567,8 @@ var No = g(Mo), Po = {
 		key: "4exip2"
 	}]]
 };
-Po.node;
-var Fo = g(Po), Io = {
+Ho.node;
+var Uo = f(Ho), Wo = {
 	name: "bomb",
 	size: 24,
 	node: [
@@ -4590,8 +4588,8 @@ var Fo = g(Po), Io = {
 		}]
 	]
 };
-Io.node;
-var Lo = g(Io), Ro = {
+Wo.node;
+var Go = f(Wo), Ko = {
 	name: "bone-fracture",
 	size: 24,
 	node: [
@@ -4621,8 +4619,8 @@ var Lo = g(Io), Ro = {
 		}]
 	]
 };
-Ro.node;
-var zo = g(Ro), Bo = {
+Ko.node;
+var qo = f(Ko), Jo = {
 	name: "bone",
 	size: 24,
 	node: [["path", {
@@ -4630,8 +4628,8 @@ var zo = g(Ro), Bo = {
 		key: "w610uw"
 	}]]
 };
-Bo.node;
-var Vo = g(Bo), Ho = {
+Jo.node;
+var Yo = f(Jo), Xo = {
 	name: "book-a",
 	size: 24,
 	node: [
@@ -4649,8 +4647,8 @@ var Vo = g(Bo), Ho = {
 		}]
 	]
 };
-Ho.node;
-var Uo = g(Ho), Wo = {
+Xo.node;
+var Zo = f(Xo), Qo = {
 	name: "book-alert",
 	size: 24,
 	node: [
@@ -4668,8 +4666,8 @@ var Uo = g(Ho), Wo = {
 		}]
 	]
 };
-Wo.node;
-var Go = g(Wo), _ee = {
+Qo.node;
+var $o = f(Qo), es = {
 	name: "book-audio",
 	size: 24,
 	node: [
@@ -4691,8 +4689,8 @@ var Go = g(Wo), _ee = {
 		}]
 	]
 };
-_ee.node;
-var Ko = g(_ee), qo = {
+es.node;
+var ts = f(es), ns = {
 	name: "book-bookmark",
 	size: 24,
 	node: [["path", {
@@ -4704,8 +4702,8 @@ var Ko = g(_ee), qo = {
 	}]],
 	aliases: ["book-marked"]
 };
-qo.node;
-var E = g(qo), Jo = {
+ns.node;
+var _ = f(ns), rs = {
 	name: "book-check",
 	size: 24,
 	node: [["path", {
@@ -4716,8 +4714,8 @@ var E = g(qo), Jo = {
 		key: "1dth82"
 	}]]
 };
-Jo.node;
-var Yo = g(Jo), Xo = {
+rs.node;
+var is = f(rs), as = {
 	name: "book-copy",
 	size: 24,
 	node: [
@@ -4735,8 +4733,8 @@ var Yo = g(Jo), Xo = {
 		}]
 	]
 };
-Xo.node;
-var Zo = g(Xo), Qo = {
+as.node;
+var os = f(as), ss = {
 	name: "book-dashed",
 	size: 24,
 	node: [
@@ -4787,8 +4785,8 @@ var Zo = g(Xo), Qo = {
 	],
 	aliases: ["book-template"]
 };
-Qo.node;
-var D = g(Qo), $o = {
+ss.node;
+var v = f(ss), cs = {
 	name: "book-down",
 	size: 24,
 	node: [
@@ -4806,8 +4804,8 @@ var D = g(Qo), $o = {
 		}]
 	]
 };
-$o.node;
-var es = g($o), ts = {
+cs.node;
+var ls = f(cs), us = {
 	name: "book-headphones",
 	size: 24,
 	node: [
@@ -4833,8 +4831,8 @@ var es = g($o), ts = {
 		}]
 	]
 };
-ts.node;
-var ns = g(ts), rs = {
+us.node;
+var ds = f(us), fs = {
 	name: "book-heart",
 	size: 24,
 	node: [["path", {
@@ -4845,8 +4843,8 @@ var ns = g(ts), rs = {
 		key: "9v40y5"
 	}]]
 };
-rs.node;
-var is = g(rs), as = {
+fs.node;
+var ps = f(fs), ms = {
 	name: "book-image",
 	size: 24,
 	node: [
@@ -4866,8 +4864,8 @@ var is = g(rs), as = {
 		}]
 	]
 };
-as.node;
-var os = g(as), ss = {
+ms.node;
+var hs = f(ms), vee = {
 	name: "book-key",
 	size: 24,
 	node: [
@@ -4895,8 +4893,8 @@ var os = g(as), ss = {
 		}]
 	]
 };
-ss.node;
-var cs = g(ss), ls = {
+vee.node;
+var gs = f(vee), yee = {
 	name: "book-lock",
 	size: 24,
 	node: [
@@ -4922,8 +4920,8 @@ var cs = g(ss), ls = {
 		}]
 	]
 };
-ls.node;
-var us = g(ls), ds = {
+yee.node;
+var _s = f(yee), bee = {
 	name: "book-minus",
 	size: 24,
 	node: [["path", {
@@ -4934,8 +4932,8 @@ var us = g(ls), ds = {
 		key: "9gxzsh"
 	}]]
 };
-ds.node;
-var fs = g(ds), ps = {
+bee.node;
+var vs = f(bee), xee = {
 	name: "book-open-check",
 	size: 24,
 	node: [
@@ -4953,8 +4951,8 @@ var fs = g(ds), ps = {
 		}]
 	]
 };
-ps.node;
-var ms = g(ps), hs = {
+xee.node;
+var ys = f(xee), See = {
 	name: "book-open",
 	size: 24,
 	node: [["path", {
@@ -4965,8 +4963,8 @@ var ms = g(ps), hs = {
 		key: "1fyvmf"
 	}]]
 };
-hs.node;
-var gs = g(hs), vee = {
+See.node;
+var bs = f(See), Cee = {
 	name: "book-open-text",
 	size: 24,
 	node: [
@@ -4996,8 +4994,8 @@ var gs = g(hs), vee = {
 		}]
 	]
 };
-vee.node;
-var _s = g(vee), yee = {
+Cee.node;
+var xs = f(Cee), Ss = {
 	name: "book-plus",
 	size: 24,
 	node: [
@@ -5015,8 +5013,8 @@ var _s = g(vee), yee = {
 		}]
 	]
 };
-yee.node;
-var vs = g(yee), bee = {
+Ss.node;
+var Cs = f(Ss), ws = {
 	name: "book-search",
 	size: 24,
 	node: [
@@ -5040,8 +5038,8 @@ var vs = g(yee), bee = {
 		}]
 	]
 };
-bee.node;
-var ys = g(bee), xee = {
+ws.node;
+var Ts = f(ws), Es = {
 	name: "book-text",
 	size: 24,
 	node: [
@@ -5059,8 +5057,8 @@ var ys = g(bee), xee = {
 		}]
 	]
 };
-xee.node;
-var bs = g(xee), See = {
+Es.node;
+var Ds = f(Es), Os = {
 	name: "book-type",
 	size: 24,
 	node: [
@@ -5082,8 +5080,8 @@ var bs = g(xee), See = {
 		}]
 	]
 };
-See.node;
-var xs = g(See), Cee = {
+Os.node;
+var ks = f(Os), As = {
 	name: "book-up-2",
 	size: 24,
 	node: [
@@ -5109,8 +5107,8 @@ var xs = g(See), Cee = {
 		}]
 	]
 };
-Cee.node;
-var Ss = g(Cee), Cs = {
+As.node;
+var js = f(As), Ms = {
 	name: "book-up",
 	size: 24,
 	node: [
@@ -5128,8 +5126,8 @@ var Ss = g(Cee), Cs = {
 		}]
 	]
 };
-Cs.node;
-var ws = g(Cs), Ts = {
+Ms.node;
+var Ns = f(Ms), Ps = {
 	name: "book-user",
 	size: 24,
 	node: [
@@ -5149,8 +5147,8 @@ var ws = g(Cs), Ts = {
 		}]
 	]
 };
-Ts.node;
-var Es = g(Ts), Ds = {
+Ps.node;
+var Fs = f(Ps), Is = {
 	name: "book-x",
 	size: 24,
 	node: [
@@ -5168,8 +5166,8 @@ var Es = g(Ts), Ds = {
 		}]
 	]
 };
-Ds.node;
-var Os = g(Ds), ks = {
+Is.node;
+var Ls = f(Is), Rs = {
 	name: "book",
 	size: 24,
 	node: [["path", {
@@ -5177,8 +5175,8 @@ var Os = g(Ds), ks = {
 		key: "k3hazp"
 	}]]
 };
-ks.node;
-var As = g(ks), js = {
+Rs.node;
+var zs = f(Rs), Bs = {
 	name: "bookmark-check",
 	size: 24,
 	node: [["path", {
@@ -5189,8 +5187,8 @@ var As = g(ks), js = {
 		key: "1gnqz4"
 	}]]
 };
-js.node;
-var Ms = g(js), Ns = {
+Bs.node;
+var Vs = f(Bs), Hs = {
 	name: "bookmark-off",
 	size: 24,
 	node: [
@@ -5208,8 +5206,8 @@ var Ms = g(js), Ns = {
 		}]
 	]
 };
-Ns.node;
-var Ps = g(Ns), Fs = {
+Hs.node;
+var Us = f(Hs), Ws = {
 	name: "bookmark-minus",
 	size: 24,
 	node: [["path", {
@@ -5220,8 +5218,8 @@ var Ps = g(Ns), Fs = {
 		key: "oz39mx"
 	}]]
 };
-Fs.node;
-var Is = g(Fs), Ls = {
+Ws.node;
+var Gs = f(Ws), Ks = {
 	name: "bookmark-plus",
 	size: 24,
 	node: [
@@ -5239,8 +5237,8 @@ var Is = g(Fs), Ls = {
 		}]
 	]
 };
-Ls.node;
-var Rs = g(Ls), zs = {
+Ks.node;
+var qs = f(Ks), Js = {
 	name: "bookmark-x",
 	size: 24,
 	node: [
@@ -5258,8 +5256,8 @@ var Rs = g(Ls), zs = {
 		}]
 	]
 };
-zs.node;
-var Bs = g(zs), Vs = {
+Js.node;
+var Ys = f(Js), Xs = {
 	name: "bookmark",
 	size: 24,
 	node: [["path", {
@@ -5267,8 +5265,8 @@ var Bs = g(zs), Vs = {
 		key: "oz39mx"
 	}]]
 };
-Vs.node;
-var Hs = g(Vs), Us = {
+Xs.node;
+var Zs = f(Xs), Qs = {
 	name: "boom-box",
 	size: 24,
 	node: [
@@ -5310,8 +5308,8 @@ var Hs = g(Vs), Us = {
 		}]
 	]
 };
-Us.node;
-var Ws = g(Us), Gs = {
+Qs.node;
+var $s = f(Qs), ec = {
 	name: "bot-message-square",
 	size: 24,
 	node: [
@@ -5341,8 +5339,8 @@ var Ws = g(Us), Gs = {
 		}]
 	]
 };
-Gs.node;
-var Ks = g(Gs), qs = {
+ec.node;
+var tc = f(ec), nc = {
 	name: "bot-off",
 	size: 24,
 	node: [
@@ -5376,8 +5374,8 @@ var Ks = g(Gs), qs = {
 		}]
 	]
 };
-qs.node;
-var Js = g(qs), Ys = {
+nc.node;
+var rc = f(nc), ic = {
 	name: "bot",
 	size: 24,
 	node: [
@@ -5411,8 +5409,8 @@ var Js = g(qs), Ys = {
 		}]
 	]
 };
-Ys.node;
-var Xs = g(Ys), Zs = {
+ic.node;
+var ac = f(ic), oc = {
 	name: "bottle-wine",
 	size: 24,
 	node: [["path", {
@@ -5423,8 +5421,8 @@ var Xs = g(Ys), Zs = {
 		key: "43jbee"
 	}]]
 };
-Zs.node;
-var Qs = g(Zs), $s = {
+oc.node;
+var sc = f(oc), cc = {
 	name: "bow-arrow",
 	size: 24,
 	node: [
@@ -5450,8 +5448,8 @@ var Qs = g(Zs), $s = {
 		}]
 	]
 };
-$s.node;
-var ec = g($s), tc = {
+cc.node;
+var lc = f(cc), uc = {
 	name: "box",
 	size: 24,
 	node: [
@@ -5469,8 +5467,8 @@ var ec = g($s), tc = {
 		}]
 	]
 };
-tc.node;
-var nc = g(tc), rc = {
+uc.node;
+var dc = f(uc), fc = {
 	name: "boxes",
 	size: 24,
 	node: [
@@ -5524,8 +5522,8 @@ var nc = g(tc), rc = {
 		}]
 	]
 };
-rc.node;
-var ic = g(rc), ac = {
+fc.node;
+var pc = f(fc), mc = {
 	name: "braces",
 	size: 24,
 	node: [["path", {
@@ -5537,8 +5535,8 @@ var ic = g(rc), ac = {
 	}]],
 	aliases: ["curly-braces"]
 };
-ac.node;
-var O = g(ac), oc = {
+mc.node;
+var y = f(mc), hc = {
 	name: "brackets",
 	size: 24,
 	node: [["path", {
@@ -5549,8 +5547,8 @@ var O = g(ac), oc = {
 		key: "gduv9"
 	}]]
 };
-oc.node;
-var sc = g(oc), cc = {
+hc.node;
+var gc = f(hc), _c = {
 	name: "brain-circuit",
 	size: 24,
 	node: [
@@ -5616,8 +5614,8 @@ var sc = g(oc), cc = {
 		}]
 	]
 };
-cc.node;
-var lc = g(cc), uc = {
+_c.node;
+var vc = f(_c), yc = {
 	name: "brain-cog",
 	size: 24,
 	node: [
@@ -5685,8 +5683,8 @@ var lc = g(cc), uc = {
 		}]
 	]
 };
-uc.node;
-var dc = g(uc), fc = {
+yc.node;
+var bc = f(yc), xc = {
 	name: "brain",
 	size: 24,
 	node: [
@@ -5724,8 +5722,8 @@ var dc = g(uc), fc = {
 		}]
 	]
 };
-fc.node;
-var pc = g(fc), mc = {
+xc.node;
+var Sc = f(xc), Cc = {
 	name: "brick-wall-fire",
 	size: 24,
 	node: [
@@ -5759,8 +5757,8 @@ var pc = g(fc), mc = {
 		}]
 	]
 };
-mc.node;
-var hc = g(mc), gc = {
+Cc.node;
+var wc = f(Cc), Tc = {
 	name: "brick-wall",
 	size: 24,
 	node: [
@@ -5802,8 +5800,8 @@ var hc = g(mc), gc = {
 		}]
 	]
 };
-gc.node;
-var _c = g(gc), vc = {
+Tc.node;
+var Ec = f(Tc), Dc = {
 	name: "brick-wall-shield",
 	size: 24,
 	node: [
@@ -5841,8 +5839,8 @@ var _c = g(gc), vc = {
 		}]
 	]
 };
-vc.node;
-var yc = g(vc), bc = {
+Dc.node;
+var Oc = f(Dc), kc = {
 	name: "bridge",
 	size: 24,
 	node: [
@@ -5872,8 +5870,8 @@ var yc = g(vc), bc = {
 		}]
 	]
 };
-bc.node;
-var xc = g(bc), Sc = {
+kc.node;
+var Ac = f(kc), jc = {
 	name: "briefcase-business",
 	size: 24,
 	node: [
@@ -5899,8 +5897,8 @@ var xc = g(bc), Sc = {
 		}]
 	]
 };
-Sc.node;
-var Cc = g(Sc), wc = {
+jc.node;
+var Mc = f(jc), Nc = {
 	name: "briefcase-conveyor-belt",
 	size: 24,
 	node: [
@@ -5938,8 +5936,8 @@ var Cc = g(Sc), wc = {
 		}]
 	]
 };
-wc.node;
-var Tc = g(wc), Ec = {
+Nc.node;
+var Pc = f(Nc), Fc = {
 	name: "briefcase-plus",
 	size: 24,
 	node: [
@@ -5961,8 +5959,8 @@ var Tc = g(wc), Ec = {
 		}]
 	]
 };
-Ec.node;
-var Dc = g(Ec), Oc = {
+Fc.node;
+var Ic = f(Fc), Lc = {
 	name: "briefcase-medical",
 	size: 24,
 	node: [
@@ -5996,8 +5994,8 @@ var Dc = g(Ec), Oc = {
 		}]
 	]
 };
-Oc.node;
-var kc = g(Oc), Ac = {
+Lc.node;
+var Rc = f(Lc), zc = {
 	name: "briefcase",
 	size: 24,
 	node: [["path", {
@@ -6012,8 +6010,8 @@ var kc = g(Oc), Ac = {
 		key: "i6l2r4"
 	}]]
 };
-Ac.node;
-var jc = g(Ac), Mc = {
+zc.node;
+var Bc = f(zc), Vc = {
 	name: "bring-to-front",
 	size: 24,
 	node: [
@@ -6035,8 +6033,8 @@ var jc = g(Ac), Mc = {
 		}]
 	]
 };
-Mc.node;
-var Nc = g(Mc), Pc = {
+Vc.node;
+var Hc = f(Vc), Uc = {
 	name: "broccoli",
 	size: 24,
 	node: [
@@ -6058,8 +6056,8 @@ var Nc = g(Mc), Pc = {
 		}]
 	]
 };
-Pc.node;
-var Fc = g(Pc), Ic = {
+Uc.node;
+var Wc = f(Uc), Gc = {
 	name: "broom-sparkles",
 	size: 24,
 	node: [
@@ -6105,8 +6103,8 @@ var Fc = g(Pc), Ic = {
 		}]
 	]
 };
-Ic.node;
-var Lc = g(Ic), Rc = {
+Gc.node;
+var Kc = f(Gc), qc = {
 	name: "broom",
 	size: 24,
 	node: [
@@ -6128,8 +6126,8 @@ var Lc = g(Ic), Rc = {
 		}]
 	]
 };
-Rc.node;
-var zc = g(Rc), Bc = {
+qc.node;
+var Jc = f(qc), Yc = {
 	name: "brush-cleaning",
 	size: 24,
 	node: [
@@ -6151,8 +6149,8 @@ var zc = g(Rc), Bc = {
 		}]
 	]
 };
-Bc.node;
-var Vc = g(Bc), Hc = {
+Yc.node;
+var Xc = f(Yc), Zc = {
 	name: "brush",
 	size: 24,
 	node: [
@@ -6170,8 +6168,8 @@ var Vc = g(Bc), Hc = {
 		}]
 	]
 };
-Hc.node;
-var Uc = g(Hc), Wc = {
+Zc.node;
+var Qc = f(Zc), $c = {
 	name: "bubbles",
 	size: 24,
 	node: [
@@ -6199,8 +6197,8 @@ var Uc = g(Hc), Wc = {
 		}]
 	]
 };
-Wc.node;
-var Gc = g(Wc), Kc = {
+$c.node;
+var el = f($c), tl = {
 	name: "bug-off",
 	size: 24,
 	node: [
@@ -6254,8 +6252,8 @@ var Gc = g(Wc), Kc = {
 		}]
 	]
 };
-Kc.node;
-var qc = g(Kc), Jc = {
+tl.node;
+var nl = f(tl), rl = {
 	name: "bug-play",
 	size: 24,
 	node: [
@@ -6297,8 +6295,8 @@ var qc = g(Kc), Jc = {
 		}]
 	]
 };
-Jc.node;
-var Yc = g(Jc), Xc = {
+rl.node;
+var il = f(rl), al = {
 	name: "bug",
 	size: 24,
 	node: [
@@ -6348,8 +6346,8 @@ var Yc = g(Jc), Xc = {
 		}]
 	]
 };
-Xc.node;
-var Zc = g(Xc), Qc = {
+al.node;
+var ol = f(al), sl = {
 	name: "building-complex-plus",
 	size: 24,
 	node: [
@@ -6387,8 +6385,8 @@ var Zc = g(Xc), Qc = {
 		}]
 	]
 };
-Qc.node;
-var $c = g(Qc), el = {
+sl.node;
+var cl = f(sl), ll = {
 	name: "building",
 	size: 24,
 	node: [
@@ -6442,8 +6440,8 @@ var $c = g(Qc), el = {
 		}]
 	]
 };
-el.node;
-var tl = g(el), nl = {
+ll.node;
+var ul = f(ll), dl = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -6470,8 +6468,8 @@ var tl = g(el), nl = {
 	],
 	aliases: ["building-2"]
 };
-nl.node;
-var k = g(nl), rl = {
+dl.node;
+var b = f(dl), fl = {
 	name: "bus-front",
 	size: 24,
 	node: [
@@ -6517,8 +6515,8 @@ var k = g(nl), rl = {
 		}]
 	]
 };
-rl.node;
-var il = g(rl), al = {
+fl.node;
+var pl = f(fl), ml = {
 	name: "bus",
 	size: 24,
 	node: [
@@ -6556,8 +6554,8 @@ var il = g(rl), al = {
 		}]
 	]
 };
-al.node;
-var ol = g(al), sl = {
+ml.node;
+var hl = f(ml), gl = {
 	name: "cable-car",
 	size: 24,
 	node: [
@@ -6599,8 +6597,8 @@ var ol = g(al), sl = {
 		}]
 	]
 };
-sl.node;
-var cl = g(sl), ll = {
+gl.node;
+var _l = f(gl), vl = {
 	name: "cable",
 	size: 24,
 	node: [
@@ -6634,8 +6632,8 @@ var cl = g(sl), ll = {
 		}]
 	]
 };
-ll.node;
-var ul = g(ll), dl = {
+vl.node;
+var yl = f(vl), bl = {
 	name: "cake-slice",
 	size: 24,
 	node: [
@@ -6659,8 +6657,8 @@ var ul = g(ll), dl = {
 		}]
 	]
 };
-dl.node;
-var fl = g(dl), pl = {
+bl.node;
+var xl = f(bl), Sl = {
 	name: "cake",
 	size: 24,
 	node: [
@@ -6702,8 +6700,8 @@ var fl = g(dl), pl = {
 		}]
 	]
 };
-pl.node;
-var ml = g(pl), hl = {
+Sl.node;
+var Cl = f(Sl), wl = {
 	name: "calculator",
 	size: 24,
 	node: [
@@ -6759,8 +6757,8 @@ var ml = g(pl), hl = {
 		}]
 	]
 };
-hl.node;
-var gl = g(hl), _l = {
+wl.node;
+var Tl = f(wl), El = {
 	name: "calendar-1",
 	size: 24,
 	node: [
@@ -6790,8 +6788,8 @@ var gl = g(hl), _l = {
 		}]
 	]
 };
-_l.node;
-var vl = g(_l), yl = {
+El.node;
+var Dl = f(El), Ol = {
 	name: "calendar-arrow-down",
 	size: 24,
 	node: [
@@ -6821,8 +6819,8 @@ var vl = g(_l), yl = {
 		}]
 	]
 };
-yl.node;
-var bl = g(yl), xl = {
+Ol.node;
+var kl = f(Ol), Al = {
 	name: "calendar-arrow-up",
 	size: 24,
 	node: [
@@ -6852,8 +6850,8 @@ var bl = g(yl), xl = {
 		}]
 	]
 };
-xl.node;
-var Sl = g(xl), Cl = {
+Al.node;
+var jl = f(Al), Ml = {
 	name: "calendar-check-2",
 	size: 24,
 	node: [
@@ -6903,8 +6901,8 @@ var Sl = g(xl), Cl = {
 		}]
 	]
 };
-Cl.node;
-var wl = g(Cl), Tl = {
+Ml.node;
+var Nl = f(Ml), Pl = {
 	name: "calendar-check",
 	size: 24,
 	node: [
@@ -6934,8 +6932,8 @@ var wl = g(Cl), Tl = {
 		}]
 	]
 };
-Tl.node;
-var El = g(Tl), Dl = {
+Pl.node;
+var Fl = f(Pl), Il = {
 	name: "calendar-chevrons-right",
 	size: 24,
 	node: [
@@ -6965,8 +6963,8 @@ var El = g(Tl), Dl = {
 		}]
 	]
 };
-Dl.node;
-var Ol = g(Dl), kl = {
+Il.node;
+var Ll = f(Il), Rl = {
 	name: "calendar-clock",
 	size: 24,
 	node: [
@@ -6998,8 +6996,8 @@ var Ol = g(Dl), kl = {
 		}]
 	]
 };
-kl.node;
-var Al = g(kl), jl = {
+Rl.node;
+var zl = f(Rl), Bl = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -7049,8 +7047,8 @@ var Al = g(kl), jl = {
 		}]
 	]
 };
-jl.node;
-var Ml = g(jl), Nl = {
+Bl.node;
+var Vl = f(Bl), Hl = {
 	name: "calendar-cog",
 	size: 24,
 	node: [
@@ -7110,8 +7108,8 @@ var Ml = g(jl), Nl = {
 		}]
 	]
 };
-Nl.node;
-var Pl = g(Nl), Fl = {
+Hl.node;
+var Ul = f(Hl), Wl = {
 	name: "calendar-fold",
 	size: 24,
 	node: [
@@ -7133,8 +7131,8 @@ var Pl = g(Nl), Fl = {
 		}]
 	]
 };
-Fl.node;
-var Il = g(Fl), Ll = {
+Wl.node;
+var Gl = f(Wl), Kl = {
 	name: "calendar-heart",
 	size: 24,
 	node: [
@@ -7160,8 +7158,8 @@ var Il = g(Fl), Ll = {
 		}]
 	]
 };
-Ll.node;
-var Rl = g(Ll), zl = {
+Kl.node;
+var ql = f(Kl), Jl = {
 	name: "calendar-minus-2",
 	size: 24,
 	node: [
@@ -7191,8 +7189,8 @@ var Rl = g(Ll), zl = {
 		}]
 	]
 };
-zl.node;
-var Bl = g(zl), Vl = {
+Jl.node;
+var Yl = f(Jl), Xl = {
 	name: "calendar-minus",
 	size: 24,
 	node: [
@@ -7218,8 +7216,8 @@ var Bl = g(zl), Vl = {
 		}]
 	]
 };
-Vl.node;
-var Hl = g(Vl), Ul = {
+Xl.node;
+var Zl = f(Xl), Ql = {
 	name: "calendar-off",
 	size: 24,
 	node: [
@@ -7249,8 +7247,8 @@ var Hl = g(Vl), Ul = {
 		}]
 	]
 };
-Ul.node;
-var Wl = g(Ul), Gl = {
+Ql.node;
+var $l = f(Ql), eu = {
 	name: "calendar-plus-2",
 	size: 24,
 	node: [
@@ -7284,8 +7282,8 @@ var Wl = g(Ul), Gl = {
 		}]
 	]
 };
-Gl.node;
-var Kl = g(Gl), ql = {
+eu.node;
+var tu = f(eu), nu = {
 	name: "calendar-plus",
 	size: 24,
 	node: [
@@ -7315,8 +7313,8 @@ var Kl = g(Gl), ql = {
 		}]
 	]
 };
-ql.node;
-var Jl = g(ql), Yl = {
+nu.node;
+var ru = f(nu), iu = {
 	name: "calendar-range",
 	size: 24,
 	node: [
@@ -7358,8 +7356,8 @@ var Jl = g(ql), Yl = {
 		}]
 	]
 };
-Yl.node;
-var Xl = g(Yl), Zl = {
+iu.node;
+var au = f(iu), ou = {
 	name: "calendar-search",
 	size: 24,
 	node: [
@@ -7391,8 +7389,8 @@ var Xl = g(Yl), Zl = {
 		}]
 	]
 };
-Zl.node;
-var Ql = g(Zl), $l = {
+ou.node;
+var su = f(ou), wee = {
 	name: "calendar-sync",
 	size: 24,
 	node: [
@@ -7430,8 +7428,8 @@ var Ql = g(Zl), $l = {
 		}]
 	]
 };
-$l.node;
-var eu = g($l), tu = {
+wee.node;
+var cu = f(wee), Tee = {
 	name: "calendar-x-2",
 	size: 24,
 	node: [
@@ -7461,8 +7459,8 @@ var eu = g($l), tu = {
 		}]
 	]
 };
-tu.node;
-var nu = g(tu), ru = {
+Tee.node;
+var lu = f(Tee), Eee = {
 	name: "calendar-x",
 	size: 24,
 	node: [
@@ -7496,8 +7494,8 @@ var nu = g(tu), ru = {
 		}]
 	]
 };
-ru.node;
-var iu = g(ru), au = {
+Eee.node;
+var uu = f(Eee), Dee = {
 	name: "calendars",
 	size: 24,
 	node: [
@@ -7531,8 +7529,8 @@ var iu = g(ru), au = {
 		}]
 	]
 };
-au.node;
-var ou = g(au), su = {
+Dee.node;
+var du = f(Dee), Oee = {
 	name: "camera-off",
 	size: 24,
 	node: [
@@ -7554,8 +7552,8 @@ var ou = g(au), su = {
 		}]
 	]
 };
-su.node;
-var cu = g(su), lu = {
+Oee.node;
+var fu = f(Oee), kee = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -7581,8 +7579,8 @@ var cu = g(su), lu = {
 		}]
 	]
 };
-lu.node;
-var uu = g(lu), wee = {
+kee.node;
+var pu = f(kee), Aee = {
 	name: "camera",
 	size: 24,
 	node: [["path", {
@@ -7595,8 +7593,8 @@ var uu = g(lu), wee = {
 		key: "1vg3eu"
 	}]]
 };
-wee.node;
-var du = g(wee), Tee = {
+Aee.node;
+var mu = f(Aee), jee = {
 	name: "can-soda",
 	size: 24,
 	node: [
@@ -7626,8 +7624,8 @@ var du = g(wee), Tee = {
 		}]
 	]
 };
-Tee.node;
-var fu = g(Tee), Eee = {
+jee.node;
+var hu = f(jee), Mee = {
 	name: "can",
 	size: 24,
 	node: [
@@ -7649,8 +7647,8 @@ var fu = g(Tee), Eee = {
 		}]
 	]
 };
-Eee.node;
-var pu = g(Eee), Dee = {
+Mee.node;
+var gu = f(Mee), Nee = {
 	name: "candy-cane",
 	size: 24,
 	node: [
@@ -7676,8 +7674,8 @@ var pu = g(Eee), Dee = {
 		}]
 	]
 };
-Dee.node;
-var mu = g(Dee), Oee = {
+Nee.node;
+var _u = f(Nee), Pee = {
 	name: "candy-off",
 	size: 24,
 	node: [
@@ -7711,8 +7709,8 @@ var mu = g(Dee), Oee = {
 		}]
 	]
 };
-Oee.node;
-var hu = g(Oee), kee = {
+Pee.node;
+var vu = f(Pee), Fee = {
 	name: "candy",
 	size: 24,
 	node: [
@@ -7738,8 +7736,8 @@ var hu = g(Oee), kee = {
 		}]
 	]
 };
-kee.node;
-var gu = g(kee), Aee = {
+Fee.node;
+var yu = f(Fee), bu = {
 	name: "cannabis-off",
 	size: 24,
 	node: [
@@ -7769,8 +7767,8 @@ var gu = g(kee), Aee = {
 		}]
 	]
 };
-Aee.node;
-var _u = g(Aee), jee = {
+bu.node;
+var xu = f(bu), Su = {
 	name: "cannabis",
 	size: 24,
 	node: [["path", {
@@ -7781,8 +7779,8 @@ var _u = g(Aee), jee = {
 		key: "1mezod"
 	}]]
 };
-jee.node;
-var vu = g(jee), Mee = {
+Su.node;
+var Cu = f(Su), wu = {
 	name: "captions-off",
 	size: 24,
 	node: [
@@ -7812,8 +7810,8 @@ var vu = g(jee), Mee = {
 		}]
 	]
 };
-Mee.node;
-var yu = g(Mee), Nee = {
+wu.node;
+var Tu = f(wu), Eu = {
 	name: "captions",
 	size: 24,
 	node: [["rect", {
@@ -7830,8 +7828,8 @@ var yu = g(Mee), Nee = {
 	}]],
 	aliases: ["subtitles"]
 };
-Nee.node;
-var A = g(Nee), Pee = {
+Eu.node;
+var x = f(Eu), Du = {
 	name: "car-battery",
 	size: 24,
 	node: [
@@ -7865,8 +7863,8 @@ var A = g(Nee), Pee = {
 		}]
 	]
 };
-Pee.node;
-var bu = g(Pee), Fee = {
+Du.node;
+var Ou = f(Du), ku = {
 	name: "car-front",
 	size: 24,
 	node: [
@@ -7900,8 +7898,8 @@ var bu = g(Pee), Fee = {
 		}]
 	]
 };
-Fee.node;
-var xu = g(Fee), Su = {
+ku.node;
+var Au = f(ku), ju = {
 	name: "car-taxi-front",
 	size: 24,
 	node: [
@@ -7939,8 +7937,8 @@ var xu = g(Fee), Su = {
 		}]
 	]
 };
-Su.node;
-var Cu = g(Su), wu = {
+ju.node;
+var Mu = f(ju), Nu = {
 	name: "car",
 	size: 24,
 	node: [
@@ -7966,8 +7964,8 @@ var Cu = g(Su), wu = {
 		}]
 	]
 };
-wu.node;
-var Tu = g(wu), Eu = {
+Nu.node;
+var Pu = f(Nu), Fu = {
 	name: "caravan",
 	size: 24,
 	node: [
@@ -7991,8 +7989,8 @@ var Tu = g(wu), Eu = {
 		}]
 	]
 };
-Eu.node;
-var Du = g(Eu), Ou = {
+Fu.node;
+var Iu = f(Fu), Lu = {
 	name: "card-sim",
 	size: 24,
 	node: [
@@ -8018,8 +8016,8 @@ var Du = g(Eu), Ou = {
 		}]
 	]
 };
-Ou.node;
-var ku = g(Ou), Au = {
+Lu.node;
+var Ru = f(Lu), zu = {
 	name: "carrot",
 	size: 24,
 	node: [
@@ -8037,8 +8035,8 @@ var ku = g(Ou), Au = {
 		}]
 	]
 };
-Au.node;
-var ju = g(Au), Mu = {
+zu.node;
+var Bu = f(zu), Vu = {
 	name: "carton-off",
 	size: 24,
 	node: [
@@ -8068,8 +8066,8 @@ var ju = g(Au), Mu = {
 		}]
 	]
 };
-Mu.node;
-var Nu = g(Mu), Pu = {
+Vu.node;
+var Hu = f(Vu), Uu = {
 	name: "carton",
 	size: 24,
 	node: [["path", {
@@ -8080,8 +8078,8 @@ var Nu = g(Mu), Pu = {
 		key: "gs3i43"
 	}]]
 };
-Pu.node;
-var Fu = g(Pu), Iu = {
+Uu.node;
+var Wu = f(Uu), Gu = {
 	name: "case-lower",
 	size: 24,
 	node: [
@@ -8107,8 +8105,8 @@ var Fu = g(Pu), Iu = {
 		}]
 	]
 };
-Iu.node;
-var Lu = g(Iu), Ru = {
+Gu.node;
+var Ku = f(Gu), qu = {
 	name: "case-sensitive",
 	size: 24,
 	node: [
@@ -8132,8 +8130,8 @@ var Lu = g(Iu), Ru = {
 		}]
 	]
 };
-Ru.node;
-var zu = g(Ru), Bu = {
+qu.node;
+var Ju = f(qu), Yu = {
 	name: "case-upper",
 	size: 24,
 	node: [
@@ -8151,8 +8149,8 @@ var zu = g(Ru), Bu = {
 		}]
 	]
 };
-Bu.node;
-var Vu = g(Bu), Hu = {
+Yu.node;
+var Xu = f(Yu), Zu = {
 	name: "cassette-tape",
 	size: 24,
 	node: [
@@ -8186,8 +8184,8 @@ var Vu = g(Bu), Hu = {
 		}]
 	]
 };
-Hu.node;
-var Uu = g(Hu), Wu = {
+Zu.node;
+var Qu = f(Zu), $u = {
 	name: "cast",
 	size: 24,
 	node: [
@@ -8212,8 +8210,8 @@ var Uu = g(Hu), Wu = {
 		}]
 	]
 };
-Wu.node;
-var Gu = g(Wu), Ku = {
+$u.node;
+var ed = f($u), td = {
 	name: "castle",
 	size: 24,
 	node: [
@@ -8251,8 +8249,8 @@ var Gu = g(Wu), Ku = {
 		}]
 	]
 };
-Ku.node;
-var qu = g(Ku), Ju = {
+td.node;
+var nd = f(td), rd = {
 	name: "cat",
 	size: 24,
 	node: [
@@ -8274,8 +8272,8 @@ var qu = g(Ku), Ju = {
 		}]
 	]
 };
-Ju.node;
-var Yu = g(Ju), Xu = {
+rd.node;
+var id = f(rd), ad = {
 	name: "cctv-off",
 	size: 24,
 	node: [
@@ -8305,8 +8303,8 @@ var Yu = g(Ju), Xu = {
 		}]
 	]
 };
-Xu.node;
-var Zu = g(Xu), Qu = {
+ad.node;
+var od = f(ad), sd = {
 	name: "cctv",
 	size: 24,
 	node: [
@@ -8332,8 +8330,8 @@ var Zu = g(Xu), Qu = {
 		}]
 	]
 };
-Qu.node;
-var $u = g(Qu), ed = {
+sd.node;
+var cd = f(sd), ld = {
 	name: "chart-area",
 	size: 24,
 	node: [["path", {
@@ -8345,8 +8343,8 @@ var $u = g(Qu), ed = {
 	}]],
 	aliases: ["area-chart"]
 };
-ed.node;
-var j = g(ed), td = {
+ld.node;
+var S = f(ld), ud = {
 	name: "chart-bar-big",
 	size: 24,
 	node: [
@@ -8373,8 +8371,8 @@ var j = g(ed), td = {
 	],
 	aliases: ["bar-chart-horizontal-big"]
 };
-td.node;
-var M = g(td), nd = {
+ud.node;
+var C = f(ud), dd = {
 	name: "chart-bar-decreasing",
 	size: 24,
 	node: [
@@ -8396,8 +8394,8 @@ var M = g(td), nd = {
 		}]
 	]
 };
-nd.node;
-var rd = g(nd), id = {
+dd.node;
+var fd = f(dd), pd = {
 	name: "chart-bar-increasing",
 	size: 24,
 	node: [
@@ -8419,8 +8417,8 @@ var rd = g(nd), id = {
 		}]
 	]
 };
-id.node;
-var ad = g(id), od = {
+pd.node;
+var md = f(pd), hd = {
 	name: "chart-bar-stacked",
 	size: 24,
 	node: [
@@ -8454,8 +8452,8 @@ var ad = g(id), od = {
 		}]
 	]
 };
-od.node;
-var sd = g(od), cd = {
+hd.node;
+var gd = f(hd), _d = {
 	name: "chart-bar",
 	size: 24,
 	node: [
@@ -8478,8 +8476,8 @@ var sd = g(od), cd = {
 	],
 	aliases: ["bar-chart-horizontal"]
 };
-cd.node;
-var N = g(cd), ld = {
+_d.node;
+var w = f(_d), vd = {
 	name: "chart-candlestick",
 	size: 24,
 	node: [
@@ -8522,8 +8520,8 @@ var N = g(cd), ld = {
 	],
 	aliases: ["candlestick-chart"]
 };
-ld.node;
-var P = g(ld), ud = {
+vd.node;
+var T = f(vd), yd = {
 	name: "chart-column-big",
 	size: 24,
 	node: [
@@ -8550,8 +8548,8 @@ var P = g(ld), ud = {
 	],
 	aliases: ["bar-chart-big"]
 };
-ud.node;
-var F = g(ud), dd = {
+yd.node;
+var E = f(yd), bd = {
 	name: "chart-column-decreasing",
 	size: 24,
 	node: [
@@ -8573,8 +8571,8 @@ var F = g(ud), dd = {
 		}]
 	]
 };
-dd.node;
-var fd = g(dd), pd = {
+bd.node;
+var xd = f(bd), Sd = {
 	name: "chart-column-increasing",
 	size: 24,
 	node: [
@@ -8597,8 +8595,8 @@ var fd = g(dd), pd = {
 	],
 	aliases: ["bar-chart-4"]
 };
-pd.node;
-var I = g(pd), md = {
+Sd.node;
+var D = f(Sd), Cd = {
 	name: "chart-column-stacked",
 	size: 24,
 	node: [
@@ -8632,8 +8630,8 @@ var I = g(pd), md = {
 		}]
 	]
 };
-md.node;
-var hd = g(md), gd = {
+Cd.node;
+var wd = f(Cd), Td = {
 	name: "chart-column",
 	size: 24,
 	node: [
@@ -8656,8 +8654,8 @@ var hd = g(md), gd = {
 	],
 	aliases: ["bar-chart-3"]
 };
-gd.node;
-var L = g(gd), _d = {
+Td.node;
+var O = f(Td), Ed = {
 	name: "chart-gantt",
 	size: 24,
 	node: [
@@ -8679,8 +8677,8 @@ var L = g(gd), _d = {
 		}]
 	]
 };
-_d.node;
-var vd = g(_d), yd = {
+Ed.node;
+var Dd = f(Ed), Od = {
 	name: "chart-line",
 	size: 24,
 	node: [["path", {
@@ -8692,8 +8690,8 @@ var vd = g(_d), yd = {
 	}]],
 	aliases: ["line-chart"]
 };
-yd.node;
-var R = g(yd), bd = {
+Od.node;
+var k = f(Od), kd = {
 	name: "chart-network",
 	size: 24,
 	node: [
@@ -8733,8 +8731,8 @@ var R = g(yd), bd = {
 		}]
 	]
 };
-bd.node;
-var xd = g(bd), Sd = {
+kd.node;
+var Ad = f(kd), jd = {
 	name: "chart-no-axes-column-decreasing",
 	size: 24,
 	node: [
@@ -8752,8 +8750,8 @@ var xd = g(bd), Sd = {
 		}]
 	]
 };
-Sd.node;
-var Cd = g(Sd), wd = {
+jd.node;
+var Md = f(jd), Nd = {
 	name: "chart-no-axes-column-increasing",
 	size: 24,
 	node: [
@@ -8772,8 +8770,8 @@ var Cd = g(Sd), wd = {
 	],
 	aliases: ["bar-chart"]
 };
-wd.node;
-var z = g(wd), Td = {
+Nd.node;
+var A = f(Nd), Pd = {
 	name: "chart-no-axes-column",
 	size: 24,
 	node: [
@@ -8792,8 +8790,8 @@ var z = g(wd), Td = {
 	],
 	aliases: ["bar-chart-2"]
 };
-Td.node;
-var Ed = g(Td), Dd = {
+Pd.node;
+var j = f(Pd), Fd = {
 	name: "chart-no-axes-combined",
 	size: 24,
 	node: [
@@ -8823,8 +8821,8 @@ var Ed = g(Td), Dd = {
 		}]
 	]
 };
-Dd.node;
-var Od = g(Dd), kd = {
+Fd.node;
+var Id = f(Fd), Ld = {
 	name: "chart-no-axes-gantt",
 	size: 24,
 	node: [
@@ -8843,8 +8841,8 @@ var Od = g(Dd), kd = {
 	],
 	aliases: ["gantt-chart"]
 };
-kd.node;
-var Ad = g(kd), jd = {
+Ld.node;
+var M = f(Ld), Rd = {
 	name: "chart-pie",
 	size: 24,
 	node: [["path", {
@@ -8856,8 +8854,8 @@ var Ad = g(kd), jd = {
 	}]],
 	aliases: ["pie-chart"]
 };
-jd.node;
-var Md = g(jd), Nd = {
+Rd.node;
+var N = f(Rd), zd = {
 	name: "chart-scatter",
 	size: 24,
 	node: [
@@ -8903,8 +8901,8 @@ var Md = g(jd), Nd = {
 	],
 	aliases: ["scatter-chart"]
 };
-Nd.node;
-var Pd = g(Nd), Fd = {
+zd.node;
+var P = f(zd), Bd = {
 	name: "chart-spline",
 	size: 24,
 	node: [["path", {
@@ -8915,8 +8913,8 @@ var Pd = g(Nd), Fd = {
 		key: "lw07rv"
 	}]]
 };
-Fd.node;
-var Id = g(Fd), Ld = {
+Bd.node;
+var Vd = f(Bd), Hd = {
 	name: "check-check",
 	size: 24,
 	node: [["path", {
@@ -8927,8 +8925,8 @@ var Id = g(Fd), Ld = {
 		key: "ke71qq"
 	}]]
 };
-Ld.node;
-var Rd = g(Ld), zd = {
+Hd.node;
+var Ud = f(Hd), Wd = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -8936,8 +8934,8 @@ var Rd = g(Ld), zd = {
 		key: "1gmf2c"
 	}]]
 };
-zd.node;
-var Bd = g(zd), Vd = {
+Wd.node;
+var Gd = f(Wd), Kd = {
 	name: "check-line",
 	size: 24,
 	node: [
@@ -8955,8 +8953,8 @@ var Bd = g(zd), Vd = {
 		}]
 	]
 };
-Vd.node;
-var Hd = g(Vd), Ud = {
+Kd.node;
+var qd = f(Kd), Jd = {
 	name: "chef-hat",
 	size: 24,
 	node: [["path", {
@@ -8967,8 +8965,8 @@ var Hd = g(Vd), Ud = {
 		key: "1jwigz"
 	}]]
 };
-Ud.node;
-var Wd = g(Ud), Gd = {
+Jd.node;
+var Yd = f(Jd), Xd = {
 	name: "cherry",
 	size: 24,
 	node: [
@@ -8990,8 +8988,8 @@ var Wd = g(Ud), Gd = {
 		}]
 	]
 };
-Gd.node;
-var Kd = g(Gd), qd = {
+Xd.node;
+var Zd = f(Xd), Qd = {
 	name: "chess-bishop",
 	size: 24,
 	node: [
@@ -9013,8 +9011,8 @@ var Kd = g(Gd), qd = {
 		}]
 	]
 };
-qd.node;
-var Jd = g(qd), Yd = {
+Qd.node;
+var $d = f(Qd), ef = {
 	name: "chess-king",
 	size: 24,
 	node: [
@@ -9036,8 +9034,8 @@ var Jd = g(qd), Yd = {
 		}]
 	]
 };
-Yd.node;
-var Xd = g(Yd), Zd = {
+ef.node;
+var tf = f(ef), nf = {
 	name: "chess-knight",
 	size: 24,
 	node: [
@@ -9063,8 +9061,8 @@ var Xd = g(Yd), Zd = {
 		}]
 	]
 };
-Zd.node;
-var Qd = g(Zd), $d = {
+nf.node;
+var rf = f(nf), af = {
 	name: "chess-pawn",
 	size: 24,
 	node: [
@@ -9092,8 +9090,8 @@ var Qd = g(Zd), $d = {
 		}]
 	]
 };
-$d.node;
-var ef = g($d), tf = {
+af.node;
+var of = f(af), sf = {
 	name: "chess-queen",
 	size: 24,
 	node: [
@@ -9137,8 +9135,8 @@ var ef = g($d), tf = {
 		}]
 	]
 };
-tf.node;
-var nf = g(tf), rf = {
+sf.node;
+var cf = f(sf), lf = {
 	name: "chess-rook",
 	size: 24,
 	node: [
@@ -9172,8 +9170,8 @@ var nf = g(tf), rf = {
 		}]
 	]
 };
-rf.node;
-var af = g(rf), of = {
+lf.node;
+var uf = f(lf), df = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -9181,8 +9179,8 @@ var af = g(rf), of = {
 		key: "qrunsl"
 	}]]
 };
-of.node;
-var sf = g(of), cf = {
+df.node;
+var ff = f(df), pf = {
 	name: "chevron-first",
 	size: 24,
 	node: [["path", {
@@ -9193,8 +9191,8 @@ var sf = g(of), cf = {
 		key: "1p53r6"
 	}]]
 };
-cf.node;
-var lf = g(cf), uf = {
+pf.node;
+var mf = f(pf), hf = {
 	name: "chevron-last",
 	size: 24,
 	node: [["path", {
@@ -9205,8 +9203,8 @@ var lf = g(cf), uf = {
 		key: "1o0aio"
 	}]]
 };
-uf.node;
-var df = g(uf), ff = {
+hf.node;
+var gf = f(hf), _f = {
 	name: "chevron-left",
 	size: 24,
 	node: [["path", {
@@ -9214,8 +9212,8 @@ var df = g(uf), ff = {
 		key: "1wnfg3"
 	}]]
 };
-ff.node;
-var pf = g(ff), mf = {
+_f.node;
+var vf = f(_f), yf = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -9223,8 +9221,8 @@ var pf = g(ff), mf = {
 		key: "mthhwq"
 	}]]
 };
-mf.node;
-var hf = g(mf), gf = {
+yf.node;
+var bf = f(yf), xf = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -9232,8 +9230,8 @@ var hf = g(mf), gf = {
 		key: "153udz"
 	}]]
 };
-gf.node;
-var _f = g(gf), vf = {
+xf.node;
+var Sf = f(xf), Cf = {
 	name: "chevrons-down-up",
 	size: 24,
 	node: [["path", {
@@ -9244,8 +9242,8 @@ var _f = g(gf), vf = {
 		key: "1kwcof"
 	}]]
 };
-vf.node;
-var yf = g(vf), bf = {
+Cf.node;
+var wf = f(Cf), Tf = {
 	name: "chevrons-down",
 	size: 24,
 	node: [["path", {
@@ -9256,8 +9254,8 @@ var yf = g(vf), bf = {
 		key: "1d48rs"
 	}]]
 };
-bf.node;
-var xf = g(bf), Sf = {
+Tf.node;
+var Ef = f(Tf), Df = {
 	name: "chevrons-left-right-ellipsis",
 	size: 24,
 	node: [
@@ -9283,8 +9281,8 @@ var xf = g(bf), Sf = {
 		}]
 	]
 };
-Sf.node;
-var Cf = g(Sf), wf = {
+Df.node;
+var Of = f(Df), kf = {
 	name: "chevrons-left-right",
 	size: 24,
 	node: [["path", {
@@ -9295,8 +9293,8 @@ var Cf = g(Sf), wf = {
 		key: "1bl6da"
 	}]]
 };
-wf.node;
-var Tf = g(wf), Ef = {
+kf.node;
+var Af = f(kf), jf = {
 	name: "chevrons-left",
 	size: 24,
 	node: [["path", {
@@ -9307,8 +9305,8 @@ var Tf = g(wf), Ef = {
 		key: "h8a8et"
 	}]]
 };
-Ef.node;
-var Df = g(Ef), Of = {
+jf.node;
+var Mf = f(jf), Nf = {
 	name: "chevrons-right-left",
 	size: 24,
 	node: [["path", {
@@ -9319,8 +9317,8 @@ var Df = g(Ef), Of = {
 		key: "16spf4"
 	}]]
 };
-Of.node;
-var kf = g(Of), Af = {
+Nf.node;
+var Pf = f(Nf), Ff = {
 	name: "chevrons-right",
 	size: 24,
 	node: [["path", {
@@ -9331,8 +9329,8 @@ var kf = g(Of), Af = {
 		key: "17xmmf"
 	}]]
 };
-Af.node;
-var jf = g(Af), Mf = {
+Ff.node;
+var If = f(Ff), Lf = {
 	name: "chevrons-up-down",
 	size: 24,
 	node: [["path", {
@@ -9343,8 +9341,8 @@ var jf = g(Af), Mf = {
 		key: "sgt6xg"
 	}]]
 };
-Mf.node;
-var Nf = g(Mf), Pf = {
+Lf.node;
+var Rf = f(Lf), zf = {
 	name: "chevrons-up",
 	size: 24,
 	node: [["path", {
@@ -9355,8 +9353,8 @@ var Nf = g(Mf), Pf = {
 		key: "2avn1x"
 	}]]
 };
-Pf.node;
-var Ff = g(Pf), If = {
+zf.node;
+var Bf = f(zf), Vf = {
 	name: "church",
 	size: 24,
 	node: [
@@ -9382,8 +9380,8 @@ var Ff = g(Pf), If = {
 		}]
 	]
 };
-If.node;
-var Lf = g(If), Rf = {
+Vf.node;
+var Hf = f(Vf), Uf = {
 	name: "cigarette-off",
 	size: 24,
 	node: [
@@ -9413,8 +9411,8 @@ var Lf = g(If), Rf = {
 		}]
 	]
 };
-Rf.node;
-var zf = g(Rf), Bf = {
+Uf.node;
+var Wf = f(Uf), Gf = {
 	name: "cigarette",
 	size: 24,
 	node: [
@@ -9440,8 +9438,8 @@ var zf = g(Rf), Bf = {
 		}]
 	]
 };
-Bf.node;
-var Vf = g(Bf), Hf = {
+Gf.node;
+var Kf = f(Gf), qf = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -9468,8 +9466,8 @@ var Vf = g(Bf), Hf = {
 	],
 	aliases: ["alert-circle"]
 };
-Hf.node;
-var Uf = g(Hf), Wf = {
+qf.node;
+var F = f(qf), Jf = {
 	name: "circle-arrow-down",
 	size: 24,
 	node: [
@@ -9490,8 +9488,8 @@ var Uf = g(Hf), Wf = {
 	],
 	aliases: ["arrow-down-circle"]
 };
-Wf.node;
-var Gf = g(Wf), Kf = {
+Jf.node;
+var I = f(Jf), Yf = {
 	name: "circle-arrow-left",
 	size: 24,
 	node: [
@@ -9512,8 +9510,8 @@ var Gf = g(Wf), Kf = {
 	],
 	aliases: ["arrow-left-circle"]
 };
-Kf.node;
-var qf = g(Kf), Jf = {
+Yf.node;
+var L = f(Yf), Xf = {
 	name: "circle-arrow-out-down-left",
 	size: 24,
 	node: [
@@ -9532,8 +9530,8 @@ var qf = g(Kf), Jf = {
 	],
 	aliases: ["arrow-down-left-from-circle"]
 };
-Jf.node;
-var Yf = g(Jf), Xf = {
+Xf.node;
+var R = f(Xf), Zf = {
 	name: "circle-arrow-out-down-right",
 	size: 24,
 	node: [
@@ -9552,8 +9550,8 @@ var Yf = g(Jf), Xf = {
 	],
 	aliases: ["arrow-down-right-from-circle"]
 };
-Xf.node;
-var Zf = g(Xf), Qf = {
+Zf.node;
+var z = f(Zf), Qf = {
 	name: "circle-arrow-out-up-left",
 	size: 24,
 	node: [
@@ -9573,7 +9571,7 @@ var Zf = g(Xf), Qf = {
 	aliases: ["arrow-up-left-from-circle"]
 };
 Qf.node;
-var $f = g(Qf), ep = {
+var B = f(Qf), $f = {
 	name: "circle-arrow-out-up-right",
 	size: 24,
 	node: [
@@ -9592,8 +9590,8 @@ var $f = g(Qf), ep = {
 	],
 	aliases: ["arrow-up-right-from-circle"]
 };
-ep.node;
-var tp = g(ep), np = {
+$f.node;
+var ep = f($f), tp = {
 	name: "circle-arrow-right",
 	size: 24,
 	node: [
@@ -9614,8 +9612,8 @@ var tp = g(ep), np = {
 	],
 	aliases: ["arrow-right-circle"]
 };
-np.node;
-var rp = g(np), ip = {
+tp.node;
+var np = f(tp), rp = {
 	name: "circle-arrow-up",
 	size: 24,
 	node: [
@@ -9636,8 +9634,8 @@ var rp = g(np), ip = {
 	],
 	aliases: ["arrow-up-circle"]
 };
-ip.node;
-var ap = g(ip), op = {
+rp.node;
+var ip = f(rp), ap = {
 	name: "circle-check-big",
 	size: 24,
 	node: [["path", {
@@ -9649,8 +9647,8 @@ var ap = g(ip), op = {
 	}]],
 	aliases: ["check-circle"]
 };
-op.node;
-var sp = g(op), cp = {
+ap.node;
+var op = f(ap), sp = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -9664,8 +9662,8 @@ var sp = g(op), cp = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-cp.node;
-var lp = g(cp), up = {
+sp.node;
+var cp = f(sp), lp = {
 	name: "circle-chevron-down",
 	size: 24,
 	node: [["circle", {
@@ -9679,8 +9677,8 @@ var lp = g(cp), up = {
 	}]],
 	aliases: ["chevron-down-circle"]
 };
-up.node;
-var dp = g(up), fp = {
+lp.node;
+var up = f(lp), dp = {
 	name: "circle-chevron-left",
 	size: 24,
 	node: [["circle", {
@@ -9694,8 +9692,8 @@ var dp = g(up), fp = {
 	}]],
 	aliases: ["chevron-left-circle"]
 };
-fp.node;
-var pp = g(fp), mp = {
+dp.node;
+var fp = f(dp), pp = {
 	name: "circle-chevron-right",
 	size: 24,
 	node: [["circle", {
@@ -9709,8 +9707,8 @@ var pp = g(fp), mp = {
 	}]],
 	aliases: ["chevron-right-circle"]
 };
-mp.node;
-var hp = g(mp), gp = {
+pp.node;
+var mp = f(pp), hp = {
 	name: "circle-chevron-up",
 	size: 24,
 	node: [["circle", {
@@ -9724,8 +9722,8 @@ var hp = g(mp), gp = {
 	}]],
 	aliases: ["chevron-up-circle"]
 };
-gp.node;
-var _p = g(gp), vp = {
+hp.node;
+var gp = f(hp), _p = {
 	name: "circle-dashed-check",
 	size: 24,
 	node: [
@@ -9767,8 +9765,8 @@ var _p = g(gp), vp = {
 		}]
 	]
 };
-vp.node;
-var yp = g(vp), bp = {
+_p.node;
+var vp = f(_p), yp = {
 	name: "circle-dashed",
 	size: 24,
 	node: [
@@ -9806,8 +9804,8 @@ var yp = g(vp), bp = {
 		}]
 	]
 };
-bp.node;
-var xp = g(bp), Sp = {
+yp.node;
+var bp = f(yp), xp = {
 	name: "circle-divide",
 	size: 24,
 	node: [
@@ -9841,8 +9839,8 @@ var xp = g(bp), Sp = {
 	],
 	aliases: ["divide-circle"]
 };
-Sp.node;
-var Cp = g(Sp), wp = {
+xp.node;
+var Sp = f(xp), Cp = {
 	name: "circle-dollar-sign",
 	size: 24,
 	node: [
@@ -9862,8 +9860,8 @@ var Cp = g(Sp), wp = {
 		}]
 	]
 };
-wp.node;
-var Tp = g(wp), Ep = {
+Cp.node;
+var wp = f(Cp), Tp = {
 	name: "circle-dot-dashed",
 	size: 24,
 	node: [
@@ -9907,8 +9905,8 @@ var Tp = g(wp), Ep = {
 		}]
 	]
 };
-Ep.node;
-var Dp = g(Ep), Op = {
+Tp.node;
+var Ep = f(Tp), Dp = {
 	name: "circle-dot",
 	size: 24,
 	node: [["circle", {
@@ -9923,8 +9921,8 @@ var Dp = g(Ep), Op = {
 		key: "1mglay"
 	}]]
 };
-Op.node;
-var kp = g(Op), Ap = {
+Dp.node;
+var Op = f(Dp), kp = {
 	name: "circle-ellipsis",
 	size: 24,
 	node: [
@@ -9948,8 +9946,8 @@ var kp = g(Op), Ap = {
 		}]
 	]
 };
-Ap.node;
-var jp = g(Ap), Mp = {
+kp.node;
+var Ap = f(kp), jp = {
 	name: "circle-equal",
 	size: 24,
 	node: [
@@ -9969,8 +9967,8 @@ var jp = g(Ap), Mp = {
 		}]
 	]
 };
-Mp.node;
-var Np = g(Mp), Pp = {
+jp.node;
+var Mp = f(jp), Np = {
 	name: "circle-euro",
 	size: 24,
 	node: [
@@ -9990,8 +9988,8 @@ var Np = g(Mp), Pp = {
 		}]
 	]
 };
-Pp.node;
-var Fp = g(Pp), Ip = {
+Np.node;
+var Pp = f(Np), Fp = {
 	name: "circle-fading-arrow-up",
 	size: 24,
 	node: [
@@ -10025,8 +10023,8 @@ var Fp = g(Pp), Ip = {
 		}]
 	]
 };
-Ip.node;
-var Lp = g(Ip), Rp = {
+Fp.node;
+var Ip = f(Fp), Lp = {
 	name: "circle-fading-plus",
 	size: 24,
 	node: [
@@ -10060,8 +10058,8 @@ var Lp = g(Ip), Rp = {
 		}]
 	]
 };
-Rp.node;
-var zp = g(Rp), Bp = {
+Lp.node;
+var Rp = f(Lp), zp = {
 	name: "circle-gauge",
 	size: 24,
 	node: [
@@ -10082,8 +10080,8 @@ var zp = g(Rp), Bp = {
 	],
 	aliases: ["gauge-circle"]
 };
-Bp.node;
-var Vp = g(Bp), Hp = {
+zp.node;
+var Bp = f(zp), Vp = {
 	name: "circle-minus",
 	size: 24,
 	node: [["circle", {
@@ -10097,8 +10095,8 @@ var Vp = g(Bp), Hp = {
 	}]],
 	aliases: ["minus-circle"]
 };
-Hp.node;
-var Up = g(Hp), Wp = {
+Vp.node;
+var Hp = f(Vp), Up = {
 	name: "circle-off",
 	size: 24,
 	node: [
@@ -10116,8 +10114,8 @@ var Up = g(Hp), Wp = {
 		}]
 	]
 };
-Wp.node;
-var Gp = g(Wp), Kp = {
+Up.node;
+var Wp = f(Up), Gp = {
 	name: "circle-parking-off",
 	size: 24,
 	node: [
@@ -10148,8 +10146,8 @@ var Gp = g(Wp), Kp = {
 	],
 	aliases: ["parking-circle-off"]
 };
-Kp.node;
-var qp = g(Kp), Jp = {
+Gp.node;
+var Kp = f(Gp), qp = {
 	name: "circle-parking",
 	size: 24,
 	node: [["circle", {
@@ -10163,8 +10161,8 @@ var qp = g(Kp), Jp = {
 	}]],
 	aliases: ["parking-circle"]
 };
-Jp.node;
-var Yp = g(Jp), Xp = {
+qp.node;
+var Jp = f(qp), Yp = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -10191,8 +10189,8 @@ var Yp = g(Jp), Xp = {
 	],
 	aliases: ["pause-circle"]
 };
-Xp.node;
-var Zp = g(Xp), Qp = {
+Yp.node;
+var Xp = f(Yp), Zp = {
 	name: "circle-percent",
 	size: 24,
 	node: [
@@ -10217,8 +10215,8 @@ var Zp = g(Xp), Qp = {
 	],
 	aliases: ["percent-circle"]
 };
-Qp.node;
-var $p = g(Qp), em = {
+Zp.node;
+var Qp = f(Zp), $p = {
 	name: "circle-pile",
 	size: 24,
 	node: [
@@ -10260,8 +10258,8 @@ var $p = g(Qp), em = {
 		}]
 	]
 };
-em.node;
-var tm = g(em), nm = {
+$p.node;
+var em = f($p), tm = {
 	name: "circle-play",
 	size: 24,
 	node: [["path", {
@@ -10275,8 +10273,8 @@ var tm = g(em), nm = {
 	}]],
 	aliases: ["play-circle"]
 };
-nm.node;
-var rm = g(nm), im = {
+tm.node;
+var nm = f(tm), rm = {
 	name: "circle-plus",
 	size: 24,
 	node: [
@@ -10297,8 +10295,8 @@ var rm = g(nm), im = {
 	],
 	aliases: ["plus-circle"]
 };
-im.node;
-var am = g(im), om = {
+rm.node;
+var im = f(rm), am = {
 	name: "circle-pound-sterling",
 	size: 24,
 	node: [
@@ -10322,8 +10320,8 @@ var am = g(im), om = {
 		}]
 	]
 };
-om.node;
-var sm = g(om), cm = {
+am.node;
+var om = f(am), sm = {
 	name: "circle-power",
 	size: 24,
 	node: [
@@ -10344,8 +10342,8 @@ var sm = g(om), cm = {
 	],
 	aliases: ["power-circle"]
 };
-cm.node;
-var lm = g(cm), um = {
+sm.node;
+var cm = f(sm), lm = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -10366,8 +10364,8 @@ var lm = g(cm), um = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-um.node;
-var B = g(um), dm = {
+lm.node;
+var V = f(lm), um = {
 	name: "circle-slash-2",
 	size: 24,
 	node: [["circle", {
@@ -10381,8 +10379,8 @@ var B = g(um), dm = {
 	}]],
 	aliases: ["circle-slashed"]
 };
-dm.node;
-var fm = g(dm), pm = {
+um.node;
+var dm = f(um), fm = {
 	name: "circle-slash",
 	size: 24,
 	node: [["circle", {
@@ -10398,8 +10396,8 @@ var fm = g(dm), pm = {
 		key: "1dfufj"
 	}]]
 };
-pm.node;
-var mm = g(pm), hm = {
+fm.node;
+var pm = f(fm), mm = {
 	name: "circle-small",
 	size: 24,
 	node: [["circle", {
@@ -10409,8 +10407,8 @@ var mm = g(pm), hm = {
 		key: "1vlfrh"
 	}]]
 };
-hm.node;
-var gm = g(hm), _m = {
+mm.node;
+var hm = f(mm), gm = {
 	name: "circle-star",
 	size: 24,
 	node: [["circle", {
@@ -10423,8 +10421,8 @@ var gm = g(hm), _m = {
 		key: "285bvi"
 	}]]
 };
-_m.node;
-var vm = g(_m), ym = {
+gm.node;
+var _m = f(gm), vm = {
 	name: "circle-stop",
 	size: 24,
 	node: [["circle", {
@@ -10442,8 +10440,8 @@ var vm = g(_m), ym = {
 	}]],
 	aliases: ["stop-circle"]
 };
-ym.node;
-var bm = g(ym), xm = {
+vm.node;
+var ym = f(vm), bm = {
 	name: "circle-user-round",
 	size: 24,
 	node: [
@@ -10466,8 +10464,8 @@ var bm = g(ym), xm = {
 	],
 	aliases: ["user-circle-2"]
 };
-xm.node;
-var Sm = g(xm), Cm = {
+bm.node;
+var xm = f(bm), Sm = {
 	name: "circle-user",
 	size: 24,
 	node: [
@@ -10490,8 +10488,8 @@ var Sm = g(xm), Cm = {
 	],
 	aliases: ["user-circle"]
 };
-Cm.node;
-var wm = g(Cm), Tm = {
+Sm.node;
+var Cm = f(Sm), wm = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -10512,8 +10510,8 @@ var wm = g(Cm), Tm = {
 	],
 	aliases: ["x-circle"]
 };
-Tm.node;
-var Em = g(Tm), Dm = {
+wm.node;
+var Tm = f(wm), Em = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -10523,8 +10521,8 @@ var Em = g(Tm), Dm = {
 		key: "1mglay"
 	}]]
 };
-Dm.node;
-var Om = g(Dm), km = {
+Em.node;
+var Dm = f(Em), Om = {
 	name: "circuit-board",
 	size: 24,
 	node: [
@@ -10558,8 +10556,8 @@ var Om = g(Dm), km = {
 		}]
 	]
 };
-km.node;
-var Am = g(km), jm = {
+Om.node;
+var km = f(Om), Am = {
 	name: "citrus",
 	size: 24,
 	node: [
@@ -10581,8 +10579,8 @@ var Am = g(km), jm = {
 		}]
 	]
 };
-jm.node;
-var Mm = g(jm), Nm = {
+Am.node;
+var jm = f(Am), Mm = {
 	name: "clapperboard",
 	size: 24,
 	node: [
@@ -10604,8 +10602,8 @@ var Mm = g(jm), Nm = {
 		}]
 	]
 };
-Nm.node;
-var Pm = g(Nm), Fm = {
+Mm.node;
+var Nm = f(Mm), Pm = {
 	name: "clef-alto",
 	size: 24,
 	node: [
@@ -10623,8 +10621,8 @@ var Pm = g(Nm), Fm = {
 		}]
 	]
 };
-Fm.node;
-var Im = g(Fm), Lm = {
+Pm.node;
+var Fm = f(Pm), Im = {
 	name: "clef-bass",
 	size: 24,
 	node: [
@@ -10648,8 +10646,8 @@ var Im = g(Fm), Lm = {
 		}]
 	]
 };
-Lm.node;
-var Rm = g(Lm), zm = {
+Im.node;
+var Lm = f(Im), Rm = {
 	name: "clef-treble",
 	size: 24,
 	node: [["path", {
@@ -10657,8 +10655,8 @@ var Rm = g(Lm), zm = {
 		key: "1v9z72"
 	}]]
 };
-zm.node;
-var Bm = g(zm), Vm = {
+Rm.node;
+var zm = f(Rm), Bm = {
 	name: "clipboard-clock",
 	size: 24,
 	node: [
@@ -10690,8 +10688,8 @@ var Bm = g(zm), Vm = {
 		}]
 	]
 };
-Vm.node;
-var Hm = g(Vm), Um = {
+Bm.node;
+var Vm = f(Bm), Hm = {
 	name: "clipboard-check",
 	size: 24,
 	node: [
@@ -10714,8 +10712,8 @@ var Hm = g(Vm), Um = {
 		}]
 	]
 };
-Um.node;
-var Wm = g(Um), Gm = {
+Hm.node;
+var Um = f(Hm), Wm = {
 	name: "clipboard-copy",
 	size: 24,
 	node: [
@@ -10746,8 +10744,8 @@ var Wm = g(Um), Gm = {
 		}]
 	]
 };
-Gm.node;
-var Km = g(Gm), qm = {
+Wm.node;
+var Gm = f(Wm), Km = {
 	name: "clipboard-list",
 	size: 24,
 	node: [
@@ -10782,8 +10780,8 @@ var Km = g(Gm), qm = {
 		}]
 	]
 };
-qm.node;
-var Jm = g(qm), Ym = {
+Km.node;
+var qm = f(Km), Jm = {
 	name: "clipboard-minus",
 	size: 24,
 	node: [
@@ -10806,8 +10804,8 @@ var Jm = g(qm), Ym = {
 		}]
 	]
 };
-Ym.node;
-var Xm = g(Ym), Zm = {
+Jm.node;
+var Ym = f(Jm), Xm = {
 	name: "clipboard-paste",
 	size: 24,
 	node: [
@@ -10837,8 +10835,8 @@ var Xm = g(Ym), Zm = {
 		}]
 	]
 };
-Zm.node;
-var Qm = g(Zm), $m = {
+Xm.node;
+var Zm = f(Xm), Qm = {
 	name: "clipboard-pen-line",
 	size: 24,
 	node: [
@@ -10869,8 +10867,8 @@ var Qm = g(Zm), $m = {
 	],
 	aliases: ["clipboard-signature"]
 };
-$m.node;
-var eh = g($m), th = {
+Qm.node;
+var $m = f(Qm), eh = {
 	name: "clipboard-pen",
 	size: 24,
 	node: [
@@ -10897,8 +10895,8 @@ var eh = g($m), th = {
 	],
 	aliases: ["clipboard-edit"]
 };
-th.node;
-var nh = g(th), rh = {
+eh.node;
+var th = f(eh), nh = {
 	name: "clipboard-plus",
 	size: 24,
 	node: [
@@ -10925,8 +10923,8 @@ var nh = g(th), rh = {
 		}]
 	]
 };
-rh.node;
-var ih = g(rh), ah = {
+nh.node;
+var rh = f(nh), ih = {
 	name: "clipboard-type",
 	size: 24,
 	node: [
@@ -10957,8 +10955,8 @@ var ih = g(rh), ah = {
 		}]
 	]
 };
-ah.node;
-var oh = g(ah), sh = {
+ih.node;
+var ah = f(ih), oh = {
 	name: "clipboard",
 	size: 24,
 	node: [["rect", {
@@ -10974,8 +10972,8 @@ var oh = g(ah), sh = {
 		key: "116196"
 	}]]
 };
-sh.node;
-var ch = g(sh), lh = {
+oh.node;
+var sh = f(oh), ch = {
 	name: "clock-1",
 	size: 24,
 	node: [["circle", {
@@ -10988,8 +10986,8 @@ var ch = g(sh), lh = {
 		key: "miptyd"
 	}]]
 };
-lh.node;
-var uh = g(lh), dh = {
+ch.node;
+var lh = f(ch), uh = {
 	name: "clipboard-x",
 	size: 24,
 	node: [
@@ -11016,8 +11014,8 @@ var uh = g(lh), dh = {
 		}]
 	]
 };
-dh.node;
-var fh = g(dh), ph = {
+uh.node;
+var dh = f(uh), fh = {
 	name: "clock-10",
 	size: 24,
 	node: [["circle", {
@@ -11030,8 +11028,8 @@ var fh = g(dh), ph = {
 		key: "cedpoo"
 	}]]
 };
-ph.node;
-var mh = g(ph), hh = {
+fh.node;
+var ph = f(fh), mh = {
 	name: "clock-11",
 	size: 24,
 	node: [["circle", {
@@ -11044,8 +11042,8 @@ var mh = g(ph), hh = {
 		key: "ns39ag"
 	}]]
 };
-hh.node;
-var gh = g(hh), _h = {
+mh.node;
+var hh = f(mh), gh = {
 	name: "clock-12",
 	size: 24,
 	node: [["circle", {
@@ -11058,8 +11056,8 @@ var gh = g(hh), _h = {
 		key: "1ipuwl"
 	}]]
 };
-_h.node;
-var vh = g(_h), yh = {
+gh.node;
+var _h = f(gh), vh = {
 	name: "clock-2",
 	size: 24,
 	node: [["circle", {
@@ -11072,8 +11070,8 @@ var vh = g(_h), yh = {
 		key: "1r2kuh"
 	}]]
 };
-yh.node;
-var bh = g(yh), xh = {
+vh.node;
+var yh = f(vh), bh = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -11086,8 +11084,8 @@ var bh = g(yh), xh = {
 		key: "135r8i"
 	}]]
 };
-xh.node;
-var Sh = g(xh), Ch = {
+bh.node;
+var xh = f(bh), Sh = {
 	name: "clock-4",
 	size: 24,
 	node: [["circle", {
@@ -11100,8 +11098,8 @@ var Sh = g(xh), Ch = {
 		key: "mmk7yg"
 	}]]
 };
-Ch.node;
-var wh = g(Ch), Th = {
+Sh.node;
+var Ch = f(Sh), wh = {
 	name: "clock-5",
 	size: 24,
 	node: [["circle", {
@@ -11114,8 +11112,8 @@ var wh = g(Ch), Th = {
 		key: "1287s9"
 	}]]
 };
-Th.node;
-var Eh = g(Th), Dh = {
+wh.node;
+var Th = f(wh), Eh = {
 	name: "clock-6",
 	size: 24,
 	node: [["circle", {
@@ -11128,8 +11126,8 @@ var Eh = g(Th), Dh = {
 		key: "wf7rdh"
 	}]]
 };
-Dh.node;
-var Oh = g(Dh), kh = {
+Eh.node;
+var Dh = f(Eh), Oh = {
 	name: "clock-7",
 	size: 24,
 	node: [["circle", {
@@ -11142,8 +11140,8 @@ var Oh = g(Dh), kh = {
 		key: "1095bu"
 	}]]
 };
-kh.node;
-var Ah = g(kh), jh = {
+Oh.node;
+var kh = f(Oh), Ah = {
 	name: "clock-8",
 	size: 24,
 	node: [["circle", {
@@ -11156,8 +11154,8 @@ var Ah = g(kh), jh = {
 		key: "imc3wl"
 	}]]
 };
-jh.node;
-var Mh = g(jh), Nh = {
+Ah.node;
+var jh = f(Ah), Mh = {
 	name: "clock-9",
 	size: 24,
 	node: [["circle", {
@@ -11170,8 +11168,8 @@ var Mh = g(jh), Nh = {
 		key: "u39vzm"
 	}]]
 };
-Nh.node;
-var Ph = g(Nh), Fh = {
+Mh.node;
+var Nh = f(Mh), Ph = {
 	name: "clock-arrow-down",
 	size: 24,
 	node: [
@@ -11193,8 +11191,8 @@ var Ph = g(Nh), Fh = {
 		}]
 	]
 };
-Fh.node;
-var Ih = g(Fh), Lh = {
+Ph.node;
+var Fh = f(Ph), Ih = {
 	name: "clock-arrow-left",
 	size: 24,
 	node: [
@@ -11216,8 +11214,8 @@ var Ih = g(Fh), Lh = {
 		}]
 	]
 };
-Lh.node;
-var Rh = g(Lh), zh = {
+Ih.node;
+var Lh = f(Ih), Rh = {
 	name: "clock-alert",
 	size: 24,
 	node: [
@@ -11239,8 +11237,8 @@ var Rh = g(Lh), zh = {
 		}]
 	]
 };
-zh.node;
-var Bh = g(zh), Vh = {
+Rh.node;
+var zh = f(Rh), Bh = {
 	name: "clock-arrow-right",
 	size: 24,
 	node: [
@@ -11262,8 +11260,8 @@ var Bh = g(zh), Vh = {
 		}]
 	]
 };
-Vh.node;
-var Hh = g(Vh), Uh = {
+Bh.node;
+var Vh = f(Bh), Hh = {
 	name: "clock-arrow-up",
 	size: 24,
 	node: [
@@ -11285,8 +11283,8 @@ var Hh = g(Vh), Uh = {
 		}]
 	]
 };
-Uh.node;
-var Wh = g(Uh), Gh = {
+Hh.node;
+var Uh = f(Hh), Wh = {
 	name: "clock-check",
 	size: 24,
 	node: [
@@ -11304,8 +11302,8 @@ var Wh = g(Uh), Gh = {
 		}]
 	]
 };
-Gh.node;
-var Kh = g(Gh), qh = {
+Wh.node;
+var Gh = f(Wh), Kh = {
 	name: "clock-fading",
 	size: 24,
 	node: [
@@ -11335,8 +11333,8 @@ var Kh = g(Gh), qh = {
 		}]
 	]
 };
-qh.node;
-var Jh = g(qh), Yh = {
+Kh.node;
+var qh = f(Kh), Jh = {
 	name: "clock-plus",
 	size: 24,
 	node: [
@@ -11358,8 +11356,8 @@ var Jh = g(qh), Yh = {
 		}]
 	]
 };
-Yh.node;
-var Xh = g(Yh), Zh = {
+Jh.node;
+var Yh = f(Jh), Xh = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -11372,8 +11370,8 @@ var Xh = g(Yh), Zh = {
 		key: "mmk7yg"
 	}]]
 };
-Zh.node;
-var Qh = g(Zh), $h = {
+Xh.node;
+var Zh = f(Xh), Qh = {
 	name: "closed-caption",
 	size: 24,
 	node: [
@@ -11395,8 +11393,8 @@ var Qh = g(Zh), $h = {
 		}]
 	]
 };
-$h.node;
-var eg = g($h), tg = {
+Qh.node;
+var $h = f(Qh), eg = {
 	name: "cloud-alert",
 	size: 24,
 	node: [
@@ -11414,8 +11412,8 @@ var eg = g($h), tg = {
 		}]
 	]
 };
-tg.node;
-var ng = g(tg), rg = {
+eg.node;
+var tg = f(eg), ng = {
 	name: "cloud-backup",
 	size: 24,
 	node: [
@@ -11433,8 +11431,8 @@ var ng = g(tg), rg = {
 		}]
 	]
 };
-rg.node;
-var ig = g(rg), ag = {
+ng.node;
+var rg = f(ng), ig = {
 	name: "cloud-check",
 	size: 24,
 	node: [["path", {
@@ -11445,8 +11443,8 @@ var ig = g(rg), ag = {
 		key: "1xtj56"
 	}]]
 };
-ag.node;
-var og = g(ag), sg = {
+ig.node;
+var ag = f(ig), og = {
 	name: "cloud-cog",
 	size: 24,
 	node: [
@@ -11488,8 +11486,8 @@ var og = g(ag), sg = {
 		}]
 	]
 };
-sg.node;
-var cg = g(sg), lg = {
+og.node;
+var sg = f(og), cg = {
 	name: "cloud-download",
 	size: 24,
 	node: [
@@ -11508,8 +11506,8 @@ var cg = g(sg), lg = {
 	],
 	aliases: ["download-cloud"]
 };
-lg.node;
-var ug = g(lg), dg = {
+cg.node;
+var lg = f(cg), ug = {
 	name: "cloud-drizzle",
 	size: 24,
 	node: [
@@ -11543,8 +11541,8 @@ var ug = g(lg), dg = {
 		}]
 	]
 };
-dg.node;
-var fg = g(dg), pg = {
+ug.node;
+var dg = f(ug), fg = {
 	name: "cloud-fog",
 	size: 24,
 	node: [
@@ -11562,8 +11560,8 @@ var fg = g(dg), pg = {
 		}]
 	]
 };
-pg.node;
-var mg = g(pg), hg = {
+fg.node;
+var pg = f(fg), mg = {
 	name: "cloud-hail",
 	size: 24,
 	node: [
@@ -11597,8 +11595,8 @@ var mg = g(pg), hg = {
 		}]
 	]
 };
-hg.node;
-var gg = g(hg), _g = {
+mg.node;
+var hg = f(mg), gg = {
 	name: "cloud-lightning",
 	size: 24,
 	node: [["path", {
@@ -11609,8 +11607,8 @@ var gg = g(hg), _g = {
 		key: "1t22er"
 	}]]
 };
-_g.node;
-var vg = g(_g), yg = {
+gg.node;
+var _g = f(gg), vg = {
 	name: "cloud-moon-rain",
 	size: 24,
 	node: [
@@ -11632,8 +11630,8 @@ var vg = g(_g), yg = {
 		}]
 	]
 };
-yg.node;
-var bg = g(yg), xg = {
+vg.node;
+var yg = f(vg), bg = {
 	name: "cloud-moon",
 	size: 24,
 	node: [["path", {
@@ -11644,8 +11642,8 @@ var bg = g(yg), xg = {
 		key: "zwnc1e"
 	}]]
 };
-xg.node;
-var Sg = g(xg), Cg = {
+bg.node;
+var xg = f(bg), Sg = {
 	name: "cloud-off",
 	size: 24,
 	node: [
@@ -11663,8 +11661,8 @@ var Sg = g(xg), Cg = {
 		}]
 	]
 };
-Cg.node;
-var wg = g(Cg), Tg = {
+Sg.node;
+var Cg = f(Sg), wg = {
 	name: "cloud-rain-wind",
 	size: 24,
 	node: [
@@ -11686,8 +11684,8 @@ var wg = g(Cg), Tg = {
 		}]
 	]
 };
-Tg.node;
-var Eg = g(Tg), Dg = {
+wg.node;
+var Tg = f(wg), Iee = {
 	name: "cloud-rain",
 	size: 24,
 	node: [
@@ -11709,8 +11707,8 @@ var Eg = g(Tg), Dg = {
 		}]
 	]
 };
-Dg.node;
-var Og = g(Dg), kg = {
+Iee.node;
+var Eg = f(Iee), Lee = {
 	name: "cloud-snow",
 	size: 24,
 	node: [
@@ -11744,8 +11742,8 @@ var Og = g(Dg), kg = {
 		}]
 	]
 };
-kg.node;
-var Ag = g(kg), jg = {
+Lee.node;
+var Dg = f(Lee), Ree = {
 	name: "cloud-sun-rain",
 	size: 24,
 	node: [
@@ -11783,8 +11781,8 @@ var Ag = g(kg), jg = {
 		}]
 	]
 };
-jg.node;
-var Mg = g(jg), Ng = {
+Ree.node;
+var Og = f(Ree), zee = {
 	name: "cloud-sun",
 	size: 24,
 	node: [
@@ -11814,8 +11812,8 @@ var Mg = g(jg), Ng = {
 		}]
 	]
 };
-Ng.node;
-var Pg = g(Ng), Fg = {
+zee.node;
+var kg = f(zee), Bee = {
 	name: "cloud-sync",
 	size: 24,
 	node: [
@@ -11841,8 +11839,8 @@ var Pg = g(Ng), Fg = {
 		}]
 	]
 };
-Fg.node;
-var Ig = g(Fg), Lg = {
+Bee.node;
+var Ag = f(Bee), Vee = {
 	name: "cloud-upload",
 	size: 24,
 	node: [
@@ -11861,8 +11859,8 @@ var Ig = g(Fg), Lg = {
 	],
 	aliases: ["upload-cloud"]
 };
-Lg.node;
-var Rg = g(Lg), Iee = {
+Vee.node;
+var jg = f(Vee), Hee = {
 	name: "cloud",
 	size: 24,
 	node: [["path", {
@@ -11870,8 +11868,8 @@ var Rg = g(Lg), Iee = {
 		key: "p7xjir"
 	}]]
 };
-Iee.node;
-var zg = g(Iee), Lee = {
+Hee.node;
+var Mg = f(Hee), Uee = {
 	name: "cloudy",
 	size: 24,
 	node: [["path", {
@@ -11882,8 +11880,8 @@ var zg = g(Iee), Lee = {
 		key: "leugyv"
 	}]]
 };
-Lee.node;
-var Bg = g(Lee), Ree = {
+Uee.node;
+var Ng = f(Uee), Wee = {
 	name: "clover",
 	size: 24,
 	node: [
@@ -11901,8 +11899,8 @@ var Bg = g(Lee), Ree = {
 		}]
 	]
 };
-Ree.node;
-var Vg = g(Ree), zee = {
+Wee.node;
+var Pg = f(Wee), Gee = {
 	name: "club",
 	size: 24,
 	node: [["path", {
@@ -11913,8 +11911,8 @@ var Vg = g(Ree), zee = {
 		key: "ogfahf"
 	}]]
 };
-zee.node;
-var Hg = g(zee), Bee = {
+Gee.node;
+var Fg = f(Gee), Kee = {
 	name: "code-xml",
 	size: 24,
 	node: [
@@ -11933,8 +11931,8 @@ var Hg = g(zee), Bee = {
 	],
 	aliases: ["code-2"]
 };
-Bee.node;
-var Ug = g(Bee), Vee = {
+Kee.node;
+var Ig = f(Kee), qee = {
 	name: "code",
 	size: 24,
 	node: [["path", {
@@ -11945,8 +11943,8 @@ var Ug = g(Bee), Vee = {
 		key: "ppft3o"
 	}]]
 };
-Vee.node;
-var Wg = g(Vee), Hee = {
+qee.node;
+var Lg = f(qee), Jee = {
 	name: "cog",
 	size: 24,
 	node: [
@@ -12012,8 +12010,8 @@ var Wg = g(Vee), Hee = {
 		}]
 	]
 };
-Hee.node;
-var Gg = g(Hee), Uee = {
+Jee.node;
+var Rg = f(Jee), Yee = {
 	name: "coffee",
 	size: 24,
 	node: [
@@ -12035,8 +12033,8 @@ var Gg = g(Hee), Uee = {
 		}]
 	]
 };
-Uee.node;
-var Kg = g(Uee), Wee = {
+Yee.node;
+var zg = f(Yee), Xee = {
 	name: "coins",
 	size: 24,
 	node: [
@@ -12060,8 +12058,8 @@ var Kg = g(Uee), Wee = {
 		}]
 	]
 };
-Wee.node;
-var qg = g(Wee), Gee = {
+Xee.node;
+var Bg = f(Xee), Zee = {
 	name: "columns-2",
 	size: 24,
 	node: [["rect", {
@@ -12077,8 +12075,8 @@ var qg = g(Wee), Gee = {
 	}]],
 	aliases: ["columns"]
 };
-Gee.node;
-var Jg = g(Gee), Kee = {
+Zee.node;
+var Vg = f(Zee), Qee = {
 	name: "columns-3-cog",
 	size: 24,
 	node: [
@@ -12135,8 +12133,8 @@ var Jg = g(Gee), Kee = {
 	],
 	aliases: ["columns-settings", "table-config"]
 };
-Kee.node;
-var V = g(Kee), qee = {
+Qee.node;
+var H = f(Qee), $ee = {
 	name: "columns-3",
 	size: 24,
 	node: [
@@ -12159,8 +12157,8 @@ var V = g(Kee), qee = {
 	],
 	aliases: ["panels-left-right"]
 };
-qee.node;
-var Yg = g(qee), Jee = {
+$ee.node;
+var Hg = f($ee), ete = {
 	name: "columns-4",
 	size: 24,
 	node: [
@@ -12186,8 +12184,8 @@ var Yg = g(qee), Jee = {
 		}]
 	]
 };
-Jee.node;
-var Xg = g(Jee), Yee = {
+ete.node;
+var Ug = f(ete), tte = {
 	name: "combine",
 	size: 24,
 	node: [
@@ -12225,8 +12223,8 @@ var Xg = g(Jee), Yee = {
 		}]
 	]
 };
-Yee.node;
-var Zg = g(Yee), Xee = {
+tte.node;
+var Wg = f(tte), nte = {
 	name: "command",
 	size: 24,
 	node: [["path", {
@@ -12234,8 +12232,8 @@ var Zg = g(Yee), Xee = {
 		key: "11bfej"
 	}]]
 };
-Xee.node;
-var Qg = g(Xee), Zee = {
+nte.node;
+var Gg = f(nte), rte = {
 	name: "compass",
 	size: 24,
 	node: [["circle", {
@@ -12248,8 +12246,8 @@ var Qg = g(Xee), Zee = {
 		key: "9ktpf1"
 	}]]
 };
-Zee.node;
-var $g = g(Zee), Qee = {
+rte.node;
+var Kg = f(rte), ite = {
 	name: "component",
 	size: 24,
 	node: [
@@ -12271,8 +12269,8 @@ var $g = g(Zee), Qee = {
 		}]
 	]
 };
-Qee.node;
-var e_ = g(Qee), $ee = {
+ite.node;
+var qg = f(ite), ate = {
 	name: "computer",
 	size: 24,
 	node: [
@@ -12306,8 +12304,8 @@ var e_ = g(Qee), $ee = {
 		}]
 	]
 };
-$ee.node;
-var t_ = g($ee), ete = {
+ate.node;
+var Jg = f(ate), ote = {
 	name: "concierge-bell",
 	size: 24,
 	node: [
@@ -12329,8 +12327,8 @@ var t_ = g($ee), ete = {
 		}]
 	]
 };
-ete.node;
-var n_ = g(ete), tte = {
+ote.node;
+var Yg = f(ote), ste = {
 	name: "cone",
 	size: 24,
 	node: [["path", {
@@ -12344,8 +12342,8 @@ var n_ = g(ete), tte = {
 		key: "1ji25f"
 	}]]
 };
-tte.node;
-var r_ = g(tte), nte = {
+ste.node;
+var Xg = f(ste), Zg = {
 	name: "construction",
 	size: 24,
 	node: [
@@ -12387,8 +12385,8 @@ var r_ = g(tte), nte = {
 		}]
 	]
 };
-nte.node;
-var i_ = g(nte), rte = {
+Zg.node;
+var Qg = f(Zg), $g = {
 	name: "contact-round",
 	size: 24,
 	node: [
@@ -12421,8 +12419,8 @@ var i_ = g(nte), rte = {
 	],
 	aliases: ["contact-2"]
 };
-rte.node;
-var a_ = g(rte), ite = {
+$g.node;
+var e_ = f($g), t_ = {
 	name: "contact",
 	size: 24,
 	node: [
@@ -12454,8 +12452,8 @@ var a_ = g(rte), ite = {
 		}]
 	]
 };
-ite.node;
-var o_ = g(ite), ate = {
+t_.node;
+var n_ = f(t_), r_ = {
 	name: "container",
 	size: 24,
 	node: [
@@ -12481,8 +12479,8 @@ var o_ = g(ite), ate = {
 		}]
 	]
 };
-ate.node;
-var s_ = g(ate), ote = {
+r_.node;
+var i_ = f(r_), a_ = {
 	name: "contrast",
 	size: 24,
 	node: [["circle", {
@@ -12495,8 +12493,8 @@ var s_ = g(ate), ote = {
 		key: "j4l70d"
 	}]]
 };
-ote.node;
-var c_ = g(ote), ste = {
+a_.node;
+var o_ = f(a_), s_ = {
 	name: "cookie",
 	size: 24,
 	node: [
@@ -12538,8 +12536,8 @@ var c_ = g(ote), ste = {
 		}]
 	]
 };
-ste.node;
-var l_ = g(ste), cte = {
+s_.node;
+var c_ = f(s_), l_ = {
 	name: "cooking-pot",
 	size: 24,
 	node: [
@@ -12561,8 +12559,8 @@ var l_ = g(ste), cte = {
 		}]
 	]
 };
-cte.node;
-var u_ = g(cte), d_ = {
+l_.node;
+var u_ = f(l_), d_ = {
 	name: "copy-check",
 	size: 24,
 	node: [
@@ -12586,7 +12584,7 @@ var u_ = g(cte), d_ = {
 	]
 };
 d_.node;
-var f_ = g(d_), p_ = {
+var f_ = f(d_), p_ = {
 	name: "copy-minus",
 	size: 24,
 	node: [
@@ -12613,7 +12611,7 @@ var f_ = g(d_), p_ = {
 	]
 };
 p_.node;
-var m_ = g(p_), h_ = {
+var m_ = f(p_), h_ = {
 	name: "copy-plus",
 	size: 24,
 	node: [
@@ -12647,7 +12645,7 @@ var m_ = g(p_), h_ = {
 	]
 };
 h_.node;
-var g_ = g(h_), __ = {
+var g_ = f(h_), __ = {
 	name: "copy-slash",
 	size: 24,
 	node: [
@@ -12674,7 +12672,7 @@ var g_ = g(h_), __ = {
 	]
 };
 __.node;
-var v_ = g(__), y_ = {
+var v_ = f(__), y_ = {
 	name: "copy-x",
 	size: 24,
 	node: [
@@ -12701,7 +12699,7 @@ var v_ = g(__), y_ = {
 	]
 };
 y_.node;
-var b_ = g(y_), x_ = {
+var b_ = f(y_), x_ = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12718,7 +12716,7 @@ var b_ = g(y_), x_ = {
 	}]]
 };
 x_.node;
-var S_ = g(x_), C_ = {
+var S_ = f(x_), C_ = {
 	name: "copyleft",
 	size: 24,
 	node: [["circle", {
@@ -12732,7 +12730,7 @@ var S_ = g(x_), C_ = {
 	}]]
 };
 C_.node;
-var w_ = g(C_), T_ = {
+var w_ = f(C_), T_ = {
 	name: "copyright",
 	size: 24,
 	node: [["circle", {
@@ -12746,7 +12744,7 @@ var w_ = g(C_), T_ = {
 	}]]
 };
 T_.node;
-var E_ = g(T_), D_ = {
+var E_ = f(T_), D_ = {
 	name: "corner-down-left",
 	size: 24,
 	node: [["path", {
@@ -12758,7 +12756,7 @@ var E_ = g(T_), D_ = {
 	}]]
 };
 D_.node;
-var O_ = g(D_), k_ = {
+var O_ = f(D_), k_ = {
 	name: "corner-down-right",
 	size: 24,
 	node: [["path", {
@@ -12770,7 +12768,7 @@ var O_ = g(D_), k_ = {
 	}]]
 };
 k_.node;
-var A_ = g(k_), j_ = {
+var A_ = f(k_), j_ = {
 	name: "corner-left-down",
 	size: 24,
 	node: [["path", {
@@ -12782,7 +12780,7 @@ var A_ = g(k_), j_ = {
 	}]]
 };
 j_.node;
-var M_ = g(j_), N_ = {
+var M_ = f(j_), N_ = {
 	name: "corner-left-up",
 	size: 24,
 	node: [["path", {
@@ -12794,7 +12792,7 @@ var M_ = g(j_), N_ = {
 	}]]
 };
 N_.node;
-var P_ = g(N_), F_ = {
+var P_ = f(N_), F_ = {
 	name: "corner-right-down",
 	size: 24,
 	node: [["path", {
@@ -12806,7 +12804,7 @@ var P_ = g(N_), F_ = {
 	}]]
 };
 F_.node;
-var I_ = g(F_), L_ = {
+var I_ = f(F_), L_ = {
 	name: "corner-right-up",
 	size: 24,
 	node: [["path", {
@@ -12818,7 +12816,7 @@ var I_ = g(F_), L_ = {
 	}]]
 };
 L_.node;
-var R_ = g(L_), z_ = {
+var R_ = f(L_), z_ = {
 	name: "corner-up-left",
 	size: 24,
 	node: [["path", {
@@ -12830,7 +12828,7 @@ var R_ = g(L_), z_ = {
 	}]]
 };
 z_.node;
-var B_ = g(z_), V_ = {
+var B_ = f(z_), V_ = {
 	name: "corner-up-right",
 	size: 24,
 	node: [["path", {
@@ -12842,7 +12840,7 @@ var B_ = g(z_), V_ = {
 	}]]
 };
 V_.node;
-var H_ = g(V_), U_ = {
+var H_ = f(V_), U_ = {
 	name: "cpu",
 	size: 24,
 	node: [
@@ -12913,7 +12911,7 @@ var H_ = g(V_), U_ = {
 	]
 };
 U_.node;
-var W_ = g(U_), G_ = {
+var W_ = f(U_), G_ = {
 	name: "creative-commons",
 	size: 24,
 	node: [
@@ -12934,7 +12932,7 @@ var W_ = g(U_), G_ = {
 	]
 };
 G_.node;
-var K_ = g(G_), q_ = {
+var K_ = f(G_), q_ = {
 	name: "credit-card-check",
 	size: 24,
 	node: [
@@ -12957,7 +12955,7 @@ var K_ = g(G_), q_ = {
 	]
 };
 q_.node;
-var J_ = g(q_), Y_ = {
+var J_ = f(q_), Y_ = {
 	name: "credit-card-minus",
 	size: 24,
 	node: [
@@ -12980,7 +12978,7 @@ var J_ = g(q_), Y_ = {
 	]
 };
 Y_.node;
-var X_ = g(Y_), Z_ = {
+var X_ = f(Y_), Z_ = {
 	name: "credit-card-plus",
 	size: 24,
 	node: [
@@ -13007,7 +13005,7 @@ var X_ = g(Y_), Z_ = {
 	]
 };
 Z_.node;
-var Q_ = g(Z_), $_ = {
+var Q_ = f(Z_), $_ = {
 	name: "credit-card-reader",
 	size: 24,
 	node: [
@@ -13030,7 +13028,7 @@ var Q_ = g(Z_), $_ = {
 	]
 };
 $_.node;
-var ev = g($_), tv = {
+var ev = f($_), tv = {
 	name: "credit-card-x",
 	size: 24,
 	node: [
@@ -13057,7 +13055,7 @@ var ev = g($_), tv = {
 	]
 };
 tv.node;
-var nv = g(tv), rv = {
+var nv = f(tv), rv = {
 	name: "credit-card",
 	size: 24,
 	node: [
@@ -13083,7 +13081,7 @@ var nv = g(tv), rv = {
 	]
 };
 rv.node;
-var iv = g(rv), av = {
+var iv = f(rv), av = {
 	name: "croissant",
 	size: 24,
 	node: [
@@ -13110,7 +13108,7 @@ var iv = g(rv), av = {
 	]
 };
 av.node;
-var ov = g(av), sv = {
+var ov = f(av), sv = {
 	name: "crop",
 	size: 24,
 	node: [["path", {
@@ -13122,7 +13120,7 @@ var ov = g(av), sv = {
 	}]]
 };
 sv.node;
-var cv = g(sv), lv = {
+var cv = f(sv), lv = {
 	name: "cross",
 	size: 24,
 	node: [["path", {
@@ -13131,7 +13129,7 @@ var cv = g(sv), lv = {
 	}]]
 };
 lv.node;
-var uv = g(lv), dv = {
+var uv = f(lv), dv = {
 	name: "crosshair",
 	size: 24,
 	node: [
@@ -13172,7 +13170,7 @@ var uv = g(lv), dv = {
 	]
 };
 dv.node;
-var fv = g(dv), pv = {
+var fv = f(dv), pv = {
 	name: "crown",
 	size: 24,
 	node: [["path", {
@@ -13184,7 +13182,7 @@ var fv = g(dv), pv = {
 	}]]
 };
 pv.node;
-var mv = g(pv), hv = {
+var mv = f(pv), hv = {
 	name: "cuboid",
 	size: 24,
 	node: [
@@ -13203,7 +13201,7 @@ var mv = g(pv), hv = {
 	]
 };
 hv.node;
-var gv = g(hv), _v = {
+var gv = f(hv), _v = {
 	name: "cup-soda",
 	size: 24,
 	node: [
@@ -13226,7 +13224,7 @@ var gv = g(hv), _v = {
 	]
 };
 _v.node;
-var vv = g(_v), yv = {
+var vv = f(_v), yv = {
 	name: "cupcake",
 	size: 24,
 	node: [
@@ -13263,7 +13261,7 @@ var vv = g(_v), yv = {
 	]
 };
 yv.node;
-var bv = g(yv), xv = {
+var bv = f(yv), xv = {
 	name: "currency",
 	size: 24,
 	node: [
@@ -13304,7 +13302,7 @@ var bv = g(yv), xv = {
 	]
 };
 xv.node;
-var Sv = g(xv), Cv = {
+var Sv = f(xv), Cv = {
 	name: "cylinder",
 	size: 24,
 	node: [["ellipse", {
@@ -13319,7 +13317,7 @@ var Sv = g(xv), Cv = {
 	}]]
 };
 Cv.node;
-var wv = g(Cv), Tv = {
+var wv = f(Cv), Tv = {
 	name: "dam",
 	size: 24,
 	node: [
@@ -13354,7 +13352,7 @@ var wv = g(Cv), Tv = {
 	]
 };
 Tv.node;
-var Ev = g(Tv), Dv = {
+var Ev = f(Tv), Dv = {
 	name: "database-arrow-down",
 	size: 24,
 	node: [
@@ -13388,7 +13386,7 @@ var Ev = g(Tv), Dv = {
 	]
 };
 Dv.node;
-var Ov = g(Dv), kv = {
+var Ov = f(Dv), kv = {
 	name: "database-arrow-up",
 	size: 24,
 	node: [
@@ -13422,7 +13420,7 @@ var Ov = g(Dv), kv = {
 	]
 };
 kv.node;
-var Av = g(kv), jv = {
+var Av = f(kv), jv = {
 	name: "database-backup",
 	size: 24,
 	node: [
@@ -13456,7 +13454,7 @@ var Av = g(kv), jv = {
 	]
 };
 jv.node;
-var Mv = g(jv), Nv = {
+var Mv = f(jv), Nv = {
 	name: "database-check",
 	size: 24,
 	node: [
@@ -13486,7 +13484,7 @@ var Mv = g(jv), Nv = {
 	]
 };
 Nv.node;
-var Pv = g(Nv), Fv = {
+var Pv = f(Nv), Fv = {
 	name: "database-minus",
 	size: 24,
 	node: [
@@ -13516,7 +13514,7 @@ var Pv = g(Nv), Fv = {
 	]
 };
 Fv.node;
-var Iv = g(Fv), Lv = {
+var Iv = f(Fv), Lv = {
 	name: "database-plus",
 	size: 24,
 	node: [
@@ -13550,7 +13548,7 @@ var Iv = g(Fv), Lv = {
 	]
 };
 Lv.node;
-var Rv = g(Lv), zv = {
+var Rv = f(Lv), zv = {
 	name: "database-search",
 	size: 24,
 	node: [
@@ -13586,7 +13584,7 @@ var Rv = g(Lv), zv = {
 	]
 };
 zv.node;
-var Bv = g(zv), Vv = {
+var Bv = f(zv), Vv = {
 	name: "database-x",
 	size: 24,
 	node: [
@@ -13624,7 +13622,7 @@ var Bv = g(zv), Vv = {
 	]
 };
 Vv.node;
-var Hv = g(Vv), Uv = {
+var Hv = f(Vv), Uv = {
 	name: "database-zap",
 	size: 24,
 	node: [
@@ -13654,7 +13652,7 @@ var Hv = g(Vv), Uv = {
 	]
 };
 Uv.node;
-var Wv = g(Uv), Gv = {
+var Wv = f(Uv), Gv = {
 	name: "database",
 	size: 24,
 	node: [
@@ -13676,7 +13674,7 @@ var Wv = g(Uv), Gv = {
 	]
 };
 Gv.node;
-var Kv = g(Gv), qv = {
+var Kv = f(Gv), qv = {
 	name: "decimals-arrow-left",
 	size: 24,
 	node: [
@@ -13703,7 +13701,7 @@ var Kv = g(Gv), qv = {
 	]
 };
 qv.node;
-var Jv = g(qv), Yv = {
+var Jv = f(qv), Yv = {
 	name: "decimals-arrow-right",
 	size: 24,
 	node: [
@@ -13738,7 +13736,7 @@ var Jv = g(qv), Yv = {
 	]
 };
 Yv.node;
-var Xv = g(Yv), Zv = {
+var Xv = f(Yv), Zv = {
 	name: "delete",
 	size: 24,
 	node: [
@@ -13757,7 +13755,7 @@ var Xv = g(Yv), Zv = {
 	]
 };
 Zv.node;
-var Qv = g(Zv), $v = {
+var Qv = f(Zv), $v = {
 	name: "dessert",
 	size: 24,
 	node: [
@@ -13778,7 +13776,7 @@ var Qv = g(Zv), $v = {
 	]
 };
 $v.node;
-var ey = g($v), ty = {
+var ey = f($v), ty = {
 	name: "diameter",
 	size: 24,
 	node: [
@@ -13809,7 +13807,7 @@ var ey = g($v), ty = {
 	]
 };
 ty.node;
-var ny = g(ty), ry = {
+var ny = f(ty), ry = {
 	name: "diamond-minus",
 	size: 24,
 	node: [["path", {
@@ -13821,7 +13819,7 @@ var ny = g(ty), ry = {
 	}]]
 };
 ry.node;
-var iy = g(ry), ay = {
+var iy = f(ry), ay = {
 	name: "diamond-percent",
 	size: 24,
 	node: [
@@ -13845,7 +13843,7 @@ var iy = g(ry), ay = {
 	aliases: ["percent-diamond"]
 };
 ay.node;
-var oy = g(ay), sy = {
+var oy = f(ay), sy = {
 	name: "diamond-plus",
 	size: 24,
 	node: [
@@ -13864,7 +13862,7 @@ var oy = g(ay), sy = {
 	]
 };
 sy.node;
-var cy = g(sy), ly = {
+var cy = f(sy), ly = {
 	name: "diamond",
 	size: 24,
 	node: [["path", {
@@ -13873,7 +13871,7 @@ var cy = g(sy), ly = {
 	}]]
 };
 ly.node;
-var uy = g(ly), dy = {
+var uy = f(ly), dy = {
 	name: "dice-1",
 	size: 24,
 	node: [["rect", {
@@ -13890,7 +13888,7 @@ var uy = g(ly), dy = {
 	}]]
 };
 dy.node;
-var fy = g(dy), py = {
+var fy = f(dy), py = {
 	name: "dice-2",
 	size: 24,
 	node: [
@@ -13914,7 +13912,7 @@ var fy = g(dy), py = {
 	]
 };
 py.node;
-var my = g(py), hy = {
+var my = f(py), hy = {
 	name: "dice-3",
 	size: 24,
 	node: [
@@ -13942,7 +13940,7 @@ var my = g(py), hy = {
 	]
 };
 hy.node;
-var gy = g(hy), _y = {
+var gy = f(hy), _y = {
 	name: "dice-4",
 	size: 24,
 	node: [
@@ -13974,7 +13972,7 @@ var gy = g(hy), _y = {
 	]
 };
 _y.node;
-var vy = g(_y), yy = {
+var vy = f(_y), yy = {
 	name: "dice-5",
 	size: 24,
 	node: [
@@ -14010,7 +14008,7 @@ var vy = g(_y), yy = {
 	]
 };
 yy.node;
-var by = g(yy), xy = {
+var by = f(yy), xy = {
 	name: "dice-6",
 	size: 24,
 	node: [
@@ -14050,7 +14048,7 @@ var by = g(yy), xy = {
 	]
 };
 xy.node;
-var Sy = g(xy), Cy = {
+var Sy = f(xy), Cy = {
 	name: "dices",
 	size: 24,
 	node: [
@@ -14086,7 +14084,7 @@ var Sy = g(xy), Cy = {
 	]
 };
 Cy.node;
-var wy = g(Cy), Ty = {
+var wy = f(Cy), Ty = {
 	name: "diff",
 	size: 24,
 	node: [
@@ -14105,7 +14103,7 @@ var wy = g(Cy), Ty = {
 	]
 };
 Ty.node;
-var Ey = g(Ty), Dy = {
+var Ey = f(Ty), Dy = {
 	name: "disc-2",
 	size: 24,
 	node: [
@@ -14128,7 +14126,7 @@ var Ey = g(Ty), Dy = {
 	]
 };
 Dy.node;
-var Oy = g(Dy), ky = {
+var Oy = f(Dy), ky = {
 	name: "disc-3",
 	size: 24,
 	node: [
@@ -14155,7 +14153,7 @@ var Oy = g(Dy), ky = {
 	]
 };
 ky.node;
-var Ay = g(ky), jy = {
+var Ay = f(ky), jy = {
 	name: "disc-album",
 	size: 24,
 	node: [
@@ -14180,7 +14178,7 @@ var Ay = g(ky), jy = {
 	]
 };
 jy.node;
-var My = g(jy), Ny = {
+var My = f(jy), Ny = {
 	name: "disc",
 	size: 24,
 	node: [["circle", {
@@ -14196,7 +14194,7 @@ var My = g(jy), Ny = {
 	}]]
 };
 Ny.node;
-var Py = g(Ny), Fy = {
+var Py = f(Ny), Fy = {
 	name: "divide",
 	size: 24,
 	node: [
@@ -14222,7 +14220,7 @@ var Py = g(Ny), Fy = {
 	]
 };
 Fy.node;
-var Iy = g(Fy), Ly = {
+var Iy = f(Fy), Ly = {
 	name: "dna-off",
 	size: 24,
 	node: [
@@ -14269,7 +14267,7 @@ var Iy = g(Fy), Ly = {
 	]
 };
 Ly.node;
-var Ry = g(Ly), zy = {
+var Ry = f(Ly), zy = {
 	name: "dna",
 	size: 24,
 	node: [
@@ -14320,7 +14318,7 @@ var Ry = g(Ly), zy = {
 	]
 };
 zy.node;
-var By = g(zy), Vy = {
+var By = f(zy), Vy = {
 	name: "dock",
 	size: 24,
 	node: [
@@ -14343,7 +14341,7 @@ var By = g(zy), Vy = {
 	]
 };
 Vy.node;
-var Hy = g(Vy), Uy = {
+var Hy = f(Vy), Uy = {
 	name: "dog",
 	size: 24,
 	node: [
@@ -14370,7 +14368,7 @@ var Hy = g(Vy), Uy = {
 	]
 };
 Uy.node;
-var Wy = g(Uy), Gy = {
+var Wy = f(Uy), Gy = {
 	name: "dollar-sign",
 	size: 24,
 	node: [["line", {
@@ -14385,7 +14383,7 @@ var Wy = g(Uy), Gy = {
 	}]]
 };
 Gy.node;
-var Ky = g(Gy), qy = {
+var Ky = f(Gy), qy = {
 	name: "dome",
 	size: 24,
 	node: [
@@ -14416,7 +14414,7 @@ var Ky = g(Gy), qy = {
 	]
 };
 qy.node;
-var Jy = g(qy), Yy = {
+var Jy = f(qy), Yy = {
 	name: "donut",
 	size: 24,
 	node: [["path", {
@@ -14430,7 +14428,7 @@ var Jy = g(qy), Yy = {
 	}]]
 };
 Yy.node;
-var Xy = g(Yy), Zy = {
+var Xy = f(Yy), Zy = {
 	name: "door-closed-locked",
 	size: 24,
 	node: [
@@ -14461,7 +14459,7 @@ var Xy = g(Yy), Zy = {
 	]
 };
 Zy.node;
-var Qy = g(Zy), $y = {
+var Qy = f(Zy), $y = {
 	name: "door-closed-package",
 	size: 24,
 	node: [
@@ -14492,7 +14490,7 @@ var Qy = g(Zy), $y = {
 	]
 };
 $y.node;
-var eb = g($y), tb = {
+var eb = f($y), tb = {
 	name: "door-closed",
 	size: 24,
 	node: [
@@ -14511,7 +14509,7 @@ var eb = g($y), tb = {
 	]
 };
 tb.node;
-var nb = g(tb), rb = {
+var nb = f(tb), rb = {
 	name: "door-open",
 	size: 24,
 	node: [
@@ -14538,7 +14536,7 @@ var nb = g(tb), rb = {
 	]
 };
 rb.node;
-var ib = g(rb), ab = {
+var ib = f(rb), ab = {
 	name: "door-stairwell",
 	size: 24,
 	node: [
@@ -14565,7 +14563,7 @@ var ib = g(rb), ab = {
 	]
 };
 ab.node;
-var ob = g(ab), sb = {
+var ob = f(ab), sb = {
 	name: "dot",
 	size: 24,
 	node: [["circle", {
@@ -14576,7 +14574,7 @@ var ob = g(ab), sb = {
 	}]]
 };
 sb.node;
-var cb = g(sb), lb = {
+var cb = f(sb), lb = {
 	name: "drafting-compass",
 	size: 24,
 	node: [
@@ -14605,7 +14603,7 @@ var cb = g(sb), lb = {
 	]
 };
 lb.node;
-var ub = g(lb), db = {
+var ub = f(lb), db = {
 	name: "download",
 	size: 24,
 	node: [
@@ -14624,7 +14622,7 @@ var ub = g(lb), db = {
 	]
 };
 db.node;
-var fb = g(db), pb = {
+var fb = f(db), pb = {
 	name: "drama",
 	size: 24,
 	node: [
@@ -14663,7 +14661,7 @@ var fb = g(db), pb = {
 	]
 };
 pb.node;
-var mb = g(pb), hb = {
+var mb = f(pb), hb = {
 	name: "drill",
 	size: 24,
 	node: [
@@ -14694,7 +14692,7 @@ var mb = g(pb), hb = {
 	]
 };
 hb.node;
-var gb = g(hb), _b = {
+var gb = f(hb), _b = {
 	name: "drone",
 	size: 24,
 	node: [
@@ -14741,7 +14739,7 @@ var gb = g(hb), _b = {
 	]
 };
 _b.node;
-var vb = g(_b), yb = {
+var vb = f(_b), yb = {
 	name: "droplet-off",
 	size: 24,
 	node: [
@@ -14760,7 +14758,7 @@ var vb = g(_b), yb = {
 	]
 };
 yb.node;
-var bb = g(yb), xb = {
+var bb = f(yb), xb = {
 	name: "droplet",
 	size: 24,
 	node: [["path", {
@@ -14769,7 +14767,7 @@ var bb = g(yb), xb = {
 	}]]
 };
 xb.node;
-var Sb = g(xb), Cb = {
+var Sb = f(xb), Cb = {
 	name: "droplets",
 	size: 24,
 	node: [["path", {
@@ -14781,7 +14779,7 @@ var Sb = g(xb), Cb = {
 	}]]
 };
 Cb.node;
-var wb = g(Cb), Tb = {
+var wb = f(Cb), Tb = {
 	name: "drum",
 	size: 24,
 	node: [
@@ -14819,7 +14817,7 @@ var wb = g(Cb), Tb = {
 	]
 };
 Tb.node;
-var Eb = g(Tb), Db = {
+var Eb = f(Tb), Db = {
 	name: "drumstick",
 	size: 24,
 	node: [["path", {
@@ -14831,7 +14829,7 @@ var Eb = g(Tb), Db = {
 	}]]
 };
 Db.node;
-var Ob = g(Db), kb = {
+var Ob = f(Db), kb = {
 	name: "dumbbell",
 	size: 24,
 	node: [
@@ -14858,7 +14856,7 @@ var Ob = g(Db), kb = {
 	]
 };
 kb.node;
-var Ab = g(kb), jb = {
+var Ab = f(kb), jb = {
 	name: "ear-off",
 	size: 24,
 	node: [
@@ -14888,7 +14886,7 @@ var Ab = g(kb), jb = {
 	]
 };
 jb.node;
-var Mb = g(jb), Nb = {
+var Mb = f(jb), Nb = {
 	name: "ear",
 	size: 24,
 	node: [["path", {
@@ -14900,7 +14898,7 @@ var Mb = g(jb), Nb = {
 	}]]
 };
 Nb.node;
-var Pb = g(Nb), Fb = {
+var Pb = f(Nb), Fb = {
 	name: "earth-lock",
 	size: 24,
 	node: [
@@ -14935,7 +14933,7 @@ var Pb = g(Nb), Fb = {
 	]
 };
 Fb.node;
-var Ib = g(Fb), Lb = {
+var Ib = f(Fb), Lb = {
 	name: "earth",
 	size: 24,
 	node: [
@@ -14961,7 +14959,7 @@ var Ib = g(Fb), Lb = {
 	aliases: ["globe-2"]
 };
 Lb.node;
-var Rb = g(Lb), zb = {
+var Rb = f(Lb), zb = {
 	name: "eclipse",
 	size: 24,
 	node: [["circle", {
@@ -14975,7 +14973,7 @@ var Rb = g(Lb), zb = {
 	}]]
 };
 zb.node;
-var Bb = g(zb), Vb = {
+var Bb = f(zb), Vb = {
 	name: "egg-fried",
 	size: 24,
 	node: [["circle", {
@@ -14989,7 +14987,7 @@ var Bb = g(zb), Vb = {
 	}]]
 };
 Vb.node;
-var Hb = g(Vb), Ub = {
+var Hb = f(Vb), Ub = {
 	name: "egg-off",
 	size: 24,
 	node: [
@@ -15008,7 +15006,7 @@ var Hb = g(Vb), Ub = {
 	]
 };
 Ub.node;
-var Wb = g(Ub), Gb = {
+var Wb = f(Ub), Gb = {
 	name: "egg",
 	size: 24,
 	node: [["path", {
@@ -15017,7 +15015,7 @@ var Wb = g(Ub), Gb = {
 	}]]
 };
 Gb.node;
-var Kb = g(Gb), qb = {
+var Kb = f(Gb), qb = {
 	name: "eject",
 	size: 24,
 	node: [["path", {
@@ -15033,7 +15031,7 @@ var Kb = g(Gb), qb = {
 	}]]
 };
 qb.node;
-var Jb = g(qb), Yb = {
+var Jb = f(qb), Yb = {
 	name: "ellipse",
 	size: 24,
 	node: [["ellipse", {
@@ -15045,7 +15043,7 @@ var Jb = g(qb), Yb = {
 	}]]
 };
 Yb.node;
-var Xb = g(Yb), Zb = {
+var Xb = f(Yb), Zb = {
 	name: "ellipsis-vertical",
 	size: 24,
 	node: [
@@ -15071,7 +15069,7 @@ var Xb = g(Yb), Zb = {
 	aliases: ["more-vertical"]
 };
 Zb.node;
-var Qb = g(Zb), $b = {
+var Qb = f(Zb), $b = {
 	name: "ellipsis",
 	size: 24,
 	node: [
@@ -15097,7 +15095,7 @@ var Qb = g(Zb), $b = {
 	aliases: ["more-horizontal"]
 };
 $b.node;
-var ex = g($b), tx = {
+var ex = f($b), tx = {
 	name: "engine",
 	size: 24,
 	node: [
@@ -15124,7 +15122,7 @@ var ex = g($b), tx = {
 	]
 };
 tx.node;
-var nx = g(tx), rx = {
+var nx = f(tx), rx = {
 	name: "equal-approximately-not",
 	size: 24,
 	node: [
@@ -15146,7 +15144,7 @@ var nx = g(tx), rx = {
 	]
 };
 rx.node;
-var ix = g(rx), ax = {
+var ix = f(rx), ax = {
 	name: "equal-approximately",
 	size: 24,
 	node: [["path", {
@@ -15158,7 +15156,7 @@ var ix = g(rx), ax = {
 	}]]
 };
 ax.node;
-var ox = g(ax), sx = {
+var ox = f(ax), sx = {
 	name: "equal-not",
 	size: 24,
 	node: [
@@ -15186,7 +15184,7 @@ var ox = g(ax), sx = {
 	]
 };
 sx.node;
-var cx = g(sx), lx = {
+var cx = f(sx), lx = {
 	name: "equal",
 	size: 24,
 	node: [["line", {
@@ -15204,7 +15202,7 @@ var cx = g(sx), lx = {
 	}]]
 };
 lx.node;
-var ux = g(lx), dx = {
+var ux = f(lx), dx = {
 	name: "eraser",
 	size: 24,
 	node: [["path", {
@@ -15216,7 +15214,7 @@ var ux = g(lx), dx = {
 	}]]
 };
 dx.node;
-var fx = g(dx), px = {
+var fx = f(dx), px = {
 	name: "ethernet-port",
 	size: 24,
 	node: [
@@ -15243,7 +15241,7 @@ var fx = g(dx), px = {
 	]
 };
 px.node;
-var mx = g(px), hx = {
+var mx = f(px), hx = {
 	name: "euro",
 	size: 24,
 	node: [
@@ -15262,7 +15260,7 @@ var mx = g(px), hx = {
 	]
 };
 hx.node;
-var gx = g(hx), _x = {
+var gx = f(hx), _x = {
 	name: "ev-charger",
 	size: 24,
 	node: [
@@ -15289,7 +15287,7 @@ var gx = g(hx), _x = {
 	]
 };
 _x.node;
-var vx = g(_x), yx = {
+var vx = f(_x), yx = {
 	name: "expand",
 	size: 24,
 	node: [
@@ -15328,7 +15326,7 @@ var vx = g(_x), yx = {
 	]
 };
 yx.node;
-var bx = g(yx), xx = {
+var bx = f(yx), xx = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -15347,7 +15345,7 @@ var bx = g(yx), xx = {
 	]
 };
 xx.node;
-var Sx = g(xx), Cx = {
+var Sx = f(xx), Cx = {
 	name: "eye-closed",
 	size: 24,
 	node: [
@@ -15374,7 +15372,7 @@ var Sx = g(xx), Cx = {
 	]
 };
 Cx.node;
-var wx = g(Cx), Tx = {
+var wx = f(Cx), Tx = {
 	name: "eye-dashed",
 	size: 24,
 	node: [
@@ -15419,7 +15417,7 @@ var wx = g(Cx), Tx = {
 	]
 };
 Tx.node;
-var Ex = g(Tx), Dx = {
+var Ex = f(Tx), Dx = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -15442,7 +15440,7 @@ var Ex = g(Tx), Dx = {
 	]
 };
 Dx.node;
-var Ox = g(Dx), kx = {
+var Ox = f(Dx), kx = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -15456,7 +15454,7 @@ var Ox = g(Dx), kx = {
 	}]]
 };
 kx.node;
-var Ax = g(kx), jx = {
+var Ax = f(kx), jx = {
 	name: "face-angry",
 	size: 24,
 	node: [
@@ -15490,7 +15488,7 @@ var Ax = g(kx), jx = {
 	aliases: ["angry"]
 };
 jx.node;
-var Mx = g(jx), Nx = {
+var Mx = f(jx), Nx = {
 	name: "face-expressionless",
 	size: 24,
 	node: [
@@ -15516,7 +15514,7 @@ var Mx = g(jx), Nx = {
 	aliases: ["annoyed"]
 };
 Nx.node;
-var Px = g(Nx), Fx = {
+var Px = f(Nx), Fx = {
 	name: "face-grinning",
 	size: 24,
 	node: [
@@ -15542,7 +15540,7 @@ var Px = g(Nx), Fx = {
 	aliases: ["laugh"]
 };
 Fx.node;
-var Ix = g(Fx), Lx = {
+var Ix = f(Fx), Lx = {
 	name: "face-neutral",
 	size: 24,
 	node: [
@@ -15568,7 +15566,7 @@ var Ix = g(Fx), Lx = {
 	aliases: ["meh"]
 };
 Lx.node;
-var Rx = g(Lx), zx = {
+var Rx = f(Lx), zx = {
 	name: "face-slightly-frowning",
 	size: 24,
 	node: [
@@ -15594,7 +15592,7 @@ var Rx = g(Lx), zx = {
 	aliases: ["frown"]
 };
 zx.node;
-var Bx = g(zx), Vx = {
+var Bx = f(zx), Vx = {
 	name: "face-slightly-smiling-plus",
 	size: 24,
 	node: [
@@ -15626,7 +15624,7 @@ var Bx = g(zx), Vx = {
 	aliases: ["smile-plus"]
 };
 Vx.node;
-var Hx = g(Vx), Ux = {
+var Hx = f(Vx), Ux = {
 	name: "face-slightly-smiling",
 	size: 24,
 	node: [
@@ -15652,7 +15650,7 @@ var Hx = g(Vx), Ux = {
 	aliases: ["smile"]
 };
 Ux.node;
-var Wx = g(Ux), Gx = {
+var Wx = f(Ux), Gx = {
 	name: "factory",
 	size: 24,
 	node: [
@@ -15675,7 +15673,7 @@ var Wx = g(Ux), Gx = {
 	]
 };
 Gx.node;
-var Kx = g(Gx), qx = {
+var Kx = f(Gx), qx = {
 	name: "fan",
 	size: 24,
 	node: [["path", {
@@ -15687,7 +15685,7 @@ var Kx = g(Gx), qx = {
 	}]]
 };
 qx.node;
-var Jx = g(qx), Yx = {
+var Jx = f(qx), Yx = {
 	name: "fast-forward",
 	size: 24,
 	node: [["path", {
@@ -15699,7 +15697,7 @@ var Jx = g(qx), Yx = {
 	}]]
 };
 Yx.node;
-var Xx = g(Yx), Zx = {
+var Xx = f(Yx), Zx = {
 	name: "faucet",
 	size: 24,
 	node: [
@@ -15736,7 +15734,7 @@ var Xx = g(Yx), Zx = {
 	]
 };
 Zx.node;
-var Qx = g(Zx), $x = {
+var Qx = f(Zx), $x = {
 	name: "feather",
 	size: 24,
 	node: [
@@ -15755,7 +15753,7 @@ var Qx = g(Zx), $x = {
 	]
 };
 $x.node;
-var eS = g($x), tS = {
+var eS = f($x), tS = {
 	name: "fence",
 	size: 24,
 	node: [
@@ -15790,7 +15788,7 @@ var eS = g($x), tS = {
 	]
 };
 tS.node;
-var nS = g(tS), rS = {
+var nS = f(tS), rS = {
 	name: "ferris-wheel",
 	size: 24,
 	node: [
@@ -15835,7 +15833,7 @@ var nS = g(tS), rS = {
 	]
 };
 rS.node;
-var iS = g(rS), aS = {
+var iS = f(rS), aS = {
 	name: "file-archive",
 	size: 24,
 	node: [
@@ -15868,7 +15866,7 @@ var iS = g(rS), aS = {
 	]
 };
 aS.node;
-var oS = g(aS), sS = {
+var oS = f(aS), sS = {
 	name: "file-axis-3d",
 	size: 24,
 	node: [
@@ -15892,7 +15890,7 @@ var oS = g(aS), sS = {
 	aliases: ["file-axis-3-d"]
 };
 sS.node;
-var cS = g(sS), lS = {
+var cS = f(sS), lS = {
 	name: "file-badge",
 	size: 24,
 	node: [
@@ -15918,7 +15916,7 @@ var cS = g(sS), lS = {
 	aliases: ["file-badge-2"]
 };
 lS.node;
-var uS = g(lS), dS = {
+var uS = f(lS), dS = {
 	name: "file-box",
 	size: 24,
 	node: [
@@ -15945,7 +15943,7 @@ var uS = g(lS), dS = {
 	]
 };
 dS.node;
-var fS = g(dS), pS = {
+var fS = f(dS), pS = {
 	name: "file-braces-corner",
 	size: 24,
 	node: [
@@ -15969,7 +15967,7 @@ var fS = g(dS), pS = {
 	aliases: ["file-json-2"]
 };
 pS.node;
-var mS = g(pS), hS = {
+var mS = f(pS), hS = {
 	name: "file-braces",
 	size: 24,
 	node: [
@@ -15993,7 +15991,7 @@ var mS = g(pS), hS = {
 	aliases: ["file-json"]
 };
 hS.node;
-var gS = g(hS), _S = {
+var gS = f(hS), _S = {
 	name: "file-chart-column-increasing",
 	size: 24,
 	node: [
@@ -16021,7 +16019,7 @@ var gS = g(hS), _S = {
 	aliases: ["file-bar-chart"]
 };
 _S.node;
-var vS = g(_S), yS = {
+var vS = f(_S), yS = {
 	name: "file-chart-column",
 	size: 24,
 	node: [
@@ -16049,7 +16047,7 @@ var vS = g(_S), yS = {
 	aliases: ["file-bar-chart-2"]
 };
 yS.node;
-var bS = g(yS), xS = {
+var bS = f(yS), xS = {
 	name: "file-chart-line",
 	size: 24,
 	node: [
@@ -16069,7 +16067,7 @@ var bS = g(yS), xS = {
 	aliases: ["file-line-chart"]
 };
 xS.node;
-var SS = g(xS), CS = {
+var SS = f(xS), CS = {
 	name: "file-chart-pie",
 	size: 24,
 	node: [
@@ -16093,7 +16091,7 @@ var SS = g(xS), CS = {
 	aliases: ["file-pie-chart"]
 };
 CS.node;
-var wS = g(CS), TS = {
+var wS = f(CS), TS = {
 	name: "file-check-corner",
 	size: 24,
 	node: [
@@ -16113,7 +16111,7 @@ var wS = g(CS), TS = {
 	aliases: ["file-check-2"]
 };
 TS.node;
-var ES = g(TS), DS = {
+var ES = f(TS), DS = {
 	name: "file-check",
 	size: 24,
 	node: [
@@ -16132,7 +16130,7 @@ var ES = g(TS), DS = {
 	]
 };
 DS.node;
-var OS = g(DS), kS = {
+var OS = f(DS), kS = {
 	name: "file-clock",
 	size: 24,
 	node: [
@@ -16157,7 +16155,7 @@ var OS = g(DS), kS = {
 	]
 };
 kS.node;
-var AS = g(kS), jS = {
+var AS = f(kS), jS = {
 	name: "file-code-corner",
 	size: 24,
 	node: [
@@ -16181,7 +16179,7 @@ var AS = g(kS), jS = {
 	aliases: ["file-code-2"]
 };
 jS.node;
-var MS = g(jS), NS = {
+var MS = f(jS), NS = {
 	name: "file-code",
 	size: 24,
 	node: [
@@ -16204,7 +16202,7 @@ var MS = g(jS), NS = {
 	]
 };
 NS.node;
-var PS = g(NS), FS = {
+var PS = f(NS), FS = {
 	name: "file-cog",
 	size: 24,
 	node: [
@@ -16262,7 +16260,7 @@ var PS = g(NS), FS = {
 	aliases: ["file-cog-2"]
 };
 FS.node;
-var IS = g(FS), LS = {
+var IS = f(FS), LS = {
 	name: "file-diff",
 	size: 24,
 	node: [
@@ -16285,7 +16283,7 @@ var IS = g(FS), LS = {
 	]
 };
 LS.node;
-var RS = g(LS), zS = {
+var RS = f(LS), zS = {
 	name: "file-digit",
 	size: 24,
 	node: [
@@ -16316,7 +16314,7 @@ var RS = g(LS), zS = {
 	]
 };
 zS.node;
-var BS = g(zS), VS = {
+var BS = f(zS), VS = {
 	name: "file-down",
 	size: 24,
 	node: [
@@ -16339,7 +16337,7 @@ var BS = g(zS), VS = {
 	]
 };
 VS.node;
-var HS = g(VS), US = {
+var HS = f(VS), US = {
 	name: "file-exclamation-point",
 	size: 24,
 	node: [
@@ -16359,7 +16357,7 @@ var HS = g(VS), US = {
 	aliases: ["file-warning"]
 };
 US.node;
-var WS = g(US), GS = {
+var WS = f(US), GS = {
 	name: "file-headphone",
 	size: 24,
 	node: [
@@ -16379,7 +16377,7 @@ var WS = g(US), GS = {
 	aliases: ["file-audio", "file-audio-2"]
 };
 GS.node;
-var H = g(GS), KS = {
+var U = f(GS), KS = {
 	name: "file-heart",
 	size: 24,
 	node: [
@@ -16398,7 +16396,7 @@ var H = g(GS), KS = {
 	]
 };
 KS.node;
-var qS = g(KS), JS = {
+var qS = f(KS), JS = {
 	name: "file-image",
 	size: 24,
 	node: [
@@ -16423,7 +16421,7 @@ var qS = g(KS), JS = {
 	]
 };
 JS.node;
-var YS = g(JS), XS = {
+var YS = f(JS), XS = {
 	name: "file-input",
 	size: 24,
 	node: [
@@ -16446,7 +16444,7 @@ var YS = g(JS), XS = {
 	]
 };
 XS.node;
-var ZS = g(XS), QS = {
+var ZS = f(XS), QS = {
 	name: "file-lock",
 	size: 24,
 	node: [
@@ -16474,7 +16472,7 @@ var ZS = g(XS), QS = {
 	aliases: ["file-lock-2"]
 };
 QS.node;
-var $S = g(QS), eC = {
+var $S = f(QS), eC = {
 	name: "file-key",
 	size: 24,
 	node: [
@@ -16504,7 +16502,7 @@ var $S = g(QS), eC = {
 	aliases: ["file-key-2"]
 };
 eC.node;
-var tC = g(eC), nC = {
+var tC = f(eC), nC = {
 	name: "file-minus-corner",
 	size: 24,
 	node: [
@@ -16524,7 +16522,7 @@ var tC = g(eC), nC = {
 	aliases: ["file-minus-2"]
 };
 nC.node;
-var rC = g(nC), iC = {
+var rC = f(nC), iC = {
 	name: "file-minus",
 	size: 24,
 	node: [
@@ -16543,7 +16541,7 @@ var rC = g(nC), iC = {
 	]
 };
 iC.node;
-var aC = g(iC), oC = {
+var aC = f(iC), oC = {
 	name: "file-music",
 	size: 24,
 	node: [
@@ -16568,7 +16566,7 @@ var aC = g(iC), oC = {
 	]
 };
 oC.node;
-var sC = g(oC), cC = {
+var sC = f(oC), cC = {
 	name: "file-output",
 	size: 24,
 	node: [
@@ -16591,7 +16589,7 @@ var sC = g(oC), cC = {
 	]
 };
 cC.node;
-var lC = g(cC), uC = {
+var lC = f(cC), uC = {
 	name: "file-pen-line",
 	size: 24,
 	node: [
@@ -16615,7 +16613,7 @@ var lC = g(cC), uC = {
 	aliases: ["file-signature"]
 };
 uC.node;
-var dC = g(uC), fC = {
+var dC = f(uC), fC = {
 	name: "file-pen",
 	size: 24,
 	node: [
@@ -16635,7 +16633,7 @@ var dC = g(uC), fC = {
 	aliases: ["file-edit"]
 };
 fC.node;
-var pC = g(fC), mC = {
+var pC = f(fC), mC = {
 	name: "file-play",
 	size: 24,
 	node: [
@@ -16655,7 +16653,7 @@ var pC = g(fC), mC = {
 	aliases: ["file-video"]
 };
 mC.node;
-var hC = g(mC), gC = {
+var hC = f(mC), gC = {
 	name: "file-plus-corner",
 	size: 24,
 	node: [
@@ -16679,7 +16677,7 @@ var hC = g(mC), gC = {
 	aliases: ["file-plus-2"]
 };
 gC.node;
-var _C = g(gC), vC = {
+var _C = f(gC), vC = {
 	name: "file-plus",
 	size: 24,
 	node: [
@@ -16702,7 +16700,7 @@ var _C = g(gC), vC = {
 	]
 };
 vC.node;
-var yC = g(vC), bC = {
+var yC = f(vC), bC = {
 	name: "file-scan",
 	size: 24,
 	node: [
@@ -16733,7 +16731,7 @@ var yC = g(vC), bC = {
 	]
 };
 bC.node;
-var xC = g(bC), SC = {
+var xC = f(bC), SC = {
 	name: "file-question-mark",
 	size: 24,
 	node: [
@@ -16753,7 +16751,7 @@ var xC = g(bC), SC = {
 	aliases: ["file-question"]
 };
 SC.node;
-var CC = g(SC), wC = {
+var CC = f(SC), wC = {
 	name: "file-search-corner",
 	size: 24,
 	node: [
@@ -16779,7 +16777,7 @@ var CC = g(SC), wC = {
 	aliases: ["file-search-2"]
 };
 wC.node;
-var TC = g(wC), EC = {
+var TC = f(wC), EC = {
 	name: "file-search",
 	size: 24,
 	node: [
@@ -16804,7 +16802,7 @@ var TC = g(wC), EC = {
 	]
 };
 EC.node;
-var DC = g(EC), OC = {
+var DC = f(EC), OC = {
 	name: "file-signal",
 	size: 24,
 	node: [
@@ -16832,7 +16830,7 @@ var DC = g(EC), OC = {
 	aliases: ["file-volume-2"]
 };
 OC.node;
-var kC = g(OC), AC = {
+var kC = f(OC), AC = {
 	name: "file-spreadsheet",
 	size: 24,
 	node: [
@@ -16863,7 +16861,7 @@ var kC = g(OC), AC = {
 	]
 };
 AC.node;
-var jC = g(AC), MC = {
+var jC = f(AC), MC = {
 	name: "file-sliders",
 	size: 24,
 	node: [
@@ -16894,7 +16892,7 @@ var jC = g(AC), MC = {
 	]
 };
 MC.node;
-var NC = g(MC), PC = {
+var NC = f(MC), PC = {
 	name: "file-stack",
 	size: 24,
 	node: [
@@ -16913,7 +16911,7 @@ var NC = g(MC), PC = {
 	]
 };
 PC.node;
-var FC = g(PC), IC = {
+var FC = f(PC), IC = {
 	name: "file-symlink",
 	size: 24,
 	node: [
@@ -16932,7 +16930,7 @@ var FC = g(PC), IC = {
 	]
 };
 IC.node;
-var LC = g(IC), RC = {
+var LC = f(IC), RC = {
 	name: "file-terminal",
 	size: 24,
 	node: [
@@ -16955,7 +16953,7 @@ var LC = g(IC), RC = {
 	]
 };
 RC.node;
-var zC = g(RC), BC = {
+var zC = f(RC), BC = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -16982,7 +16980,7 @@ var zC = g(RC), BC = {
 	]
 };
 BC.node;
-var VC = g(BC), HC = {
+var VC = f(BC), HC = {
 	name: "file-type-corner",
 	size: 24,
 	node: [
@@ -17010,7 +17008,7 @@ var VC = g(BC), HC = {
 	aliases: ["file-type-2"]
 };
 HC.node;
-var UC = g(HC), WC = {
+var UC = f(HC), WC = {
 	name: "file-type",
 	size: 24,
 	node: [
@@ -17037,7 +17035,7 @@ var UC = g(HC), WC = {
 	]
 };
 WC.node;
-var GC = g(WC), KC = {
+var GC = f(WC), KC = {
 	name: "file-up",
 	size: 24,
 	node: [
@@ -17060,7 +17058,7 @@ var GC = g(WC), KC = {
 	]
 };
 KC.node;
-var qC = g(KC), JC = {
+var qC = f(KC), JC = {
 	name: "file-user",
 	size: 24,
 	node: [
@@ -17085,7 +17083,7 @@ var qC = g(KC), JC = {
 	]
 };
 JC.node;
-var YC = g(JC), XC = {
+var YC = f(JC), XC = {
 	name: "file-video-camera",
 	size: 24,
 	node: [
@@ -17113,7 +17111,7 @@ var YC = g(JC), XC = {
 	aliases: ["file-video-2"]
 };
 XC.node;
-var ZC = g(XC), QC = {
+var ZC = f(XC), QC = {
 	name: "file-volume",
 	size: 24,
 	node: [
@@ -17136,7 +17134,7 @@ var ZC = g(XC), QC = {
 	]
 };
 QC.node;
-var $C = g(QC), ew = {
+var $C = f(QC), ew = {
 	name: "file-x-corner",
 	size: 24,
 	node: [
@@ -17160,7 +17158,7 @@ var $C = g(QC), ew = {
 	aliases: ["file-x-2"]
 };
 ew.node;
-var tw = g(ew), nw = {
+var tw = f(ew), nw = {
 	name: "file-x",
 	size: 24,
 	node: [
@@ -17183,7 +17181,7 @@ var tw = g(ew), nw = {
 	]
 };
 nw.node;
-var rw = g(nw), iw = {
+var rw = f(nw), iw = {
 	name: "file",
 	size: 24,
 	node: [["path", {
@@ -17195,7 +17193,7 @@ var rw = g(nw), iw = {
 	}]]
 };
 iw.node;
-var aw = g(iw), ow = {
+var aw = f(iw), ow = {
 	name: "files",
 	size: 24,
 	node: [
@@ -17214,7 +17212,7 @@ var aw = g(iw), ow = {
 	]
 };
 ow.node;
-var sw = g(ow), cw = {
+var sw = f(ow), cw = {
 	name: "film",
 	size: 24,
 	node: [
@@ -17257,7 +17255,7 @@ var sw = g(ow), cw = {
 	]
 };
 cw.node;
-var lw = g(cw), uw = {
+var lw = f(cw), uw = {
 	name: "fingerprint-pattern",
 	size: 24,
 	node: [
@@ -17301,7 +17299,7 @@ var lw = g(cw), uw = {
 	aliases: ["fingerprint"]
 };
 uw.node;
-var dw = g(uw), fw = {
+var dw = f(uw), fw = {
 	name: "fire-extinguisher",
 	size: 24,
 	node: [
@@ -17332,7 +17330,7 @@ var dw = g(uw), fw = {
 	]
 };
 fw.node;
-var pw = g(fw), mw = {
+var pw = f(fw), mw = {
 	name: "fish-off",
 	size: 24,
 	node: [
@@ -17351,7 +17349,7 @@ var pw = g(fw), mw = {
 	]
 };
 mw.node;
-var hw = g(mw), gw = {
+var hw = f(mw), gw = {
 	name: "fish-symbol",
 	size: 24,
 	node: [["path", {
@@ -17360,7 +17358,7 @@ var hw = g(mw), gw = {
 	}]]
 };
 gw.node;
-var _w = g(gw), vw = {
+var _w = f(gw), vw = {
 	name: "fish",
 	size: 24,
 	node: [
@@ -17391,7 +17389,7 @@ var _w = g(gw), vw = {
 	]
 };
 vw.node;
-var yw = g(vw), bw = {
+var yw = f(vw), bw = {
 	name: "fishing-hook",
 	size: 24,
 	node: [
@@ -17412,7 +17410,7 @@ var yw = g(vw), bw = {
 	]
 };
 bw.node;
-var xw = g(bw), Sw = {
+var xw = f(bw), Sw = {
 	name: "fishing-rod",
 	size: 24,
 	node: [
@@ -17433,7 +17431,7 @@ var xw = g(bw), Sw = {
 	]
 };
 Sw.node;
-var Cw = g(Sw), ww = {
+var Cw = f(Sw), ww = {
 	name: "flag-off",
 	size: 24,
 	node: [
@@ -17456,7 +17454,7 @@ var Cw = g(Sw), ww = {
 	]
 };
 ww.node;
-var Tw = g(ww), Ew = {
+var Tw = f(ww), Ew = {
 	name: "flag-triangle-left",
 	size: 24,
 	node: [["path", {
@@ -17465,7 +17463,7 @@ var Tw = g(ww), Ew = {
 	}]]
 };
 Ew.node;
-var Dw = g(Ew), Ow = {
+var Dw = f(Ew), Ow = {
 	name: "flag-triangle-right",
 	size: 24,
 	node: [["path", {
@@ -17474,7 +17472,7 @@ var Dw = g(Ew), Ow = {
 	}]]
 };
 Ow.node;
-var kw = g(Ow), Aw = {
+var kw = f(Ow), Aw = {
 	name: "flag",
 	size: 24,
 	node: [["path", {
@@ -17483,7 +17481,7 @@ var kw = g(Ow), Aw = {
 	}]]
 };
 Aw.node;
-var jw = g(Aw), Mw = {
+var jw = f(Aw), Mw = {
 	name: "flame-kindling",
 	size: 24,
 	node: [
@@ -17502,7 +17500,7 @@ var jw = g(Aw), Mw = {
 	]
 };
 Mw.node;
-var Nw = g(Mw), Pw = {
+var Nw = f(Mw), Pw = {
 	name: "flame",
 	size: 24,
 	node: [["path", {
@@ -17511,7 +17509,7 @@ var Nw = g(Mw), Pw = {
 	}]]
 };
 Pw.node;
-var Fw = g(Pw), Iw = {
+var Fw = f(Pw), Iw = {
 	name: "flashlight-off",
 	size: 24,
 	node: [
@@ -17538,7 +17536,7 @@ var Fw = g(Pw), Iw = {
 	]
 };
 Iw.node;
-var Lw = g(Iw), Rw = {
+var Lw = f(Iw), Rw = {
 	name: "flashlight",
 	size: 24,
 	node: [
@@ -17557,7 +17555,7 @@ var Lw = g(Iw), Rw = {
 	]
 };
 Rw.node;
-var zw = g(Rw), Bw = {
+var zw = f(Rw), Bw = {
 	name: "flask-conical-off",
 	size: 24,
 	node: [
@@ -17588,7 +17586,7 @@ var zw = g(Rw), Bw = {
 	]
 };
 Bw.node;
-var Vw = g(Bw), Hw = {
+var Vw = f(Bw), Hw = {
 	name: "flask-conical",
 	size: 24,
 	node: [
@@ -17607,7 +17605,7 @@ var Vw = g(Bw), Hw = {
 	]
 };
 Hw.node;
-var Uw = g(Hw), Ww = {
+var Uw = f(Hw), Ww = {
 	name: "flask-round",
 	size: 24,
 	node: [
@@ -17626,7 +17624,7 @@ var Uw = g(Hw), Ww = {
 	]
 };
 Ww.node;
-var Gw = g(Ww), Kw = {
+var Gw = f(Ww), Kw = {
 	name: "flower-2",
 	size: 24,
 	node: [
@@ -17655,7 +17653,7 @@ var Gw = g(Ww), Kw = {
 	]
 };
 Kw.node;
-var qw = g(Kw), Jw = {
+var qw = f(Kw), Jw = {
 	name: "flower",
 	size: 24,
 	node: [
@@ -17704,7 +17702,7 @@ var qw = g(Kw), Jw = {
 	]
 };
 Jw.node;
-var Yw = g(Jw), Xw = {
+var Yw = f(Jw), Xw = {
 	name: "focus",
 	size: 24,
 	node: [
@@ -17733,7 +17731,7 @@ var Yw = g(Jw), Xw = {
 	]
 };
 Xw.node;
-var Zw = g(Xw), Qw = {
+var Zw = f(Xw), Qw = {
 	name: "fold-horizontal",
 	size: 24,
 	node: [
@@ -17772,7 +17770,7 @@ var Zw = g(Xw), Qw = {
 	]
 };
 Qw.node;
-var $w = g(Qw), eT = {
+var $w = f(Qw), eT = {
 	name: "fold-vertical",
 	size: 24,
 	node: [
@@ -17811,7 +17809,7 @@ var $w = g(Qw), eT = {
 	]
 };
 eT.node;
-var tT = g(eT), nT = {
+var tT = f(eT), nT = {
 	name: "folder-archive",
 	size: 24,
 	node: [
@@ -17836,7 +17834,7 @@ var tT = g(eT), nT = {
 	]
 };
 nT.node;
-var rT = g(nT), iT = {
+var rT = f(nT), iT = {
 	name: "folder-bookmark",
 	size: 24,
 	node: [["path", {
@@ -17848,7 +17846,7 @@ var rT = g(nT), iT = {
 	}]]
 };
 iT.node;
-var aT = g(iT), oT = {
+var aT = f(iT), oT = {
 	name: "folder-check",
 	size: 24,
 	node: [["path", {
@@ -17860,7 +17858,7 @@ var aT = g(iT), oT = {
 	}]]
 };
 oT.node;
-var sT = g(oT), cT = {
+var sT = f(oT), cT = {
 	name: "folder-clock",
 	size: 24,
 	node: [
@@ -17881,7 +17879,7 @@ var sT = g(oT), cT = {
 	]
 };
 cT.node;
-var lT = g(cT), uT = {
+var lT = f(cT), uT = {
 	name: "folder-closed",
 	size: 24,
 	node: [["path", {
@@ -17893,7 +17891,7 @@ var lT = g(cT), uT = {
 	}]]
 };
 uT.node;
-var dT = g(uT), fT = {
+var dT = f(uT), fT = {
 	name: "folder-code",
 	size: 24,
 	node: [
@@ -17912,7 +17910,7 @@ var dT = g(uT), fT = {
 	]
 };
 fT.node;
-var pT = g(fT), mT = {
+var pT = f(fT), mT = {
 	name: "folder-cog",
 	size: 24,
 	node: [
@@ -17962,7 +17960,7 @@ var pT = g(fT), mT = {
 	aliases: ["folder-cog-2"]
 };
 mT.node;
-var hT = g(mT), gT = {
+var hT = f(mT), gT = {
 	name: "folder-dot",
 	size: 24,
 	node: [["path", {
@@ -17976,7 +17974,7 @@ var hT = g(mT), gT = {
 	}]]
 };
 gT.node;
-var _T = g(gT), vT = {
+var _T = f(gT), vT = {
 	name: "folder-down",
 	size: 24,
 	node: [
@@ -17995,7 +17993,7 @@ var _T = g(gT), vT = {
 	]
 };
 vT.node;
-var yT = g(vT), bT = {
+var yT = f(vT), bT = {
 	name: "folder-git-2",
 	size: 24,
 	node: [
@@ -18022,7 +18020,7 @@ var yT = g(vT), bT = {
 	]
 };
 bT.node;
-var xT = g(bT), ST = {
+var xT = f(bT), ST = {
 	name: "folder-git",
 	size: 24,
 	node: [
@@ -18047,7 +18045,7 @@ var xT = g(bT), ST = {
 	]
 };
 ST.node;
-var CT = g(ST), wT = {
+var CT = f(ST), wT = {
 	name: "folder-heart",
 	size: 24,
 	node: [["path", {
@@ -18059,7 +18057,7 @@ var CT = g(ST), wT = {
 	}]]
 };
 wT.node;
-var TT = g(wT), ET = {
+var TT = f(wT), ET = {
 	name: "folder-input",
 	size: 24,
 	node: [
@@ -18078,7 +18076,7 @@ var TT = g(wT), ET = {
 	]
 };
 ET.node;
-var DT = g(ET), OT = {
+var DT = f(ET), OT = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -18101,7 +18099,7 @@ var DT = g(ET), OT = {
 	]
 };
 OT.node;
-var kT = g(OT), AT = {
+var kT = f(OT), AT = {
 	name: "folder-key",
 	size: 24,
 	node: [
@@ -18126,7 +18124,7 @@ var kT = g(OT), AT = {
 	]
 };
 AT.node;
-var jT = g(AT), MT = {
+var jT = f(AT), MT = {
 	name: "folder-lock",
 	size: 24,
 	node: [
@@ -18149,7 +18147,7 @@ var jT = g(AT), MT = {
 	]
 };
 MT.node;
-var NT = g(MT), PT = {
+var NT = f(MT), PT = {
 	name: "folder-minus",
 	size: 24,
 	node: [["path", {
@@ -18161,7 +18159,7 @@ var NT = g(MT), PT = {
 	}]]
 };
 PT.node;
-var FT = g(PT), IT = {
+var FT = f(PT), IT = {
 	name: "folder-open-dot",
 	size: 24,
 	node: [["path", {
@@ -18175,7 +18173,7 @@ var FT = g(PT), IT = {
 	}]]
 };
 IT.node;
-var LT = g(IT), RT = {
+var LT = f(IT), RT = {
 	name: "folder-open",
 	size: 24,
 	node: [["path", {
@@ -18184,7 +18182,7 @@ var LT = g(IT), RT = {
 	}]]
 };
 RT.node;
-var zT = g(RT), BT = {
+var zT = f(RT), BT = {
 	name: "folder-output",
 	size: 24,
 	node: [
@@ -18203,7 +18201,7 @@ var zT = g(RT), BT = {
 	]
 };
 BT.node;
-var VT = g(BT), HT = {
+var VT = f(BT), HT = {
 	name: "folder-pen",
 	size: 24,
 	node: [["path", {
@@ -18216,7 +18214,7 @@ var VT = g(BT), HT = {
 	aliases: ["folder-edit"]
 };
 HT.node;
-var UT = g(HT), WT = {
+var UT = f(HT), WT = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -18235,7 +18233,7 @@ var UT = g(HT), WT = {
 	]
 };
 WT.node;
-var GT = g(WT), KT = {
+var GT = f(WT), KT = {
 	name: "folder-search-2",
 	size: 24,
 	node: [
@@ -18256,7 +18254,7 @@ var GT = g(WT), KT = {
 	]
 };
 KT.node;
-var qT = g(KT), JT = {
+var qT = f(KT), JT = {
 	name: "folder-root",
 	size: 24,
 	node: [
@@ -18277,7 +18275,7 @@ var qT = g(KT), JT = {
 	]
 };
 JT.node;
-var YT = g(JT), XT = {
+var YT = f(JT), XT = {
 	name: "folder-search",
 	size: 24,
 	node: [
@@ -18298,7 +18296,7 @@ var YT = g(JT), XT = {
 	]
 };
 XT.node;
-var ZT = g(XT), QT = {
+var ZT = f(XT), QT = {
 	name: "folder-symlink",
 	size: 24,
 	node: [["path", {
@@ -18310,7 +18308,7 @@ var ZT = g(XT), QT = {
 	}]]
 };
 QT.node;
-var $T = g(QT), eE = {
+var $T = f(QT), eE = {
 	name: "folder-sync",
 	size: 24,
 	node: [
@@ -18337,7 +18335,7 @@ var $T = g(QT), eE = {
 	]
 };
 eE.node;
-var tE = g(eE), nE = {
+var tE = f(eE), nE = {
 	name: "folder-tree",
 	size: 24,
 	node: [
@@ -18360,7 +18358,7 @@ var tE = g(eE), nE = {
 	]
 };
 nE.node;
-var rE = g(nE), iE = {
+var rE = f(nE), iE = {
 	name: "folder-up",
 	size: 24,
 	node: [
@@ -18379,7 +18377,7 @@ var rE = g(nE), iE = {
 	]
 };
 iE.node;
-var aE = g(iE), oE = {
+var aE = f(iE), oE = {
 	name: "folder-x",
 	size: 24,
 	node: [
@@ -18398,7 +18396,7 @@ var aE = g(iE), oE = {
 	]
 };
 oE.node;
-var sE = g(oE), cE = {
+var sE = f(oE), cE = {
 	name: "folder",
 	size: 24,
 	node: [["path", {
@@ -18407,7 +18405,7 @@ var sE = g(oE), cE = {
 	}]]
 };
 cE.node;
-var lE = g(cE), uE = {
+var lE = f(cE), uE = {
 	name: "folders",
 	size: 24,
 	node: [["path", {
@@ -18419,7 +18417,7 @@ var lE = g(cE), uE = {
 	}]]
 };
 uE.node;
-var dE = g(uE), fE = {
+var dE = f(uE), fE = {
 	name: "footprints",
 	size: 24,
 	node: [
@@ -18442,7 +18440,7 @@ var dE = g(uE), fE = {
 	]
 };
 fE.node;
-var pE = g(fE), mE = {
+var pE = f(fE), mE = {
 	name: "forklift",
 	size: 24,
 	node: [
@@ -18481,7 +18479,7 @@ var pE = g(fE), mE = {
 	]
 };
 mE.node;
-var hE = g(mE), gE = {
+var hE = f(mE), gE = {
 	name: "form",
 	size: 24,
 	node: [
@@ -18512,7 +18510,7 @@ var hE = g(mE), gE = {
 	]
 };
 gE.node;
-var _E = g(gE), vE = {
+var _E = f(gE), vE = {
 	name: "forward",
 	size: 24,
 	node: [["path", {
@@ -18524,7 +18522,7 @@ var _E = g(gE), vE = {
 	}]]
 };
 vE.node;
-var yE = g(vE), bE = {
+var yE = f(vE), bE = {
 	name: "frame",
 	size: 24,
 	node: [
@@ -18559,7 +18557,7 @@ var yE = g(vE), bE = {
 	]
 };
 bE.node;
-var xE = g(bE), SE = {
+var xE = f(bE), SE = {
 	name: "fuel",
 	size: 24,
 	node: [
@@ -18582,7 +18580,7 @@ var xE = g(bE), SE = {
 	]
 };
 SE.node;
-var CE = g(SE), wE = {
+var CE = f(SE), wE = {
 	name: "funnel-plus",
 	size: 24,
 	node: [
@@ -18601,7 +18599,7 @@ var CE = g(SE), wE = {
 	]
 };
 wE.node;
-var TE = g(wE), EE = {
+var TE = f(wE), EE = {
 	name: "fullscreen",
 	size: 24,
 	node: [
@@ -18632,7 +18630,7 @@ var TE = g(wE), EE = {
 	]
 };
 EE.node;
-var DE = g(EE), OE = {
+var DE = f(EE), OE = {
 	name: "funnel-x",
 	size: 24,
 	node: [
@@ -18652,7 +18650,7 @@ var DE = g(EE), OE = {
 	aliases: ["filter-x"]
 };
 OE.node;
-var kE = g(OE), AE = {
+var kE = f(OE), AE = {
 	name: "funnel",
 	size: 24,
 	node: [["path", {
@@ -18662,7 +18660,7 @@ var kE = g(OE), AE = {
 	aliases: ["filter"]
 };
 AE.node;
-var jE = g(AE), ME = {
+var jE = f(AE), ME = {
 	name: "galaxy",
 	size: 24,
 	node: [
@@ -18692,7 +18690,7 @@ var jE = g(AE), ME = {
 	]
 };
 ME.node;
-var NE = g(ME), PE = {
+var NE = f(ME), PE = {
 	name: "gallery-horizontal-end",
 	size: 24,
 	node: [
@@ -18715,7 +18713,7 @@ var NE = g(ME), PE = {
 	]
 };
 PE.node;
-var FE = g(PE), IE = {
+var FE = f(PE), IE = {
 	name: "gallery-horizontal",
 	size: 24,
 	node: [
@@ -18738,7 +18736,7 @@ var FE = g(PE), IE = {
 	]
 };
 IE.node;
-var LE = g(IE), RE = {
+var LE = f(IE), RE = {
 	name: "gallery-thumbnails",
 	size: 24,
 	node: [
@@ -18769,7 +18767,7 @@ var LE = g(IE), RE = {
 	]
 };
 RE.node;
-var zE = g(RE), BE = {
+var zE = f(RE), BE = {
 	name: "gallery-vertical-end",
 	size: 24,
 	node: [
@@ -18792,7 +18790,7 @@ var zE = g(RE), BE = {
 	]
 };
 BE.node;
-var VE = g(BE), HE = {
+var VE = f(BE), HE = {
 	name: "gallery-vertical",
 	size: 24,
 	node: [
@@ -18815,7 +18813,7 @@ var VE = g(BE), HE = {
 	]
 };
 HE.node;
-var UE = g(HE), WE = {
+var UE = f(HE), WE = {
 	name: "gamepad-2",
 	size: 24,
 	node: [
@@ -18854,7 +18852,7 @@ var UE = g(HE), WE = {
 	]
 };
 WE.node;
-var GE = g(WE), KE = {
+var GE = f(WE), KE = {
 	name: "gamepad-directional",
 	size: 24,
 	node: [
@@ -18877,7 +18875,7 @@ var GE = g(WE), KE = {
 	]
 };
 KE.node;
-var qE = g(KE), JE = {
+var qE = f(KE), JE = {
 	name: "gamepad",
 	size: 24,
 	node: [
@@ -18920,7 +18918,7 @@ var qE = g(KE), JE = {
 	]
 };
 JE.node;
-var YE = g(JE), XE = {
+var YE = f(JE), XE = {
 	name: "gap-horizontal",
 	size: 24,
 	node: [
@@ -18951,7 +18949,7 @@ var YE = g(JE), XE = {
 	]
 };
 XE.node;
-var ZE = g(XE), QE = {
+var ZE = f(XE), QE = {
 	name: "gap-vertical",
 	size: 24,
 	node: [
@@ -18982,7 +18980,7 @@ var ZE = g(XE), QE = {
 	]
 };
 QE.node;
-var $E = g(QE), eD = {
+var $E = f(QE), eD = {
 	name: "gauge",
 	size: 24,
 	node: [["path", {
@@ -18994,7 +18992,7 @@ var $E = g(QE), eD = {
 	}]]
 };
 eD.node;
-var tD = g(eD), nD = {
+var tD = f(eD), nD = {
 	name: "gavel",
 	size: 24,
 	node: [
@@ -19021,7 +19019,7 @@ var tD = g(eD), nD = {
 	]
 };
 nD.node;
-var rD = g(nD), iD = {
+var rD = f(nD), iD = {
 	name: "gem",
 	size: 24,
 	node: [
@@ -19040,7 +19038,7 @@ var rD = g(nD), iD = {
 	]
 };
 iD.node;
-var aD = g(iD), oD = {
+var aD = f(iD), oD = {
 	name: "georgian-lari",
 	size: 24,
 	node: [
@@ -19063,7 +19061,7 @@ var aD = g(iD), oD = {
 	]
 };
 oD.node;
-var sD = g(oD), cD = {
+var sD = f(oD), cD = {
 	name: "germ-off",
 	size: 24,
 	node: [
@@ -19122,7 +19120,7 @@ var sD = g(oD), cD = {
 	]
 };
 cD.node;
-var lD = g(cD), uD = {
+var lD = f(cD), uD = {
 	name: "germ",
 	size: 24,
 	node: [
@@ -19179,7 +19177,7 @@ var lD = g(cD), uD = {
 	]
 };
 uD.node;
-var dD = g(uD), fD = {
+var dD = f(uD), fD = {
 	name: "ghost",
 	size: 24,
 	node: [
@@ -19198,7 +19196,7 @@ var dD = g(uD), fD = {
 	]
 };
 fD.node;
-var pD = g(fD), mD = {
+var pD = f(fD), mD = {
 	name: "gift",
 	size: 24,
 	node: [
@@ -19225,7 +19223,7 @@ var pD = g(fD), mD = {
 	]
 };
 mD.node;
-var hD = g(mD), gD = {
+var hD = f(mD), gD = {
 	name: "git-branch-minus",
 	size: 24,
 	node: [
@@ -19252,7 +19250,7 @@ var hD = g(mD), gD = {
 	]
 };
 gD.node;
-var _D = g(gD), vD = {
+var _D = f(gD), vD = {
 	name: "git-branch-plus",
 	size: 24,
 	node: [
@@ -19283,7 +19281,7 @@ var _D = g(gD), vD = {
 	]
 };
 vD.node;
-var yD = g(vD), bD = {
+var yD = f(vD), bD = {
 	name: "git-branch",
 	size: 24,
 	node: [
@@ -19306,7 +19304,7 @@ var yD = g(vD), bD = {
 	]
 };
 bD.node;
-var xD = g(bD), SD = {
+var xD = f(bD), SD = {
 	name: "git-commit-horizontal",
 	size: 24,
 	node: [
@@ -19334,7 +19332,7 @@ var xD = g(bD), SD = {
 	aliases: ["git-commit"]
 };
 SD.node;
-var CD = g(SD), wD = {
+var CD = f(SD), wD = {
 	name: "git-commit-vertical",
 	size: 24,
 	node: [
@@ -19355,7 +19353,7 @@ var CD = g(SD), wD = {
 	]
 };
 wD.node;
-var TD = g(wD), ED = {
+var TD = f(wD), ED = {
 	name: "git-compare-arrows",
 	size: 24,
 	node: [
@@ -19390,7 +19388,7 @@ var TD = g(wD), ED = {
 	]
 };
 ED.node;
-var DD = g(ED), OD = {
+var DD = f(ED), OD = {
 	name: "git-compare",
 	size: 24,
 	node: [
@@ -19417,7 +19415,7 @@ var DD = g(ED), OD = {
 	]
 };
 OD.node;
-var kD = g(OD), AD = {
+var kD = f(OD), AD = {
 	name: "git-fork",
 	size: 24,
 	node: [
@@ -19450,7 +19448,7 @@ var kD = g(OD), AD = {
 	]
 };
 AD.node;
-var jD = g(AD), MD = {
+var jD = f(AD), MD = {
 	name: "git-graph",
 	size: 24,
 	node: [
@@ -19487,7 +19485,7 @@ var jD = g(AD), MD = {
 	]
 };
 MD.node;
-var ND = g(MD), PD = {
+var ND = f(MD), PD = {
 	name: "git-merge-conflict",
 	size: 24,
 	node: [
@@ -19516,7 +19514,7 @@ var ND = g(MD), PD = {
 	]
 };
 PD.node;
-var FD = g(PD), ID = {
+var FD = f(PD), ID = {
 	name: "git-merge",
 	size: 24,
 	node: [
@@ -19539,7 +19537,7 @@ var FD = g(PD), ID = {
 	]
 };
 ID.node;
-var LD = g(ID), RD = {
+var LD = f(ID), RD = {
 	name: "git-pull-request-arrow",
 	size: 24,
 	node: [
@@ -19570,7 +19568,7 @@ var LD = g(ID), RD = {
 	]
 };
 RD.node;
-var zD = g(RD), BD = {
+var zD = f(RD), BD = {
 	name: "git-pull-request-closed",
 	size: 24,
 	node: [
@@ -19605,7 +19603,7 @@ var zD = g(RD), BD = {
 	]
 };
 BD.node;
-var VD = g(BD), HD = {
+var VD = f(BD), HD = {
 	name: "git-pull-request-create-arrow",
 	size: 24,
 	node: [
@@ -19638,7 +19636,7 @@ var VD = g(BD), HD = {
 	]
 };
 HD.node;
-var UD = g(HD), WD = {
+var UD = f(HD), WD = {
 	name: "git-pull-request-create",
 	size: 24,
 	node: [
@@ -19667,7 +19665,7 @@ var UD = g(HD), WD = {
 	]
 };
 WD.node;
-var GD = g(WD), KD = {
+var GD = f(WD), KD = {
 	name: "git-pull-request-draft",
 	size: 24,
 	node: [
@@ -19701,7 +19699,7 @@ var GD = g(WD), KD = {
 	]
 };
 KD.node;
-var qD = g(KD), JD = {
+var qD = f(KD), JD = {
 	name: "git-pull-request",
 	size: 24,
 	node: [
@@ -19731,7 +19729,7 @@ var qD = g(KD), JD = {
 	]
 };
 JD.node;
-var YD = g(JD), XD = {
+var YD = f(JD), XD = {
 	name: "glass-water",
 	size: 24,
 	node: [["path", {
@@ -19743,7 +19741,7 @@ var YD = g(JD), XD = {
 	}]]
 };
 XD.node;
-var ZD = g(XD), QD = {
+var ZD = f(XD), QD = {
 	name: "glasses",
 	size: 24,
 	node: [
@@ -19774,7 +19772,7 @@ var ZD = g(XD), QD = {
 	]
 };
 QD.node;
-var $D = g(QD), eO = {
+var $D = f(QD), eO = {
 	name: "globe-check",
 	size: 24,
 	node: [["path", {
@@ -19786,7 +19784,7 @@ var $D = g(QD), eO = {
 	}]]
 };
 eO.node;
-var tO = g(eO), nO = {
+var tO = f(eO), nO = {
 	name: "globe-code",
 	size: 24,
 	node: [
@@ -19809,7 +19807,7 @@ var tO = g(eO), nO = {
 	]
 };
 nO.node;
-var rO = g(nO), iO = {
+var rO = f(nO), iO = {
 	name: "globe-lock",
 	size: 24,
 	node: [
@@ -19836,7 +19834,7 @@ var rO = g(nO), iO = {
 	]
 };
 iO.node;
-var aO = g(iO), oO = {
+var aO = f(iO), oO = {
 	name: "globe-off",
 	size: 24,
 	node: [
@@ -19871,7 +19869,7 @@ var aO = g(iO), oO = {
 	]
 };
 oO.node;
-var sO = g(oO), cO = {
+var sO = f(oO), cO = {
 	name: "globe-x",
 	size: 24,
 	node: [
@@ -19890,7 +19888,7 @@ var sO = g(oO), cO = {
 	]
 };
 cO.node;
-var lO = g(cO), uO = {
+var lO = f(cO), uO = {
 	name: "globe",
 	size: 24,
 	node: [
@@ -19911,7 +19909,7 @@ var lO = g(cO), uO = {
 	]
 };
 uO.node;
-var dO = g(uO), fO = {
+var dO = f(uO), fO = {
 	name: "gpu",
 	size: 24,
 	node: [
@@ -19942,7 +19940,7 @@ var dO = g(uO), fO = {
 	]
 };
 fO.node;
-var pO = g(fO), mO = {
+var pO = f(fO), mO = {
 	name: "goal",
 	size: 24,
 	node: [
@@ -19961,7 +19959,7 @@ var pO = g(fO), mO = {
 	]
 };
 mO.node;
-var hO = g(mO), gO = {
+var hO = f(mO), gO = {
 	name: "graduation-cap",
 	size: 24,
 	node: [
@@ -19980,7 +19978,7 @@ var hO = g(mO), gO = {
 	]
 };
 gO.node;
-var _O = g(gO), vO = {
+var _O = f(gO), vO = {
 	name: "grape",
 	size: 24,
 	node: [
@@ -20039,7 +20037,7 @@ var _O = g(gO), vO = {
 	]
 };
 vO.node;
-var yO = g(vO), bO = {
+var yO = f(vO), bO = {
 	name: "grid-2x2-check",
 	size: 24,
 	node: [["path", {
@@ -20052,7 +20050,7 @@ var yO = g(vO), bO = {
 	aliases: ["grid-2-x-2-check"]
 };
 bO.node;
-var xO = g(bO), SO = {
+var xO = f(bO), SO = {
 	name: "grid-2x2-plus",
 	size: 24,
 	node: [
@@ -20072,7 +20070,7 @@ var xO = g(bO), SO = {
 	aliases: ["grid-2-x-2-plus"]
 };
 SO.node;
-var CO = g(SO), wO = {
+var CO = f(SO), wO = {
 	name: "grid-2x2-x",
 	size: 24,
 	node: [
@@ -20092,7 +20090,7 @@ var CO = g(SO), wO = {
 	aliases: ["grid-2-x-2-x"]
 };
 wO.node;
-var TO = g(wO), EO = {
+var TO = f(wO), EO = {
 	name: "grid-2x2",
 	size: 24,
 	node: [
@@ -20116,7 +20114,7 @@ var TO = g(wO), EO = {
 	aliases: ["grid-2-x-2"]
 };
 EO.node;
-var DO = g(EO), OO = {
+var DO = f(EO), OO = {
 	name: "grid-3x2",
 	size: 24,
 	node: [
@@ -20143,7 +20141,7 @@ var DO = g(EO), OO = {
 	]
 };
 OO.node;
-var kO = g(OO), AO = {
+var kO = f(OO), AO = {
 	name: "grid-3x3",
 	size: 24,
 	node: [
@@ -20175,7 +20173,7 @@ var kO = g(OO), AO = {
 	aliases: ["grid", "grid-3-x-3"]
 };
 AO.node;
-var U = g(AO), jO = {
+var W = f(AO), jO = {
 	name: "grip-vertical",
 	size: 24,
 	node: [
@@ -20218,7 +20216,7 @@ var U = g(AO), jO = {
 	]
 };
 jO.node;
-var MO = g(jO), NO = {
+var MO = f(jO), NO = {
 	name: "grip-horizontal",
 	size: 24,
 	node: [
@@ -20261,7 +20259,7 @@ var MO = g(jO), NO = {
 	]
 };
 NO.node;
-var PO = g(NO), FO = {
+var PO = f(NO), FO = {
 	name: "grip",
 	size: 24,
 	node: [
@@ -20322,7 +20320,7 @@ var PO = g(NO), FO = {
 	]
 };
 FO.node;
-var IO = g(FO), LO = {
+var IO = f(FO), LO = {
 	name: "group",
 	size: 24,
 	node: [
@@ -20361,7 +20359,7 @@ var IO = g(FO), LO = {
 	]
 };
 LO.node;
-var RO = g(LO), zO = {
+var RO = f(LO), zO = {
 	name: "guitar",
 	size: 24,
 	node: [
@@ -20384,7 +20382,7 @@ var RO = g(LO), zO = {
 	]
 };
 zO.node;
-var BO = g(zO), VO = {
+var BO = f(zO), VO = {
 	name: "ham",
 	size: 24,
 	node: [
@@ -20407,7 +20405,7 @@ var BO = g(zO), VO = {
 	]
 };
 VO.node;
-var HO = g(VO), UO = {
+var HO = f(VO), UO = {
 	name: "hamburger",
 	size: 24,
 	node: [
@@ -20430,7 +20428,7 @@ var HO = g(VO), UO = {
 	]
 };
 UO.node;
-var WO = g(UO), GO = {
+var WO = f(UO), GO = {
 	name: "hammer",
 	size: 24,
 	node: [
@@ -20449,7 +20447,7 @@ var WO = g(UO), GO = {
 	]
 };
 GO.node;
-var KO = g(GO), qO = {
+var KO = f(GO), qO = {
 	name: "hand-coins",
 	size: 24,
 	node: [
@@ -20480,7 +20478,7 @@ var KO = g(GO), qO = {
 	]
 };
 qO.node;
-var JO = g(qO), YO = {
+var JO = f(qO), YO = {
 	name: "hand-fist",
 	size: 24,
 	node: [
@@ -20503,7 +20501,7 @@ var JO = g(qO), YO = {
 	]
 };
 YO.node;
-var XO = g(YO), ZO = {
+var XO = f(YO), ZO = {
 	name: "hand-grab",
 	size: 24,
 	node: [
@@ -20531,7 +20529,7 @@ var XO = g(YO), ZO = {
 	aliases: ["grab"]
 };
 ZO.node;
-var QO = g(ZO), $O = {
+var QO = f(ZO), $O = {
 	name: "hand-heart",
 	size: 24,
 	node: [
@@ -20554,7 +20552,7 @@ var QO = g(ZO), $O = {
 	]
 };
 $O.node;
-var ek = g($O), tk = {
+var ek = f($O), tk = {
 	name: "hand-helping",
 	size: 24,
 	node: [
@@ -20574,7 +20572,7 @@ var ek = g($O), tk = {
 	aliases: ["helping-hand"]
 };
 tk.node;
-var nk = g(tk), rk = {
+var nk = f(tk), rk = {
 	name: "hand-metal",
 	size: 24,
 	node: [
@@ -20597,7 +20595,7 @@ var nk = g(tk), rk = {
 	]
 };
 rk.node;
-var ik = g(rk), ak = {
+var ik = f(rk), ak = {
 	name: "hand-platter",
 	size: 24,
 	node: [
@@ -20628,7 +20626,7 @@ var ik = g(rk), ak = {
 	]
 };
 ak.node;
-var ok = g(ak), sk = {
+var ok = f(ak), sk = {
 	name: "hand",
 	size: 24,
 	node: [
@@ -20651,7 +20649,7 @@ var ok = g(ak), sk = {
 	]
 };
 sk.node;
-var ck = g(sk), lk = {
+var ck = f(sk), lk = {
 	name: "handshake",
 	size: 24,
 	node: [
@@ -20678,7 +20676,7 @@ var ck = g(sk), lk = {
 	]
 };
 lk.node;
-var uk = g(lk), dk = {
+var uk = f(lk), dk = {
 	name: "handbag",
 	size: 24,
 	node: [["path", {
@@ -20690,7 +20688,7 @@ var uk = g(lk), dk = {
 	}]]
 };
 dk.node;
-var fk = g(dk), pk = {
+var fk = f(dk), pk = {
 	name: "hard-drive-download",
 	size: 24,
 	node: [
@@ -20721,7 +20719,7 @@ var fk = g(dk), pk = {
 	]
 };
 pk.node;
-var mk = g(pk), hk = {
+var mk = f(pk), hk = {
 	name: "hard-drive-upload",
 	size: 24,
 	node: [
@@ -20752,7 +20750,7 @@ var mk = g(pk), hk = {
 	]
 };
 hk.node;
-var gk = g(hk), _k = {
+var gk = f(hk), _k = {
 	name: "hard-drive",
 	size: 24,
 	node: [
@@ -20775,7 +20773,7 @@ var gk = g(hk), _k = {
 	]
 };
 _k.node;
-var vk = g(_k), yk = {
+var vk = f(_k), yk = {
 	name: "hard-hat",
 	size: 24,
 	node: [
@@ -20802,7 +20800,7 @@ var vk = g(_k), yk = {
 	]
 };
 yk.node;
-var bk = g(yk), xk = {
+var bk = f(yk), xk = {
 	name: "hash",
 	size: 24,
 	node: [
@@ -20837,7 +20835,7 @@ var bk = g(yk), xk = {
 	]
 };
 xk.node;
-var Sk = g(xk), Ck = {
+var Sk = f(xk), Ck = {
 	name: "hat-glasses",
 	size: 24,
 	node: [
@@ -20868,7 +20866,7 @@ var Sk = g(xk), Ck = {
 	]
 };
 Ck.node;
-var wk = g(Ck), Tk = {
+var wk = f(Ck), Tk = {
 	name: "haze",
 	size: 24,
 	node: [
@@ -20907,7 +20905,7 @@ var wk = g(Ck), Tk = {
 	]
 };
 Tk.node;
-var Ek = g(Tk), Dk = {
+var Ek = f(Tk), Dk = {
 	name: "hd",
 	size: 24,
 	node: [
@@ -20938,7 +20936,7 @@ var Ek = g(Tk), Dk = {
 	]
 };
 Dk.node;
-var Ok = g(Dk), kk = {
+var Ok = f(Dk), kk = {
 	name: "hdmi-port",
 	size: 24,
 	node: [["path", {
@@ -20950,7 +20948,7 @@ var Ok = g(Dk), kk = {
 	}]]
 };
 kk.node;
-var Ak = g(kk), jk = {
+var Ak = f(kk), jk = {
 	name: "heading-1",
 	size: 24,
 	node: [
@@ -20973,7 +20971,7 @@ var Ak = g(kk), jk = {
 	]
 };
 jk.node;
-var Mk = g(jk), Nk = {
+var Mk = f(jk), Nk = {
 	name: "heading-2",
 	size: 24,
 	node: [
@@ -20996,7 +20994,7 @@ var Mk = g(jk), Nk = {
 	]
 };
 Nk.node;
-var Pk = g(Nk), Fk = {
+var Pk = f(Nk), Fk = {
 	name: "heading-3",
 	size: 24,
 	node: [
@@ -21023,7 +21021,7 @@ var Pk = g(Nk), Fk = {
 	]
 };
 Fk.node;
-var Ik = g(Fk), Lk = {
+var Ik = f(Fk), Lk = {
 	name: "heading-4",
 	size: 24,
 	node: [
@@ -21050,7 +21048,7 @@ var Ik = g(Fk), Lk = {
 	]
 };
 Lk.node;
-var Rk = g(Lk), zk = {
+var Rk = f(Lk), zk = {
 	name: "heading-5",
 	size: 24,
 	node: [
@@ -21077,7 +21075,7 @@ var Rk = g(Lk), zk = {
 	]
 };
 zk.node;
-var Bk = g(zk), Vk = {
+var Bk = f(zk), Vk = {
 	name: "heading-6",
 	size: 24,
 	node: [
@@ -21106,7 +21104,7 @@ var Bk = g(zk), Vk = {
 	]
 };
 Vk.node;
-var Hk = g(Vk), Uk = {
+var Hk = f(Vk), Uk = {
 	name: "heading",
 	size: 24,
 	node: [
@@ -21125,7 +21123,7 @@ var Hk = g(Vk), Uk = {
 	]
 };
 Uk.node;
-var Wk = g(Uk), Gk = {
+var Wk = f(Uk), Gk = {
 	name: "headphone-off",
 	size: 24,
 	node: [
@@ -21152,7 +21150,7 @@ var Wk = g(Uk), Gk = {
 	]
 };
 Gk.node;
-var Kk = g(Gk), qk = {
+var Kk = f(Gk), qk = {
 	name: "headphones",
 	size: 24,
 	node: [["path", {
@@ -21161,7 +21159,7 @@ var Kk = g(Gk), qk = {
 	}]]
 };
 qk.node;
-var Jk = g(qk), Yk = {
+var Jk = f(qk), Yk = {
 	name: "headset",
 	size: 24,
 	node: [["path", {
@@ -21173,7 +21171,7 @@ var Jk = g(qk), Yk = {
 	}]]
 };
 Yk.node;
-var Xk = g(Yk), Zk = {
+var Xk = f(Yk), Zk = {
 	name: "heart-crack",
 	size: 24,
 	node: [["path", {
@@ -21185,7 +21183,7 @@ var Xk = g(Yk), Zk = {
 	}]]
 };
 Zk.node;
-var Qk = g(Zk), $k = {
+var Qk = f(Zk), $k = {
 	name: "heart-handshake",
 	size: 24,
 	node: [["path", {
@@ -21194,7 +21192,7 @@ var Qk = g(Zk), $k = {
 	}]]
 };
 $k.node;
-var eA = g($k), tA = {
+var eA = f($k), tA = {
 	name: "heart-minus",
 	size: 24,
 	node: [["path", {
@@ -21206,7 +21204,7 @@ var eA = g($k), tA = {
 	}]]
 };
 tA.node;
-var nA = g(tA), rA = {
+var nA = f(tA), rA = {
 	name: "heart-off",
 	size: 24,
 	node: [
@@ -21225,7 +21223,7 @@ var nA = g(tA), rA = {
 	]
 };
 rA.node;
-var iA = g(rA), aA = {
+var iA = f(rA), aA = {
 	name: "heart-plus",
 	size: 24,
 	node: [
@@ -21244,7 +21242,7 @@ var iA = g(rA), aA = {
 	]
 };
 aA.node;
-var oA = g(aA), sA = {
+var oA = f(aA), sA = {
 	name: "heart-pulse",
 	size: 24,
 	node: [["path", {
@@ -21256,7 +21254,7 @@ var oA = g(aA), sA = {
 	}]]
 };
 sA.node;
-var cA = g(sA), lA = {
+var cA = f(sA), lA = {
 	name: "heart-x",
 	size: 24,
 	node: [
@@ -21275,7 +21273,7 @@ var cA = g(sA), lA = {
 	]
 };
 lA.node;
-var uA = g(lA), dA = {
+var uA = f(lA), dA = {
 	name: "heart",
 	size: 24,
 	node: [["path", {
@@ -21284,7 +21282,7 @@ var uA = g(lA), dA = {
 	}]]
 };
 dA.node;
-var fA = g(dA), pA = {
+var fA = f(dA), pA = {
 	name: "heater",
 	size: 24,
 	node: [
@@ -21331,7 +21329,7 @@ var fA = g(dA), pA = {
 	]
 };
 pA.node;
-var mA = g(pA), hA = {
+var mA = f(pA), hA = {
 	name: "helicopter",
 	size: 24,
 	node: [
@@ -21370,7 +21368,7 @@ var mA = g(pA), hA = {
 	]
 };
 hA.node;
-var gA = g(hA), _A = {
+var gA = f(hA), _A = {
 	name: "hexagon",
 	size: 24,
 	node: [["path", {
@@ -21379,7 +21377,7 @@ var gA = g(hA), _A = {
 	}]]
 };
 _A.node;
-var vA = g(_A), yA = {
+var vA = f(_A), yA = {
 	name: "highlighter",
 	size: 24,
 	node: [["path", {
@@ -21391,7 +21389,7 @@ var vA = g(_A), yA = {
 	}]]
 };
 yA.node;
-var bA = g(yA), xA = {
+var bA = f(yA), xA = {
 	name: "hop-off",
 	size: 24,
 	node: [
@@ -21434,7 +21432,7 @@ var bA = g(yA), xA = {
 	]
 };
 xA.node;
-var SA = g(xA), CA = {
+var SA = f(xA), CA = {
 	name: "hop",
 	size: 24,
 	node: [
@@ -21473,7 +21471,7 @@ var SA = g(xA), CA = {
 	]
 };
 CA.node;
-var wA = g(CA), TA = {
+var wA = f(CA), TA = {
 	name: "hospital",
 	size: 24,
 	node: [
@@ -21500,7 +21498,7 @@ var wA = g(CA), TA = {
 	]
 };
 TA.node;
-var EA = g(TA), DA = {
+var EA = f(TA), DA = {
 	name: "hotel",
 	size: 24,
 	node: [
@@ -21551,7 +21549,7 @@ var EA = g(TA), DA = {
 	]
 };
 DA.node;
-var OA = g(DA), kA = {
+var OA = f(DA), kA = {
 	name: "hourglass-cog",
 	size: 24,
 	node: [
@@ -21612,7 +21610,7 @@ var OA = g(DA), kA = {
 	]
 };
 kA.node;
-var AA = g(kA), jA = {
+var AA = f(kA), jA = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -21635,7 +21633,7 @@ var AA = g(kA), jA = {
 	]
 };
 jA.node;
-var MA = g(jA), NA = {
+var MA = f(jA), NA = {
 	name: "house-cog",
 	size: 24,
 	node: [
@@ -21688,7 +21686,7 @@ var MA = g(jA), NA = {
 	]
 };
 NA.node;
-var PA = g(NA), FA = {
+var PA = f(NA), FA = {
 	name: "house-heart",
 	size: 24,
 	node: [["path", {
@@ -21700,7 +21698,7 @@ var PA = g(NA), FA = {
 	}]]
 };
 FA.node;
-var IA = g(FA), LA = {
+var IA = f(FA), LA = {
 	name: "house-plug",
 	size: 24,
 	node: [
@@ -21723,7 +21721,7 @@ var IA = g(FA), LA = {
 	]
 };
 LA.node;
-var RA = g(LA), zA = {
+var RA = f(LA), zA = {
 	name: "house-plus",
 	size: 24,
 	node: [
@@ -21746,7 +21744,7 @@ var RA = g(LA), zA = {
 	]
 };
 zA.node;
-var BA = g(zA), VA = {
+var BA = f(zA), VA = {
 	name: "house-wifi",
 	size: 24,
 	node: [
@@ -21769,7 +21767,7 @@ var BA = g(zA), VA = {
 	]
 };
 VA.node;
-var HA = g(VA), UA = {
+var HA = f(VA), UA = {
 	name: "house",
 	size: 24,
 	node: [["path", {
@@ -21782,7 +21780,7 @@ var HA = g(VA), UA = {
 	aliases: ["home"]
 };
 UA.node;
-var WA = g(UA), GA = {
+var WA = f(UA), GA = {
 	name: "houses",
 	size: 24,
 	node: [
@@ -21801,7 +21799,7 @@ var WA = g(UA), GA = {
 	]
 };
 GA.node;
-var KA = g(GA), qA = {
+var KA = f(GA), cte = {
 	name: "ice-cream-bowl",
 	size: 24,
 	node: [
@@ -21820,8 +21818,8 @@ var KA = g(GA), qA = {
 	],
 	aliases: ["ice-cream-2"]
 };
-qA.node;
-var JA = g(qA), YA = {
+cte.node;
+var qA = f(cte), lte = {
 	name: "ice-cream-cone",
 	size: 24,
 	node: [
@@ -21840,8 +21838,8 @@ var JA = g(qA), YA = {
 	],
 	aliases: ["ice-cream"]
 };
-YA.node;
-var XA = g(YA), ZA = {
+lte.node;
+var JA = f(lte), ute = {
 	name: "id-card-lanyard",
 	size: 24,
 	node: [
@@ -21869,8 +21867,8 @@ var XA = g(YA), ZA = {
 		}]
 	]
 };
-ZA.node;
-var QA = g(ZA), $A = {
+ute.node;
+var YA = f(ute), dte = {
 	name: "image-down",
 	size: 24,
 	node: [
@@ -21894,8 +21892,8 @@ var QA = g(ZA), $A = {
 		}]
 	]
 };
-$A.node;
-var ej = g($A), tj = {
+dte.node;
+var XA = f(dte), fte = {
 	name: "id-card",
 	size: 24,
 	node: [
@@ -21927,8 +21925,8 @@ var ej = g($A), tj = {
 		}]
 	]
 };
-tj.node;
-var nj = g(tj), rj = {
+fte.node;
+var ZA = f(fte), pte = {
 	name: "image-minus",
 	size: 24,
 	node: [
@@ -21955,8 +21953,8 @@ var nj = g(tj), rj = {
 		}]
 	]
 };
-rj.node;
-var ij = g(rj), lte = {
+pte.node;
+var QA = f(pte), mte = {
 	name: "image-off",
 	size: 24,
 	node: [
@@ -21995,8 +21993,8 @@ var ij = g(rj), lte = {
 		}]
 	]
 };
-lte.node;
-var aj = g(lte), ute = {
+mte.node;
+var $A = f(mte), hte = {
 	name: "image-play",
 	size: 24,
 	node: [
@@ -22020,8 +22018,8 @@ var aj = g(lte), ute = {
 		}]
 	]
 };
-ute.node;
-var oj = g(ute), dte = {
+hte.node;
+var ej = f(hte), gte = {
 	name: "image-plus",
 	size: 24,
 	node: [
@@ -22049,8 +22047,8 @@ var oj = g(ute), dte = {
 		}]
 	]
 };
-dte.node;
-var sj = g(dte), fte = {
+gte.node;
+var tj = f(gte), _te = {
 	name: "image-up",
 	size: 24,
 	node: [
@@ -22074,8 +22072,8 @@ var sj = g(dte), fte = {
 		}]
 	]
 };
-fte.node;
-var cj = g(fte), pte = {
+_te.node;
+var nj = f(_te), vte = {
 	name: "image-upscale",
 	size: 24,
 	node: [
@@ -22117,8 +22115,8 @@ var cj = g(fte), pte = {
 		}]
 	]
 };
-pte.node;
-var lj = g(pte), mte = {
+vte.node;
+var rj = f(vte), yte = {
 	name: "image",
 	size: 24,
 	node: [
@@ -22143,8 +22141,8 @@ var lj = g(pte), mte = {
 		}]
 	]
 };
-mte.node;
-var uj = g(mte), hte = {
+yte.node;
+var ij = f(yte), bte = {
 	name: "import",
 	size: 24,
 	node: [
@@ -22162,8 +22160,8 @@ var uj = g(mte), hte = {
 		}]
 	]
 };
-hte.node;
-var dj = g(hte), gte = {
+bte.node;
+var aj = f(bte), xte = {
 	name: "images",
 	size: 24,
 	node: [
@@ -22192,8 +22190,8 @@ var dj = g(hte), gte = {
 		}]
 	]
 };
-gte.node;
-var fj = g(gte), _te = {
+xte.node;
+var oj = f(xte), Ste = {
 	name: "inbox",
 	size: 24,
 	node: [["polyline", {
@@ -22204,8 +22202,8 @@ var fj = g(gte), _te = {
 		key: "oot6mr"
 	}]]
 };
-_te.node;
-var pj = g(_te), vte = {
+Ste.node;
+var sj = f(Ste), Cte = {
 	name: "indian-rupee",
 	size: 24,
 	node: [
@@ -22231,8 +22229,8 @@ var pj = g(_te), vte = {
 		}]
 	]
 };
-vte.node;
-var mj = g(vte), yte = {
+Cte.node;
+var cj = f(Cte), wte = {
 	name: "info",
 	size: 24,
 	node: [
@@ -22252,8 +22250,8 @@ var mj = g(vte), yte = {
 		}]
 	]
 };
-yte.node;
-var hj = g(yte), bte = {
+wte.node;
+var lj = f(wte), Tte = {
 	name: "infinity",
 	size: 24,
 	node: [["path", {
@@ -22261,8 +22259,8 @@ var hj = g(yte), bte = {
 		key: "18ogeb"
 	}]]
 };
-bte.node;
-var gj = g(bte), xte = {
+Tte.node;
+var uj = f(Tte), Ete = {
 	name: "inspection-panel",
 	size: 24,
 	node: [
@@ -22292,8 +22290,8 @@ var gj = g(bte), xte = {
 		}]
 	]
 };
-xte.node;
-var _j = g(xte), Ste = {
+Ete.node;
+var dj = f(Ete), Dte = {
 	name: "italic",
 	size: 24,
 	node: [
@@ -22320,8 +22318,8 @@ var _j = g(xte), Ste = {
 		}]
 	]
 };
-Ste.node;
-var vj = g(Ste), Cte = {
+Dte.node;
+var fj = f(Dte), Ote = {
 	name: "iteration-ccw",
 	size: 24,
 	node: [["path", {
@@ -22332,8 +22330,8 @@ var vj = g(Ste), Cte = {
 		key: "1bik7b"
 	}]]
 };
-Cte.node;
-var yj = g(Cte), wte = {
+Ote.node;
+var pj = f(Ote), kte = {
 	name: "iteration-cw",
 	size: 24,
 	node: [["path", {
@@ -22344,8 +22342,8 @@ var yj = g(Cte), wte = {
 		key: "6g7gki"
 	}]]
 };
-wte.node;
-var bj = g(wte), Tte = {
+kte.node;
+var mj = f(kte), Ate = {
 	name: "iv-bag",
 	size: 24,
 	node: [
@@ -22363,8 +22361,8 @@ var bj = g(wte), Tte = {
 		}]
 	]
 };
-Tte.node;
-var xj = g(Tte), Ete = {
+Ate.node;
+var hj = f(Ate), jte = {
 	name: "japanese-yen",
 	size: 24,
 	node: [
@@ -22382,8 +22380,8 @@ var xj = g(Tte), Ete = {
 		}]
 	]
 };
-Ete.node;
-var Sj = g(Ete), Dte = {
+jte.node;
+var gj = f(jte), Mte = {
 	name: "joystick",
 	size: 24,
 	node: [
@@ -22407,8 +22405,8 @@ var Sj = g(Ete), Dte = {
 		}]
 	]
 };
-Dte.node;
-var Cj = g(Dte), Ote = {
+Mte.node;
+var _j = f(Mte), Nte = {
 	name: "kanban",
 	size: 24,
 	node: [
@@ -22426,8 +22424,8 @@ var Cj = g(Dte), Ote = {
 		}]
 	]
 };
-Ote.node;
-var wj = g(Ote), kte = {
+Nte.node;
+var vj = f(Nte), Pte = {
 	name: "kayak",
 	size: 24,
 	node: [
@@ -22449,8 +22447,8 @@ var wj = g(Ote), kte = {
 		}]
 	]
 };
-kte.node;
-var Tj = g(kte), Ate = {
+Pte.node;
+var yj = f(Pte), Fte = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -22464,8 +22462,8 @@ var Tj = g(kte), Ate = {
 		key: "w0ekpg"
 	}]]
 };
-Ate.node;
-var Ej = g(Ate), jte = {
+Fte.node;
+var bj = f(Fte), Ite = {
 	name: "key-square",
 	size: 24,
 	node: [
@@ -22483,8 +22481,8 @@ var Ej = g(Ate), jte = {
 		}]
 	]
 };
-jte.node;
-var Dj = g(jte), Mte = {
+Ite.node;
+var xj = f(Ite), Lte = {
 	name: "key",
 	size: 24,
 	node: [
@@ -22504,8 +22502,8 @@ var Dj = g(jte), Mte = {
 		}]
 	]
 };
-Mte.node;
-var Oj = g(Mte), Nte = {
+Lte.node;
+var Sj = f(Lte), Rte = {
 	name: "keyboard-music",
 	size: 24,
 	node: [
@@ -22551,8 +22549,8 @@ var Oj = g(Mte), Nte = {
 		}]
 	]
 };
-Nte.node;
-var kj = g(Nte), Pte = {
+Rte.node;
+var Cj = f(Rte), zte = {
 	name: "keyboard-off",
 	size: 24,
 	node: [
@@ -22598,8 +22596,8 @@ var kj = g(Nte), Pte = {
 		}]
 	]
 };
-Pte.node;
-var Aj = g(Pte), Fte = {
+zte.node;
+var wj = f(zte), Bte = {
 	name: "keyboard",
 	size: 24,
 	node: [
@@ -22645,8 +22643,8 @@ var Aj = g(Pte), Fte = {
 		}]
 	]
 };
-Fte.node;
-var jj = g(Fte), Ite = {
+Bte.node;
+var Tj = f(Bte), Vte = {
 	name: "lambda",
 	size: 24,
 	node: [["path", {
@@ -22657,8 +22655,8 @@ var jj = g(Fte), Ite = {
 		key: "15fdan"
 	}]]
 };
-Ite.node;
-var Mj = g(Ite), Lte = {
+Vte.node;
+var Ej = f(Vte), Hte = {
 	name: "lamp-ceiling",
 	size: 24,
 	node: [
@@ -22676,8 +22674,8 @@ var Mj = g(Ite), Lte = {
 		}]
 	]
 };
-Lte.node;
-var Nj = g(Lte), Rte = {
+Hte.node;
+var Dj = f(Hte), Ute = {
 	name: "lamp-desk",
 	size: 24,
 	node: [
@@ -22699,8 +22697,8 @@ var Nj = g(Lte), Rte = {
 		}]
 	]
 };
-Rte.node;
-var Pj = g(Rte), zte = {
+Ute.node;
+var Oj = f(Ute), Wte = {
 	name: "lamp-floor",
 	size: 24,
 	node: [
@@ -22718,8 +22716,8 @@ var Pj = g(Rte), zte = {
 		}]
 	]
 };
-zte.node;
-var Fj = g(zte), Bte = {
+Wte.node;
+var kj = f(Wte), Gte = {
 	name: "lamp-wall-down",
 	size: 24,
 	node: [
@@ -22737,8 +22735,8 @@ var Fj = g(zte), Bte = {
 		}]
 	]
 };
-Bte.node;
-var Ij = g(Bte), Vte = {
+Gte.node;
+var Aj = f(Gte), Kte = {
 	name: "lamp-wall-up",
 	size: 24,
 	node: [
@@ -22756,8 +22754,8 @@ var Ij = g(Bte), Vte = {
 		}]
 	]
 };
-Vte.node;
-var Lj = g(Vte), Hte = {
+Kte.node;
+var jj = f(Kte), qte = {
 	name: "lamp",
 	size: 24,
 	node: [
@@ -22775,8 +22773,8 @@ var Lj = g(Vte), Hte = {
 		}]
 	]
 };
-Hte.node;
-var Rj = g(Hte), Ute = {
+qte.node;
+var Mj = f(qte), Jte = {
 	name: "land-plot",
 	size: 24,
 	node: [
@@ -22798,8 +22796,8 @@ var Rj = g(Hte), Ute = {
 		}]
 	]
 };
-Ute.node;
-var zj = g(Ute), Wte = {
+Jte.node;
+var Nj = f(Jte), Yte = {
 	name: "landmark",
 	size: 24,
 	node: [
@@ -22829,8 +22827,8 @@ var zj = g(Ute), Wte = {
 		}]
 	]
 };
-Wte.node;
-var Bj = g(Wte), Gte = {
+Yte.node;
+var Pj = f(Yte), Xte = {
 	name: "languages",
 	size: 24,
 	node: [
@@ -22860,8 +22858,8 @@ var Bj = g(Wte), Gte = {
 		}]
 	]
 };
-Gte.node;
-var Vj = g(Gte), Kte = {
+Xte.node;
+var Fj = f(Xte), Zte = {
 	name: "laptop-minimal-check",
 	size: 24,
 	node: [
@@ -22883,8 +22881,8 @@ var Vj = g(Gte), Kte = {
 		}]
 	]
 };
-Kte.node;
-var Hj = g(Kte), qte = {
+Zte.node;
+var Ij = f(Zte), Qte = {
 	name: "laptop-minimal",
 	size: 24,
 	node: [["rect", {
@@ -22904,8 +22902,8 @@ var Hj = g(Kte), qte = {
 	}]],
 	aliases: ["laptop-2"]
 };
-qte.node;
-var Uj = g(qte), Jte = {
+Qte.node;
+var Lj = f(Qte), $te = {
 	name: "laptop",
 	size: 24,
 	node: [["path", {
@@ -22916,8 +22914,8 @@ var Uj = g(qte), Jte = {
 		key: "14rxg9"
 	}]]
 };
-Jte.node;
-var Wj = g(Jte), Yte = {
+$te.node;
+var Rj = f($te), ene = {
 	name: "lasso-select",
 	size: 24,
 	node: [
@@ -22943,8 +22941,8 @@ var Wj = g(Jte), Yte = {
 		}]
 	]
 };
-Yte.node;
-var Gj = g(Yte), Xte = {
+ene.node;
+var zj = f(ene), tne = {
 	name: "lasso",
 	size: 24,
 	node: [
@@ -22964,8 +22962,8 @@ var Gj = g(Yte), Xte = {
 		}]
 	]
 };
-Xte.node;
-var Kj = g(Xte), Zte = {
+tne.node;
+var Bj = f(tne), nne = {
 	name: "layer-arrow-down",
 	size: 24,
 	node: [
@@ -22987,8 +22985,8 @@ var Kj = g(Xte), Zte = {
 		}]
 	]
 };
-Zte.node;
-var qj = g(Zte), Qte = {
+nne.node;
+var Vj = f(nne), rne = {
 	name: "layer-arrow-up",
 	size: 24,
 	node: [
@@ -23006,8 +23004,8 @@ var qj = g(Zte), Qte = {
 		}]
 	]
 };
-Qte.node;
-var Jj = g(Qte), $te = {
+rne.node;
+var Hj = f(rne), ine = {
 	name: "layers-2",
 	size: 24,
 	node: [["path", {
@@ -23018,8 +23016,8 @@ var Jj = g(Qte), $te = {
 		key: "byia6g"
 	}]]
 };
-$te.node;
-var Yj = g($te), ene = {
+ine.node;
+var Uj = f(ine), ane = {
 	name: "layers-arrow-down",
 	size: 24,
 	node: [
@@ -23045,8 +23043,8 @@ var Yj = g($te), ene = {
 		}]
 	]
 };
-ene.node;
-var Xj = g(ene), tne = {
+ane.node;
+var Wj = f(ane), one = {
 	name: "layers-arrow-up",
 	size: 24,
 	node: [
@@ -23068,8 +23066,8 @@ var Xj = g(ene), tne = {
 		}]
 	]
 };
-tne.node;
-var Zj = g(tne), nne = {
+one.node;
+var Gj = f(one), sne = {
 	name: "layers-minus",
 	size: 24,
 	node: [
@@ -23095,8 +23093,8 @@ var Zj = g(tne), nne = {
 		}]
 	]
 };
-nne.node;
-var Qj = g(nne), rne = {
+sne.node;
+var Kj = f(sne), qj = {
 	name: "layers-plus",
 	size: 24,
 	node: [
@@ -23122,8 +23120,8 @@ var Qj = g(nne), rne = {
 		}]
 	]
 };
-rne.node;
-var $j = g(rne), ine = {
+qj.node;
+var Jj = f(qj), Yj = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -23142,8 +23140,8 @@ var $j = g(rne), ine = {
 	],
 	aliases: ["layers-3"]
 };
-ine.node;
-var eM = g(ine), ane = {
+Yj.node;
+var Xj = f(Yj), Zj = {
 	name: "layout-arrow-down",
 	size: 24,
 	node: [
@@ -23173,8 +23171,8 @@ var eM = g(ine), ane = {
 		}]
 	]
 };
-ane.node;
-var tM = g(ane), one = {
+Zj.node;
+var Qj = f(Zj), $j = {
 	name: "layout-arrow-right",
 	size: 24,
 	node: [
@@ -23204,8 +23202,8 @@ var tM = g(ane), one = {
 		}]
 	]
 };
-one.node;
-var nM = g(one), sne = {
+$j.node;
+var eM = f($j), tM = {
 	name: "layout-dashboard",
 	size: 24,
 	node: [
@@ -23243,8 +23241,8 @@ var nM = g(one), sne = {
 		}]
 	]
 };
-sne.node;
-var rM = g(sne), cne = {
+tM.node;
+var nM = f(tM), rM = {
 	name: "layout-freeform",
 	size: 24,
 	node: [
@@ -23274,8 +23272,8 @@ var rM = g(sne), cne = {
 		}]
 	]
 };
-cne.node;
-var iM = g(cne), lne = {
+rM.node;
+var iM = f(rM), aM = {
 	name: "layout-grid",
 	size: 24,
 	node: [
@@ -23313,8 +23311,8 @@ var iM = g(cne), lne = {
 		}]
 	]
 };
-lne.node;
-var aM = g(lne), oM = {
+aM.node;
+var oM = f(aM), sM = {
 	name: "layout-list",
 	size: 24,
 	node: [
@@ -23352,8 +23350,8 @@ var aM = g(lne), oM = {
 		}]
 	]
 };
-oM.node;
-var sM = g(oM), cM = {
+sM.node;
+var cM = f(sM), lM = {
 	name: "layout-panel-left",
 	size: 24,
 	node: [
@@ -23383,8 +23381,8 @@ var sM = g(oM), cM = {
 		}]
 	]
 };
-cM.node;
-var lM = g(cM), uM = {
+lM.node;
+var uM = f(lM), dM = {
 	name: "layout-panel-top",
 	size: 24,
 	node: [
@@ -23414,8 +23412,8 @@ var lM = g(cM), uM = {
 		}]
 	]
 };
-uM.node;
-var dM = g(uM), fM = {
+dM.node;
+var fM = f(dM), pM = {
 	name: "layout-template",
 	size: 24,
 	node: [
@@ -23445,8 +23443,8 @@ var dM = g(uM), fM = {
 		}]
 	]
 };
-fM.node;
-var pM = g(fM), mM = {
+pM.node;
+var mM = f(pM), hM = {
 	name: "leaf",
 	size: 24,
 	node: [["path", {
@@ -23457,8 +23455,8 @@ var pM = g(fM), mM = {
 		key: "c1ejpn"
 	}]]
 };
-mM.node;
-var hM = g(mM), gM = {
+hM.node;
+var gM = f(hM), _M = {
 	name: "leafy-green",
 	size: 24,
 	node: [["path", {
@@ -23469,8 +23467,8 @@ var hM = g(mM), gM = {
 		key: "1q7jp2"
 	}]]
 };
-gM.node;
-var _M = g(gM), vM = {
+_M.node;
+var vM = f(_M), yM = {
 	name: "lectern",
 	size: 24,
 	node: [
@@ -23492,8 +23490,8 @@ var _M = g(gM), vM = {
 		}]
 	]
 };
-vM.node;
-var yM = g(vM), bM = {
+yM.node;
+var bM = f(yM), xM = {
 	name: "lens-concave",
 	size: 24,
 	node: [["path", {
@@ -23501,8 +23499,8 @@ var yM = g(vM), bM = {
 		key: "109j23"
 	}]]
 };
-bM.node;
-var xM = g(bM), SM = {
+xM.node;
+var SM = f(xM), CM = {
 	name: "lens-convex",
 	size: 24,
 	node: [["path", {
@@ -23510,8 +23508,8 @@ var xM = g(bM), SM = {
 		key: "cq67go"
 	}]]
 };
-SM.node;
-var CM = g(SM), wM = {
+CM.node;
+var wM = f(CM), TM = {
 	name: "library",
 	size: 24,
 	node: [
@@ -23533,8 +23531,8 @@ var CM = g(SM), wM = {
 		}]
 	]
 };
-wM.node;
-var TM = g(wM), EM = {
+TM.node;
+var EM = f(TM), DM = {
 	name: "library-big",
 	size: 24,
 	node: [
@@ -23556,8 +23554,8 @@ var TM = g(wM), EM = {
 		}]
 	]
 };
-EM.node;
-var DM = g(EM), OM = {
+DM.node;
+var OM = f(DM), kM = {
 	name: "life-buoy",
 	size: 24,
 	node: [
@@ -23591,8 +23589,8 @@ var DM = g(EM), OM = {
 		}]
 	]
 };
-OM.node;
-var kM = g(OM), AM = {
+kM.node;
+var AM = f(kM), jM = {
 	name: "ligature",
 	size: 24,
 	node: [
@@ -23618,8 +23616,8 @@ var kM = g(OM), AM = {
 		}]
 	]
 };
-AM.node;
-var jM = g(AM), MM = {
+jM.node;
+var MM = f(jM), NM = {
 	name: "lightbulb-off",
 	size: 24,
 	node: [
@@ -23645,8 +23643,8 @@ var jM = g(AM), MM = {
 		}]
 	]
 };
-MM.node;
-var NM = g(MM), PM = {
+NM.node;
+var PM = f(NM), FM = {
 	name: "lightbulb",
 	size: 24,
 	node: [
@@ -23664,8 +23662,8 @@ var NM = g(MM), PM = {
 		}]
 	]
 };
-PM.node;
-var FM = g(PM), IM = {
+FM.node;
+var IM = f(FM), LM = {
 	name: "lighthouse",
 	size: 24,
 	node: [
@@ -23719,8 +23717,8 @@ var FM = g(PM), IM = {
 		}]
 	]
 };
-IM.node;
-var LM = g(IM), RM = {
+LM.node;
+var RM = f(LM), zM = {
 	name: "line-dot-bottom-vertical",
 	size: 24,
 	node: [["path", {
@@ -23733,8 +23731,8 @@ var LM = g(IM), RM = {
 		key: "1mpf1b"
 	}]]
 };
-RM.node;
-var zM = g(RM), BM = {
+zM.node;
+var BM = f(zM), VM = {
 	name: "line-dot-left-horizontal",
 	size: 24,
 	node: [["path", {
@@ -23747,8 +23745,8 @@ var zM = g(RM), BM = {
 		key: "w7nqdw"
 	}]]
 };
-BM.node;
-var VM = g(BM), HM = {
+VM.node;
+var HM = f(VM), UM = {
 	name: "line-dot-top-vertical",
 	size: 24,
 	node: [["path", {
@@ -23761,8 +23759,8 @@ var VM = g(BM), HM = {
 		key: "1gm2ql"
 	}]]
 };
-HM.node;
-var UM = g(HM), WM = {
+UM.node;
+var WM = f(UM), GM = {
 	name: "line-dot-right-horizontal",
 	size: 24,
 	node: [["path", {
@@ -23775,8 +23773,8 @@ var UM = g(HM), WM = {
 		key: "1kchzo"
 	}]]
 };
-WM.node;
-var GM = g(WM), KM = {
+GM.node;
+var KM = f(GM), qM = {
 	name: "line-squiggle",
 	size: 24,
 	node: [["path", {
@@ -23784,8 +23782,8 @@ var GM = g(WM), KM = {
 		key: "1lrphd"
 	}]]
 };
-KM.node;
-var qM = g(KM), JM = {
+qM.node;
+var JM = f(qM), YM = {
 	name: "line-style",
 	size: 24,
 	node: [
@@ -23815,8 +23813,8 @@ var qM = g(KM), JM = {
 		}]
 	]
 };
-JM.node;
-var YM = g(JM), XM = {
+YM.node;
+var XM = f(YM), ZM = {
 	name: "link-2-off",
 	size: 24,
 	node: [
@@ -23844,8 +23842,8 @@ var YM = g(JM), XM = {
 		}]
 	]
 };
-XM.node;
-var ZM = g(XM), QM = {
+ZM.node;
+var QM = f(ZM), $M = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -23866,8 +23864,8 @@ var ZM = g(XM), QM = {
 		}]
 	]
 };
-QM.node;
-var $M = g(QM), eN = {
+$M.node;
+var eN = f($M), tN = {
 	name: "link",
 	size: 24,
 	node: [["path", {
@@ -23878,8 +23876,8 @@ var $M = g(QM), eN = {
 		key: "19qd67"
 	}]]
 };
-eN.node;
-var tN = g(eN), nN = {
+tN.node;
+var nN = f(tN), rN = {
 	name: "list-check",
 	size: 24,
 	node: [
@@ -23901,8 +23899,8 @@ var tN = g(eN), nN = {
 		}]
 	]
 };
-nN.node;
-var rN = g(nN), iN = {
+rN.node;
+var iN = f(rN), aN = {
 	name: "list-checks",
 	size: 24,
 	node: [
@@ -23928,8 +23926,8 @@ var rN = g(nN), iN = {
 		}]
 	]
 };
-iN.node;
-var aN = g(iN), oN = {
+aN.node;
+var oN = f(aN), sN = {
 	name: "list-chevrons-down-up",
 	size: 24,
 	node: [
@@ -23955,8 +23953,8 @@ var aN = g(iN), oN = {
 		}]
 	]
 };
-oN.node;
-var sN = g(oN), cN = {
+sN.node;
+var cN = f(sN), lN = {
 	name: "list-chevrons-up-down",
 	size: 24,
 	node: [
@@ -23982,8 +23980,8 @@ var sN = g(oN), cN = {
 		}]
 	]
 };
-cN.node;
-var lN = g(cN), uN = {
+lN.node;
+var uN = f(lN), dN = {
 	name: "list-clock",
 	size: 24,
 	node: [
@@ -24011,8 +24009,8 @@ var lN = g(cN), uN = {
 		}]
 	]
 };
-uN.node;
-var dN = g(uN), fN = {
+dN.node;
+var fN = f(dN), pN = {
 	name: "list-collapse",
 	size: 24,
 	node: [
@@ -24038,8 +24036,8 @@ var dN = g(uN), fN = {
 		}]
 	]
 };
-fN.node;
-var pN = g(fN), mN = {
+pN.node;
+var mN = f(pN), hN = {
 	name: "list-end",
 	size: 24,
 	node: [
@@ -24065,8 +24063,8 @@ var pN = g(fN), mN = {
 		}]
 	]
 };
-mN.node;
-var hN = g(mN), gN = {
+hN.node;
+var gN = f(hN), _N = {
 	name: "list-filter-plus",
 	size: 24,
 	node: [
@@ -24092,8 +24090,8 @@ var hN = g(mN), gN = {
 		}]
 	]
 };
-gN.node;
-var _N = g(gN), vN = {
+_N.node;
+var vN = f(_N), yN = {
 	name: "list-filter",
 	size: 24,
 	node: [
@@ -24111,8 +24109,8 @@ var _N = g(gN), vN = {
 		}]
 	]
 };
-vN.node;
-var yN = g(vN), bN = {
+yN.node;
+var bN = f(yN), xN = {
 	name: "list-indent-decrease",
 	size: 24,
 	node: [
@@ -24135,8 +24133,8 @@ var yN = g(vN), bN = {
 	],
 	aliases: ["outdent", "indent-decrease"]
 };
-bN.node;
-var W = g(bN), xN = {
+xN.node;
+var G = f(xN), SN = {
 	name: "list-indent-increase",
 	size: 24,
 	node: [
@@ -24159,8 +24157,8 @@ var W = g(bN), xN = {
 	],
 	aliases: ["indent", "indent-increase"]
 };
-xN.node;
-var G = g(xN), SN = {
+SN.node;
+var K = f(SN), CN = {
 	name: "list-minus",
 	size: 24,
 	node: [
@@ -24182,8 +24180,8 @@ var G = g(xN), SN = {
 		}]
 	]
 };
-SN.node;
-var CN = g(SN), wN = {
+CN.node;
+var wN = f(CN), TN = {
 	name: "list-music",
 	size: 24,
 	node: [
@@ -24211,8 +24209,8 @@ var CN = g(SN), wN = {
 		}]
 	]
 };
-wN.node;
-var TN = g(wN), EN = {
+TN.node;
+var EN = f(TN), DN = {
 	name: "list-ordered",
 	size: 24,
 	node: [
@@ -24242,8 +24240,8 @@ var TN = g(wN), EN = {
 		}]
 	]
 };
-EN.node;
-var DN = g(EN), ON = {
+DN.node;
+var ON = f(DN), kN = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -24269,8 +24267,8 @@ var DN = g(EN), ON = {
 		}]
 	]
 };
-ON.node;
-var kN = g(ON), AN = {
+kN.node;
+var AN = f(kN), jN = {
 	name: "list-restart",
 	size: 24,
 	node: [
@@ -24296,8 +24294,8 @@ var kN = g(ON), AN = {
 		}]
 	]
 };
-AN.node;
-var jN = g(AN), MN = {
+jN.node;
+var MN = f(jN), NN = {
 	name: "list-sort-ascending",
 	size: 24,
 	node: [
@@ -24315,8 +24313,8 @@ var jN = g(AN), MN = {
 		}]
 	]
 };
-MN.node;
-var NN = g(MN), PN = {
+NN.node;
+var PN = f(NN), FN = {
 	name: "list-sort-descending",
 	size: 24,
 	node: [
@@ -24334,8 +24332,8 @@ var NN = g(MN), PN = {
 		}]
 	]
 };
-PN.node;
-var FN = g(PN), IN = {
+FN.node;
+var IN = f(FN), LN = {
 	name: "list-start",
 	size: 24,
 	node: [
@@ -24361,8 +24359,8 @@ var FN = g(PN), IN = {
 		}]
 	]
 };
-IN.node;
-var LN = g(IN), RN = {
+LN.node;
+var RN = f(LN), zN = {
 	name: "list-todo",
 	size: 24,
 	node: [
@@ -24392,8 +24390,8 @@ var LN = g(IN), RN = {
 		}]
 	]
 };
-RN.node;
-var zN = g(RN), BN = {
+zN.node;
+var BN = f(zN), VN = {
 	name: "list-tree",
 	size: 24,
 	node: [
@@ -24419,8 +24417,8 @@ var zN = g(RN), BN = {
 		}]
 	]
 };
-BN.node;
-var VN = g(BN), HN = {
+VN.node;
+var HN = f(VN), UN = {
 	name: "list-video",
 	size: 24,
 	node: [
@@ -24442,8 +24440,8 @@ var VN = g(BN), HN = {
 		}]
 	]
 };
-HN.node;
-var UN = g(HN), WN = {
+UN.node;
+var WN = f(UN), GN = {
 	name: "list-x",
 	size: 24,
 	node: [
@@ -24469,8 +24467,8 @@ var UN = g(HN), WN = {
 		}]
 	]
 };
-WN.node;
-var GN = g(WN), KN = {
+GN.node;
+var KN = f(GN), qN = {
 	name: "list",
 	size: 24,
 	node: [
@@ -24500,8 +24498,8 @@ var GN = g(WN), KN = {
 		}]
 	]
 };
-KN.node;
-var qN = g(KN), JN = {
+qN.node;
+var JN = f(qN), YN = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -24510,8 +24508,8 @@ var qN = g(KN), JN = {
 	}]],
 	aliases: ["loader-2"]
 };
-JN.node;
-var YN = g(JN), XN = {
+YN.node;
+var XN = f(YN), ZN = {
 	name: "loader-pinwheel",
 	size: 24,
 	node: [
@@ -24535,8 +24533,8 @@ var YN = g(JN), XN = {
 		}]
 	]
 };
-XN.node;
-var ZN = g(XN), QN = {
+ZN.node;
+var QN = f(ZN), $N = {
 	name: "loader",
 	size: 24,
 	node: [
@@ -24574,8 +24572,8 @@ var ZN = g(XN), QN = {
 		}]
 	]
 };
-QN.node;
-var $N = g(QN), eP = {
+$N.node;
+var eP = f($N), tP = {
 	name: "locate-fixed",
 	size: 24,
 	node: [
@@ -24621,8 +24619,8 @@ var $N = g(QN), eP = {
 		}]
 	]
 };
-eP.node;
-var tP = g(eP), nP = {
+tP.node;
+var nP = f(tP), rP = {
 	name: "locate-off",
 	size: 24,
 	node: [
@@ -24656,8 +24654,8 @@ var tP = g(eP), nP = {
 		}]
 	]
 };
-nP.node;
-var rP = g(nP), iP = {
+rP.node;
+var iP = f(rP), aP = {
 	name: "locate",
 	size: 24,
 	node: [
@@ -24697,8 +24695,8 @@ var rP = g(nP), iP = {
 		}]
 	]
 };
-iP.node;
-var aP = g(iP), oP = {
+aP.node;
+var oP = f(aP), sP = {
 	name: "lock-keyhole-open",
 	size: 24,
 	node: [
@@ -24723,8 +24721,8 @@ var aP = g(iP), oP = {
 	],
 	aliases: ["unlock-keyhole"]
 };
-oP.node;
-var sP = g(oP), cP = {
+sP.node;
+var cP = f(sP), lP = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -24748,8 +24746,8 @@ var sP = g(oP), cP = {
 		}]
 	]
 };
-cP.node;
-var lP = g(cP), uP = {
+lP.node;
+var uP = f(lP), dP = {
 	name: "lock-open",
 	size: 24,
 	node: [["rect", {
@@ -24766,8 +24764,8 @@ var lP = g(cP), uP = {
 	}]],
 	aliases: ["unlock"]
 };
-uP.node;
-var dP = g(uP), fP = {
+dP.node;
+var fP = f(dP), pP = {
 	name: "lock",
 	size: 24,
 	node: [["rect", {
@@ -24783,8 +24781,8 @@ var dP = g(uP), fP = {
 		key: "fwvmzm"
 	}]]
 };
-fP.node;
-var pP = g(fP), mP = {
+pP.node;
+var mP = f(pP), hP = {
 	name: "log-in",
 	size: 24,
 	node: [
@@ -24802,8 +24800,8 @@ var pP = g(fP), mP = {
 		}]
 	]
 };
-mP.node;
-var hP = g(mP), gP = {
+hP.node;
+var gP = f(hP), _P = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -24821,8 +24819,8 @@ var hP = g(mP), gP = {
 		}]
 	]
 };
-gP.node;
-var _P = g(gP), vP = {
+_P.node;
+var vP = f(_P), yP = {
 	name: "logs",
 	size: 24,
 	node: [
@@ -24864,8 +24862,8 @@ var _P = g(gP), vP = {
 		}]
 	]
 };
-vP.node;
-var yP = g(vP), bP = {
+yP.node;
+var bP = f(yP), xP = {
 	name: "lollipop",
 	size: 24,
 	node: [
@@ -24885,8 +24883,8 @@ var yP = g(vP), bP = {
 		}]
 	]
 };
-bP.node;
-var xP = g(bP), SP = {
+xP.node;
+var SP = f(xP), CP = {
 	name: "luggage",
 	size: 24,
 	node: [
@@ -24916,8 +24914,8 @@ var xP = g(bP), SP = {
 		}]
 	]
 };
-SP.node;
-var CP = g(SP), wP = {
+CP.node;
+var wP = f(CP), TP = {
 	name: "magnet",
 	size: 24,
 	node: [
@@ -24935,8 +24933,8 @@ var CP = g(SP), wP = {
 		}]
 	]
 };
-wP.node;
-var TP = g(wP), EP = {
+TP.node;
+var EP = f(TP), DP = {
 	name: "mail-badge",
 	size: 24,
 	node: [
@@ -24960,8 +24958,8 @@ var TP = g(wP), EP = {
 		}]
 	]
 };
-EP.node;
-var DP = g(EP), OP = {
+DP.node;
+var OP = f(DP), kP = {
 	name: "mail-check",
 	size: 24,
 	node: [
@@ -24979,8 +24977,8 @@ var DP = g(EP), OP = {
 		}]
 	]
 };
-OP.node;
-var kP = g(OP), AP = {
+kP.node;
+var AP = f(kP), jP = {
 	name: "mail-clock",
 	size: 24,
 	node: [
@@ -25008,8 +25006,8 @@ var kP = g(OP), AP = {
 		}]
 	]
 };
-AP.node;
-var jP = g(AP), MP = {
+jP.node;
+var MP = f(jP), NP = {
 	name: "mail-minus",
 	size: 24,
 	node: [
@@ -25027,8 +25025,8 @@ var jP = g(AP), MP = {
 		}]
 	]
 };
-MP.node;
-var NP = g(MP), PP = {
+NP.node;
+var PP = f(NP), FP = {
 	name: "mail-open",
 	size: 24,
 	node: [["path", {
@@ -25039,8 +25037,8 @@ var NP = g(MP), PP = {
 		key: "1qfld7"
 	}]]
 };
-PP.node;
-var FP = g(PP), IP = {
+FP.node;
+var IP = f(FP), LP = {
 	name: "mail-pen",
 	size: 24,
 	node: [
@@ -25058,8 +25056,8 @@ var FP = g(PP), IP = {
 		}]
 	]
 };
-IP.node;
-var LP = g(IP), RP = {
+LP.node;
+var RP = f(LP), zP = {
 	name: "mail-plus",
 	size: 24,
 	node: [
@@ -25081,8 +25079,8 @@ var LP = g(IP), RP = {
 		}]
 	]
 };
-RP.node;
-var zP = g(RP), BP = {
+zP.node;
+var BP = f(zP), VP = {
 	name: "mail-question-mark",
 	size: 24,
 	node: [
@@ -25105,8 +25103,8 @@ var zP = g(RP), BP = {
 	],
 	aliases: ["mail-question"]
 };
-BP.node;
-var VP = g(BP), HP = {
+VP.node;
+var HP = f(VP), UP = {
 	name: "mail-warning",
 	size: 24,
 	node: [
@@ -25128,8 +25126,8 @@ var VP = g(BP), HP = {
 		}]
 	]
 };
-HP.node;
-var UP = g(HP), WP = {
+UP.node;
+var WP = f(UP), GP = {
 	name: "mail-search",
 	size: 24,
 	node: [
@@ -25157,8 +25155,8 @@ var UP = g(HP), WP = {
 		}]
 	]
 };
-WP.node;
-var GP = g(WP), KP = {
+GP.node;
+var KP = f(GP), qP = {
 	name: "mail-x",
 	size: 24,
 	node: [
@@ -25180,8 +25178,8 @@ var GP = g(WP), KP = {
 		}]
 	]
 };
-KP.node;
-var qP = g(KP), JP = {
+qP.node;
+var JP = f(qP), YP = {
 	name: "mail",
 	size: 24,
 	node: [["path", {
@@ -25196,8 +25194,8 @@ var qP = g(KP), JP = {
 		key: "izxlao"
 	}]]
 };
-JP.node;
-var YP = g(JP), XP = {
+YP.node;
+var XP = f(YP), ZP = {
 	name: "mailbox",
 	size: 24,
 	node: [
@@ -25222,8 +25220,8 @@ var YP = g(JP), XP = {
 		}]
 	]
 };
-XP.node;
-var ZP = g(XP), QP = {
+ZP.node;
+var QP = f(ZP), $P = {
 	name: "mails",
 	size: 24,
 	node: [
@@ -25245,8 +25243,8 @@ var ZP = g(XP), QP = {
 		}]
 	]
 };
-QP.node;
-var $P = g(QP), eF = {
+$P.node;
+var eF = f($P), tF = {
 	name: "map-minus",
 	size: 24,
 	node: [
@@ -25268,8 +25266,8 @@ var $P = g(QP), eF = {
 		}]
 	]
 };
-eF.node;
-var tF = g(eF), nF = {
+tF.node;
+var nF = f(tF), rF = {
 	name: "map-pin-check",
 	size: 24,
 	node: [
@@ -25289,8 +25287,8 @@ var tF = g(eF), nF = {
 		}]
 	]
 };
-nF.node;
-var rF = g(nF), iF = {
+rF.node;
+var iF = f(rF), aF = {
 	name: "map-pin-check-inside",
 	size: 24,
 	node: [["path", {
@@ -25301,8 +25299,8 @@ var rF = g(nF), iF = {
 		key: "1gnqz4"
 	}]]
 };
-iF.node;
-var aF = g(iF), oF = {
+aF.node;
+var oF = f(aF), sF = {
 	name: "map-pin-house",
 	size: 24,
 	node: [
@@ -25326,8 +25324,8 @@ var aF = g(iF), oF = {
 		}]
 	]
 };
-oF.node;
-var sF = g(oF), cF = {
+sF.node;
+var cF = f(sF), lF = {
 	name: "map-pin-minus-inside",
 	size: 24,
 	node: [["path", {
@@ -25338,8 +25336,8 @@ var sF = g(oF), cF = {
 		key: "9gxzsh"
 	}]]
 };
-cF.node;
-var lF = g(cF), uF = {
+lF.node;
+var uF = f(lF), dF = {
 	name: "map-pin-minus",
 	size: 24,
 	node: [
@@ -25359,8 +25357,8 @@ var lF = g(cF), uF = {
 		}]
 	]
 };
-uF.node;
-var dF = g(uF), fF = {
+dF.node;
+var fF = f(dF), pF = {
 	name: "map-pin-off",
 	size: 24,
 	node: [
@@ -25386,8 +25384,8 @@ var dF = g(uF), fF = {
 		}]
 	]
 };
-fF.node;
-var pF = g(fF), mF = {
+pF.node;
+var mF = f(pF), hF = {
 	name: "map-pin-pen",
 	size: 24,
 	node: [
@@ -25408,8 +25406,8 @@ var pF = g(fF), mF = {
 	],
 	aliases: ["location-edit"]
 };
-mF.node;
-var hF = g(mF), gF = {
+hF.node;
+var gF = f(hF), _F = {
 	name: "map-pin-plus-inside",
 	size: 24,
 	node: [
@@ -25427,8 +25425,8 @@ var hF = g(mF), gF = {
 		}]
 	]
 };
-gF.node;
-var _F = g(gF), vF = {
+_F.node;
+var vF = f(_F), yF = {
 	name: "map-pin-plus",
 	size: 24,
 	node: [
@@ -25452,8 +25450,8 @@ var _F = g(gF), vF = {
 		}]
 	]
 };
-vF.node;
-var yF = g(vF), bF = {
+yF.node;
+var bF = f(yF), xF = {
 	name: "map-pin-search",
 	size: 24,
 	node: [
@@ -25479,8 +25477,8 @@ var yF = g(vF), bF = {
 		}]
 	]
 };
-bF.node;
-var xF = g(bF), SF = {
+xF.node;
+var SF = f(xF), CF = {
 	name: "map-pin-x-inside",
 	size: 24,
 	node: [
@@ -25498,8 +25496,8 @@ var xF = g(bF), SF = {
 		}]
 	]
 };
-SF.node;
-var CF = g(SF), wF = {
+CF.node;
+var wF = f(CF), TF = {
 	name: "map-pin-x",
 	size: 24,
 	node: [
@@ -25523,8 +25521,8 @@ var CF = g(SF), wF = {
 		}]
 	]
 };
-wF.node;
-var TF = g(wF), EF = {
+TF.node;
+var EF = f(TF), DF = {
 	name: "map-pin",
 	size: 24,
 	node: [["path", {
@@ -25537,8 +25535,8 @@ var TF = g(wF), EF = {
 		key: "ilqhr7"
 	}]]
 };
-EF.node;
-var DF = g(EF), OF = {
+DF.node;
+var OF = f(DF), kF = {
 	name: "map-pinned",
 	size: 24,
 	node: [
@@ -25558,8 +25556,8 @@ var DF = g(EF), OF = {
 		}]
 	]
 };
-OF.node;
-var kF = g(OF), AF = {
+kF.node;
+var AF = f(kF), jF = {
 	name: "map-plus",
 	size: 24,
 	node: [
@@ -25585,8 +25583,8 @@ var kF = g(OF), AF = {
 		}]
 	]
 };
-AF.node;
-var jF = g(AF), MF = {
+jF.node;
+var MF = f(jF), NF = {
 	name: "map",
 	size: 24,
 	node: [
@@ -25604,8 +25602,8 @@ var jF = g(AF), MF = {
 		}]
 	]
 };
-MF.node;
-var NF = g(MF), PF = {
+NF.node;
+var PF = f(NF), FF = {
 	name: "mars-stroke",
 	size: 24,
 	node: [
@@ -25629,8 +25627,8 @@ var NF = g(MF), PF = {
 		}]
 	]
 };
-PF.node;
-var FF = g(PF), IF = {
+FF.node;
+var IF = f(FF), LF = {
 	name: "mars",
 	size: 24,
 	node: [
@@ -25650,8 +25648,8 @@ var FF = g(PF), IF = {
 		}]
 	]
 };
-IF.node;
-var LF = g(IF), RF = {
+LF.node;
+var RF = f(LF), zF = {
 	name: "martini",
 	size: 24,
 	node: [
@@ -25669,8 +25667,8 @@ var LF = g(IF), RF = {
 		}]
 	]
 };
-RF.node;
-var zF = g(RF), BF = {
+zF.node;
+var BF = f(zF), VF = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -25692,8 +25690,8 @@ var zF = g(RF), BF = {
 		}]
 	]
 };
-BF.node;
-var VF = g(BF), HF = {
+VF.node;
+var HF = f(VF), UF = {
 	name: "maximize",
 	size: 24,
 	node: [
@@ -25715,8 +25713,8 @@ var VF = g(BF), HF = {
 		}]
 	]
 };
-HF.node;
-var UF = g(HF), WF = {
+UF.node;
+var WF = f(UF), GF = {
 	name: "medal",
 	size: 24,
 	node: [
@@ -25748,8 +25746,8 @@ var UF = g(HF), WF = {
 		}]
 	]
 };
-WF.node;
-var GF = g(WF), KF = {
+GF.node;
+var KF = f(GF), qF = {
 	name: "megaphone-off",
 	size: 24,
 	node: [
@@ -25775,8 +25773,8 @@ var GF = g(WF), KF = {
 		}]
 	]
 };
-KF.node;
-var qF = g(KF), JF = {
+qF.node;
+var JF = f(qF), YF = {
 	name: "megaphone",
 	size: 24,
 	node: [
@@ -25794,8 +25792,8 @@ var qF = g(KF), JF = {
 		}]
 	]
 };
-JF.node;
-var YF = g(JF), XF = {
+YF.node;
+var XF = f(YF), ZF = {
 	name: "memory-stick",
 	size: 24,
 	node: [
@@ -25849,8 +25847,8 @@ var YF = g(JF), XF = {
 		}]
 	]
 };
-XF.node;
-var ZF = g(XF), QF = {
+ZF.node;
+var QF = f(ZF), $F = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -25868,8 +25866,8 @@ var ZF = g(XF), QF = {
 		}]
 	]
 };
-QF.node;
-var $F = g(QF), eI = {
+$F.node;
+var eI = f($F), tI = {
 	name: "merge",
 	size: 24,
 	node: [
@@ -25887,8 +25885,8 @@ var $F = g(QF), eI = {
 		}]
 	]
 };
-eI.node;
-var tI = g(eI), nI = {
+tI.node;
+var nI = f(tI), rI = {
 	name: "message-circle-check",
 	size: 24,
 	node: [["path", {
@@ -25899,8 +25897,8 @@ var tI = g(eI), nI = {
 		key: "xofnsj"
 	}]]
 };
-nI.node;
-var rI = g(nI), iI = {
+rI.node;
+var iI = f(rI), aI = {
 	name: "message-circle-code",
 	size: 24,
 	node: [
@@ -25918,8 +25916,8 @@ var rI = g(nI), iI = {
 		}]
 	]
 };
-iI.node;
-var aI = g(iI), oI = {
+aI.node;
+var oI = f(aI), sI = {
 	name: "message-circle-dashed-check",
 	size: 24,
 	node: [
@@ -25961,8 +25959,8 @@ var aI = g(iI), oI = {
 		}]
 	]
 };
-oI.node;
-var sI = g(oI), cI = {
+sI.node;
+var cI = f(sI), lI = {
 	name: "message-circle-dashed",
 	size: 24,
 	node: [
@@ -26000,8 +25998,8 @@ var sI = g(oI), cI = {
 		}]
 	]
 };
-cI.node;
-var lI = g(cI), uI = {
+lI.node;
+var uI = f(lI), dI = {
 	name: "message-circle-heart",
 	size: 24,
 	node: [["path", {
@@ -26012,8 +26010,8 @@ var lI = g(cI), uI = {
 		key: "hoo97p"
 	}]]
 };
-uI.node;
-var dI = g(uI), fI = {
+dI.node;
+var fI = f(dI), pI = {
 	name: "message-circle-more",
 	size: 24,
 	node: [
@@ -26035,8 +26033,8 @@ var dI = g(uI), fI = {
 		}]
 	]
 };
-fI.node;
-var pI = g(fI), mI = {
+pI.node;
+var mI = f(pI), hI = {
 	name: "message-circle-off",
 	size: 24,
 	node: [
@@ -26054,8 +26052,8 @@ var pI = g(fI), mI = {
 		}]
 	]
 };
-mI.node;
-var hI = g(mI), gI = {
+hI.node;
+var gI = f(hI), _I = {
 	name: "message-circle-plus",
 	size: 24,
 	node: [
@@ -26073,8 +26071,8 @@ var hI = g(mI), gI = {
 		}]
 	]
 };
-gI.node;
-var _I = g(gI), vI = {
+_I.node;
+var vI = f(_I), yI = {
 	name: "message-circle-question-mark",
 	size: 24,
 	node: [
@@ -26093,8 +26091,8 @@ var _I = g(gI), vI = {
 	],
 	aliases: ["message-circle-question"]
 };
-vI.node;
-var yI = g(vI), bI = {
+yI.node;
+var bI = f(yI), xI = {
 	name: "message-circle-warning",
 	size: 24,
 	node: [
@@ -26112,8 +26110,8 @@ var yI = g(vI), bI = {
 		}]
 	]
 };
-bI.node;
-var xI = g(bI), SI = {
+xI.node;
+var SI = f(xI), CI = {
 	name: "message-circle-reply",
 	size: 24,
 	node: [
@@ -26131,8 +26129,8 @@ var xI = g(bI), SI = {
 		}]
 	]
 };
-SI.node;
-var CI = g(SI), wI = {
+CI.node;
+var wI = f(CI), TI = {
 	name: "message-circle-x",
 	size: 24,
 	node: [
@@ -26150,8 +26148,8 @@ var CI = g(SI), wI = {
 		}]
 	]
 };
-wI.node;
-var TI = g(wI), EI = {
+TI.node;
+var EI = f(TI), DI = {
 	name: "message-circle",
 	size: 24,
 	node: [["path", {
@@ -26159,8 +26157,8 @@ var TI = g(wI), EI = {
 		key: "1sd12s"
 	}]]
 };
-EI.node;
-var DI = g(EI), OI = {
+DI.node;
+var OI = f(DI), kI = {
 	name: "message-square-check",
 	size: 24,
 	node: [["path", {
@@ -26171,8 +26169,8 @@ var DI = g(EI), OI = {
 		key: "kz4plv"
 	}]]
 };
-OI.node;
-var kI = g(OI), AI = {
+kI.node;
+var AI = f(kI), jI = {
 	name: "message-square-code",
 	size: 24,
 	node: [
@@ -26190,8 +26188,8 @@ var kI = g(OI), AI = {
 		}]
 	]
 };
-AI.node;
-var jI = g(AI), MI = {
+jI.node;
+var MI = f(jI), NI = {
 	name: "message-square-dashed",
 	size: 24,
 	node: [
@@ -26237,8 +26235,8 @@ var jI = g(AI), MI = {
 		}]
 	]
 };
-MI.node;
-var NI = g(MI), PI = {
+NI.node;
+var PI = f(NI), FI = {
 	name: "message-square-diff",
 	size: 24,
 	node: [
@@ -26260,8 +26258,8 @@ var NI = g(MI), PI = {
 		}]
 	]
 };
-PI.node;
-var FI = g(PI), II = {
+FI.node;
+var II = f(FI), LI = {
 	name: "message-square-dot",
 	size: 24,
 	node: [["path", {
@@ -26274,8 +26272,8 @@ var FI = g(PI), II = {
 		key: "108a5v"
 	}]]
 };
-II.node;
-var LI = g(II), RI = {
+LI.node;
+var RI = f(LI), zI = {
 	name: "message-square-heart",
 	size: 24,
 	node: [["path", {
@@ -26286,8 +26284,8 @@ var LI = g(II), RI = {
 		key: "1faxuh"
 	}]]
 };
-RI.node;
-var zI = g(RI), BI = {
+zI.node;
+var BI = f(zI), VI = {
 	name: "message-square-lock",
 	size: 24,
 	node: [
@@ -26309,8 +26307,8 @@ var zI = g(RI), BI = {
 		}]
 	]
 };
-BI.node;
-var VI = g(BI), HI = {
+VI.node;
+var HI = f(VI), UI = {
 	name: "message-square-more",
 	size: 24,
 	node: [
@@ -26332,8 +26330,8 @@ var VI = g(BI), HI = {
 		}]
 	]
 };
-HI.node;
-var UI = g(HI), WI = {
+UI.node;
+var WI = f(UI), GI = {
 	name: "message-square-off",
 	size: 24,
 	node: [
@@ -26351,8 +26349,8 @@ var UI = g(HI), WI = {
 		}]
 	]
 };
-WI.node;
-var GI = g(WI), KI = {
+GI.node;
+var KI = f(GI), qI = {
 	name: "message-square-plus",
 	size: 24,
 	node: [
@@ -26370,8 +26368,8 @@ var GI = g(WI), KI = {
 		}]
 	]
 };
-KI.node;
-var qI = g(KI), JI = {
+qI.node;
+var JI = f(qI), YI = {
 	name: "message-square-quote",
 	size: 24,
 	node: [
@@ -26389,8 +26387,8 @@ var qI = g(KI), JI = {
 		}]
 	]
 };
-JI.node;
-var YI = g(JI), XI = {
+YI.node;
+var XI = f(YI), ZI = {
 	name: "message-square-reply",
 	size: 24,
 	node: [
@@ -26408,8 +26406,8 @@ var YI = g(JI), XI = {
 		}]
 	]
 };
-XI.node;
-var ZI = g(XI), QI = {
+ZI.node;
+var QI = f(ZI), $I = {
 	name: "message-square-share",
 	size: 24,
 	node: [
@@ -26427,8 +26425,8 @@ var ZI = g(XI), QI = {
 		}]
 	]
 };
-QI.node;
-var $I = g(QI), eL = {
+$I.node;
+var eL = f($I), tL = {
 	name: "message-square-text",
 	size: 24,
 	node: [
@@ -26450,8 +26448,8 @@ var $I = g(QI), eL = {
 		}]
 	]
 };
-eL.node;
-var tL = g(eL), nL = {
+tL.node;
+var nL = f(tL), rL = {
 	name: "message-square-warning",
 	size: 24,
 	node: [
@@ -26469,8 +26467,8 @@ var tL = g(eL), nL = {
 		}]
 	]
 };
-nL.node;
-var rL = g(nL), iL = {
+rL.node;
+var iL = f(rL), aL = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -26478,8 +26476,8 @@ var rL = g(nL), iL = {
 		key: "18887p"
 	}]]
 };
-iL.node;
-var aL = g(iL), oL = {
+aL.node;
+var oL = f(aL), sL = {
 	name: "message-square-x",
 	size: 24,
 	node: [
@@ -26497,8 +26495,8 @@ var aL = g(iL), oL = {
 		}]
 	]
 };
-oL.node;
-var sL = g(oL), cL = {
+sL.node;
+var cL = f(sL), lL = {
 	name: "messages-circle",
 	size: 24,
 	node: [["path", {
@@ -26509,8 +26507,8 @@ var sL = g(oL), cL = {
 		key: "cpppzk"
 	}]]
 };
-cL.node;
-var lL = g(cL), uL = {
+lL.node;
+var uL = f(lL), dL = {
 	name: "messages-square",
 	size: 24,
 	node: [["path", {
@@ -26521,8 +26519,8 @@ var lL = g(cL), uL = {
 		key: "1qfcsi"
 	}]]
 };
-uL.node;
-var dL = g(uL), fL = {
+dL.node;
+var fL = f(dL), pL = {
 	name: "metronome",
 	size: 24,
 	node: [
@@ -26546,8 +26544,8 @@ var dL = g(uL), fL = {
 		}]
 	]
 };
-fL.node;
-var pL = g(fL), mL = {
+pL.node;
+var mL = f(pL), hL = {
 	name: "mic-audio-lines",
 	size: 24,
 	node: [
@@ -26593,8 +26591,8 @@ var pL = g(fL), mL = {
 		}]
 	]
 };
-mL.node;
-var hL = g(mL), gL = {
+hL.node;
+var gL = f(hL), _L = {
 	name: "mic-off",
 	size: 24,
 	node: [
@@ -26624,8 +26622,8 @@ var hL = g(mL), gL = {
 		}]
 	]
 };
-gL.node;
-var _L = g(gL), vL = {
+_L.node;
+var vL = f(_L), yL = {
 	name: "mic-signal",
 	size: 24,
 	node: [
@@ -26664,8 +26662,8 @@ var _L = g(gL), vL = {
 	],
 	aliases: ["podcast"]
 };
-vL.node;
-var yL = g(vL), bL = {
+yL.node;
+var bL = f(yL), xL = {
 	name: "mic-vocal",
 	size: 24,
 	node: [
@@ -26686,8 +26684,8 @@ var yL = g(vL), bL = {
 	],
 	aliases: ["mic-2"]
 };
-bL.node;
-var xL = g(bL), SL = {
+xL.node;
+var SL = f(xL), CL = {
 	name: "microchip",
 	size: 24,
 	node: [
@@ -26737,8 +26735,8 @@ var xL = g(bL), SL = {
 		}]
 	]
 };
-SL.node;
-var CL = g(SL), wL = {
+CL.node;
+var wL = f(CL), TL = {
 	name: "mic",
 	size: 24,
 	node: [
@@ -26760,8 +26758,8 @@ var CL = g(SL), wL = {
 		}]
 	]
 };
-wL.node;
-var TL = g(wL), EL = {
+TL.node;
+var EL = f(TL), DL = {
 	name: "microscope",
 	size: 24,
 	node: [
@@ -26791,8 +26789,8 @@ var TL = g(wL), EL = {
 		}]
 	]
 };
-EL.node;
-var DL = g(EL), OL = {
+DL.node;
+var OL = f(DL), kL = {
 	name: "microwave",
 	size: 24,
 	node: [
@@ -26826,8 +26824,8 @@ var DL = g(EL), OL = {
 		}]
 	]
 };
-OL.node;
-var kL = g(OL), AL = {
+kL.node;
+var AL = f(kL), jL = {
 	name: "midi-port",
 	size: 24,
 	node: [
@@ -26863,8 +26861,8 @@ var kL = g(OL), AL = {
 		}]
 	]
 };
-AL.node;
-var jL = g(AL), ML = {
+jL.node;
+var ML = f(jL), NL = {
 	name: "milestone",
 	size: 24,
 	node: [
@@ -26882,8 +26880,8 @@ var jL = g(AL), ML = {
 		}]
 	]
 };
-ML.node;
-var NL = g(ML), PL = {
+NL.node;
+var PL = f(NL), FL = {
 	name: "milk-off",
 	size: 24,
 	node: [
@@ -26908,8 +26906,8 @@ var NL = g(ML), PL = {
 		}]
 	]
 };
-PL.node;
-var FL = g(PL), IL = {
+FL.node;
+var IL = f(FL), LL = {
 	name: "milk",
 	size: 24,
 	node: [
@@ -26927,8 +26925,8 @@ var FL = g(PL), IL = {
 		}]
 	]
 };
-IL.node;
-var LL = g(IL), RL = {
+LL.node;
+var RL = f(LL), zL = {
 	name: "minimize-2",
 	size: 24,
 	node: [
@@ -26950,8 +26948,8 @@ var LL = g(IL), RL = {
 		}]
 	]
 };
-RL.node;
-var zL = g(RL), BL = {
+zL.node;
+var BL = f(zL), VL = {
 	name: "minimize",
 	size: 24,
 	node: [
@@ -26973,8 +26971,8 @@ var zL = g(RL), BL = {
 		}]
 	]
 };
-BL.node;
-var VL = g(BL), HL = {
+VL.node;
+var HL = f(VL), UL = {
 	name: "minus",
 	size: 24,
 	node: [["path", {
@@ -26982,8 +26980,8 @@ var VL = g(BL), HL = {
 		key: "1ays0h"
 	}]]
 };
-HL.node;
-var UL = g(HL), WL = {
+UL.node;
+var WL = f(UL), GL = {
 	name: "mirror-rectangular",
 	size: 24,
 	node: [
@@ -27005,8 +27003,8 @@ var UL = g(HL), WL = {
 		}]
 	]
 };
-WL.node;
-var GL = g(WL), KL = {
+GL.node;
+var KL = f(GL), qL = {
 	name: "monitor-check",
 	size: 24,
 	node: [
@@ -27032,8 +27030,8 @@ var GL = g(WL), KL = {
 		}]
 	]
 };
-KL.node;
-var qL = g(KL), JL = {
+qL.node;
+var JL = f(qL), YL = {
 	name: "mirror-round",
 	size: 24,
 	node: [
@@ -27061,8 +27059,8 @@ var qL = g(KL), JL = {
 		}]
 	]
 };
-JL.node;
-var YL = g(JL), XL = {
+YL.node;
+var XL = f(YL), ZL = {
 	name: "monitor-cloud",
 	size: 24,
 	node: [
@@ -27088,8 +27086,8 @@ var YL = g(JL), XL = {
 		}]
 	]
 };
-XL.node;
-var ZL = g(XL), QL = {
+ZL.node;
+var QL = f(ZL), $L = {
 	name: "monitor-cog",
 	size: 24,
 	node: [
@@ -27145,8 +27143,8 @@ var ZL = g(XL), QL = {
 		}]
 	]
 };
-QL.node;
-var $L = g(QL), eR = {
+$L.node;
+var eR = f($L), tR = {
 	name: "monitor-dot",
 	size: 24,
 	node: [
@@ -27170,8 +27168,8 @@ var $L = g(QL), eR = {
 		}]
 	]
 };
-eR.node;
-var tR = g(eR), nR = {
+tR.node;
+var nR = f(tR), rR = {
 	name: "monitor-down",
 	size: 24,
 	node: [
@@ -27201,8 +27199,8 @@ var tR = g(eR), nR = {
 		}]
 	]
 };
-nR.node;
-var rR = g(nR), iR = {
+rR.node;
+var iR = f(rR), aR = {
 	name: "monitor-off",
 	size: 24,
 	node: [
@@ -27228,8 +27226,8 @@ var rR = g(nR), iR = {
 		}]
 	]
 };
-iR.node;
-var aR = g(iR), oR = {
+aR.node;
+var oR = f(aR), sR = {
 	name: "monitor-pause",
 	size: 24,
 	node: [
@@ -27259,8 +27257,8 @@ var aR = g(iR), oR = {
 		}]
 	]
 };
-oR.node;
-var sR = g(oR), cR = {
+sR.node;
+var cR = f(sR), lR = {
 	name: "monitor-pc",
 	size: 24,
 	node: [
@@ -27298,8 +27296,8 @@ var sR = g(oR), cR = {
 		}]
 	]
 };
-cR.node;
-var lR = g(cR), uR = {
+lR.node;
+var uR = f(lR), dR = {
 	name: "monitor-play",
 	size: 24,
 	node: [
@@ -27325,8 +27323,8 @@ var lR = g(cR), uR = {
 		}]
 	]
 };
-uR.node;
-var dR = g(uR), fR = {
+dR.node;
+var fR = f(dR), pR = {
 	name: "monitor-smartphone",
 	size: 24,
 	node: [
@@ -27352,8 +27350,8 @@ var dR = g(uR), fR = {
 		}]
 	]
 };
-fR.node;
-var pR = g(fR), mR = {
+pR.node;
+var mR = f(pR), hR = {
 	name: "monitor-speaker",
 	size: 24,
 	node: [
@@ -27385,8 +27383,8 @@ var pR = g(fR), mR = {
 		}]
 	]
 };
-mR.node;
-var hR = g(mR), gR = {
+hR.node;
+var gR = f(hR), _R = {
 	name: "monitor-stop",
 	size: 24,
 	node: [
@@ -27416,8 +27414,8 @@ var hR = g(mR), gR = {
 		}]
 	]
 };
-gR.node;
-var _R = g(gR), vR = {
+_R.node;
+var vR = f(_R), yR = {
 	name: "monitor-up",
 	size: 24,
 	node: [
@@ -27447,8 +27445,8 @@ var _R = g(gR), vR = {
 		}]
 	]
 };
-vR.node;
-var yR = g(vR), bR = {
+yR.node;
+var bR = f(yR), xR = {
 	name: "monitor-x",
 	size: 24,
 	node: [
@@ -27478,8 +27476,8 @@ var yR = g(vR), bR = {
 		}]
 	]
 };
-bR.node;
-var xR = g(bR), SR = {
+xR.node;
+var SR = f(xR), CR = {
 	name: "monitor",
 	size: 24,
 	node: [
@@ -27507,8 +27505,8 @@ var xR = g(bR), SR = {
 		}]
 	]
 };
-SR.node;
-var CR = g(SR), wR = {
+CR.node;
+var wR = f(CR), TR = {
 	name: "moon-star",
 	size: 24,
 	node: [
@@ -27526,8 +27524,8 @@ var CR = g(SR), wR = {
 		}]
 	]
 };
-wR.node;
-var TR = g(wR), ER = {
+TR.node;
+var ER = f(TR), DR = {
 	name: "moon",
 	size: 24,
 	node: [["path", {
@@ -27535,8 +27533,8 @@ var TR = g(wR), ER = {
 		key: "kfwtm"
 	}]]
 };
-ER.node;
-var DR = g(ER), OR = {
+DR.node;
+var OR = f(DR), kR = {
 	name: "mop-sparkles",
 	size: 24,
 	node: [
@@ -27582,8 +27580,8 @@ var DR = g(ER), OR = {
 		}]
 	]
 };
-OR.node;
-var kR = g(OR), AR = {
+kR.node;
+var AR = f(kR), jR = {
 	name: "mop",
 	size: 24,
 	node: [
@@ -27601,8 +27599,8 @@ var kR = g(OR), AR = {
 		}]
 	]
 };
-AR.node;
-var jR = g(AR), MR = {
+jR.node;
+var MR = f(jR), NR = {
 	name: "mosque",
 	size: 24,
 	node: [
@@ -27632,8 +27630,8 @@ var jR = g(AR), MR = {
 		}]
 	]
 };
-MR.node;
-var NR = g(MR), PR = {
+NR.node;
+var PR = f(NR), FR = {
 	name: "motorbike",
 	size: 24,
 	node: [
@@ -27663,8 +27661,8 @@ var NR = g(MR), PR = {
 		}]
 	]
 };
-PR.node;
-var FR = g(PR), IR = {
+FR.node;
+var IR = f(FR), LR = {
 	name: "mountain-snow",
 	size: 24,
 	node: [["path", {
@@ -27675,8 +27673,8 @@ var FR = g(PR), IR = {
 		key: "1pvmmp"
 	}]]
 };
-IR.node;
-var LR = g(IR), RR = {
+LR.node;
+var RR = f(LR), zR = {
 	name: "mountain",
 	size: 24,
 	node: [["path", {
@@ -27684,8 +27682,8 @@ var LR = g(IR), RR = {
 		key: "otkl63"
 	}]]
 };
-RR.node;
-var zR = g(RR), BR = {
+zR.node;
+var BR = f(zR), VR = {
 	name: "mouse-left",
 	size: 24,
 	node: [
@@ -27705,8 +27703,8 @@ var zR = g(RR), BR = {
 		}]
 	]
 };
-BR.node;
-var VR = g(BR), HR = {
+VR.node;
+var HR = f(VR), UR = {
 	name: "mouse-off",
 	size: 24,
 	node: [
@@ -27728,8 +27726,8 @@ var VR = g(BR), HR = {
 		}]
 	]
 };
-HR.node;
-var UR = g(HR), WR = {
+UR.node;
+var WR = f(UR), GR = {
 	name: "mouse-pointer-2-off",
 	size: 24,
 	node: [
@@ -27747,8 +27745,8 @@ var UR = g(HR), WR = {
 		}]
 	]
 };
-WR.node;
-var GR = g(WR), KR = {
+GR.node;
+var KR = f(GR), qR = {
 	name: "mouse-pointer-2",
 	size: 24,
 	node: [["path", {
@@ -27756,8 +27754,8 @@ var GR = g(WR), KR = {
 		key: "edeuup"
 	}]]
 };
-KR.node;
-var qR = g(KR), JR = {
+qR.node;
+var JR = f(qR), YR = {
 	name: "mouse-pointer-ban",
 	size: 24,
 	node: [
@@ -27777,8 +27775,8 @@ var qR = g(KR), JR = {
 		}]
 	]
 };
-JR.node;
-var YR = g(JR), XR = {
+YR.node;
+var XR = f(YR), ZR = {
 	name: "mouse-pointer-click",
 	size: 24,
 	node: [
@@ -27804,8 +27802,8 @@ var YR = g(JR), XR = {
 		}]
 	]
 };
-XR.node;
-var ZR = g(XR), QR = {
+ZR.node;
+var QR = f(ZR), $R = {
 	name: "mouse-pointer",
 	size: 24,
 	node: [["path", {
@@ -27816,8 +27814,8 @@ var ZR = g(XR), QR = {
 		key: "277e5u"
 	}]]
 };
-QR.node;
-var $R = g(QR), ez = {
+$R.node;
+var ez = f($R), tz = {
 	name: "mouse-right",
 	size: 24,
 	node: [
@@ -27837,8 +27835,8 @@ var $R = g(QR), ez = {
 		}]
 	]
 };
-ez.node;
-var tz = g(ez), nz = {
+tz.node;
+var nz = f(tz), rz = {
 	name: "mouse",
 	size: 24,
 	node: [["rect", {
@@ -27853,8 +27851,8 @@ var tz = g(ez), nz = {
 		key: "16clxf"
 	}]]
 };
-nz.node;
-var rz = g(nz), iz = {
+rz.node;
+var iz = f(rz), az = {
 	name: "mouth-off",
 	size: 24,
 	node: [
@@ -27880,8 +27878,8 @@ var rz = g(nz), iz = {
 		}]
 	]
 };
-iz.node;
-var az = g(iz), oz = {
+az.node;
+var oz = f(az), sz = {
 	name: "mouth",
 	size: 24,
 	node: [["path", {
@@ -27892,8 +27890,8 @@ var az = g(iz), oz = {
 		key: "9k55ex"
 	}]]
 };
-oz.node;
-var sz = g(oz), cz = {
+sz.node;
+var cz = f(sz), lz = {
 	name: "move-3d",
 	size: 24,
 	node: [
@@ -27916,8 +27914,8 @@ var sz = g(oz), cz = {
 	],
 	aliases: ["move-3-d"]
 };
-cz.node;
-var lz = g(cz), uz = {
+lz.node;
+var uz = f(lz), dz = {
 	name: "move-diagonal-2",
 	size: 24,
 	node: [
@@ -27935,8 +27933,8 @@ var lz = g(cz), uz = {
 		}]
 	]
 };
-uz.node;
-var dz = g(uz), fz = {
+dz.node;
+var fz = f(dz), pz = {
 	name: "move-diagonal",
 	size: 24,
 	node: [
@@ -27954,8 +27952,8 @@ var dz = g(uz), fz = {
 		}]
 	]
 };
-fz.node;
-var pz = g(fz), mz = {
+pz.node;
+var mz = f(pz), hz = {
 	name: "move-down-left",
 	size: 24,
 	node: [["path", {
@@ -27966,8 +27964,8 @@ var pz = g(fz), mz = {
 		key: "72u4yj"
 	}]]
 };
-mz.node;
-var hz = g(mz), gz = {
+hz.node;
+var gz = f(hz), _z = {
 	name: "move-down-right",
 	size: 24,
 	node: [["path", {
@@ -27978,8 +27976,8 @@ var hz = g(mz), gz = {
 		key: "5zm2fv"
 	}]]
 };
-gz.node;
-var _z = g(gz), vz = {
+_z.node;
+var vz = f(_z), yz = {
 	name: "move-horizontal",
 	size: 24,
 	node: [
@@ -27997,8 +27995,8 @@ var _z = g(gz), vz = {
 		}]
 	]
 };
-vz.node;
-var yz = g(vz), bz = {
+yz.node;
+var bz = f(yz), xz = {
 	name: "move-down",
 	size: 24,
 	node: [["path", {
@@ -28009,8 +28007,8 @@ var yz = g(vz), bz = {
 		key: "r89rzk"
 	}]]
 };
-bz.node;
-var xz = g(bz), Sz = {
+xz.node;
+var Sz = f(xz), Cz = {
 	name: "move-left",
 	size: 24,
 	node: [["path", {
@@ -28021,8 +28019,8 @@ var xz = g(bz), Sz = {
 		key: "1m8cig"
 	}]]
 };
-Sz.node;
-var Cz = g(Sz), wz = {
+Cz.node;
+var wz = f(Cz), Tz = {
 	name: "move-right",
 	size: 24,
 	node: [["path", {
@@ -28033,8 +28031,8 @@ var Cz = g(Sz), wz = {
 		key: "1m8cig"
 	}]]
 };
-wz.node;
-var Tz = g(wz), Ez = {
+Tz.node;
+var Ez = f(Tz), Dz = {
 	name: "move-up-left",
 	size: 24,
 	node: [["path", {
@@ -28045,8 +28043,8 @@ var Tz = g(wz), Ez = {
 		key: "5zm2fv"
 	}]]
 };
-Ez.node;
-var Dz = g(Ez), Oz = {
+Dz.node;
+var Oz = f(Dz), kz = {
 	name: "move-up-right",
 	size: 24,
 	node: [["path", {
@@ -28057,8 +28055,8 @@ var Dz = g(Ez), Oz = {
 		key: "72u4yj"
 	}]]
 };
-Oz.node;
-var kz = g(Oz), Az = {
+kz.node;
+var Az = f(kz), jz = {
 	name: "move-up",
 	size: 24,
 	node: [["path", {
@@ -28069,8 +28067,8 @@ var kz = g(Oz), Az = {
 		key: "r89rzk"
 	}]]
 };
-Az.node;
-var jz = g(Az), Mz = {
+jz.node;
+var Mz = f(jz), Nz = {
 	name: "move-vertical",
 	size: 24,
 	node: [
@@ -28088,8 +28086,8 @@ var jz = g(Az), Mz = {
 		}]
 	]
 };
-Mz.node;
-var Nz = g(Mz), Pz = {
+Nz.node;
+var Pz = f(Nz), Fz = {
 	name: "move",
 	size: 24,
 	node: [
@@ -28119,8 +28117,8 @@ var Nz = g(Mz), Pz = {
 		}]
 	]
 };
-Pz.node;
-var Fz = g(Pz), Iz = {
+Fz.node;
+var Iz = f(Fz), Lz = {
 	name: "music-2",
 	size: 24,
 	node: [["circle", {
@@ -28133,8 +28131,8 @@ var Fz = g(Pz), Iz = {
 		key: "g04rme"
 	}]]
 };
-Iz.node;
-var Lz = g(Iz), Rz = {
+Lz.node;
+var Rz = f(Lz), zz = {
 	name: "music-3",
 	size: 24,
 	node: [["circle", {
@@ -28147,8 +28145,8 @@ var Lz = g(Iz), Rz = {
 		key: "40x2m5"
 	}]]
 };
-Rz.node;
-var zz = g(Rz), Bz = {
+zz.node;
+var Bz = f(zz), Vz = {
 	name: "music-4",
 	size: 24,
 	node: [
@@ -28174,8 +28172,8 @@ var zz = g(Rz), Bz = {
 		}]
 	]
 };
-Bz.node;
-var Vz = g(Bz), Hz = {
+Vz.node;
+var Hz = f(Vz), Uz = {
 	name: "music",
 	size: 24,
 	node: [
@@ -28197,8 +28195,8 @@ var Vz = g(Bz), Hz = {
 		}]
 	]
 };
-Hz.node;
-var Uz = g(Hz), Wz = {
+Uz.node;
+var Wz = f(Uz), Gz = {
 	name: "navigation-2-off",
 	size: 24,
 	node: [
@@ -28219,8 +28217,8 @@ var Uz = g(Hz), Wz = {
 		}]
 	]
 };
-Wz.node;
-var Gz = g(Wz), Kz = {
+Gz.node;
+var Kz = f(Gz), qz = {
 	name: "navigation-2",
 	size: 24,
 	node: [["polygon", {
@@ -28228,8 +28226,8 @@ var Gz = g(Wz), Kz = {
 		key: "x8c0qg"
 	}]]
 };
-Kz.node;
-var qz = g(Kz), Jz = {
+qz.node;
+var Jz = f(qz), Yz = {
 	name: "navigation-off",
 	size: 24,
 	node: [
@@ -28250,8 +28248,8 @@ var qz = g(Kz), Jz = {
 		}]
 	]
 };
-Jz.node;
-var Yz = g(Jz), Xz = {
+Yz.node;
+var Xz = f(Yz), Zz = {
 	name: "navigation",
 	size: 24,
 	node: [["polygon", {
@@ -28259,8 +28257,8 @@ var Yz = g(Jz), Xz = {
 		key: "1ltx0t"
 	}]]
 };
-Xz.node;
-var Zz = g(Xz), Qz = {
+Zz.node;
+var Qz = f(Zz), $z = {
 	name: "nepali-rupee",
 	size: 24,
 	node: [
@@ -28286,8 +28284,8 @@ var Zz = g(Xz), Qz = {
 		}]
 	]
 };
-Qz.node;
-var $z = g(Qz), eB = {
+$z.node;
+var eB = f($z), tB = {
 	name: "network",
 	size: 24,
 	node: [
@@ -28325,8 +28323,8 @@ var $z = g(Qz), eB = {
 		}]
 	]
 };
-eB.node;
-var tB = g(eB), nB = {
+tB.node;
+var nB = f(tB), rB = {
 	name: "newspaper",
 	size: 24,
 	node: [
@@ -28352,8 +28350,8 @@ var tB = g(eB), nB = {
 		}]
 	]
 };
-nB.node;
-var rB = g(nB), iB = {
+rB.node;
+var iB = f(rB), aB = {
 	name: "nfc",
 	size: 24,
 	node: [
@@ -28375,8 +28373,8 @@ var rB = g(nB), iB = {
 		}]
 	]
 };
-iB.node;
-var aB = g(iB), oB = {
+aB.node;
+var oB = f(aB), sB = {
 	name: "non-binary",
 	size: 24,
 	node: [
@@ -28400,8 +28398,8 @@ var aB = g(iB), oB = {
 		}]
 	]
 };
-oB.node;
-var sB = g(oB), cB = {
+sB.node;
+var cB = f(sB), lB = {
 	name: "notebook-dot",
 	size: 24,
 	node: [
@@ -28437,8 +28435,8 @@ var sB = g(oB), cB = {
 		}]
 	]
 };
-cB.node;
-var lB = g(cB), uB = {
+lB.node;
+var uB = f(lB), dB = {
 	name: "notebook-pen",
 	size: 24,
 	node: [
@@ -28468,8 +28466,8 @@ var lB = g(cB), uB = {
 		}]
 	]
 };
-uB.node;
-var dB = g(uB), fB = {
+dB.node;
+var fB = f(dB), pB = {
 	name: "notebook-tabs",
 	size: 24,
 	node: [
@@ -28515,8 +28513,8 @@ var dB = g(uB), fB = {
 		}]
 	]
 };
-fB.node;
-var pB = g(fB), mB = {
+pB.node;
+var mB = f(pB), hB = {
 	name: "notebook-text",
 	size: 24,
 	node: [
@@ -28558,8 +28556,8 @@ var pB = g(fB), mB = {
 		}]
 	]
 };
-mB.node;
-var hB = g(mB), gB = {
+hB.node;
+var gB = f(hB), _B = {
 	name: "notebook",
 	size: 24,
 	node: [
@@ -28593,8 +28591,8 @@ var hB = g(mB), gB = {
 		}]
 	]
 };
-gB.node;
-var _B = g(gB), vB = {
+_B.node;
+var vB = f(_B), yB = {
 	name: "notepad-text-dashed",
 	size: 24,
 	node: [
@@ -28652,8 +28650,8 @@ var _B = g(gB), vB = {
 		}]
 	]
 };
-vB.node;
-var yB = g(vB), bB = {
+yB.node;
+var bB = f(yB), xB = {
 	name: "notepad-text",
 	size: 24,
 	node: [
@@ -28691,8 +28689,8 @@ var yB = g(vB), bB = {
 		}]
 	]
 };
-bB.node;
-var xB = g(bB), SB = {
+xB.node;
+var SB = f(xB), CB = {
 	name: "nut-off",
 	size: 24,
 	node: [
@@ -28721,8 +28719,8 @@ var xB = g(bB), SB = {
 		}]
 	]
 };
-SB.node;
-var CB = g(SB), wB = {
+CB.node;
+var wB = f(CB), TB = {
 	name: "nut",
 	size: 24,
 	node: [
@@ -28740,8 +28738,8 @@ var CB = g(SB), wB = {
 		}]
 	]
 };
-wB.node;
-var TB = g(wB), EB = {
+TB.node;
+var EB = f(TB), DB = {
 	name: "octagon-alert",
 	size: 24,
 	node: [
@@ -28760,8 +28758,8 @@ var TB = g(wB), EB = {
 	],
 	aliases: ["alert-octagon"]
 };
-EB.node;
-var DB = g(EB), OB = {
+DB.node;
+var OB = f(DB), kB = {
 	name: "octagon-minus",
 	size: 24,
 	node: [["path", {
@@ -28772,8 +28770,8 @@ var DB = g(EB), OB = {
 		key: "1wcyev"
 	}]]
 };
-OB.node;
-var kB = g(OB), AB = {
+kB.node;
+var AB = f(kB), jB = {
 	name: "octagon-pause",
 	size: 24,
 	node: [
@@ -28792,8 +28790,8 @@ var kB = g(OB), AB = {
 	],
 	aliases: ["pause-octagon"]
 };
-AB.node;
-var jB = g(AB), MB = {
+jB.node;
+var MB = f(jB), NB = {
 	name: "octagon-x",
 	size: 24,
 	node: [
@@ -28812,8 +28810,8 @@ var jB = g(AB), MB = {
 	],
 	aliases: ["x-octagon"]
 };
-MB.node;
-var NB = g(MB), PB = {
+NB.node;
+var PB = f(NB), FB = {
 	name: "octagon",
 	size: 24,
 	node: [["path", {
@@ -28821,8 +28819,8 @@ var NB = g(MB), PB = {
 		key: "2d38gg"
 	}]]
 };
-PB.node;
-var FB = g(PB), IB = {
+FB.node;
+var IB = f(FB), LB = {
 	name: "omega",
 	size: 24,
 	node: [["path", {
@@ -28830,8 +28828,8 @@ var FB = g(PB), IB = {
 		key: "1x94xo"
 	}]]
 };
-IB.node;
-var LB = g(IB), RB = {
+LB.node;
+var RB = f(LB), zB = {
 	name: "option",
 	size: 24,
 	node: [["path", {
@@ -28842,8 +28840,8 @@ var LB = g(IB), RB = {
 		key: "1qf1im"
 	}]]
 };
-RB.node;
-var zB = g(RB), BB = {
+zB.node;
+var BB = f(zB), VB = {
 	name: "orbit",
 	size: 24,
 	node: [
@@ -28875,8 +28873,8 @@ var zB = g(RB), BB = {
 		}]
 	]
 };
-BB.node;
-var VB = g(BB), HB = {
+VB.node;
+var HB = f(VB), UB = {
 	name: "origami",
 	size: 24,
 	node: [
@@ -28894,8 +28892,8 @@ var VB = g(BB), HB = {
 		}]
 	]
 };
-HB.node;
-var UB = g(HB), WB = {
+UB.node;
+var WB = f(UB), GB = {
 	name: "package-2",
 	size: 24,
 	node: [
@@ -28913,8 +28911,8 @@ var UB = g(HB), WB = {
 		}]
 	]
 };
-WB.node;
-var GB = g(WB), KB = {
+GB.node;
+var KB = f(GB), qB = {
 	name: "package-check",
 	size: 24,
 	node: [
@@ -28940,8 +28938,8 @@ var GB = g(WB), KB = {
 		}]
 	]
 };
-KB.node;
-var qB = g(KB), JB = {
+qB.node;
+var JB = f(qB), YB = {
 	name: "package-minus",
 	size: 24,
 	node: [
@@ -28967,8 +28965,8 @@ var qB = g(KB), JB = {
 		}]
 	]
 };
-JB.node;
-var YB = g(JB), XB = {
+YB.node;
+var XB = f(YB), ZB = {
 	name: "package-open",
 	size: 24,
 	node: [
@@ -28990,8 +28988,8 @@ var YB = g(JB), XB = {
 		}]
 	]
 };
-XB.node;
-var ZB = g(XB), QB = {
+ZB.node;
+var QB = f(ZB), $B = {
 	name: "package-plus",
 	size: 24,
 	node: [
@@ -29021,8 +29019,8 @@ var ZB = g(XB), QB = {
 		}]
 	]
 };
-QB.node;
-var $B = g(QB), eV = {
+$B.node;
+var eV = f($B), tV = {
 	name: "package-search",
 	size: 24,
 	node: [
@@ -29054,8 +29052,8 @@ var $B = g(QB), eV = {
 		}]
 	]
 };
-eV.node;
-var tV = g(eV), nV = {
+tV.node;
+var nV = f(tV), rV = {
 	name: "package-x",
 	size: 24,
 	node: [
@@ -29085,8 +29083,8 @@ var tV = g(eV), nV = {
 		}]
 	]
 };
-nV.node;
-var rV = g(nV), iV = {
+rV.node;
+var iV = f(rV), aV = {
 	name: "package",
 	size: 24,
 	node: [
@@ -29108,8 +29106,8 @@ var rV = g(nV), iV = {
 		}]
 	]
 };
-iV.node;
-var aV = g(iV), oV = {
+aV.node;
+var oV = f(aV), sV = {
 	name: "paint-bucket",
 	size: 24,
 	node: [
@@ -29131,8 +29129,8 @@ var aV = g(iV), oV = {
 		}]
 	]
 };
-oV.node;
-var sV = g(oV), cV = {
+sV.node;
+var cV = f(sV), lV = {
 	name: "paint-roller",
 	size: 24,
 	node: [
@@ -29158,8 +29156,8 @@ var sV = g(oV), cV = {
 		}]
 	]
 };
-cV.node;
-var lV = g(cV), uV = {
+lV.node;
+var uV = f(lV), dV = {
 	name: "paintbrush-vertical",
 	size: 24,
 	node: [
@@ -29182,8 +29180,8 @@ var lV = g(cV), uV = {
 	],
 	aliases: ["paintbrush-2"]
 };
-uV.node;
-var dV = g(uV), fV = {
+dV.node;
+var fV = f(dV), pV = {
 	name: "paintbrush",
 	size: 24,
 	node: [
@@ -29201,8 +29199,8 @@ var dV = g(uV), fV = {
 		}]
 	]
 };
-fV.node;
-var pV = g(fV), mV = {
+pV.node;
+var mV = f(pV), hV = {
 	name: "palette",
 	size: 24,
 	node: [
@@ -29240,8 +29238,8 @@ var pV = g(fV), mV = {
 		}]
 	]
 };
-mV.node;
-var hV = g(mV), gV = {
+hV.node;
+var gV = f(hV), _V = {
 	name: "panda",
 	size: 24,
 	node: [
@@ -29271,8 +29269,8 @@ var hV = g(mV), gV = {
 		}]
 	]
 };
-gV.node;
-var _V = g(gV), vV = {
+_V.node;
+var vV = f(_V), yV = {
 	name: "panel-bottom-close",
 	size: 24,
 	node: [
@@ -29294,8 +29292,8 @@ var _V = g(gV), vV = {
 		}]
 	]
 };
-vV.node;
-var yV = g(vV), bV = {
+yV.node;
+var bV = f(yV), xV = {
 	name: "panel-bottom-dashed",
 	size: 24,
 	node: [
@@ -29326,8 +29324,8 @@ var yV = g(vV), bV = {
 	],
 	aliases: ["panel-bottom-inactive"]
 };
-bV.node;
-var xV = g(bV), SV = {
+xV.node;
+var SV = f(xV), CV = {
 	name: "panel-bottom-open",
 	size: 24,
 	node: [
@@ -29349,8 +29347,8 @@ var xV = g(bV), SV = {
 		}]
 	]
 };
-SV.node;
-var CV = g(SV), wV = {
+CV.node;
+var wV = f(CV), TV = {
 	name: "panel-bottom",
 	size: 24,
 	node: [["rect", {
@@ -29365,8 +29363,8 @@ var CV = g(SV), wV = {
 		key: "5xshup"
 	}]]
 };
-wV.node;
-var TV = g(wV), EV = {
+TV.node;
+var EV = f(TV), DV = {
 	name: "panel-left-close",
 	size: 24,
 	node: [
@@ -29389,8 +29387,8 @@ var TV = g(wV), EV = {
 	],
 	aliases: ["sidebar-close"]
 };
-EV.node;
-var DV = g(EV), OV = {
+DV.node;
+var OV = f(DV), kV = {
 	name: "panel-left-dashed",
 	size: 24,
 	node: [
@@ -29421,8 +29419,8 @@ var DV = g(EV), OV = {
 	],
 	aliases: ["panel-left-inactive"]
 };
-OV.node;
-var kV = g(OV), AV = {
+kV.node;
+var AV = f(kV), jV = {
 	name: "panel-left-open",
 	size: 24,
 	node: [
@@ -29445,8 +29443,8 @@ var kV = g(OV), AV = {
 	],
 	aliases: ["sidebar-open"]
 };
-AV.node;
-var jV = g(AV), MV = {
+jV.node;
+var MV = f(jV), NV = {
 	name: "panel-left-right-dashed",
 	size: 24,
 	node: [
@@ -29492,8 +29490,8 @@ var jV = g(AV), MV = {
 		}]
 	]
 };
-MV.node;
-var NV = g(MV), PV = {
+NV.node;
+var PV = f(NV), FV = {
 	name: "panel-left",
 	size: 24,
 	node: [["rect", {
@@ -29509,8 +29507,8 @@ var NV = g(MV), PV = {
 	}]],
 	aliases: ["sidebar"]
 };
-PV.node;
-var FV = g(PV), IV = {
+FV.node;
+var IV = f(FV), LV = {
 	name: "panel-right-close",
 	size: 24,
 	node: [
@@ -29532,8 +29530,8 @@ var FV = g(PV), IV = {
 		}]
 	]
 };
-IV.node;
-var LV = g(IV), RV = {
+LV.node;
+var RV = f(LV), zV = {
 	name: "panel-right-dashed",
 	size: 24,
 	node: [
@@ -29564,8 +29562,8 @@ var LV = g(IV), RV = {
 	],
 	aliases: ["panel-right-inactive"]
 };
-RV.node;
-var zV = g(RV), BV = {
+zV.node;
+var BV = f(zV), VV = {
 	name: "panel-right-open",
 	size: 24,
 	node: [
@@ -29587,8 +29585,8 @@ var zV = g(RV), BV = {
 		}]
 	]
 };
-BV.node;
-var VV = g(BV), HV = {
+VV.node;
+var HV = f(VV), UV = {
 	name: "panel-right",
 	size: 24,
 	node: [["rect", {
@@ -29603,8 +29601,8 @@ var VV = g(BV), HV = {
 		key: "14nvp0"
 	}]]
 };
-HV.node;
-var UV = g(HV), WV = {
+UV.node;
+var WV = f(UV), GV = {
 	name: "panel-top-bottom-dashed",
 	size: 24,
 	node: [
@@ -29650,8 +29648,8 @@ var UV = g(HV), WV = {
 		}]
 	]
 };
-WV.node;
-var GV = g(WV), KV = {
+GV.node;
+var KV = f(GV), qV = {
 	name: "panel-top-close",
 	size: 24,
 	node: [
@@ -29673,8 +29671,8 @@ var GV = g(WV), KV = {
 		}]
 	]
 };
-KV.node;
-var qV = g(KV), JV = {
+qV.node;
+var JV = f(qV), YV = {
 	name: "panel-top-dashed",
 	size: 24,
 	node: [
@@ -29705,8 +29703,8 @@ var qV = g(KV), JV = {
 	],
 	aliases: ["panel-top-inactive"]
 };
-JV.node;
-var YV = g(JV), XV = {
+YV.node;
+var XV = f(YV), ZV = {
 	name: "panel-top-open",
 	size: 24,
 	node: [
@@ -29728,8 +29726,8 @@ var YV = g(JV), XV = {
 		}]
 	]
 };
-XV.node;
-var ZV = g(XV), QV = {
+ZV.node;
+var QV = f(ZV), $V = {
 	name: "panel-top",
 	size: 24,
 	node: [["rect", {
@@ -29744,8 +29742,8 @@ var ZV = g(XV), QV = {
 		key: "1pudct"
 	}]]
 };
-QV.node;
-var $V = g(QV), eH = {
+$V.node;
+var eH = f($V), tH = {
 	name: "panels-left-bottom",
 	size: 24,
 	node: [
@@ -29767,8 +29765,8 @@ var $V = g(QV), eH = {
 		}]
 	]
 };
-eH.node;
-var tH = g(eH), nH = {
+tH.node;
+var nH = f(tH), rH = {
 	name: "panels-right-bottom",
 	size: 24,
 	node: [
@@ -29790,8 +29788,8 @@ var tH = g(eH), nH = {
 		}]
 	]
 };
-nH.node;
-var rH = g(nH), iH = {
+rH.node;
+var iH = f(rH), aH = {
 	name: "panels-top-left",
 	size: 24,
 	node: [
@@ -29814,8 +29812,8 @@ var rH = g(nH), iH = {
 	],
 	aliases: ["layout"]
 };
-iH.node;
-var aH = g(iH), oH = {
+aH.node;
+var oH = f(aH), sH = {
 	name: "paper-bag",
 	size: 24,
 	node: [["path", {
@@ -29826,8 +29824,8 @@ var aH = g(iH), oH = {
 		key: "12exh5"
 	}]]
 };
-oH.node;
-var sH = g(oH), cH = {
+sH.node;
+var cH = f(sH), lH = {
 	name: "paperclip",
 	size: 24,
 	node: [["path", {
@@ -29835,8 +29833,8 @@ var sH = g(oH), cH = {
 		key: "1miecu"
 	}]]
 };
-cH.node;
-var lH = g(cH), uH = {
+lH.node;
+var uH = f(lH), dH = {
 	name: "parasol",
 	size: 24,
 	node: [
@@ -29854,8 +29852,8 @@ var lH = g(cH), uH = {
 		}]
 	]
 };
-uH.node;
-var dH = g(uH), fH = {
+dH.node;
+var fH = f(dH), pH = {
 	name: "parentheses",
 	size: 24,
 	node: [["path", {
@@ -29866,8 +29864,8 @@ var dH = g(uH), fH = {
 		key: "4w2vsq"
 	}]]
 };
-fH.node;
-var pH = g(fH), mH = {
+pH.node;
+var mH = f(pH), hH = {
 	name: "park",
 	size: 24,
 	node: [
@@ -29907,8 +29905,8 @@ var pH = g(fH), mH = {
 		}]
 	]
 };
-mH.node;
-var hH = g(mH), gH = {
+hH.node;
+var gH = f(hH), _H = {
 	name: "parking-meter",
 	size: 24,
 	node: [
@@ -29934,8 +29932,8 @@ var hH = g(mH), gH = {
 		}]
 	]
 };
-gH.node;
-var _H = g(gH), vH = {
+_H.node;
+var vH = f(_H), yH = {
 	name: "party-popper",
 	size: 24,
 	node: [
@@ -29977,8 +29975,8 @@ var _H = g(gH), vH = {
 		}]
 	]
 };
-vH.node;
-var yH = g(vH), bH = {
+yH.node;
+var bH = f(yH), xH = {
 	name: "pause",
 	size: 24,
 	node: [["rect", {
@@ -29997,8 +29995,8 @@ var yH = g(vH), bH = {
 		key: "1wsw3u"
 	}]]
 };
-bH.node;
-var xH = g(bH), SH = {
+xH.node;
+var SH = f(xH), CH = {
 	name: "pc-case",
 	size: 24,
 	node: [
@@ -30024,8 +30022,8 @@ var xH = g(bH), SH = {
 		}]
 	]
 };
-SH.node;
-var CH = g(SH), wH = {
+CH.node;
+var wH = f(CH), TH = {
 	name: "paw-print",
 	size: 24,
 	node: [
@@ -30053,8 +30051,8 @@ var CH = g(SH), wH = {
 		}]
 	]
 };
-wH.node;
-var TH = g(wH), EH = {
+TH.node;
+var EH = f(TH), DH = {
 	name: "pen-line",
 	size: 24,
 	node: [["path", {
@@ -30066,8 +30064,8 @@ var TH = g(wH), EH = {
 	}]],
 	aliases: ["edit-3"]
 };
-EH.node;
-var DH = g(EH), OH = {
+DH.node;
+var OH = f(DH), kH = {
 	name: "pen-off",
 	size: 24,
 	node: [
@@ -30085,8 +30083,8 @@ var DH = g(EH), OH = {
 		}]
 	]
 };
-OH.node;
-var kH = g(OH), AH = {
+kH.node;
+var AH = f(kH), jH = {
 	name: "pen-tool",
 	size: 24,
 	node: [
@@ -30110,8 +30108,8 @@ var kH = g(OH), AH = {
 		}]
 	]
 };
-AH.node;
-var jH = g(AH), MH = {
+jH.node;
+var MH = f(jH), NH = {
 	name: "pen",
 	size: 24,
 	node: [["path", {
@@ -30120,8 +30118,8 @@ var jH = g(AH), MH = {
 	}]],
 	aliases: ["edit-2"]
 };
-MH.node;
-var NH = g(MH), PH = {
+NH.node;
+var PH = f(NH), FH = {
 	name: "pencil-line",
 	size: 24,
 	node: [
@@ -30139,8 +30137,8 @@ var NH = g(MH), PH = {
 		}]
 	]
 };
-PH.node;
-var FH = g(PH), IH = {
+FH.node;
+var IH = f(FH), LH = {
 	name: "pencil-ruler",
 	size: 24,
 	node: [
@@ -30170,8 +30168,8 @@ var FH = g(PH), IH = {
 		}]
 	]
 };
-IH.node;
-var LH = g(IH), RH = {
+LH.node;
+var RH = f(LH), zH = {
 	name: "pencil-off",
 	size: 24,
 	node: [
@@ -30193,8 +30191,8 @@ var LH = g(IH), RH = {
 		}]
 	]
 };
-RH.node;
-var zH = g(RH), BH = {
+zH.node;
+var BH = f(zH), VH = {
 	name: "pencil-sparkles",
 	size: 24,
 	node: [
@@ -30232,8 +30230,8 @@ var zH = g(RH), BH = {
 		}]
 	]
 };
-BH.node;
-var VH = g(BH), HH = {
+VH.node;
+var HH = f(VH), UH = {
 	name: "pencil",
 	size: 24,
 	node: [["path", {
@@ -30244,8 +30242,8 @@ var VH = g(BH), HH = {
 		key: "1mk7zo"
 	}]]
 };
-HH.node;
-var UH = g(HH), WH = {
+UH.node;
+var WH = f(UH), GH = {
 	name: "pentagon",
 	size: 24,
 	node: [["path", {
@@ -30253,8 +30251,8 @@ var UH = g(HH), WH = {
 		key: "2hea0t"
 	}]]
 };
-WH.node;
-var GH = g(WH), KH = {
+GH.node;
+var KH = f(GH), qH = {
 	name: "percent",
 	size: 24,
 	node: [
@@ -30279,8 +30277,8 @@ var GH = g(WH), KH = {
 		}]
 	]
 };
-KH.node;
-var qH = g(KH), JH = {
+qH.node;
+var JH = f(qH), YH = {
 	name: "phi",
 	size: 24,
 	node: [["path", {
@@ -30293,8 +30291,8 @@ var qH = g(KH), JH = {
 		key: "fim9np"
 	}]]
 };
-JH.node;
-var YH = g(JH), XH = {
+YH.node;
+var XH = f(YH), ZH = {
 	name: "person-standing",
 	size: 24,
 	node: [
@@ -30318,8 +30316,8 @@ var YH = g(JH), XH = {
 		}]
 	]
 };
-XH.node;
-var ZH = g(XH), QH = {
+ZH.node;
+var QH = f(ZH), $H = {
 	name: "philippine-peso",
 	size: 24,
 	node: [
@@ -30337,8 +30335,8 @@ var ZH = g(XH), QH = {
 		}]
 	]
 };
-QH.node;
-var $H = g(QH), eU = {
+$H.node;
+var eU = f($H), tU = {
 	name: "phone-call",
 	size: 24,
 	node: [
@@ -30356,8 +30354,8 @@ var $H = g(QH), eU = {
 		}]
 	]
 };
-eU.node;
-var tU = g(eU), nU = {
+tU.node;
+var nU = f(tU), rU = {
 	name: "phone-forwarded",
 	size: 24,
 	node: [
@@ -30375,8 +30373,8 @@ var tU = g(eU), nU = {
 		}]
 	]
 };
-nU.node;
-var rU = g(nU), iU = {
+rU.node;
+var iU = f(rU), aU = {
 	name: "phone-incoming",
 	size: 24,
 	node: [
@@ -30394,8 +30392,8 @@ var rU = g(nU), iU = {
 		}]
 	]
 };
-iU.node;
-var aU = g(iU), oU = {
+aU.node;
+var oU = f(aU), sU = {
 	name: "phone-off",
 	size: 24,
 	node: [
@@ -30413,8 +30411,8 @@ var aU = g(iU), oU = {
 		}]
 	]
 };
-oU.node;
-var sU = g(oU), cU = {
+sU.node;
+var cU = f(sU), lU = {
 	name: "phone-missed",
 	size: 24,
 	node: [
@@ -30432,8 +30430,8 @@ var sU = g(oU), cU = {
 		}]
 	]
 };
-cU.node;
-var lU = g(cU), uU = {
+lU.node;
+var uU = f(lU), dU = {
 	name: "phone-outgoing",
 	size: 24,
 	node: [
@@ -30451,8 +30449,8 @@ var lU = g(cU), uU = {
 		}]
 	]
 };
-uU.node;
-var dU = g(uU), fU = {
+dU.node;
+var fU = f(dU), pU = {
 	name: "phone",
 	size: 24,
 	node: [["path", {
@@ -30460,8 +30458,8 @@ var dU = g(uU), fU = {
 		key: "9njp5v"
 	}]]
 };
-fU.node;
-var pU = g(fU), mU = {
+pU.node;
+var mU = f(pU), hU = {
 	name: "pi",
 	size: 24,
 	node: [
@@ -30482,8 +30480,8 @@ var pU = g(fU), mU = {
 		}]
 	]
 };
-mU.node;
-var hU = g(mU), gU = {
+hU.node;
+var gU = f(hU), _U = {
 	name: "piano",
 	size: 24,
 	node: [
@@ -30513,8 +30511,8 @@ var hU = g(mU), gU = {
 		}]
 	]
 };
-gU.node;
-var _U = g(gU), vU = {
+_U.node;
+var vU = f(_U), yU = {
 	name: "pickaxe",
 	size: 24,
 	node: [
@@ -30536,8 +30534,8 @@ var _U = g(gU), vU = {
 		}]
 	]
 };
-vU.node;
-var yU = g(vU), bU = {
+yU.node;
+var bU = f(yU), xU = {
 	name: "picture-in-picture-2",
 	size: 24,
 	node: [["path", {
@@ -30552,8 +30550,8 @@ var yU = g(vU), bU = {
 		key: "1nb8gs"
 	}]]
 };
-bU.node;
-var xU = g(bU), SU = {
+xU.node;
+var SU = f(xU), CU = {
 	name: "picture-in-picture",
 	size: 24,
 	node: [
@@ -30583,8 +30581,8 @@ var xU = g(bU), SU = {
 		}]
 	]
 };
-SU.node;
-var CU = g(SU), wU = {
+CU.node;
+var wU = f(CU), TU = {
 	name: "piggy-bank",
 	size: 24,
 	node: [
@@ -30602,8 +30600,8 @@ var CU = g(SU), wU = {
 		}]
 	]
 };
-wU.node;
-var TU = g(wU), EU = {
+TU.node;
+var EU = f(TU), DU = {
 	name: "pilcrow-left",
 	size: 24,
 	node: [
@@ -30629,8 +30627,8 @@ var TU = g(wU), EU = {
 		}]
 	]
 };
-EU.node;
-var DU = g(EU), OU = {
+DU.node;
+var OU = f(DU), kU = {
 	name: "pilcrow-right",
 	size: 24,
 	node: [
@@ -30656,8 +30654,8 @@ var DU = g(EU), OU = {
 		}]
 	]
 };
-OU.node;
-var kU = g(OU), AU = {
+kU.node;
+var AU = f(kU), jU = {
 	name: "pilcrow",
 	size: 24,
 	node: [
@@ -30675,8 +30673,8 @@ var kU = g(OU), AU = {
 		}]
 	]
 };
-AU.node;
-var jU = g(AU), MU = {
+jU.node;
+var MU = f(jU), NU = {
 	name: "pill-bottle",
 	size: 24,
 	node: [
@@ -30698,8 +30696,8 @@ var jU = g(AU), MU = {
 		}]
 	]
 };
-MU.node;
-var NU = g(MU), PU = {
+NU.node;
+var PU = f(NU), FU = {
 	name: "pill",
 	size: 24,
 	node: [["path", {
@@ -30710,8 +30708,8 @@ var NU = g(MU), PU = {
 		key: "rvfmvr"
 	}]]
 };
-PU.node;
-var FU = g(PU), IU = {
+FU.node;
+var IU = f(FU), LU = {
 	name: "pin-off",
 	size: 24,
 	node: [
@@ -30733,8 +30731,8 @@ var FU = g(PU), IU = {
 		}]
 	]
 };
-IU.node;
-var LU = g(IU), RU = {
+LU.node;
+var RU = f(LU), zU = {
 	name: "pin",
 	size: 24,
 	node: [["path", {
@@ -30745,8 +30743,8 @@ var LU = g(IU), RU = {
 		key: "1nkz8b"
 	}]]
 };
-RU.node;
-var zU = g(RU), BU = {
+zU.node;
+var BU = f(zU), VU = {
 	name: "pipette",
 	size: 24,
 	node: [
@@ -30764,8 +30762,8 @@ var zU = g(RU), BU = {
 		}]
 	]
 };
-BU.node;
-var VU = g(BU), HU = {
+VU.node;
+var HU = f(VU), UU = {
 	name: "plane-landing",
 	size: 24,
 	node: [["path", {
@@ -30776,8 +30774,8 @@ var VU = g(BU), HU = {
 		key: "1ma21e"
 	}]]
 };
-HU.node;
-var UU = g(HU), WU = {
+UU.node;
+var WU = f(UU), GU = {
 	name: "pizza",
 	size: 24,
 	node: [
@@ -30803,8 +30801,8 @@ var UU = g(HU), WU = {
 		}]
 	]
 };
-WU.node;
-var GU = g(WU), KU = {
+GU.node;
+var KU = f(GU), qU = {
 	name: "plane-takeoff",
 	size: 24,
 	node: [["path", {
@@ -30815,8 +30813,8 @@ var GU = g(WU), KU = {
 		key: "fkigj9"
 	}]]
 };
-KU.node;
-var qU = g(KU), JU = {
+qU.node;
+var JU = f(qU), YU = {
 	name: "plane",
 	size: 24,
 	node: [["path", {
@@ -30824,8 +30822,8 @@ var qU = g(KU), JU = {
 		key: "1v9wt8"
 	}]]
 };
-JU.node;
-var YU = g(JU), XU = {
+YU.node;
+var XU = f(YU), ZU = {
 	name: "plant-pot",
 	size: 24,
 	node: [
@@ -30843,8 +30841,8 @@ var YU = g(JU), XU = {
 		}]
 	]
 };
-XU.node;
-var ZU = g(XU), QU = {
+ZU.node;
+var QU = f(ZU), $U = {
 	name: "play-off",
 	size: 24,
 	node: [
@@ -30862,8 +30860,8 @@ var ZU = g(XU), QU = {
 		}]
 	]
 };
-QU.node;
-var $U = g(QU), eW = {
+$U.node;
+var eW = f($U), tW = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -30871,8 +30869,8 @@ var $U = g(QU), eW = {
 		key: "10ikf1"
 	}]]
 };
-eW.node;
-var tW = g(eW), nW = {
+tW.node;
+var nW = f(tW), rW = {
 	name: "playing-card",
 	size: 24,
 	node: [["path", {
@@ -30887,8 +30885,8 @@ var tW = g(eW), nW = {
 		key: "1k0ky4"
 	}]]
 };
-nW.node;
-var rW = g(nW), iW = {
+rW.node;
+var iW = f(rW), aW = {
 	name: "playing-cards-fan",
 	size: 24,
 	node: [
@@ -30906,8 +30904,8 @@ var rW = g(nW), iW = {
 		}]
 	]
 };
-iW.node;
-var aW = g(iW), oW = {
+aW.node;
+var oW = f(aW), sW = {
 	name: "playing-cards",
 	size: 24,
 	node: [
@@ -30929,8 +30927,8 @@ var aW = g(iW), oW = {
 		}]
 	]
 };
-oW.node;
-var sW = g(oW), cW = {
+sW.node;
+var cW = f(sW), lW = {
 	name: "plug-zap",
 	size: 24,
 	node: [
@@ -30957,8 +30955,8 @@ var sW = g(oW), cW = {
 	],
 	aliases: ["plug-zap-2"]
 };
-cW.node;
-var lW = g(cW), uW = {
+lW.node;
+var uW = f(lW), dW = {
 	name: "plug-2",
 	size: 24,
 	node: [
@@ -30984,8 +30982,8 @@ var lW = g(cW), uW = {
 		}]
 	]
 };
-uW.node;
-var dW = g(uW), fW = {
+dW.node;
+var fW = f(dW), pW = {
 	name: "plug",
 	size: 24,
 	node: [
@@ -31007,8 +31005,8 @@ var dW = g(uW), fW = {
 		}]
 	]
 };
-fW.node;
-var pW = g(fW), mW = {
+pW.node;
+var mW = f(pW), hW = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -31019,8 +31017,8 @@ var pW = g(fW), mW = {
 		key: "s699le"
 	}]]
 };
-mW.node;
-var hW = g(mW), gW = {
+hW.node;
+var gW = f(hW), _W = {
 	name: "pocket-knife",
 	size: 24,
 	node: [
@@ -31046,8 +31044,8 @@ var hW = g(mW), gW = {
 		}]
 	]
 };
-gW.node;
-var _W = g(gW), vW = {
+_W.node;
+var vW = f(_W), yW = {
 	name: "podium",
 	size: 24,
 	node: [
@@ -31065,8 +31063,8 @@ var _W = g(gW), vW = {
 		}]
 	]
 };
-vW.node;
-var yW = g(vW), bW = {
+yW.node;
+var bW = f(yW), xW = {
 	name: "pointer-off",
 	size: 24,
 	node: [
@@ -31096,8 +31094,8 @@ var yW = g(vW), bW = {
 		}]
 	]
 };
-bW.node;
-var xW = g(bW), SW = {
+xW.node;
+var SW = f(xW), CW = {
 	name: "popcorn",
 	size: 24,
 	node: [
@@ -31119,8 +31117,8 @@ var xW = g(bW), SW = {
 		}]
 	]
 };
-SW.node;
-var CW = g(SW), wW = {
+CW.node;
+var wW = f(CW), TW = {
 	name: "pointer",
 	size: 24,
 	node: [
@@ -31146,8 +31144,8 @@ var CW = g(SW), wW = {
 		}]
 	]
 };
-wW.node;
-var TW = g(wW), EW = {
+TW.node;
+var EW = f(TW), DW = {
 	name: "popsicle",
 	size: 24,
 	node: [["path", {
@@ -31158,8 +31156,8 @@ var TW = g(wW), EW = {
 		key: "17o70y"
 	}]]
 };
-EW.node;
-var DW = g(EW), OW = {
+DW.node;
+var OW = f(DW), kW = {
 	name: "pound-sterling",
 	size: 24,
 	node: [
@@ -31181,8 +31179,8 @@ var DW = g(EW), OW = {
 		}]
 	]
 };
-OW.node;
-var kW = g(OW), AW = {
+kW.node;
+var AW = f(kW), jW = {
 	name: "power-off",
 	size: 24,
 	node: [
@@ -31204,8 +31202,8 @@ var kW = g(OW), AW = {
 		}]
 	]
 };
-AW.node;
-var jW = g(AW), MW = {
+jW.node;
+var MW = f(jW), NW = {
 	name: "power",
 	size: 24,
 	node: [["path", {
@@ -31216,8 +31214,8 @@ var jW = g(AW), MW = {
 		key: "obofu9"
 	}]]
 };
-MW.node;
-var NW = g(MW), PW = {
+NW.node;
+var PW = f(NW), FW = {
 	name: "presentation",
 	size: 24,
 	node: [
@@ -31235,8 +31233,8 @@ var NW = g(MW), PW = {
 		}]
 	]
 };
-PW.node;
-var FW = g(PW), IW = {
+FW.node;
+var IW = f(FW), LW = {
 	name: "printer-check",
 	size: 24,
 	node: [
@@ -31258,8 +31256,8 @@ var FW = g(PW), IW = {
 		}]
 	]
 };
-IW.node;
-var LW = g(IW), RW = {
+LW.node;
+var RW = f(LW), zW = {
 	name: "printer-x",
 	size: 24,
 	node: [
@@ -31285,8 +31283,8 @@ var LW = g(IW), RW = {
 		}]
 	]
 };
-RW.node;
-var zW = g(RW), BW = {
+zW.node;
+var BW = f(zW), VW = {
 	name: "printer",
 	size: 24,
 	node: [
@@ -31308,8 +31306,8 @@ var zW = g(RW), BW = {
 		}]
 	]
 };
-BW.node;
-var VW = g(BW), HW = {
+VW.node;
+var HW = f(VW), UW = {
 	name: "projector",
 	size: 24,
 	node: [
@@ -31341,8 +31339,8 @@ var VW = g(BW), HW = {
 		}]
 	]
 };
-HW.node;
-var UW = g(HW), WW = {
+UW.node;
+var WW = f(UW), GW = {
 	name: "proportions",
 	size: 24,
 	node: [
@@ -31364,8 +31362,8 @@ var UW = g(HW), WW = {
 		}]
 	]
 };
-WW.node;
-var GW = g(WW), KW = {
+GW.node;
+var KW = f(GW), qW = {
 	name: "puzzle",
 	size: 24,
 	node: [["path", {
@@ -31373,8 +31371,8 @@ var GW = g(WW), KW = {
 		key: "w46dr5"
 	}]]
 };
-KW.node;
-var qW = g(KW), JW = {
+qW.node;
+var JW = f(qW), YW = {
 	name: "pyramid",
 	size: 24,
 	node: [["path", {
@@ -31385,8 +31383,8 @@ var qW = g(KW), JW = {
 		key: "t6zp3m"
 	}]]
 };
-JW.node;
-var YW = g(JW), XW = {
+YW.node;
+var XW = f(YW), ZW = {
 	name: "qr-code",
 	size: 24,
 	node: [
@@ -31452,8 +31450,8 @@ var YW = g(JW), XW = {
 		}]
 	]
 };
-XW.node;
-var ZW = g(XW), QW = {
+ZW.node;
+var QW = f(ZW), $W = {
 	name: "quote",
 	size: 24,
 	node: [["path", {
@@ -31464,8 +31462,8 @@ var ZW = g(XW), QW = {
 		key: "1ymkrd"
 	}]]
 };
-QW.node;
-var $W = g(QW), eG = {
+$W.node;
+var eG = f($W), tG = {
 	name: "rabbit",
 	size: 24,
 	node: [
@@ -31491,8 +31489,8 @@ var $W = g(QW), eG = {
 		}]
 	]
 };
-eG.node;
-var tG = g(eG), nG = {
+tG.node;
+var nG = f(tG), rG = {
 	name: "radar",
 	size: 24,
 	node: [
@@ -31532,8 +31530,8 @@ var tG = g(eG), nG = {
 		}]
 	]
 };
-nG.node;
-var rG = g(nG), iG = {
+rG.node;
+var iG = f(rG), aG = {
 	name: "radiation",
 	size: 24,
 	node: [
@@ -31555,8 +31553,8 @@ var rG = g(nG), iG = {
 		}]
 	]
 };
-iG.node;
-var aG = g(iG), oG = {
+aG.node;
+var oG = f(aG), sG = {
 	name: "radical",
 	size: 24,
 	node: [["path", {
@@ -31564,8 +31562,8 @@ var aG = g(iG), oG = {
 		key: "1mqj8i"
 	}]]
 };
-oG.node;
-var sG = g(oG), cG = {
+sG.node;
+var cG = f(sG), lG = {
 	name: "radio-off",
 	size: 24,
 	node: [
@@ -31595,8 +31593,8 @@ var sG = g(oG), cG = {
 		}]
 	]
 };
-cG.node;
-var lG = g(cG), uG = {
+lG.node;
+var uG = f(lG), dG = {
 	name: "radio-receiver",
 	size: 24,
 	node: [
@@ -31622,8 +31620,8 @@ var lG = g(cG), uG = {
 		}]
 	]
 };
-uG.node;
-var dG = g(uG), fG = {
+dG.node;
+var fG = f(dG), pG = {
 	name: "radio-tower",
 	size: 24,
 	node: [
@@ -31659,8 +31657,8 @@ var dG = g(uG), fG = {
 		}]
 	]
 };
-fG.node;
-var pG = g(fG), mG = {
+pG.node;
+var mG = f(pG), hG = {
 	name: "radio",
 	size: 24,
 	node: [
@@ -31688,8 +31686,8 @@ var pG = g(fG), mG = {
 		}]
 	]
 };
-mG.node;
-var hG = g(mG), gG = {
+hG.node;
+var gG = f(hG), _G = {
 	name: "rat",
 	size: 24,
 	node: [
@@ -31715,8 +31713,8 @@ var hG = g(mG), gG = {
 		}]
 	]
 };
-gG.node;
-var _G = g(gG), vG = {
+_G.node;
+var vG = f(_G), yG = {
 	name: "radius",
 	size: 24,
 	node: [
@@ -31742,8 +31740,8 @@ var _G = g(gG), vG = {
 		}]
 	]
 };
-vG.node;
-var yG = g(vG), bG = {
+yG.node;
+var bG = f(yG), xG = {
 	name: "rainbow",
 	size: 24,
 	node: [
@@ -31761,8 +31759,8 @@ var yG = g(vG), bG = {
 		}]
 	]
 };
-bG.node;
-var xG = g(bG), SG = {
+xG.node;
+var SG = f(xG), CG = {
 	name: "ratio",
 	size: 24,
 	node: [["rect", {
@@ -31781,8 +31779,8 @@ var xG = g(bG), SG = {
 		key: "9lu3g6"
 	}]]
 };
-SG.node;
-var CG = g(SG), wG = {
+CG.node;
+var wG = f(CG), TG = {
 	name: "receipt-cent",
 	size: 24,
 	node: [
@@ -31800,8 +31798,8 @@ var CG = g(SG), wG = {
 		}]
 	]
 };
-wG.node;
-var TG = g(wG), EG = {
+TG.node;
+var EG = f(TG), DG = {
 	name: "receipt-euro",
 	size: 24,
 	node: [
@@ -31819,8 +31817,8 @@ var TG = g(wG), EG = {
 		}]
 	]
 };
-EG.node;
-var DG = g(EG), OG = {
+DG.node;
+var OG = f(DG), kG = {
 	name: "receipt-indian-rupee",
 	size: 24,
 	node: [
@@ -31842,8 +31840,8 @@ var DG = g(EG), OG = {
 		}]
 	]
 };
-OG.node;
-var kG = g(OG), AG = {
+kG.node;
+var AG = f(kG), jG = {
 	name: "receipt-japanese-yen",
 	size: 24,
 	node: [
@@ -31869,8 +31867,8 @@ var kG = g(OG), AG = {
 		}]
 	]
 };
-AG.node;
-var jG = g(AG), MG = {
+jG.node;
+var MG = f(jG), NG = {
 	name: "receipt-pound-sterling",
 	size: 24,
 	node: [
@@ -31892,8 +31890,8 @@ var jG = g(AG), MG = {
 		}]
 	]
 };
-MG.node;
-var NG = g(MG), PG = {
+NG.node;
+var PG = f(NG), FG = {
 	name: "receipt-russian-ruble",
 	size: 24,
 	node: [
@@ -31911,8 +31909,8 @@ var NG = g(MG), PG = {
 		}]
 	]
 };
-PG.node;
-var FG = g(PG), IG = {
+FG.node;
+var IG = f(FG), LG = {
 	name: "receipt-swiss-franc",
 	size: 24,
 	node: [
@@ -31934,8 +31932,8 @@ var FG = g(PG), IG = {
 		}]
 	]
 };
-IG.node;
-var LG = g(IG), RG = {
+LG.node;
+var RG = f(LG), zG = {
 	name: "receipt-text",
 	size: 24,
 	node: [
@@ -31957,8 +31955,8 @@ var LG = g(IG), RG = {
 		}]
 	]
 };
-RG.node;
-var zG = g(RG), BG = {
+zG.node;
+var BG = f(zG), VG = {
 	name: "receipt-turkish-lira",
 	size: 24,
 	node: [
@@ -31976,8 +31974,8 @@ var zG = g(RG), BG = {
 		}]
 	]
 };
-BG.node;
-var VG = g(BG), HG = {
+VG.node;
+var HG = f(VG), UG = {
 	name: "receipt",
 	size: 24,
 	node: [
@@ -31995,8 +31993,8 @@ var VG = g(BG), HG = {
 		}]
 	]
 };
-HG.node;
-var UG = g(HG), WG = {
+UG.node;
+var WG = f(UG), GG = {
 	name: "rectangle-circle",
 	size: 24,
 	node: [["path", {
@@ -32009,8 +32007,8 @@ var UG = g(HG), WG = {
 		key: "1pag6k"
 	}]]
 };
-WG.node;
-var GG = g(WG), KG = {
+GG.node;
+var KG = f(GG), qG = {
 	name: "rectangle-ellipsis",
 	size: 24,
 	node: [
@@ -32037,8 +32035,8 @@ var GG = g(WG), KG = {
 	],
 	aliases: ["form-input"]
 };
-KG.node;
-var qG = g(KG), JG = {
+qG.node;
+var JG = f(qG), YG = {
 	name: "rectangle-goggles",
 	size: 24,
 	node: [["path", {
@@ -32046,8 +32044,8 @@ var qG = g(KG), JG = {
 		key: "d5y1f"
 	}]]
 };
-JG.node;
-var YG = g(JG), XG = {
+YG.node;
+var XG = f(YG), ZG = {
 	name: "rectangle-horizontal",
 	size: 24,
 	node: [["rect", {
@@ -32059,8 +32057,8 @@ var YG = g(JG), XG = {
 		key: "9lu3g6"
 	}]]
 };
-XG.node;
-var ZG = g(XG), QG = {
+ZG.node;
+var QG = f(ZG), $G = {
 	name: "rectangle-vertical",
 	size: 24,
 	node: [["rect", {
@@ -32072,8 +32070,8 @@ var ZG = g(XG), QG = {
 		key: "1oxtiu"
 	}]]
 };
-QG.node;
-var $G = g(QG), eK = {
+$G.node;
+var eK = f($G), tK = {
 	name: "recycle",
 	size: 24,
 	node: [
@@ -32103,8 +32101,8 @@ var $G = g(QG), eK = {
 		}]
 	]
 };
-eK.node;
-var tK = g(eK), nK = {
+tK.node;
+var nK = f(tK), rK = {
 	name: "redo-2",
 	size: 24,
 	node: [["path", {
@@ -32115,8 +32113,8 @@ var tK = g(eK), nK = {
 		key: "6uklza"
 	}]]
 };
-nK.node;
-var rK = g(nK), iK = {
+rK.node;
+var iK = f(rK), aK = {
 	name: "redo-dot",
 	size: 24,
 	node: [
@@ -32136,8 +32134,8 @@ var rK = g(nK), iK = {
 		}]
 	]
 };
-iK.node;
-var aK = g(iK), oK = {
+aK.node;
+var oK = f(aK), sK = {
 	name: "redo",
 	size: 24,
 	node: [["path", {
@@ -32148,8 +32146,8 @@ var aK = g(iK), oK = {
 		key: "1kgawr"
 	}]]
 };
-oK.node;
-var sK = g(oK), cK = {
+sK.node;
+var cK = f(sK), lK = {
 	name: "refresh-ccw-dot",
 	size: 24,
 	node: [
@@ -32177,8 +32175,8 @@ var sK = g(oK), cK = {
 		}]
 	]
 };
-cK.node;
-var lK = g(cK), uK = {
+lK.node;
+var uK = f(lK), dK = {
 	name: "refresh-ccw",
 	size: 24,
 	node: [
@@ -32200,8 +32198,8 @@ var lK = g(cK), uK = {
 		}]
 	]
 };
-uK.node;
-var dK = g(uK), fK = {
+dK.node;
+var fK = f(dK), pK = {
 	name: "refresh-cw-off",
 	size: 24,
 	node: [
@@ -32235,8 +32233,8 @@ var dK = g(uK), fK = {
 		}]
 	]
 };
-fK.node;
-var pK = g(fK), mK = {
+pK.node;
+var mK = f(pK), hK = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -32258,8 +32256,8 @@ var pK = g(fK), mK = {
 		}]
 	]
 };
-mK.node;
-var hK = g(mK), gK = {
+hK.node;
+var gK = f(hK), _K = {
 	name: "refrigerator",
 	size: 24,
 	node: [
@@ -32277,8 +32275,8 @@ var hK = g(mK), gK = {
 		}]
 	]
 };
-gK.node;
-var _K = g(gK), vK = {
+_K.node;
+var vK = f(_K), yK = {
 	name: "regex",
 	size: 24,
 	node: [
@@ -32300,8 +32298,8 @@ var _K = g(gK), vK = {
 		}]
 	]
 };
-vK.node;
-var yK = g(vK), bK = {
+yK.node;
+var bK = f(yK), xK = {
 	name: "remove-formatting",
 	size: 24,
 	node: [
@@ -32327,8 +32325,8 @@ var yK = g(vK), bK = {
 		}]
 	]
 };
-bK.node;
-var xK = g(bK), SK = {
+xK.node;
+var SK = f(xK), CK = {
 	name: "repeat-1",
 	size: 24,
 	node: [
@@ -32354,8 +32352,8 @@ var xK = g(bK), SK = {
 		}]
 	]
 };
-SK.node;
-var CK = g(SK), wK = {
+CK.node;
+var wK = f(CK), TK = {
 	name: "repeat-2",
 	size: 24,
 	node: [
@@ -32377,8 +32375,8 @@ var CK = g(SK), wK = {
 		}]
 	]
 };
-wK.node;
-var TK = g(wK), EK = {
+TK.node;
+var EK = f(TK), DK = {
 	name: "repeat",
 	size: 24,
 	node: [
@@ -32400,8 +32398,8 @@ var TK = g(wK), EK = {
 		}]
 	]
 };
-EK.node;
-var DK = g(EK), OK = {
+DK.node;
+var OK = f(DK), kK = {
 	name: "repeat-off",
 	size: 24,
 	node: [
@@ -32435,8 +32433,8 @@ var DK = g(EK), OK = {
 		}]
 	]
 };
-OK.node;
-var kK = g(OK), AK = {
+kK.node;
+var AK = f(kK), jK = {
 	name: "replace-all",
 	size: 24,
 	node: [
@@ -32482,8 +32480,8 @@ var kK = g(OK), AK = {
 		}]
 	]
 };
-AK.node;
-var jK = g(AK), MK = {
+jK.node;
+var MK = f(jK), NK = {
 	name: "replace",
 	size: 24,
 	node: [
@@ -32521,8 +32519,8 @@ var jK = g(AK), MK = {
 		}]
 	]
 };
-MK.node;
-var NK = g(MK), PK = {
+NK.node;
+var PK = f(NK), FK = {
 	name: "reply-all",
 	size: 24,
 	node: [
@@ -32540,8 +32538,8 @@ var NK = g(MK), PK = {
 		}]
 	]
 };
-PK.node;
-var FK = g(PK), IK = {
+FK.node;
+var IK = f(FK), LK = {
 	name: "reply",
 	size: 24,
 	node: [["path", {
@@ -32552,8 +32550,8 @@ var FK = g(PK), IK = {
 		key: "nvlc11"
 	}]]
 };
-IK.node;
-var LK = g(IK), RK = {
+LK.node;
+var RK = f(LK), zK = {
 	name: "rewind",
 	size: 24,
 	node: [["path", {
@@ -32564,8 +32562,8 @@ var LK = g(IK), RK = {
 		key: "rg3s36"
 	}]]
 };
-RK.node;
-var zK = g(RK), BK = {
+zK.node;
+var BK = f(zK), VK = {
 	name: "ribbon",
 	size: 24,
 	node: [
@@ -32591,8 +32589,8 @@ var zK = g(RK), BK = {
 		}]
 	]
 };
-BK.node;
-var VK = g(BK), HK = {
+VK.node;
+var HK = f(VK), UK = {
 	name: "road",
 	size: 24,
 	node: [
@@ -32614,8 +32612,8 @@ var VK = g(BK), HK = {
 		}]
 	]
 };
-HK.node;
-var UK = g(HK), WK = {
+UK.node;
+var WK = f(UK), GK = {
 	name: "robot-arm",
 	size: 24,
 	node: [
@@ -32647,8 +32645,8 @@ var UK = g(HK), WK = {
 		}]
 	]
 };
-WK.node;
-var GK = g(WK), KK = {
+GK.node;
+var KK = f(GK), qK = {
 	name: "robot-vacuum",
 	size: 24,
 	node: [
@@ -32688,8 +32686,8 @@ var GK = g(WK), KK = {
 		}]
 	]
 };
-KK.node;
-var qK = g(KK), JK = {
+qK.node;
+var JK = f(qK), YK = {
 	name: "rocket",
 	size: 24,
 	node: [
@@ -32711,8 +32709,8 @@ var qK = g(KK), JK = {
 		}]
 	]
 };
-JK.node;
-var YK = g(JK), XK = {
+YK.node;
+var XK = f(YK), ZK = {
 	name: "rocking-chair",
 	size: 24,
 	node: [
@@ -32734,8 +32732,8 @@ var YK = g(JK), XK = {
 		}]
 	]
 };
-XK.node;
-var ZK = g(XK), QK = {
+ZK.node;
+var QK = f(ZK), $K = {
 	name: "roller-coaster",
 	size: 24,
 	node: [
@@ -32769,8 +32767,8 @@ var ZK = g(XK), QK = {
 		}]
 	]
 };
-QK.node;
-var $K = g(QK), eq = {
+$K.node;
+var eq = f($K), tq = {
 	name: "rose",
 	size: 24,
 	node: [
@@ -32798,8 +32796,8 @@ var $K = g(QK), eq = {
 		}]
 	]
 };
-eq.node;
-var tq = g(eq), nq = {
+tq.node;
+var nq = f(tq), rq = {
 	name: "rotate-3d",
 	size: 24,
 	node: [
@@ -32818,8 +32816,8 @@ var tq = g(eq), nq = {
 	],
 	aliases: ["rotate-3-d"]
 };
-nq.node;
-var rq = g(nq), iq = {
+rq.node;
+var iq = f(rq), aq = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -32838,8 +32836,8 @@ var rq = g(nq), iq = {
 	],
 	aliases: ["history"]
 };
-iq.node;
-var aq = g(iq), oq = {
+aq.node;
+var oq = f(aq), sq = {
 	name: "rotate-ccw-key",
 	size: 24,
 	node: [
@@ -32867,8 +32865,8 @@ var aq = g(iq), oq = {
 		}]
 	]
 };
-oq.node;
-var sq = g(oq), cq = {
+sq.node;
+var cq = f(sq), lq = {
 	name: "rotate-ccw-square",
 	size: 24,
 	node: [
@@ -32886,8 +32884,8 @@ var sq = g(oq), cq = {
 		}]
 	]
 };
-cq.node;
-var lq = g(cq), uq = {
+lq.node;
+var uq = f(lq), dq = {
 	name: "rotate-ccw",
 	size: 24,
 	node: [["path", {
@@ -32898,8 +32896,8 @@ var lq = g(cq), uq = {
 		key: "1xhq8a"
 	}]]
 };
-uq.node;
-var dq = g(uq), fq = {
+dq.node;
+var fq = f(dq), pq = {
 	name: "rotate-cw-clock",
 	size: 24,
 	node: [
@@ -32917,8 +32915,8 @@ var dq = g(uq), fq = {
 		}]
 	]
 };
-fq.node;
-var pq = g(fq), mq = {
+pq.node;
+var mq = f(pq), hq = {
 	name: "rotate-cw-fading-clock",
 	size: 24,
 	node: [
@@ -32964,8 +32962,8 @@ var pq = g(fq), mq = {
 		}]
 	]
 };
-mq.node;
-var hq = g(mq), gq = {
+hq.node;
+var gq = f(hq), _q = {
 	name: "rotate-cw-square",
 	size: 24,
 	node: [
@@ -32983,8 +32981,8 @@ var hq = g(mq), gq = {
 		}]
 	]
 };
-gq.node;
-var _q = g(gq), vq = {
+_q.node;
+var vq = f(_q), yq = {
 	name: "rotate-cw",
 	size: 24,
 	node: [["path", {
@@ -32995,8 +32993,8 @@ var _q = g(gq), vq = {
 		key: "1q7to0"
 	}]]
 };
-vq.node;
-var yq = g(vq), bq = {
+yq.node;
+var bq = f(yq), xq = {
 	name: "route-off",
 	size: 24,
 	node: [
@@ -33034,8 +33032,8 @@ var yq = g(vq), bq = {
 		}]
 	]
 };
-bq.node;
-var xq = g(bq), Sq = {
+xq.node;
+var Sq = f(xq), Cq = {
 	name: "route",
 	size: 24,
 	node: [
@@ -33057,8 +33055,8 @@ var xq = g(bq), Sq = {
 		}]
 	]
 };
-Sq.node;
-var Cq = g(Sq), wq = {
+Cq.node;
+var wq = f(Cq), Tq = {
 	name: "router",
 	size: 24,
 	node: [
@@ -33092,8 +33090,8 @@ var Cq = g(Sq), wq = {
 		}]
 	]
 };
-wq.node;
-var Tq = g(wq), Eq = {
+Tq.node;
+var Eq = f(Tq), Dq = {
 	name: "rows-2",
 	size: 24,
 	node: [["rect", {
@@ -33109,8 +33107,8 @@ var Tq = g(wq), Eq = {
 	}]],
 	aliases: ["rows"]
 };
-Eq.node;
-var Dq = g(Eq), Oq = {
+Dq.node;
+var Oq = f(Dq), kq = {
 	name: "rows-3",
 	size: 24,
 	node: [
@@ -33133,8 +33131,8 @@ var Dq = g(Eq), Oq = {
 	],
 	aliases: ["panels-top-bottom"]
 };
-Oq.node;
-var kq = g(Oq), Aq = {
+kq.node;
+var Aq = f(kq), jq = {
 	name: "rows-4",
 	size: 24,
 	node: [
@@ -33160,8 +33158,8 @@ var kq = g(Oq), Aq = {
 		}]
 	]
 };
-Aq.node;
-var jq = g(Aq), Mq = {
+jq.node;
+var Mq = f(jq), Nq = {
 	name: "rss",
 	size: 24,
 	node: [
@@ -33181,8 +33179,8 @@ var jq = g(Aq), Mq = {
 		}]
 	]
 };
-Mq.node;
-var Nq = g(Mq), Pq = {
+Nq.node;
+var Pq = f(Nq), Fq = {
 	name: "ruler-dimension-line",
 	size: 24,
 	node: [
@@ -33224,8 +33222,8 @@ var Nq = g(Mq), Pq = {
 		}]
 	]
 };
-Pq.node;
-var Fq = g(Pq), Iq = {
+Fq.node;
+var Iq = f(Fq), Lq = {
 	name: "ruler",
 	size: 24,
 	node: [
@@ -33251,8 +33249,8 @@ var Fq = g(Pq), Iq = {
 		}]
 	]
 };
-Iq.node;
-var Lq = g(Iq), Rq = {
+Lq.node;
+var Rq = f(Lq), zq = {
 	name: "russian-ruble",
 	size: 24,
 	node: [["path", {
@@ -33263,8 +33261,8 @@ var Lq = g(Iq), Rq = {
 		key: "1y8f6l"
 	}]]
 };
-Rq.node;
-var zq = g(Rq), Bq = {
+zq.node;
+var Bq = f(zq), Vq = {
 	name: "sailboat",
 	size: 24,
 	node: [
@@ -33282,8 +33280,8 @@ var zq = g(Rq), Bq = {
 		}]
 	]
 };
-Bq.node;
-var Vq = g(Bq), Hq = {
+Vq.node;
+var Hq = f(Vq), Uq = {
 	name: "salad",
 	size: 24,
 	node: [
@@ -33309,8 +33307,8 @@ var Vq = g(Bq), Hq = {
 		}]
 	]
 };
-Hq.node;
-var Uq = g(Hq), Wq = {
+Uq.node;
+var Wq = f(Uq), Gq = {
 	name: "sandwich",
 	size: 24,
 	node: [
@@ -33340,8 +33338,8 @@ var Uq = g(Hq), Wq = {
 		}]
 	]
 };
-Wq.node;
-var Gq = g(Wq), Kq = {
+Gq.node;
+var Kq = f(Gq), qq = {
 	name: "satellite",
 	size: 24,
 	node: [
@@ -33367,8 +33365,8 @@ var Gq = g(Wq), Kq = {
 		}]
 	]
 };
-Kq.node;
-var qq = g(Kq), Jq = {
+qq.node;
+var Jq = f(qq), Yq = {
 	name: "satellite-dish",
 	size: 24,
 	node: [
@@ -33390,8 +33388,8 @@ var qq = g(Kq), Jq = {
 		}]
 	]
 };
-Jq.node;
-var Yq = g(Jq), Xq = {
+Yq.node;
+var Xq = f(Yq), Zq = {
 	name: "saudi-riyal",
 	size: 24,
 	node: [
@@ -33413,8 +33411,8 @@ var Yq = g(Jq), Xq = {
 		}]
 	]
 };
-Xq.node;
-var Zq = g(Xq), Qq = {
+Zq.node;
+var Qq = f(Zq), $q = {
 	name: "save-all",
 	size: 24,
 	node: [
@@ -33436,8 +33434,8 @@ var Zq = g(Xq), Qq = {
 		}]
 	]
 };
-Qq.node;
-var $q = g(Qq), eJ = {
+$q.node;
+var eJ = f($q), tJ = {
 	name: "save-check",
 	size: 24,
 	node: [
@@ -33459,8 +33457,8 @@ var $q = g(Qq), eJ = {
 		}]
 	]
 };
-eJ.node;
-var tJ = g(eJ), nJ = {
+tJ.node;
+var nJ = f(tJ), rJ = {
 	name: "save-off",
 	size: 24,
 	node: [
@@ -33490,8 +33488,8 @@ var tJ = g(eJ), nJ = {
 		}]
 	]
 };
-nJ.node;
-var rJ = g(nJ), iJ = {
+rJ.node;
+var iJ = f(rJ), aJ = {
 	name: "save-pen",
 	size: 24,
 	node: [
@@ -33513,8 +33511,8 @@ var rJ = g(nJ), iJ = {
 		}]
 	]
 };
-iJ.node;
-var aJ = g(iJ), oJ = {
+aJ.node;
+var oJ = f(aJ), sJ = {
 	name: "save-plus",
 	size: 24,
 	node: [
@@ -33540,8 +33538,8 @@ var aJ = g(iJ), oJ = {
 		}]
 	]
 };
-oJ.node;
-var sJ = g(oJ), cJ = {
+sJ.node;
+var cJ = f(sJ), lJ = {
 	name: "save",
 	size: 24,
 	node: [
@@ -33559,8 +33557,8 @@ var sJ = g(oJ), cJ = {
 		}]
 	]
 };
-cJ.node;
-var lJ = g(cJ), uJ = {
+lJ.node;
+var uJ = f(lJ), dJ = {
 	name: "scale-3d",
 	size: 24,
 	node: [
@@ -33587,8 +33585,8 @@ var lJ = g(cJ), uJ = {
 	],
 	aliases: ["scale-3-d"]
 };
-uJ.node;
-var dJ = g(uJ), fJ = {
+dJ.node;
+var fJ = f(dJ), pJ = {
 	name: "scale",
 	size: 24,
 	node: [
@@ -33614,8 +33612,8 @@ var dJ = g(uJ), fJ = {
 		}]
 	]
 };
-fJ.node;
-var pJ = g(fJ), mJ = {
+pJ.node;
+var mJ = f(pJ), hJ = {
 	name: "scaling",
 	size: 24,
 	node: [
@@ -33637,8 +33635,8 @@ var pJ = g(fJ), mJ = {
 		}]
 	]
 };
-mJ.node;
-var hJ = g(mJ), gJ = {
+hJ.node;
+var gJ = f(hJ), _J = {
 	name: "scan-barcode",
 	size: 24,
 	node: [
@@ -33672,8 +33670,8 @@ var hJ = g(mJ), gJ = {
 		}]
 	]
 };
-gJ.node;
-var _J = g(gJ), vJ = {
+_J.node;
+var vJ = f(_J), yJ = {
 	name: "scan-eye",
 	size: 24,
 	node: [
@@ -33705,8 +33703,8 @@ var _J = g(gJ), vJ = {
 		}]
 	]
 };
-vJ.node;
-var yJ = g(vJ), bJ = {
+yJ.node;
+var bJ = f(yJ), xJ = {
 	name: "scan-face",
 	size: 24,
 	node: [
@@ -33740,8 +33738,8 @@ var yJ = g(vJ), bJ = {
 		}]
 	]
 };
-bJ.node;
-var xJ = g(bJ), SJ = {
+xJ.node;
+var SJ = f(xJ), CJ = {
 	name: "scan-box",
 	size: 24,
 	node: [
@@ -33775,8 +33773,8 @@ var xJ = g(bJ), SJ = {
 		}]
 	]
 };
-SJ.node;
-var CJ = g(SJ), wJ = {
+CJ.node;
+var wJ = f(CJ), TJ = {
 	name: "scan-heart",
 	size: 24,
 	node: [
@@ -33802,8 +33800,8 @@ var CJ = g(SJ), wJ = {
 		}]
 	]
 };
-wJ.node;
-var TJ = g(wJ), EJ = {
+TJ.node;
+var EJ = f(TJ), DJ = {
 	name: "scan-line",
 	size: 24,
 	node: [
@@ -33829,8 +33827,8 @@ var TJ = g(wJ), EJ = {
 		}]
 	]
 };
-EJ.node;
-var DJ = g(EJ), OJ = {
+DJ.node;
+var OJ = f(DJ), kJ = {
 	name: "scan-qr-code",
 	size: 24,
 	node: [
@@ -33872,8 +33870,8 @@ var DJ = g(EJ), OJ = {
 		}]
 	]
 };
-OJ.node;
-var kJ = g(OJ), AJ = {
+kJ.node;
+var AJ = f(kJ), jJ = {
 	name: "scan-search",
 	size: 24,
 	node: [
@@ -33905,8 +33903,8 @@ var kJ = g(OJ), AJ = {
 		}]
 	]
 };
-AJ.node;
-var jJ = g(AJ), MJ = {
+jJ.node;
+var MJ = f(jJ), NJ = {
 	name: "scan-square",
 	size: 24,
 	node: [
@@ -33936,8 +33934,8 @@ var jJ = g(AJ), MJ = {
 		}]
 	]
 };
-MJ.node;
-var NJ = g(MJ), PJ = {
+NJ.node;
+var PJ = f(NJ), FJ = {
 	name: "scan-text",
 	size: 24,
 	node: [
@@ -33971,8 +33969,8 @@ var NJ = g(MJ), PJ = {
 		}]
 	]
 };
-PJ.node;
-var FJ = g(PJ), IJ = {
+FJ.node;
+var IJ = f(FJ), LJ = {
 	name: "scan",
 	size: 24,
 	node: [
@@ -33994,8 +33992,8 @@ var FJ = g(PJ), IJ = {
 		}]
 	]
 };
-IJ.node;
-var LJ = g(IJ), RJ = {
+LJ.node;
+var RJ = f(LJ), zJ = {
 	name: "school",
 	size: 24,
 	node: [
@@ -34027,8 +34025,8 @@ var LJ = g(IJ), RJ = {
 		}]
 	]
 };
-RJ.node;
-var zJ = g(RJ), BJ = {
+zJ.node;
+var BJ = f(zJ), VJ = {
 	name: "scissors",
 	size: 24,
 	node: [
@@ -34058,8 +34056,8 @@ var zJ = g(RJ), BJ = {
 		}]
 	]
 };
-BJ.node;
-var VJ = g(BJ), HJ = {
+VJ.node;
+var HJ = f(VJ), UJ = {
 	name: "scissors-line-dashed",
 	size: 24,
 	node: [
@@ -34097,8 +34095,8 @@ var VJ = g(BJ), HJ = {
 		}]
 	]
 };
-HJ.node;
-var UJ = g(HJ), WJ = {
+UJ.node;
+var WJ = f(UJ), GJ = {
 	name: "scooter",
 	size: 24,
 	node: [
@@ -34124,8 +34122,8 @@ var UJ = g(HJ), WJ = {
 		}]
 	]
 };
-WJ.node;
-var GJ = g(WJ), KJ = {
+GJ.node;
+var KJ = f(GJ), qJ = {
 	name: "screen-share-off",
 	size: 24,
 	node: [
@@ -34151,8 +34149,8 @@ var GJ = g(WJ), KJ = {
 		}]
 	]
 };
-KJ.node;
-var qJ = g(KJ), JJ = {
+qJ.node;
+var JJ = f(qJ), YJ = {
 	name: "screen-share",
 	size: 24,
 	node: [
@@ -34178,8 +34176,8 @@ var qJ = g(KJ), JJ = {
 		}]
 	]
 };
-JJ.node;
-var YJ = g(JJ), XJ = {
+YJ.node;
+var XJ = f(YJ), ZJ = {
 	name: "scroll-text",
 	size: 24,
 	node: [
@@ -34201,8 +34199,8 @@ var YJ = g(JJ), XJ = {
 		}]
 	]
 };
-XJ.node;
-var ZJ = g(XJ), QJ = {
+ZJ.node;
+var QJ = f(ZJ), $J = {
 	name: "scroll",
 	size: 24,
 	node: [["path", {
@@ -34213,8 +34211,8 @@ var ZJ = g(XJ), QJ = {
 		key: "1ph1d7"
 	}]]
 };
-QJ.node;
-var $J = g(QJ), eY = {
+$J.node;
+var eY = f($J), tY = {
 	name: "search-alert",
 	size: 24,
 	node: [
@@ -34238,8 +34236,8 @@ var $J = g(QJ), eY = {
 		}]
 	]
 };
-eY.node;
-var tY = g(eY), nY = {
+tY.node;
+var nY = f(tY), rY = {
 	name: "search-check",
 	size: 24,
 	node: [
@@ -34259,8 +34257,8 @@ var tY = g(eY), nY = {
 		}]
 	]
 };
-nY.node;
-var rY = g(nY), iY = {
+rY.node;
+var iY = f(rY), aY = {
 	name: "search-code",
 	size: 24,
 	node: [
@@ -34284,8 +34282,8 @@ var rY = g(nY), iY = {
 		}]
 	]
 };
-iY.node;
-var aY = g(iY), oY = {
+aY.node;
+var oY = f(aY), sY = {
 	name: "search-x",
 	size: 24,
 	node: [
@@ -34309,8 +34307,8 @@ var aY = g(iY), oY = {
 		}]
 	]
 };
-oY.node;
-var sY = g(oY), cY = {
+sY.node;
+var cY = f(sY), lY = {
 	name: "search-slash",
 	size: 24,
 	node: [
@@ -34330,8 +34328,8 @@ var sY = g(oY), cY = {
 		}]
 	]
 };
-cY.node;
-var lY = g(cY), uY = {
+lY.node;
+var uY = f(lY), dY = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -34344,8 +34342,8 @@ var lY = g(cY), uY = {
 		key: "4ej97u"
 	}]]
 };
-uY.node;
-var dY = g(uY), fY = {
+dY.node;
+var fY = f(dY), pY = {
 	name: "section",
 	size: 24,
 	node: [["path", {
@@ -34356,8 +34354,8 @@ var dY = g(uY), fY = {
 		key: "wdjd8o"
 	}]]
 };
-fY.node;
-var pY = g(fY), mY = {
+pY.node;
+var mY = f(pY), hY = {
 	name: "send-horizontal",
 	size: 24,
 	node: [["path", {
@@ -34369,8 +34367,8 @@ var pY = g(fY), mY = {
 	}]],
 	aliases: ["send-horizonal"]
 };
-mY.node;
-var hY = g(mY), gY = {
+hY.node;
+var gY = f(hY), _Y = {
 	name: "send-to-back",
 	size: 24,
 	node: [
@@ -34400,8 +34398,8 @@ var hY = g(mY), gY = {
 		}]
 	]
 };
-gY.node;
-var _Y = g(gY), vY = {
+_Y.node;
+var vY = f(_Y), yY = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -34412,8 +34410,8 @@ var _Y = g(gY), vY = {
 		key: "12cjpa"
 	}]]
 };
-vY.node;
-var yY = g(vY), bY = {
+yY.node;
+var bY = f(yY), xY = {
 	name: "separator-horizontal",
 	size: 24,
 	node: [
@@ -34431,8 +34429,8 @@ var yY = g(vY), bY = {
 		}]
 	]
 };
-bY.node;
-var xY = g(bY), SY = {
+xY.node;
+var SY = f(xY), CY = {
 	name: "separator-vertical",
 	size: 24,
 	node: [
@@ -34450,8 +34448,8 @@ var xY = g(bY), SY = {
 		}]
 	]
 };
-SY.node;
-var CY = g(SY), wY = {
+CY.node;
+var wY = f(CY), TY = {
 	name: "server-cog",
 	size: 24,
 	node: [
@@ -34505,8 +34503,8 @@ var CY = g(SY), wY = {
 		}]
 	]
 };
-wY.node;
-var TY = g(wY), EY = {
+TY.node;
+var EY = f(TY), DY = {
 	name: "server-crash",
 	size: 24,
 	node: [
@@ -34532,8 +34530,8 @@ var TY = g(wY), EY = {
 		}]
 	]
 };
-EY.node;
-var DY = g(EY), OY = {
+DY.node;
+var OY = f(DY), kY = {
 	name: "server-off",
 	size: 24,
 	node: [
@@ -34563,8 +34561,8 @@ var DY = g(EY), OY = {
 		}]
 	]
 };
-OY.node;
-var kY = g(OY), AY = {
+kY.node;
+var AY = f(kY), jY = {
 	name: "server-plus",
 	size: 24,
 	node: [
@@ -34594,8 +34592,8 @@ var kY = g(OY), AY = {
 		}]
 	]
 };
-AY.node;
-var jY = g(AY), MY = {
+jY.node;
+var MY = f(jY), NY = {
 	name: "server",
 	size: 24,
 	node: [
@@ -34633,8 +34631,8 @@ var jY = g(AY), MY = {
 		}]
 	]
 };
-MY.node;
-var NY = g(MY), PY = {
+NY.node;
+var PY = f(NY), FY = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -34660,8 +34658,8 @@ var NY = g(MY), PY = {
 		}]
 	]
 };
-PY.node;
-var FY = g(PY), IY = {
+FY.node;
+var IY = f(FY), LY = {
 	name: "settings",
 	size: 24,
 	node: [["path", {
@@ -34674,8 +34672,8 @@ var FY = g(PY), IY = {
 		key: "1v7zrd"
 	}]]
 };
-IY.node;
-var LY = g(IY), RY = {
+LY.node;
+var RY = f(LY), zY = {
 	name: "shapes",
 	size: 24,
 	node: [
@@ -34699,8 +34697,8 @@ var LY = g(IY), RY = {
 		}]
 	]
 };
-RY.node;
-var zY = g(RY), BY = {
+zY.node;
+var BY = f(zY), VY = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -34738,8 +34736,8 @@ var zY = g(RY), BY = {
 		}]
 	]
 };
-BY.node;
-var VY = g(BY), HY = {
+VY.node;
+var HY = f(VY), UY = {
 	name: "share",
 	size: 24,
 	node: [
@@ -34757,8 +34755,8 @@ var VY = g(BY), HY = {
 		}]
 	]
 };
-HY.node;
-var UY = g(HY), WY = {
+UY.node;
+var WY = f(UY), GY = {
 	name: "sheet",
 	size: 24,
 	node: [
@@ -34801,8 +34799,8 @@ var UY = g(HY), WY = {
 		}]
 	]
 };
-WY.node;
-var GY = g(WY), KY = {
+GY.node;
+var KY = f(GY), qY = {
 	name: "shell",
 	size: 24,
 	node: [["path", {
@@ -34810,8 +34808,8 @@ var GY = g(WY), KY = {
 		key: "1cn552"
 	}]]
 };
-KY.node;
-var qY = g(KY), JY = {
+qY.node;
+var JY = f(qY), YY = {
 	name: "shelving-unit",
 	size: 24,
 	node: [
@@ -34845,8 +34843,8 @@ var qY = g(KY), JY = {
 		}]
 	]
 };
-JY.node;
-var YY = g(JY), XY = {
+YY.node;
+var XY = f(YY), ZY = {
 	name: "shield-alert",
 	size: 24,
 	node: [
@@ -34864,8 +34862,8 @@ var YY = g(JY), XY = {
 		}]
 	]
 };
-XY.node;
-var ZY = g(XY), QY = {
+ZY.node;
+var QY = f(ZY), $Y = {
 	name: "shield-ban",
 	size: 24,
 	node: [["path", {
@@ -34876,8 +34874,8 @@ var ZY = g(XY), QY = {
 		key: "1c9a7c"
 	}]]
 };
-QY.node;
-var $Y = g(QY), eX = {
+$Y.node;
+var eX = f($Y), tX = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -34888,8 +34886,8 @@ var $Y = g(QY), eX = {
 		key: "dzmm74"
 	}]]
 };
-eX.node;
-var tX = g(eX), nX = {
+tX.node;
+var nX = f(tX), rX = {
 	name: "shield-cog-corner",
 	size: 24,
 	node: [
@@ -34937,8 +34935,8 @@ var tX = g(eX), nX = {
 		}]
 	]
 };
-nX.node;
-var rX = g(nX), iX = {
+rX.node;
+var iX = f(rX), aX = {
 	name: "shield-cog",
 	size: 24,
 	node: [
@@ -34986,8 +34984,8 @@ var rX = g(nX), iX = {
 		}]
 	]
 };
-iX.node;
-var aX = g(iX), oX = {
+aX.node;
+var oX = f(aX), sX = {
 	name: "shield-ellipsis",
 	size: 24,
 	node: [
@@ -35009,8 +35007,8 @@ var aX = g(iX), oX = {
 		}]
 	]
 };
-oX.node;
-var sX = g(oX), cX = {
+sX.node;
+var cX = f(sX), lX = {
 	name: "shield-half",
 	size: 24,
 	node: [["path", {
@@ -35021,8 +35019,8 @@ var sX = g(oX), cX = {
 		key: "zs6s6o"
 	}]]
 };
-cX.node;
-var lX = g(cX), uX = {
+lX.node;
+var uX = f(lX), dX = {
 	name: "shield-keyhole",
 	size: 24,
 	node: [
@@ -35042,8 +35040,8 @@ var lX = g(cX), uX = {
 		}]
 	]
 };
-uX.node;
-var dX = g(uX), fX = {
+dX.node;
+var fX = f(dX), pX = {
 	name: "shield-lock",
 	size: 24,
 	node: [
@@ -35065,8 +35063,8 @@ var dX = g(uX), fX = {
 		}]
 	]
 };
-fX.node;
-var pX = g(fX), mX = {
+pX.node;
+var mX = f(pX), hX = {
 	name: "shield-minus",
 	size: 24,
 	node: [["path", {
@@ -35077,8 +35075,8 @@ var pX = g(fX), mX = {
 		key: "1c52cq"
 	}]]
 };
-mX.node;
-var hX = g(mX), gX = {
+hX.node;
+var gX = f(hX), _X = {
 	name: "shield-off",
 	size: 24,
 	node: [
@@ -35096,8 +35094,8 @@ var hX = g(mX), gX = {
 		}]
 	]
 };
-gX.node;
-var _X = g(gX), vX = {
+_X.node;
+var vX = f(_X), yX = {
 	name: "shield-plus",
 	size: 24,
 	node: [
@@ -35115,8 +35113,8 @@ var _X = g(gX), vX = {
 		}]
 	]
 };
-vX.node;
-var yX = g(vX), bX = {
+yX.node;
+var bX = f(yX), xX = {
 	name: "shield-question-mark",
 	size: 24,
 	node: [
@@ -35135,8 +35133,8 @@ var yX = g(vX), bX = {
 	],
 	aliases: ["shield-question"]
 };
-bX.node;
-var xX = g(bX), SX = {
+xX.node;
+var SX = f(xX), CX = {
 	name: "shield-user",
 	size: 24,
 	node: [
@@ -35156,8 +35154,8 @@ var xX = g(bX), SX = {
 		}]
 	]
 };
-SX.node;
-var CX = g(SX), wX = {
+CX.node;
+var wX = f(CX), TX = {
 	name: "shield-x",
 	size: 24,
 	node: [
@@ -35176,8 +35174,8 @@ var CX = g(SX), wX = {
 	],
 	aliases: ["shield-close"]
 };
-wX.node;
-var TX = g(wX), EX = {
+TX.node;
+var EX = f(TX), DX = {
 	name: "shield",
 	size: 24,
 	node: [["path", {
@@ -35185,8 +35183,8 @@ var TX = g(wX), EX = {
 		key: "oel41y"
 	}]]
 };
-EX.node;
-var DX = g(EX), OX = {
+DX.node;
+var OX = f(DX), kX = {
 	name: "ship-cargo",
 	size: 24,
 	node: [
@@ -35212,8 +35210,8 @@ var DX = g(EX), OX = {
 		}]
 	]
 };
-OX.node;
-var kX = g(OX), AX = {
+kX.node;
+var AX = f(kX), jX = {
 	name: "ship-wheel",
 	size: 24,
 	node: [
@@ -35263,8 +35261,8 @@ var kX = g(OX), AX = {
 		}]
 	]
 };
-AX.node;
-var jX = g(AX), MX = {
+jX.node;
+var MX = f(jX), NX = {
 	name: "ship",
 	size: 24,
 	node: [
@@ -35290,8 +35288,8 @@ var jX = g(AX), MX = {
 		}]
 	]
 };
-MX.node;
-var NX = g(MX), PX = {
+NX.node;
+var PX = f(NX), FX = {
 	name: "shirt",
 	size: 24,
 	node: [["path", {
@@ -35299,8 +35297,8 @@ var NX = g(MX), PX = {
 		key: "1wgbhj"
 	}]]
 };
-PX.node;
-var FX = g(PX), IX = {
+FX.node;
+var IX = f(FX), LX = {
 	name: "shopping-basket",
 	size: 24,
 	node: [
@@ -35334,8 +35332,8 @@ var FX = g(PX), IX = {
 		}]
 	]
 };
-IX.node;
-var LX = g(IX), RX = {
+LX.node;
+var RX = f(LX), zX = {
 	name: "shopping-bag",
 	size: 24,
 	node: [
@@ -35353,8 +35351,8 @@ var LX = g(IX), RX = {
 		}]
 	]
 };
-RX.node;
-var zX = g(RX), BX = {
+zX.node;
+var BX = f(zX), VX = {
 	name: "shopping-cart-minus",
 	size: 24,
 	node: [
@@ -35388,8 +35386,8 @@ var zX = g(RX), BX = {
 		}]
 	]
 };
-BX.node;
-var VX = g(BX), HX = {
+VX.node;
+var HX = f(VX), UX = {
 	name: "shopping-cart-plus",
 	size: 24,
 	node: [
@@ -35427,8 +35425,8 @@ var VX = g(BX), HX = {
 		}]
 	]
 };
-HX.node;
-var UX = g(HX), WX = {
+UX.node;
+var WX = f(UX), GX = {
 	name: "shopping-cart",
 	size: 24,
 	node: [
@@ -35454,8 +35452,8 @@ var UX = g(HX), WX = {
 		}]
 	]
 };
-WX.node;
-var GX = g(WX), KX = {
+GX.node;
+var KX = f(GX), qX = {
 	name: "shovel",
 	size: 24,
 	node: [
@@ -35473,8 +35471,8 @@ var GX = g(WX), KX = {
 		}]
 	]
 };
-KX.node;
-var qX = g(KX), JX = {
+qX.node;
+var JX = f(qX), YX = {
 	name: "shower-head",
 	size: 24,
 	node: [
@@ -35520,8 +35518,8 @@ var qX = g(KX), JX = {
 		}]
 	]
 };
-JX.node;
-var YX = g(JX), XX = {
+YX.node;
+var XX = f(YX), ZX = {
 	name: "shredder",
 	size: 24,
 	node: [
@@ -35555,8 +35553,8 @@ var YX = g(JX), XX = {
 		}]
 	]
 };
-XX.node;
-var ZX = g(XX), QX = {
+ZX.node;
+var QX = f(ZX), $X = {
 	name: "shrimp-off",
 	size: 24,
 	node: [
@@ -35590,8 +35588,8 @@ var ZX = g(XX), QX = {
 		}]
 	]
 };
-QX.node;
-var $X = g(QX), eZ = {
+$X.node;
+var eZ = f($X), tZ = {
 	name: "shrimp",
 	size: 24,
 	node: [
@@ -35617,8 +35615,8 @@ var $X = g(QX), eZ = {
 		}]
 	]
 };
-eZ.node;
-var tZ = g(eZ), nZ = {
+tZ.node;
+var nZ = f(tZ), rZ = {
 	name: "shrink",
 	size: 24,
 	node: [
@@ -35640,8 +35638,8 @@ var tZ = g(eZ), nZ = {
 		}]
 	]
 };
-nZ.node;
-var rZ = g(nZ), iZ = {
+rZ.node;
+var iZ = f(rZ), aZ = {
 	name: "shrub",
 	size: 24,
 	node: [
@@ -35659,8 +35657,8 @@ var rZ = g(nZ), iZ = {
 		}]
 	]
 };
-iZ.node;
-var aZ = g(iZ), oZ = {
+aZ.node;
+var oZ = f(aZ), sZ = {
 	name: "shuffle",
 	size: 24,
 	node: [
@@ -35686,8 +35684,8 @@ var aZ = g(iZ), oZ = {
 		}]
 	]
 };
-oZ.node;
-var sZ = g(oZ), cZ = {
+sZ.node;
+var cZ = f(sZ), lZ = {
 	name: "sigma",
 	size: 24,
 	node: [["path", {
@@ -35695,8 +35693,8 @@ var sZ = g(oZ), cZ = {
 		key: "wuwx1p"
 	}]]
 };
-cZ.node;
-var lZ = g(cZ), uZ = {
+lZ.node;
+var uZ = f(lZ), dZ = {
 	name: "signal-high",
 	size: 24,
 	node: [
@@ -35718,8 +35716,8 @@ var lZ = g(cZ), uZ = {
 		}]
 	]
 };
-uZ.node;
-var dZ = g(uZ), fZ = {
+dZ.node;
+var fZ = f(dZ), pZ = {
 	name: "signal-low",
 	size: 24,
 	node: [["path", {
@@ -35730,8 +35728,8 @@ var dZ = g(uZ), fZ = {
 		key: "j294jx"
 	}]]
 };
-fZ.node;
-var pZ = g(fZ), mZ = {
+pZ.node;
+var mZ = f(pZ), hZ = {
 	name: "signal-medium",
 	size: 24,
 	node: [
@@ -35749,8 +35747,8 @@ var pZ = g(fZ), mZ = {
 		}]
 	]
 };
-mZ.node;
-var hZ = g(mZ), gZ = {
+hZ.node;
+var gZ = f(hZ), _Z = {
 	name: "signal-zero",
 	size: 24,
 	node: [["path", {
@@ -35758,8 +35756,8 @@ var hZ = g(mZ), gZ = {
 		key: "4haj6o"
 	}]]
 };
-gZ.node;
-var _Z = g(gZ), vZ = {
+_Z.node;
+var vZ = f(_Z), yZ = {
 	name: "signal",
 	size: 24,
 	node: [
@@ -35785,8 +35783,8 @@ var _Z = g(gZ), vZ = {
 		}]
 	]
 };
-vZ.node;
-var yZ = g(vZ), bZ = {
+yZ.node;
+var bZ = f(yZ), xZ = {
 	name: "signature",
 	size: 24,
 	node: [["path", {
@@ -35797,8 +35795,8 @@ var yZ = g(vZ), bZ = {
 		key: "itz85i"
 	}]]
 };
-bZ.node;
-var xZ = g(bZ), SZ = {
+xZ.node;
+var SZ = f(xZ), CZ = {
 	name: "signpost-big",
 	size: 24,
 	node: [
@@ -35820,8 +35818,8 @@ var xZ = g(bZ), SZ = {
 		}]
 	]
 };
-SZ.node;
-var CZ = g(SZ), wZ = {
+CZ.node;
+var wZ = f(CZ), TZ = {
 	name: "signpost",
 	size: 24,
 	node: [
@@ -35839,8 +35837,8 @@ var CZ = g(SZ), wZ = {
 		}]
 	]
 };
-wZ.node;
-var TZ = g(wZ), EZ = {
+TZ.node;
+var EZ = f(TZ), DZ = {
 	name: "siren",
 	size: 24,
 	node: [
@@ -35878,8 +35876,8 @@ var TZ = g(wZ), EZ = {
 		}]
 	]
 };
-EZ.node;
-var DZ = g(EZ), OZ = {
+DZ.node;
+var OZ = f(DZ), cne = {
 	name: "skip-back",
 	size: 24,
 	node: [["path", {
@@ -35890,8 +35888,8 @@ var DZ = g(EZ), OZ = {
 		key: "1ptbpl"
 	}]]
 };
-OZ.node;
-var kZ = g(OZ), AZ = {
+cne.node;
+var kZ = f(cne), AZ = {
 	name: "skip-forward",
 	size: 24,
 	node: [["path", {
@@ -35903,7 +35901,7 @@ var kZ = g(OZ), AZ = {
 	}]]
 };
 AZ.node;
-var jZ = g(AZ), MZ = {
+var jZ = f(AZ), MZ = {
 	name: "skull",
 	size: 24,
 	node: [
@@ -35930,7 +35928,7 @@ var jZ = g(AZ), MZ = {
 	]
 };
 MZ.node;
-var NZ = g(MZ), PZ = {
+var NZ = f(MZ), PZ = {
 	name: "slash",
 	size: 24,
 	node: [["path", {
@@ -35939,7 +35937,7 @@ var NZ = g(MZ), PZ = {
 	}]]
 };
 PZ.node;
-var FZ = g(PZ), IZ = {
+var FZ = f(PZ), IZ = {
 	name: "slice",
 	size: 24,
 	node: [["path", {
@@ -35948,7 +35946,7 @@ var FZ = g(PZ), IZ = {
 	}]]
 };
 IZ.node;
-var LZ = g(IZ), RZ = {
+var LZ = f(IZ), RZ = {
 	name: "sliders-horizontal",
 	size: 24,
 	node: [
@@ -35991,7 +35989,7 @@ var LZ = g(IZ), RZ = {
 	]
 };
 RZ.node;
-var zZ = g(RZ), BZ = {
+var zZ = f(RZ), BZ = {
 	name: "sliders-vertical",
 	size: 24,
 	node: [
@@ -36035,7 +36033,7 @@ var zZ = g(RZ), BZ = {
 	aliases: ["sliders"]
 };
 BZ.node;
-var VZ = g(BZ), HZ = {
+var VZ = f(BZ), HZ = {
 	name: "smartphone-charging",
 	size: 24,
 	node: [["rect", {
@@ -36052,7 +36050,7 @@ var VZ = g(BZ), HZ = {
 	}]]
 };
 HZ.node;
-var UZ = g(HZ), WZ = {
+var UZ = f(HZ), WZ = {
 	name: "smartphone-nfc",
 	size: 24,
 	node: [
@@ -36079,7 +36077,7 @@ var UZ = g(HZ), WZ = {
 	]
 };
 WZ.node;
-var GZ = g(WZ), KZ = {
+var GZ = f(WZ), KZ = {
 	name: "smartphone",
 	size: 24,
 	node: [["rect", {
@@ -36096,7 +36094,7 @@ var GZ = g(WZ), KZ = {
 	}]]
 };
 KZ.node;
-var qZ = g(KZ), JZ = {
+var qZ = f(KZ), JZ = {
 	name: "snail",
 	size: 24,
 	node: [
@@ -36125,7 +36123,7 @@ var qZ = g(KZ), JZ = {
 	]
 };
 JZ.node;
-var YZ = g(JZ), XZ = {
+var YZ = f(JZ), XZ = {
 	name: "snowflake",
 	size: 24,
 	node: [
@@ -36180,7 +36178,7 @@ var YZ = g(JZ), XZ = {
 	]
 };
 XZ.node;
-var ZZ = g(XZ), QZ = {
+var ZZ = f(XZ), QZ = {
 	name: "soap-dispenser-droplet",
 	size: 24,
 	node: [
@@ -36203,7 +36201,7 @@ var ZZ = g(XZ), QZ = {
 	]
 };
 QZ.node;
-var $Z = g(QZ), eQ = {
+var $Z = f(QZ), eQ = {
 	name: "sofa",
 	size: 24,
 	node: [
@@ -36230,7 +36228,7 @@ var $Z = g(QZ), eQ = {
 	]
 };
 eQ.node;
-var tQ = g(eQ), nQ = {
+var tQ = f(eQ), nQ = {
 	name: "solar-panel",
 	size: 24,
 	node: [
@@ -36265,7 +36263,7 @@ var tQ = g(eQ), nQ = {
 	]
 };
 nQ.node;
-var rQ = g(nQ), iQ = {
+var rQ = f(nQ), iQ = {
 	name: "soup",
 	size: 24,
 	node: [
@@ -36296,7 +36294,7 @@ var rQ = g(nQ), iQ = {
 	]
 };
 iQ.node;
-var aQ = g(iQ), oQ = {
+var aQ = f(iQ), oQ = {
 	name: "space",
 	size: 24,
 	node: [["path", {
@@ -36305,7 +36303,7 @@ var aQ = g(iQ), oQ = {
 	}]]
 };
 oQ.node;
-var sQ = g(oQ), cQ = {
+var sQ = f(oQ), cQ = {
 	name: "spade",
 	size: 24,
 	node: [["path", {
@@ -36317,7 +36315,7 @@ var sQ = g(oQ), cQ = {
 	}]]
 };
 cQ.node;
-var lQ = g(cQ), uQ = {
+var lQ = f(cQ), uQ = {
 	name: "sparkle",
 	size: 24,
 	node: [["path", {
@@ -36326,7 +36324,7 @@ var lQ = g(cQ), uQ = {
 	}]]
 };
 uQ.node;
-var dQ = g(uQ), fQ = {
+var dQ = f(uQ), fQ = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -36352,7 +36350,7 @@ var dQ = g(uQ), fQ = {
 	aliases: ["stars"]
 };
 fQ.node;
-var pQ = g(fQ), mQ = {
+var pQ = f(fQ), mQ = {
 	name: "speaker",
 	size: 24,
 	node: [
@@ -36381,7 +36379,7 @@ var pQ = g(fQ), mQ = {
 	]
 };
 mQ.node;
-var hQ = g(mQ), gQ = {
+var hQ = f(mQ), gQ = {
 	name: "speech",
 	size: 24,
 	node: [
@@ -36400,7 +36398,7 @@ var hQ = g(mQ), gQ = {
 	]
 };
 gQ.node;
-var _Q = g(gQ), vQ = {
+var _Q = f(gQ), vQ = {
 	name: "spell-check-2",
 	size: 24,
 	node: [
@@ -36419,7 +36417,7 @@ var _Q = g(gQ), vQ = {
 	]
 };
 vQ.node;
-var yQ = g(vQ), bQ = {
+var yQ = f(vQ), bQ = {
 	name: "spell-check",
 	size: 24,
 	node: [
@@ -36438,7 +36436,7 @@ var yQ = g(vQ), bQ = {
 	]
 };
 bQ.node;
-var xQ = g(bQ), SQ = {
+var xQ = f(bQ), SQ = {
 	name: "spline-pointer",
 	size: 24,
 	node: [
@@ -36465,7 +36463,7 @@ var xQ = g(bQ), SQ = {
 	]
 };
 SQ.node;
-var CQ = g(SQ), wQ = {
+var CQ = f(SQ), wQ = {
 	name: "spline",
 	size: 24,
 	node: [
@@ -36488,7 +36486,7 @@ var CQ = g(SQ), wQ = {
 	]
 };
 wQ.node;
-var TQ = g(wQ), EQ = {
+var TQ = f(wQ), EQ = {
 	name: "spool",
 	size: 24,
 	node: [["path", {
@@ -36500,7 +36498,7 @@ var TQ = g(wQ), EQ = {
 	}]]
 };
 EQ.node;
-var DQ = g(EQ), OQ = {
+var DQ = f(EQ), OQ = {
 	name: "split",
 	size: 24,
 	node: [
@@ -36523,7 +36521,7 @@ var DQ = g(EQ), OQ = {
 	]
 };
 OQ.node;
-var kQ = g(OQ), AQ = {
+var kQ = f(OQ), AQ = {
 	name: "sport-shoe",
 	size: 24,
 	node: [
@@ -36542,7 +36540,7 @@ var kQ = g(OQ), AQ = {
 	]
 };
 AQ.node;
-var jQ = g(AQ), MQ = {
+var jQ = f(AQ), MQ = {
 	name: "spotlight",
 	size: 24,
 	node: [
@@ -36569,7 +36567,7 @@ var jQ = g(AQ), MQ = {
 	]
 };
 MQ.node;
-var NQ = g(MQ), PQ = {
+var NQ = f(MQ), PQ = {
 	name: "spray-can",
 	size: 24,
 	node: [
@@ -36619,7 +36617,7 @@ var NQ = g(MQ), PQ = {
 	]
 };
 PQ.node;
-var FQ = g(PQ), IQ = {
+var FQ = f(PQ), IQ = {
 	name: "sprout",
 	size: 24,
 	node: [
@@ -36638,7 +36636,7 @@ var FQ = g(PQ), IQ = {
 	]
 };
 IQ.node;
-var LQ = g(IQ), RQ = {
+var LQ = f(IQ), RQ = {
 	name: "square-activity",
 	size: 24,
 	node: [["rect", {
@@ -36655,7 +36653,7 @@ var LQ = g(IQ), RQ = {
 	aliases: ["activity-square"]
 };
 RQ.node;
-var zQ = g(RQ), BQ = {
+var zQ = f(RQ), BQ = {
 	name: "square-arrow-down-left",
 	size: 24,
 	node: [
@@ -36679,7 +36677,7 @@ var zQ = g(RQ), BQ = {
 	aliases: ["arrow-down-left-square"]
 };
 BQ.node;
-var VQ = g(BQ), HQ = {
+var VQ = f(BQ), HQ = {
 	name: "square-arrow-down-right",
 	size: 24,
 	node: [
@@ -36703,7 +36701,7 @@ var VQ = g(BQ), HQ = {
 	aliases: ["arrow-down-right-square"]
 };
 HQ.node;
-var UQ = g(HQ), WQ = {
+var UQ = f(HQ), WQ = {
 	name: "square-arrow-left",
 	size: 24,
 	node: [
@@ -36727,7 +36725,7 @@ var UQ = g(HQ), WQ = {
 	aliases: ["arrow-left-square"]
 };
 WQ.node;
-var GQ = g(WQ), KQ = {
+var GQ = f(WQ), KQ = {
 	name: "square-arrow-down",
 	size: 24,
 	node: [
@@ -36751,7 +36749,7 @@ var GQ = g(WQ), KQ = {
 	aliases: ["arrow-down-square"]
 };
 KQ.node;
-var qQ = g(KQ), JQ = {
+var qQ = f(KQ), JQ = {
 	name: "square-arrow-out-down-left",
 	size: 24,
 	node: [
@@ -36771,7 +36769,7 @@ var qQ = g(KQ), JQ = {
 	aliases: ["arrow-down-left-from-square"]
 };
 JQ.node;
-var YQ = g(JQ), XQ = {
+var YQ = f(JQ), XQ = {
 	name: "square-arrow-out-down-right",
 	size: 24,
 	node: [
@@ -36791,7 +36789,7 @@ var YQ = g(JQ), XQ = {
 	aliases: ["arrow-down-right-from-square"]
 };
 XQ.node;
-var ZQ = g(XQ), QQ = {
+var ZQ = f(XQ), QQ = {
 	name: "square-arrow-out-up-left",
 	size: 24,
 	node: [
@@ -36811,7 +36809,7 @@ var ZQ = g(XQ), QQ = {
 	aliases: ["arrow-up-left-from-square"]
 };
 QQ.node;
-var $Q = g(QQ), e$ = {
+var $Q = f(QQ), e$ = {
 	name: "square-arrow-out-up-right",
 	size: 24,
 	node: [
@@ -36831,7 +36829,7 @@ var $Q = g(QQ), e$ = {
 	aliases: ["arrow-up-right-from-square"]
 };
 e$.node;
-var t$ = g(e$), n$ = {
+var t$ = f(e$), n$ = {
 	name: "square-arrow-right-enter",
 	size: 24,
 	node: [
@@ -36850,7 +36848,7 @@ var t$ = g(e$), n$ = {
 	]
 };
 n$.node;
-var r$ = g(n$), i$ = {
+var r$ = f(n$), i$ = {
 	name: "square-arrow-right-exit",
 	size: 24,
 	node: [
@@ -36869,7 +36867,7 @@ var r$ = g(n$), i$ = {
 	]
 };
 i$.node;
-var a$ = g(i$), o$ = {
+var a$ = f(i$), o$ = {
 	name: "square-arrow-right",
 	size: 24,
 	node: [
@@ -36893,7 +36891,7 @@ var a$ = g(i$), o$ = {
 	aliases: ["arrow-right-square"]
 };
 o$.node;
-var s$ = g(o$), c$ = {
+var s$ = f(o$), c$ = {
 	name: "square-arrow-up-left",
 	size: 24,
 	node: [
@@ -36917,7 +36915,7 @@ var s$ = g(o$), c$ = {
 	aliases: ["arrow-up-left-square"]
 };
 c$.node;
-var l$ = g(c$), u$ = {
+var l$ = f(c$), u$ = {
 	name: "square-arrow-up-right",
 	size: 24,
 	node: [
@@ -36941,7 +36939,7 @@ var l$ = g(c$), u$ = {
 	aliases: ["arrow-up-right-square"]
 };
 u$.node;
-var d$ = g(u$), f$ = {
+var d$ = f(u$), f$ = {
 	name: "square-arrow-up",
 	size: 24,
 	node: [
@@ -36965,7 +36963,7 @@ var d$ = g(u$), f$ = {
 	aliases: ["arrow-up-square"]
 };
 f$.node;
-var p$ = g(f$), m$ = {
+var p$ = f(f$), m$ = {
 	name: "square-asterisk",
 	size: 24,
 	node: [
@@ -36993,7 +36991,7 @@ var p$ = g(f$), m$ = {
 	aliases: ["asterisk-square"]
 };
 m$.node;
-var h$ = g(m$), g$ = {
+var h$ = f(m$), g$ = {
 	name: "square-bookmark",
 	size: 24,
 	node: [["path", {
@@ -37010,7 +37008,7 @@ var h$ = g(m$), g$ = {
 	aliases: ["album"]
 };
 g$.node;
-var _$ = g(g$), v$ = {
+var _$ = f(g$), v$ = {
 	name: "square-bottom-dashed-scissors",
 	size: 24,
 	node: [
@@ -37054,7 +37052,7 @@ var _$ = g(g$), v$ = {
 	aliases: ["scissors-square-dashed-bottom"]
 };
 v$.node;
-var y$ = g(v$), b$ = {
+var y$ = f(v$), b$ = {
 	name: "square-centerline-dashed-horizontal",
 	size: 24,
 	node: [
@@ -37086,7 +37084,7 @@ var y$ = g(v$), b$ = {
 	aliases: ["flip-horizontal"]
 };
 b$.node;
-var x$ = g(b$), S$ = {
+var x$ = f(b$), S$ = {
 	name: "square-centerline-dashed-vertical",
 	size: 24,
 	node: [
@@ -37118,7 +37116,7 @@ var x$ = g(b$), S$ = {
 	aliases: ["flip-vertical"]
 };
 S$.node;
-var C$ = g(S$), w$ = {
+var C$ = f(S$), w$ = {
 	name: "square-chart-gantt",
 	size: 24,
 	node: [
@@ -37146,7 +37144,7 @@ var C$ = g(S$), w$ = {
 	aliases: ["gantt-chart-square", "square-gantt-chart"]
 };
 w$.node;
-var K = g(w$), T$ = {
+var q = f(w$), T$ = {
 	name: "square-check-big",
 	size: 24,
 	node: [["path", {
@@ -37159,7 +37157,7 @@ var K = g(w$), T$ = {
 	aliases: ["check-square"]
 };
 T$.node;
-var E$ = g(T$), D$ = {
+var E$ = f(T$), D$ = {
 	name: "square-check",
 	size: 24,
 	node: [["rect", {
@@ -37176,7 +37174,7 @@ var E$ = g(T$), D$ = {
 	aliases: ["check-square-2"]
 };
 D$.node;
-var O$ = g(D$), k$ = {
+var O$ = f(D$), k$ = {
 	name: "square-chevron-down",
 	size: 24,
 	node: [["rect", {
@@ -37193,7 +37191,7 @@ var O$ = g(D$), k$ = {
 	aliases: ["chevron-down-square"]
 };
 k$.node;
-var A$ = g(k$), j$ = {
+var A$ = f(k$), j$ = {
 	name: "square-chevron-left",
 	size: 24,
 	node: [["rect", {
@@ -37210,7 +37208,7 @@ var A$ = g(k$), j$ = {
 	aliases: ["chevron-left-square"]
 };
 j$.node;
-var M$ = g(j$), N$ = {
+var M$ = f(j$), N$ = {
 	name: "square-chevron-right",
 	size: 24,
 	node: [["rect", {
@@ -37227,7 +37225,7 @@ var M$ = g(j$), N$ = {
 	aliases: ["chevron-right-square"]
 };
 N$.node;
-var P$ = g(N$), F$ = {
+var P$ = f(N$), F$ = {
 	name: "square-chevron-up",
 	size: 24,
 	node: [["rect", {
@@ -37244,7 +37242,7 @@ var P$ = g(N$), F$ = {
 	aliases: ["chevron-up-square"]
 };
 F$.node;
-var I$ = g(F$), L$ = {
+var I$ = f(F$), L$ = {
 	name: "square-code",
 	size: 24,
 	node: [
@@ -37268,7 +37266,7 @@ var I$ = g(F$), L$ = {
 	aliases: ["code-square"]
 };
 L$.node;
-var R$ = g(L$), z$ = {
+var R$ = f(L$), z$ = {
 	name: "square-dashed-bottom-code",
 	size: 24,
 	node: [
@@ -37295,7 +37293,7 @@ var R$ = g(L$), z$ = {
 	]
 };
 z$.node;
-var B$ = g(z$), V$ = {
+var B$ = f(z$), V$ = {
 	name: "square-dashed-bottom",
 	size: 24,
 	node: [
@@ -37314,7 +37312,7 @@ var B$ = g(z$), V$ = {
 	]
 };
 V$.node;
-var H$ = g(V$), U$ = {
+var H$ = f(V$), U$ = {
 	name: "square-dashed-kanban",
 	size: 24,
 	node: [
@@ -37382,7 +37380,7 @@ var H$ = g(V$), U$ = {
 	aliases: ["kanban-square-dashed"]
 };
 U$.node;
-var W$ = g(U$), G$ = {
+var W$ = f(U$), G$ = {
 	name: "square-dashed-mouse-pointer",
 	size: 24,
 	node: [
@@ -37430,7 +37428,7 @@ var W$ = g(U$), G$ = {
 	aliases: ["mouse-pointer-square-dashed"]
 };
 G$.node;
-var K$ = g(G$), q$ = {
+var K$ = f(G$), q$ = {
 	name: "square-dashed-plus",
 	size: 24,
 	node: [
@@ -37493,7 +37491,7 @@ var K$ = g(G$), q$ = {
 	]
 };
 q$.node;
-var J$ = g(q$), Y$ = {
+var J$ = f(q$), Y$ = {
 	name: "square-dashed-text",
 	size: 24,
 	node: [
@@ -37561,7 +37559,7 @@ var J$ = g(q$), Y$ = {
 	aliases: ["text-selection", "text-select"]
 };
 Y$.node;
-var q = g(Y$), X$ = {
+var J = f(Y$), X$ = {
 	name: "square-dashed-top-solid",
 	size: 24,
 	node: [
@@ -37604,7 +37602,7 @@ var q = g(Y$), X$ = {
 	]
 };
 X$.node;
-var Z$ = g(X$), Q$ = {
+var Z$ = f(X$), Q$ = {
 	name: "square-dashed-x-corner",
 	size: 24,
 	node: [
@@ -37655,7 +37653,7 @@ var Z$ = g(X$), Q$ = {
 	]
 };
 Q$.node;
-var $$ = g(Q$), e1 = {
+var $$ = f(Q$), e1 = {
 	name: "square-dashed-x",
 	size: 24,
 	node: [
@@ -37718,7 +37716,7 @@ var $$ = g(Q$), e1 = {
 	]
 };
 e1.node;
-var t1 = g(e1), n1 = {
+var t1 = f(e1), n1 = {
 	name: "square-dashed",
 	size: 24,
 	node: [
@@ -37774,7 +37772,7 @@ var t1 = g(e1), n1 = {
 	aliases: ["box-select"]
 };
 n1.node;
-var r1 = g(n1), i1 = {
+var r1 = f(n1), i1 = {
 	name: "square-dimensions",
 	size: 24,
 	node: [
@@ -37797,7 +37795,7 @@ var r1 = g(n1), i1 = {
 	]
 };
 i1.node;
-var a1 = g(i1), o1 = {
+var a1 = f(i1), o1 = {
 	name: "square-divide",
 	size: 24,
 	node: [
@@ -37835,7 +37833,7 @@ var a1 = g(i1), o1 = {
 	aliases: ["divide-square"]
 };
 o1.node;
-var s1 = g(o1), c1 = {
+var s1 = f(o1), c1 = {
 	name: "square-dot",
 	size: 24,
 	node: [["rect", {
@@ -37854,7 +37852,7 @@ var s1 = g(o1), c1 = {
 	aliases: ["dot-square"]
 };
 c1.node;
-var l1 = g(c1), u1 = {
+var l1 = f(c1), u1 = {
 	name: "square-equal",
 	size: 24,
 	node: [
@@ -37878,7 +37876,7 @@ var l1 = g(c1), u1 = {
 	aliases: ["equal-square"]
 };
 u1.node;
-var d1 = g(u1), f1 = {
+var d1 = f(u1), f1 = {
 	name: "square-exclamation-point",
 	size: 24,
 	node: [
@@ -37907,7 +37905,7 @@ var d1 = g(u1), f1 = {
 	]
 };
 f1.node;
-var p1 = g(f1), m1 = {
+var p1 = f(f1), m1 = {
 	name: "square-function",
 	size: 24,
 	node: [
@@ -37932,7 +37930,7 @@ var p1 = g(f1), m1 = {
 	aliases: ["function-square"]
 };
 m1.node;
-var h1 = g(m1), g1 = {
+var h1 = f(m1), g1 = {
 	name: "square-kanban",
 	size: 24,
 	node: [
@@ -37960,7 +37958,7 @@ var h1 = g(m1), g1 = {
 	aliases: ["kanban-square"]
 };
 g1.node;
-var _1 = g(g1), v1 = {
+var _1 = f(g1), v1 = {
 	name: "square-library",
 	size: 24,
 	node: [
@@ -37988,7 +37986,7 @@ var _1 = g(g1), v1 = {
 	aliases: ["library-square"]
 };
 v1.node;
-var y1 = g(v1), b1 = {
+var y1 = f(v1), b1 = {
 	name: "square-m",
 	size: 24,
 	node: [["path", {
@@ -38005,7 +38003,7 @@ var y1 = g(v1), b1 = {
 	aliases: ["m-square"]
 };
 b1.node;
-var x1 = g(b1), S1 = {
+var x1 = f(b1), S1 = {
 	name: "square-menu",
 	size: 24,
 	node: [
@@ -38033,7 +38031,7 @@ var x1 = g(b1), S1 = {
 	aliases: ["menu-square"]
 };
 S1.node;
-var C1 = g(S1), w1 = {
+var C1 = f(S1), w1 = {
 	name: "square-minus",
 	size: 24,
 	node: [["rect", {
@@ -38050,7 +38048,7 @@ var C1 = g(S1), w1 = {
 	aliases: ["minus-square"]
 };
 w1.node;
-var T1 = g(w1), E1 = {
+var T1 = f(w1), E1 = {
 	name: "square-mouse-pointer",
 	size: 24,
 	node: [["path", {
@@ -38063,7 +38061,7 @@ var T1 = g(w1), E1 = {
 	aliases: ["inspect"]
 };
 E1.node;
-var D1 = g(E1), O1 = {
+var D1 = f(E1), O1 = {
 	name: "square-off",
 	size: 24,
 	node: [
@@ -38082,7 +38080,7 @@ var D1 = g(E1), O1 = {
 	]
 };
 O1.node;
-var k1 = g(O1), A1 = {
+var k1 = f(O1), A1 = {
 	name: "square-parking-off",
 	size: 24,
 	node: [
@@ -38110,7 +38108,7 @@ var k1 = g(O1), A1 = {
 	aliases: ["parking-square-off"]
 };
 A1.node;
-var j1 = g(A1), M1 = {
+var j1 = f(A1), M1 = {
 	name: "square-parking",
 	size: 24,
 	node: [["rect", {
@@ -38127,7 +38125,7 @@ var j1 = g(A1), M1 = {
 	aliases: ["parking-square"]
 };
 M1.node;
-var N1 = g(M1), P1 = {
+var N1 = f(M1), P1 = {
 	name: "square-pause",
 	size: 24,
 	node: [
@@ -38156,7 +38154,7 @@ var N1 = g(M1), P1 = {
 	]
 };
 P1.node;
-var F1 = g(P1), I1 = {
+var F1 = f(P1), I1 = {
 	name: "square-pen",
 	size: 24,
 	node: [["path", {
@@ -38173,7 +38171,7 @@ var F1 = g(P1), I1 = {
 	]
 };
 I1.node;
-var J = g(I1), L1 = {
+var Y = f(I1), L1 = {
 	name: "square-percent",
 	size: 24,
 	node: [
@@ -38201,7 +38199,7 @@ var J = g(I1), L1 = {
 	aliases: ["percent-square"]
 };
 L1.node;
-var R1 = g(L1), z1 = {
+var R1 = f(L1), z1 = {
 	name: "square-pi",
 	size: 24,
 	node: [
@@ -38229,7 +38227,7 @@ var R1 = g(L1), z1 = {
 	aliases: ["pi-square"]
 };
 z1.node;
-var B1 = g(z1), V1 = {
+var B1 = f(z1), V1 = {
 	name: "square-pilcrow",
 	size: 24,
 	node: [
@@ -38257,7 +38255,7 @@ var B1 = g(z1), V1 = {
 	aliases: ["pilcrow-square"]
 };
 V1.node;
-var H1 = g(V1), U1 = {
+var H1 = f(V1), U1 = {
 	name: "square-play",
 	size: 24,
 	node: [["rect", {
@@ -38274,7 +38272,7 @@ var H1 = g(V1), U1 = {
 	aliases: ["play-square"]
 };
 U1.node;
-var W1 = g(U1), G1 = {
+var W1 = f(U1), G1 = {
 	name: "square-plus",
 	size: 24,
 	node: [
@@ -38298,7 +38296,7 @@ var W1 = g(U1), G1 = {
 	aliases: ["plus-square"]
 };
 G1.node;
-var K1 = g(G1), q1 = {
+var K1 = f(G1), q1 = {
 	name: "square-power",
 	size: 24,
 	node: [
@@ -38322,7 +38320,7 @@ var K1 = g(G1), q1 = {
 	aliases: ["power-square"]
 };
 q1.node;
-var J1 = g(q1), Y1 = {
+var J1 = f(q1), Y1 = {
 	name: "square-radical",
 	size: 24,
 	node: [["path", {
@@ -38338,7 +38336,7 @@ var J1 = g(q1), Y1 = {
 	}]]
 };
 Y1.node;
-var X1 = g(Y1), Z1 = {
+var X1 = f(Y1), Z1 = {
 	name: "square-round-corner",
 	size: 24,
 	node: [["path", {
@@ -38350,7 +38348,7 @@ var X1 = g(Y1), Z1 = {
 	}]]
 };
 Z1.node;
-var Q1 = g(Z1), $1 = {
+var Q1 = f(Z1), $1 = {
 	name: "square-scissors",
 	size: 24,
 	node: [
@@ -38390,7 +38388,7 @@ var Q1 = g(Z1), $1 = {
 	aliases: ["scissors-square"]
 };
 $1.node;
-var e0 = g($1), t0 = {
+var e0 = f($1), t0 = {
 	name: "square-sigma",
 	size: 24,
 	node: [["rect", {
@@ -38407,7 +38405,7 @@ var e0 = g($1), t0 = {
 	aliases: ["sigma-square"]
 };
 t0.node;
-var n0 = g(t0), r0 = {
+var n0 = f(t0), r0 = {
 	name: "square-slash",
 	size: 24,
 	node: [["rect", {
@@ -38427,7 +38425,7 @@ var n0 = g(t0), r0 = {
 	aliases: ["slash-square"]
 };
 r0.node;
-var i0 = g(r0), a0 = {
+var i0 = f(r0), a0 = {
 	name: "square-sparkles",
 	size: 24,
 	node: [
@@ -38450,7 +38448,7 @@ var i0 = g(r0), a0 = {
 	]
 };
 a0.node;
-var o0 = g(a0), s0 = {
+var o0 = f(a0), s0 = {
 	name: "square-split-horizontal",
 	size: 24,
 	node: [
@@ -38470,7 +38468,7 @@ var o0 = g(a0), s0 = {
 	aliases: ["split-square-horizontal"]
 };
 s0.node;
-var c0 = g(s0), l0 = {
+var c0 = f(s0), l0 = {
 	name: "square-split-vertical",
 	size: 24,
 	node: [
@@ -38490,7 +38488,7 @@ var c0 = g(s0), l0 = {
 	aliases: ["split-square-vertical"]
 };
 l0.node;
-var u0 = g(l0), d0 = {
+var u0 = f(l0), d0 = {
 	name: "square-square",
 	size: 24,
 	node: [["rect", {
@@ -38510,7 +38508,7 @@ var u0 = g(l0), d0 = {
 	}]]
 };
 d0.node;
-var f0 = g(d0), p0 = {
+var f0 = f(d0), p0 = {
 	name: "square-stack",
 	size: 24,
 	node: [
@@ -38533,7 +38531,7 @@ var f0 = g(d0), p0 = {
 	]
 };
 p0.node;
-var m0 = g(p0), h0 = {
+var m0 = f(p0), h0 = {
 	name: "square-star",
 	size: 24,
 	node: [["path", {
@@ -38549,7 +38547,7 @@ var m0 = g(p0), h0 = {
 	}]]
 };
 h0.node;
-var g0 = g(h0), _0 = {
+var g0 = f(h0), _0 = {
 	name: "square-stop",
 	size: 24,
 	node: [["rect", {
@@ -38569,7 +38567,7 @@ var g0 = g(h0), _0 = {
 	}]]
 };
 _0.node;
-var v0 = g(_0), y0 = {
+var v0 = f(_0), y0 = {
 	name: "square-terminal",
 	size: 24,
 	node: [
@@ -38594,7 +38592,7 @@ var v0 = g(_0), y0 = {
 	aliases: ["terminal-square"]
 };
 y0.node;
-var b0 = g(y0), x0 = {
+var b0 = f(y0), x0 = {
 	name: "square-user-round",
 	size: 24,
 	node: [
@@ -38620,7 +38618,7 @@ var b0 = g(y0), x0 = {
 	aliases: ["user-square-2"]
 };
 x0.node;
-var S0 = g(x0), C0 = {
+var S0 = f(x0), C0 = {
 	name: "square-text",
 	size: 24,
 	node: [
@@ -38647,7 +38645,7 @@ var S0 = g(x0), C0 = {
 	]
 };
 C0.node;
-var w0 = g(C0), T0 = {
+var w0 = f(C0), T0 = {
 	name: "square-user",
 	size: 24,
 	node: [
@@ -38673,7 +38671,7 @@ var w0 = g(C0), T0 = {
 	aliases: ["user-square"]
 };
 T0.node;
-var E0 = g(T0), D0 = {
+var E0 = f(T0), D0 = {
 	name: "square-x",
 	size: 24,
 	node: [
@@ -38698,7 +38696,7 @@ var E0 = g(T0), D0 = {
 	aliases: ["x-square"]
 };
 D0.node;
-var O0 = g(D0), k0 = {
+var O0 = f(D0), k0 = {
 	name: "square",
 	size: 24,
 	node: [["rect", {
@@ -38711,7 +38709,7 @@ var O0 = g(D0), k0 = {
 	}]]
 };
 k0.node;
-var A0 = g(k0), j0 = {
+var A0 = f(k0), j0 = {
 	name: "squares-exclude",
 	size: 24,
 	node: [["path", {
@@ -38723,7 +38721,7 @@ var A0 = g(k0), j0 = {
 	}]]
 };
 j0.node;
-var M0 = g(j0), N0 = {
+var M0 = f(j0), N0 = {
 	name: "squares-intersect",
 	size: 24,
 	node: [
@@ -38774,7 +38772,7 @@ var M0 = g(j0), N0 = {
 	]
 };
 N0.node;
-var P0 = g(N0), F0 = {
+var P0 = f(N0), F0 = {
 	name: "squares-subtract",
 	size: 24,
 	node: [
@@ -38805,7 +38803,7 @@ var P0 = g(N0), F0 = {
 	]
 };
 F0.node;
-var I0 = g(F0), L0 = {
+var I0 = f(F0), L0 = {
 	name: "squares-unite",
 	size: 24,
 	node: [["path", {
@@ -38814,7 +38812,7 @@ var I0 = g(F0), L0 = {
 	}]]
 };
 L0.node;
-var R0 = g(L0), z0 = {
+var R0 = f(L0), z0 = {
 	name: "squircle-dashed",
 	size: 24,
 	node: [
@@ -38853,7 +38851,7 @@ var R0 = g(L0), z0 = {
 	]
 };
 z0.node;
-var B0 = g(z0), V0 = {
+var B0 = f(z0), V0 = {
 	name: "squircle",
 	size: 24,
 	node: [["path", {
@@ -38862,7 +38860,7 @@ var B0 = g(z0), V0 = {
 	}]]
 };
 V0.node;
-var H0 = g(V0), U0 = {
+var H0 = f(V0), U0 = {
 	name: "squirrel",
 	size: 24,
 	node: [
@@ -38885,7 +38883,7 @@ var H0 = g(V0), U0 = {
 	]
 };
 U0.node;
-var W0 = g(U0), G0 = {
+var W0 = f(U0), G0 = {
 	name: "stamp",
 	size: 24,
 	node: [
@@ -38904,7 +38902,7 @@ var W0 = g(U0), G0 = {
 	]
 };
 G0.node;
-var K0 = g(G0), q0 = {
+var K0 = f(G0), q0 = {
 	name: "star-check",
 	size: 24,
 	node: [["path", {
@@ -38916,7 +38914,7 @@ var K0 = g(G0), q0 = {
 	}]]
 };
 q0.node;
-var J0 = g(q0), Y0 = {
+var J0 = f(q0), Y0 = {
 	name: "star-half",
 	size: 24,
 	node: [["path", {
@@ -38925,7 +38923,7 @@ var J0 = g(q0), Y0 = {
 	}]]
 };
 Y0.node;
-var X0 = g(Y0), Z0 = {
+var X0 = f(Y0), Z0 = {
 	name: "star-minus",
 	size: 24,
 	node: [["path", {
@@ -38937,7 +38935,7 @@ var X0 = g(Y0), Z0 = {
 	}]]
 };
 Z0.node;
-var Q0 = g(Z0), $0 = {
+var Q0 = f(Z0), $0 = {
 	name: "star-off",
 	size: 24,
 	node: [
@@ -38956,7 +38954,7 @@ var Q0 = g(Z0), $0 = {
 	]
 };
 $0.node;
-var e2 = g($0), t2 = {
+var e2 = f($0), t2 = {
 	name: "star-plus",
 	size: 24,
 	node: [
@@ -38975,7 +38973,7 @@ var e2 = g($0), t2 = {
 	]
 };
 t2.node;
-var n2 = g(t2), r2 = {
+var n2 = f(t2), r2 = {
 	name: "star-x",
 	size: 24,
 	node: [
@@ -38994,7 +38992,7 @@ var n2 = g(t2), r2 = {
 	]
 };
 r2.node;
-var i2 = g(r2), a2 = {
+var i2 = f(r2), a2 = {
 	name: "star",
 	size: 24,
 	node: [["path", {
@@ -39003,7 +39001,7 @@ var i2 = g(r2), a2 = {
 	}]]
 };
 a2.node;
-var o2 = g(a2), s2 = {
+var o2 = f(a2), s2 = {
 	name: "step-back",
 	size: 24,
 	node: [["path", {
@@ -39015,7 +39013,7 @@ var o2 = g(a2), s2 = {
 	}]]
 };
 s2.node;
-var c2 = g(s2), l2 = {
+var c2 = f(s2), l2 = {
 	name: "step-forward",
 	size: 24,
 	node: [["path", {
@@ -39027,7 +39025,7 @@ var c2 = g(s2), l2 = {
 	}]]
 };
 l2.node;
-var u2 = g(l2), d2 = {
+var u2 = f(l2), d2 = {
 	name: "stethoscope",
 	size: 24,
 	node: [
@@ -39056,7 +39054,7 @@ var u2 = g(l2), d2 = {
 	]
 };
 d2.node;
-var f2 = g(d2), p2 = {
+var f2 = f(d2), p2 = {
 	name: "sticker",
 	size: 24,
 	node: [
@@ -39083,7 +39081,7 @@ var f2 = g(d2), p2 = {
 	]
 };
 p2.node;
-var m2 = g(p2), h2 = {
+var m2 = f(p2), h2 = {
 	name: "sticky-note-check",
 	size: 24,
 	node: [
@@ -39102,7 +39100,7 @@ var m2 = g(p2), h2 = {
 	]
 };
 h2.node;
-var g2 = g(h2), _2 = {
+var g2 = f(h2), _2 = {
 	name: "sticky-note-minus",
 	size: 24,
 	node: [
@@ -39121,7 +39119,7 @@ var g2 = g(h2), _2 = {
 	]
 };
 _2.node;
-var v2 = g(_2), y2 = {
+var v2 = f(_2), y2 = {
 	name: "sticky-note-off",
 	size: 24,
 	node: [
@@ -39144,7 +39142,7 @@ var v2 = g(_2), y2 = {
 	]
 };
 y2.node;
-var b2 = g(y2), x2 = {
+var b2 = f(y2), x2 = {
 	name: "sticky-note-plus",
 	size: 24,
 	node: [
@@ -39167,7 +39165,7 @@ var b2 = g(y2), x2 = {
 	]
 };
 x2.node;
-var S2 = g(x2), C2 = {
+var S2 = f(x2), C2 = {
 	name: "sticky-note-x",
 	size: 24,
 	node: [
@@ -39190,7 +39188,7 @@ var S2 = g(x2), C2 = {
 	]
 };
 C2.node;
-var w2 = g(C2), T2 = {
+var w2 = f(C2), T2 = {
 	name: "sticky-note",
 	size: 24,
 	node: [["path", {
@@ -39202,7 +39200,7 @@ var w2 = g(C2), T2 = {
 	}]]
 };
 T2.node;
-var E2 = g(T2), D2 = {
+var E2 = f(T2), D2 = {
 	name: "sticky-notes",
 	size: 24,
 	node: [
@@ -39225,7 +39223,7 @@ var E2 = g(T2), D2 = {
 	]
 };
 D2.node;
-var O2 = g(D2), k2 = {
+var O2 = f(D2), k2 = {
 	name: "stone",
 	size: 24,
 	node: [
@@ -39244,7 +39242,7 @@ var O2 = g(D2), k2 = {
 	]
 };
 k2.node;
-var A2 = g(k2), j2 = {
+var A2 = f(k2), j2 = {
 	name: "stretch-horizontal",
 	size: 24,
 	node: [["rect", {
@@ -39264,7 +39262,7 @@ var A2 = g(k2), j2 = {
 	}]]
 };
 j2.node;
-var M2 = g(j2), N2 = {
+var M2 = f(j2), N2 = {
 	name: "stretch-vertical",
 	size: 24,
 	node: [["rect", {
@@ -39284,7 +39282,7 @@ var M2 = g(j2), N2 = {
 	}]]
 };
 N2.node;
-var P2 = g(N2), F2 = {
+var P2 = f(N2), F2 = {
 	name: "store",
 	size: 24,
 	node: [
@@ -39303,7 +39301,7 @@ var P2 = g(N2), F2 = {
 	]
 };
 F2.node;
-var I2 = g(F2), L2 = {
+var I2 = f(F2), L2 = {
 	name: "strikethrough",
 	size: 24,
 	node: [
@@ -39325,7 +39323,7 @@ var I2 = g(F2), L2 = {
 	]
 };
 L2.node;
-var R2 = g(L2), z2 = {
+var R2 = f(L2), z2 = {
 	name: "subscript",
 	size: 24,
 	node: [
@@ -39344,7 +39342,7 @@ var R2 = g(L2), z2 = {
 	]
 };
 z2.node;
-var B2 = g(z2), V2 = {
+var B2 = f(z2), V2 = {
 	name: "summary",
 	size: 24,
 	node: [
@@ -39371,7 +39369,7 @@ var B2 = g(z2), V2 = {
 	]
 };
 V2.node;
-var H2 = g(V2), U2 = {
+var H2 = f(V2), U2 = {
 	name: "sun-dim",
 	size: 24,
 	node: [
@@ -39416,7 +39414,7 @@ var H2 = g(V2), U2 = {
 	]
 };
 U2.node;
-var W2 = g(U2), G2 = {
+var W2 = f(U2), G2 = {
 	name: "sun-medium",
 	size: 24,
 	node: [
@@ -39461,7 +39459,7 @@ var W2 = g(U2), G2 = {
 	]
 };
 G2.node;
-var K2 = g(G2), q2 = {
+var K2 = f(G2), q2 = {
 	name: "sun-moon",
 	size: 24,
 	node: [
@@ -39488,7 +39486,7 @@ var K2 = g(G2), q2 = {
 	]
 };
 q2.node;
-var J2 = g(q2), Y2 = {
+var J2 = f(q2), Y2 = {
 	name: "sun-snow",
 	size: 24,
 	node: [
@@ -39539,7 +39537,7 @@ var J2 = g(q2), Y2 = {
 	]
 };
 Y2.node;
-var X2 = g(Y2), Z2 = {
+var X2 = f(Y2), Z2 = {
 	name: "sun",
 	size: 24,
 	node: [
@@ -39584,7 +39582,7 @@ var X2 = g(Y2), Z2 = {
 	]
 };
 Z2.node;
-var Q2 = g(Z2), $2 = {
+var Q2 = f(Z2), $2 = {
 	name: "sunrise",
 	size: 24,
 	node: [
@@ -39623,7 +39621,7 @@ var Q2 = g(Z2), $2 = {
 	]
 };
 $2.node;
-var e4 = g($2), t4 = {
+var e4 = f($2), t4 = {
 	name: "sunset",
 	size: 24,
 	node: [
@@ -39662,7 +39660,7 @@ var e4 = g($2), t4 = {
 	]
 };
 t4.node;
-var n4 = g(t4), r4 = {
+var n4 = f(t4), r4 = {
 	name: "superscript",
 	size: 24,
 	node: [
@@ -39681,7 +39679,7 @@ var n4 = g(t4), r4 = {
 	]
 };
 r4.node;
-var i4 = g(r4), a4 = {
+var i4 = f(r4), a4 = {
 	name: "swatch-book",
 	size: 24,
 	node: [
@@ -39704,7 +39702,7 @@ var i4 = g(r4), a4 = {
 	]
 };
 a4.node;
-var o4 = g(a4), s4 = {
+var o4 = f(a4), s4 = {
 	name: "swiss-franc",
 	size: 24,
 	node: [
@@ -39723,7 +39721,7 @@ var o4 = g(a4), s4 = {
 	]
 };
 s4.node;
-var c4 = g(s4), l4 = {
+var c4 = f(s4), l4 = {
 	name: "switch-camera",
 	size: 24,
 	node: [
@@ -39752,7 +39750,7 @@ var c4 = g(s4), l4 = {
 	]
 };
 l4.node;
-var u4 = g(l4), d4 = {
+var u4 = f(l4), d4 = {
 	name: "sword",
 	size: 24,
 	node: [
@@ -39775,7 +39773,7 @@ var u4 = g(l4), d4 = {
 	]
 };
 d4.node;
-var f4 = g(d4), p4 = {
+var f4 = f(d4), p4 = {
 	name: "swords",
 	size: 24,
 	node: [
@@ -39814,7 +39812,7 @@ var f4 = g(d4), p4 = {
 	]
 };
 p4.node;
-var m4 = g(p4), h4 = {
+var m4 = f(p4), h4 = {
 	name: "syringe",
 	size: 24,
 	node: [
@@ -39845,7 +39843,7 @@ var m4 = g(p4), h4 = {
 	]
 };
 h4.node;
-var g4 = g(h4), _4 = {
+var g4 = f(h4), _4 = {
 	name: "table-2",
 	size: 24,
 	node: [
@@ -39868,7 +39866,7 @@ var g4 = g(h4), _4 = {
 	]
 };
 _4.node;
-var v4 = g(_4), y4 = {
+var v4 = f(_4), y4 = {
 	name: "table-cells-merge",
 	size: 24,
 	node: [
@@ -39899,7 +39897,7 @@ var v4 = g(_4), y4 = {
 	]
 };
 y4.node;
-var b4 = g(y4), x4 = {
+var b4 = f(y4), x4 = {
 	name: "table-columns-split",
 	size: 24,
 	node: [
@@ -39950,7 +39948,7 @@ var b4 = g(y4), x4 = {
 	]
 };
 x4.node;
-var S4 = g(x4), C4 = {
+var S4 = f(x4), C4 = {
 	name: "table-cells-split",
 	size: 24,
 	node: [
@@ -39977,7 +39975,7 @@ var S4 = g(x4), C4 = {
 	]
 };
 C4.node;
-var w4 = g(C4), T4 = {
+var w4 = f(C4), T4 = {
 	name: "table-of-contents",
 	size: 24,
 	node: [
@@ -40008,7 +40006,7 @@ var w4 = g(C4), T4 = {
 	]
 };
 T4.node;
-var E4 = g(T4), D4 = {
+var E4 = f(T4), D4 = {
 	name: "table-properties",
 	size: 24,
 	node: [
@@ -40035,7 +40033,7 @@ var E4 = g(T4), D4 = {
 	]
 };
 D4.node;
-var O4 = g(D4), k4 = {
+var O4 = f(D4), k4 = {
 	name: "table-rows-split",
 	size: 24,
 	node: [
@@ -40086,7 +40084,7 @@ var O4 = g(D4), k4 = {
 	]
 };
 k4.node;
-var A4 = g(k4), j4 = {
+var A4 = f(k4), j4 = {
 	name: "table",
 	size: 24,
 	node: [
@@ -40113,7 +40111,7 @@ var A4 = g(k4), j4 = {
 	]
 };
 j4.node;
-var M4 = g(j4), N4 = {
+var M4 = f(j4), N4 = {
 	name: "tablet-smartphone",
 	size: 24,
 	node: [
@@ -40136,7 +40134,7 @@ var M4 = g(j4), N4 = {
 	]
 };
 N4.node;
-var P4 = g(N4), F4 = {
+var P4 = f(N4), F4 = {
 	name: "tablet",
 	size: 24,
 	node: [["rect", {
@@ -40156,7 +40154,7 @@ var P4 = g(N4), F4 = {
 	}]]
 };
 F4.node;
-var I4 = g(F4), L4 = {
+var I4 = f(F4), L4 = {
 	name: "tablets",
 	size: 24,
 	node: [
@@ -40183,7 +40181,7 @@ var I4 = g(F4), L4 = {
 	]
 };
 L4.node;
-var R4 = g(L4), z4 = {
+var R4 = f(L4), z4 = {
 	name: "tag-plus",
 	size: 24,
 	node: [
@@ -40209,7 +40207,7 @@ var R4 = g(L4), z4 = {
 	]
 };
 z4.node;
-var B4 = g(z4), V4 = {
+var B4 = f(z4), V4 = {
 	name: "tag-x",
 	size: 24,
 	node: [
@@ -40235,7 +40233,7 @@ var B4 = g(z4), V4 = {
 	]
 };
 V4.node;
-var H4 = g(V4), U4 = {
+var H4 = f(V4), U4 = {
 	name: "tag",
 	size: 24,
 	node: [["path", {
@@ -40250,7 +40248,7 @@ var H4 = g(V4), U4 = {
 	}]]
 };
 U4.node;
-var W4 = g(U4), G4 = {
+var W4 = f(U4), G4 = {
 	name: "tags",
 	size: 24,
 	node: [
@@ -40272,7 +40270,7 @@ var W4 = g(U4), G4 = {
 	]
 };
 G4.node;
-var K4 = g(G4), q4 = {
+var K4 = f(G4), q4 = {
 	name: "tally-1",
 	size: 24,
 	node: [["path", {
@@ -40281,7 +40279,7 @@ var K4 = g(G4), q4 = {
 	}]]
 };
 q4.node;
-var J4 = g(q4), Y4 = {
+var J4 = f(q4), Y4 = {
 	name: "tally-2",
 	size: 24,
 	node: [["path", {
@@ -40293,7 +40291,7 @@ var J4 = g(q4), Y4 = {
 	}]]
 };
 Y4.node;
-var X4 = g(Y4), Z4 = {
+var X4 = f(Y4), Z4 = {
 	name: "tally-3",
 	size: 24,
 	node: [
@@ -40312,7 +40310,7 @@ var X4 = g(Y4), Z4 = {
 	]
 };
 Z4.node;
-var Q4 = g(Z4), $4 = {
+var Q4 = f(Z4), $4 = {
 	name: "tally-4",
 	size: 24,
 	node: [
@@ -40335,7 +40333,7 @@ var Q4 = g(Z4), $4 = {
 	]
 };
 $4.node;
-var e3 = g($4), t3 = {
+var e3 = f($4), t3 = {
 	name: "tally-5",
 	size: 24,
 	node: [
@@ -40362,7 +40360,7 @@ var e3 = g($4), t3 = {
 	]
 };
 t3.node;
-var n3 = g(t3), r3 = {
+var n3 = f(t3), r3 = {
 	name: "tangent",
 	size: 24,
 	node: [
@@ -40389,7 +40387,7 @@ var n3 = g(t3), r3 = {
 	]
 };
 r3.node;
-var i3 = g(r3), a3 = {
+var i3 = f(r3), a3 = {
 	name: "target",
 	size: 24,
 	node: [
@@ -40414,7 +40412,7 @@ var i3 = g(r3), a3 = {
 	]
 };
 a3.node;
-var o3 = g(a3), s3 = {
+var o3 = f(a3), s3 = {
 	name: "telescope",
 	size: 24,
 	node: [
@@ -40451,7 +40449,7 @@ var o3 = g(a3), s3 = {
 	]
 };
 s3.node;
-var c3 = g(s3), l3 = {
+var c3 = f(s3), l3 = {
 	name: "tent-tree",
 	size: 24,
 	node: [
@@ -40488,7 +40486,7 @@ var c3 = g(s3), l3 = {
 	]
 };
 l3.node;
-var u3 = g(l3), d3 = {
+var u3 = f(l3), d3 = {
 	name: "terminal",
 	size: 24,
 	node: [["path", {
@@ -40500,7 +40498,7 @@ var u3 = g(l3), d3 = {
 	}]]
 };
 d3.node;
-var f3 = g(d3), p3 = {
+var f3 = f(d3), p3 = {
 	name: "tent",
 	size: 24,
 	node: [
@@ -40523,7 +40521,7 @@ var f3 = g(d3), p3 = {
 	]
 };
 p3.node;
-var m3 = g(p3), h3 = {
+var m3 = f(p3), h3 = {
 	name: "test-tube-diagonal",
 	size: 24,
 	node: [
@@ -40543,7 +40541,7 @@ var m3 = g(p3), h3 = {
 	aliases: ["test-tube-2"]
 };
 h3.node;
-var g3 = g(h3), _3 = {
+var g3 = f(h3), _3 = {
 	name: "test-tube",
 	size: 24,
 	node: [
@@ -40562,7 +40560,7 @@ var g3 = g(h3), _3 = {
 	]
 };
 _3.node;
-var v3 = g(_3), y3 = {
+var v3 = f(_3), y3 = {
 	name: "test-tubes",
 	size: 24,
 	node: [
@@ -40593,7 +40591,7 @@ var v3 = g(_3), y3 = {
 	]
 };
 y3.node;
-var b3 = g(y3), x3 = {
+var b3 = f(y3), x3 = {
 	name: "text-align-center",
 	size: 24,
 	node: [
@@ -40613,7 +40611,7 @@ var b3 = g(y3), x3 = {
 	aliases: ["align-center"]
 };
 x3.node;
-var S3 = g(x3), C3 = {
+var S3 = f(x3), C3 = {
 	name: "text-align-end",
 	size: 24,
 	node: [
@@ -40633,7 +40631,7 @@ var S3 = g(x3), C3 = {
 	aliases: ["align-right"]
 };
 C3.node;
-var w3 = g(C3), T3 = {
+var w3 = f(C3), T3 = {
 	name: "text-align-justify",
 	size: 24,
 	node: [
@@ -40653,7 +40651,7 @@ var w3 = g(C3), T3 = {
 	aliases: ["align-justify"]
 };
 T3.node;
-var E3 = g(T3), D3 = {
+var E3 = f(T3), D3 = {
 	name: "text-align-start",
 	size: 24,
 	node: [
@@ -40673,7 +40671,7 @@ var E3 = g(T3), D3 = {
 	aliases: ["text", "align-left"]
 };
 D3.node;
-var Y = g(D3), O3 = {
+var X = f(D3), O3 = {
 	name: "text-cursor-input",
 	size: 24,
 	node: [
@@ -40700,7 +40698,7 @@ var Y = g(D3), O3 = {
 	]
 };
 O3.node;
-var k3 = g(O3), A3 = {
+var k3 = f(O3), A3 = {
 	name: "text-cursor",
 	size: 24,
 	node: [
@@ -40719,7 +40717,7 @@ var k3 = g(O3), A3 = {
 	]
 };
 A3.node;
-var j3 = g(A3), M3 = {
+var j3 = f(A3), M3 = {
 	name: "text-initial",
 	size: 24,
 	node: [
@@ -40747,7 +40745,7 @@ var j3 = g(A3), M3 = {
 	aliases: ["letter-text"]
 };
 M3.node;
-var N3 = g(M3), P3 = {
+var N3 = f(M3), P3 = {
 	name: "text-quote",
 	size: 24,
 	node: [
@@ -40770,7 +40768,7 @@ var N3 = g(M3), P3 = {
 	]
 };
 P3.node;
-var F3 = g(P3), I3 = {
+var F3 = f(P3), I3 = {
 	name: "text-search",
 	size: 24,
 	node: [
@@ -40799,7 +40797,7 @@ var F3 = g(P3), I3 = {
 	]
 };
 I3.node;
-var L3 = g(I3), R3 = {
+var L3 = f(I3), R3 = {
 	name: "text-wrap",
 	size: 24,
 	node: [
@@ -40823,7 +40821,7 @@ var L3 = g(I3), R3 = {
 	aliases: ["wrap-text"]
 };
 R3.node;
-var z3 = g(R3), B3 = {
+var z3 = f(R3), B3 = {
 	name: "theater",
 	size: 24,
 	node: [
@@ -40866,7 +40864,7 @@ var z3 = g(R3), B3 = {
 	]
 };
 B3.node;
-var V3 = g(B3), H3 = {
+var V3 = f(B3), H3 = {
 	name: "thermometer-snowflake",
 	size: 24,
 	node: [
@@ -40905,7 +40903,7 @@ var V3 = g(B3), H3 = {
 	]
 };
 H3.node;
-var U3 = g(H3), W3 = {
+var U3 = f(H3), W3 = {
 	name: "thermometer-sun",
 	size: 24,
 	node: [
@@ -40936,7 +40934,7 @@ var U3 = g(H3), W3 = {
 	]
 };
 W3.node;
-var G3 = g(W3), K3 = {
+var G3 = f(W3), K3 = {
 	name: "thermometer",
 	size: 24,
 	node: [["path", {
@@ -40945,7 +40943,7 @@ var G3 = g(W3), K3 = {
 	}]]
 };
 K3.node;
-var q3 = g(K3), J3 = {
+var q3 = f(K3), J3 = {
 	name: "thumbs-down",
 	size: 24,
 	node: [["path", {
@@ -40957,7 +40955,7 @@ var q3 = g(K3), J3 = {
 	}]]
 };
 J3.node;
-var Y3 = g(J3), X3 = {
+var Y3 = f(J3), X3 = {
 	name: "thumbs-up",
 	size: 24,
 	node: [["path", {
@@ -40969,7 +40967,7 @@ var Y3 = g(J3), X3 = {
 	}]]
 };
 X3.node;
-var Z3 = g(X3), Q3 = {
+var Z3 = f(X3), Q3 = {
 	name: "tic-tac-toe",
 	size: 24,
 	node: [
@@ -41012,7 +41010,7 @@ var Z3 = g(X3), Q3 = {
 	]
 };
 Q3.node;
-var $3 = g(Q3), e6 = {
+var $3 = f(Q3), e6 = {
 	name: "ticket-minus",
 	size: 24,
 	node: [["path", {
@@ -41024,7 +41022,7 @@ var $3 = g(Q3), e6 = {
 	}]]
 };
 e6.node;
-var t6 = g(e6), n6 = {
+var t6 = f(e6), n6 = {
 	name: "ticket-check",
 	size: 24,
 	node: [["path", {
@@ -41036,7 +41034,7 @@ var t6 = g(e6), n6 = {
 	}]]
 };
 n6.node;
-var r6 = g(n6), i6 = {
+var r6 = f(n6), i6 = {
 	name: "ticket-percent",
 	size: 24,
 	node: [
@@ -41059,7 +41057,7 @@ var r6 = g(n6), i6 = {
 	]
 };
 i6.node;
-var a6 = g(i6), o6 = {
+var a6 = f(i6), o6 = {
 	name: "ticket-plus",
 	size: 24,
 	node: [
@@ -41078,7 +41076,7 @@ var a6 = g(i6), o6 = {
 	]
 };
 o6.node;
-var s6 = g(o6), c6 = {
+var s6 = f(o6), c6 = {
 	name: "ticket-slash",
 	size: 24,
 	node: [["path", {
@@ -41090,7 +41088,7 @@ var s6 = g(o6), c6 = {
 	}]]
 };
 c6.node;
-var l6 = g(c6), u6 = {
+var l6 = f(c6), u6 = {
 	name: "ticket-x",
 	size: 24,
 	node: [
@@ -41109,7 +41107,7 @@ var l6 = g(c6), u6 = {
 	]
 };
 u6.node;
-var d6 = g(u6), f6 = {
+var d6 = f(u6), f6 = {
 	name: "ticket",
 	size: 24,
 	node: [
@@ -41132,7 +41130,7 @@ var d6 = g(u6), f6 = {
 	]
 };
 f6.node;
-var p6 = g(f6), m6 = {
+var p6 = f(f6), m6 = {
 	name: "tickets-plane",
 	size: 24,
 	node: [
@@ -41171,7 +41169,7 @@ var p6 = g(f6), m6 = {
 	]
 };
 m6.node;
-var h6 = g(m6), g6 = {
+var h6 = f(m6), g6 = {
 	name: "tickets",
 	size: 24,
 	node: [
@@ -41202,7 +41200,7 @@ var h6 = g(m6), g6 = {
 	]
 };
 g6.node;
-var _6 = g(g6), v6 = {
+var _6 = f(g6), v6 = {
 	name: "timeline",
 	size: 24,
 	node: [
@@ -41241,7 +41239,7 @@ var _6 = g(g6), v6 = {
 	]
 };
 v6.node;
-var y6 = g(v6), b6 = {
+var y6 = f(v6), b6 = {
 	name: "timer-off",
 	size: 24,
 	node: [
@@ -41268,7 +41266,7 @@ var y6 = g(v6), b6 = {
 	]
 };
 b6.node;
-var x6 = g(b6), S6 = {
+var x6 = f(b6), S6 = {
 	name: "timer-reset",
 	size: 24,
 	node: [
@@ -41291,7 +41289,7 @@ var x6 = g(b6), S6 = {
 	]
 };
 S6.node;
-var C6 = g(S6), w6 = {
+var C6 = f(S6), w6 = {
 	name: "timer",
 	size: 24,
 	node: [
@@ -41318,7 +41316,7 @@ var C6 = g(S6), w6 = {
 	]
 };
 w6.node;
-var T6 = g(w6), E6 = {
+var T6 = f(w6), E6 = {
 	name: "toggle-left",
 	size: 24,
 	node: [["circle", {
@@ -41336,7 +41334,7 @@ var T6 = g(w6), E6 = {
 	}]]
 };
 E6.node;
-var D6 = g(E6), O6 = {
+var D6 = f(E6), O6 = {
 	name: "toggle-right",
 	size: 24,
 	node: [["circle", {
@@ -41354,7 +41352,7 @@ var D6 = g(E6), O6 = {
 	}]]
 };
 O6.node;
-var k6 = g(O6), A6 = {
+var k6 = f(O6), A6 = {
 	name: "toilet",
 	size: 24,
 	node: [["path", {
@@ -41366,7 +41364,7 @@ var k6 = g(O6), A6 = {
 	}]]
 };
 A6.node;
-var j6 = g(A6), M6 = {
+var j6 = f(A6), M6 = {
 	name: "toolbox",
 	size: 24,
 	node: [
@@ -41393,7 +41391,7 @@ var j6 = g(A6), M6 = {
 	]
 };
 M6.node;
-var N6 = g(M6), P6 = {
+var N6 = f(M6), P6 = {
 	name: "tool-case",
 	size: 24,
 	node: [
@@ -41416,7 +41414,7 @@ var N6 = g(M6), P6 = {
 	]
 };
 P6.node;
-var F6 = g(P6), I6 = {
+var F6 = f(P6), I6 = {
 	name: "toothbrush-sparkles",
 	size: 24,
 	node: [
@@ -41459,7 +41457,7 @@ var F6 = g(P6), I6 = {
 	]
 };
 I6.node;
-var L6 = g(I6), R6 = {
+var L6 = f(I6), R6 = {
 	name: "toothbrush",
 	size: 24,
 	node: [["path", {
@@ -41471,7 +41469,7 @@ var L6 = g(I6), R6 = {
 	}]]
 };
 R6.node;
-var z6 = g(R6), B6 = {
+var z6 = f(R6), B6 = {
 	name: "tornado",
 	size: 24,
 	node: [
@@ -41498,7 +41496,7 @@ var z6 = g(R6), B6 = {
 	]
 };
 B6.node;
-var V6 = g(B6), H6 = {
+var V6 = f(B6), H6 = {
 	name: "torus",
 	size: 24,
 	node: [["ellipse", {
@@ -41516,7 +41514,7 @@ var V6 = g(B6), H6 = {
 	}]]
 };
 H6.node;
-var U6 = g(H6), W6 = {
+var U6 = f(H6), W6 = {
 	name: "touchpad-off",
 	size: 24,
 	node: [
@@ -41547,7 +41545,7 @@ var U6 = g(H6), W6 = {
 	]
 };
 W6.node;
-var G6 = g(W6), K6 = {
+var G6 = f(W6), K6 = {
 	name: "touchpad",
 	size: 24,
 	node: [
@@ -41570,7 +41568,7 @@ var G6 = g(W6), K6 = {
 	]
 };
 K6.node;
-var q6 = g(K6), J6 = {
+var q6 = f(K6), J6 = {
 	name: "towel-rack",
 	size: 24,
 	node: [
@@ -41589,7 +41587,7 @@ var q6 = g(K6), J6 = {
 	]
 };
 J6.node;
-var Y6 = g(J6), X6 = {
+var Y6 = f(J6), X6 = {
 	name: "tower-control",
 	size: 24,
 	node: [
@@ -41624,7 +41622,7 @@ var Y6 = g(J6), X6 = {
 	]
 };
 X6.node;
-var Z6 = g(X6), Q6 = {
+var Z6 = f(X6), Q6 = {
 	name: "toy-brick",
 	size: 24,
 	node: [
@@ -41647,7 +41645,7 @@ var Z6 = g(X6), Q6 = {
 	]
 };
 Q6.node;
-var $6 = g(Q6), e8 = {
+var $6 = f(Q6), e8 = {
 	name: "tractor",
 	size: 24,
 	node: [
@@ -41694,7 +41692,7 @@ var $6 = g(Q6), e8 = {
 	]
 };
 e8.node;
-var t8 = g(e8), n8 = {
+var t8 = f(e8), n8 = {
 	name: "traffic-cone",
 	size: 24,
 	node: [
@@ -41717,7 +41715,7 @@ var t8 = g(e8), n8 = {
 	]
 };
 n8.node;
-var r8 = g(n8), i8 = {
+var r8 = f(n8), i8 = {
 	name: "trailer",
 	size: 24,
 	node: [
@@ -41750,7 +41748,7 @@ var r8 = g(n8), i8 = {
 	]
 };
 i8.node;
-var a8 = g(i8), o8 = {
+var a8 = f(i8), o8 = {
 	name: "train-front-tunnel",
 	size: 24,
 	node: [
@@ -41785,7 +41783,7 @@ var a8 = g(i8), o8 = {
 	]
 };
 o8.node;
-var s8 = g(o8), c8 = {
+var s8 = f(o8), c8 = {
 	name: "train-front",
 	size: 24,
 	node: [
@@ -41816,7 +41814,7 @@ var s8 = g(o8), c8 = {
 	]
 };
 c8.node;
-var l8 = g(c8), u8 = {
+var l8 = f(c8), u8 = {
 	name: "train-track",
 	size: 24,
 	node: [
@@ -41851,7 +41849,7 @@ var l8 = g(c8), u8 = {
 	]
 };
 u8.node;
-var d8 = g(u8), f8 = {
+var d8 = f(u8), f8 = {
 	name: "tram-front",
 	size: 24,
 	node: [
@@ -41891,7 +41889,7 @@ var d8 = g(u8), f8 = {
 	aliases: ["train"]
 };
 f8.node;
-var p8 = g(f8), m8 = {
+var Z = f(f8), p8 = {
 	name: "transgender",
 	size: 24,
 	node: [
@@ -41931,8 +41929,8 @@ var p8 = g(f8), m8 = {
 		}]
 	]
 };
-m8.node;
-var h8 = g(m8), g8 = {
+p8.node;
+var m8 = f(p8), h8 = {
 	name: "trash-off",
 	size: 24,
 	node: [
@@ -41970,8 +41968,8 @@ var h8 = g(m8), g8 = {
 		}]
 	]
 };
-g8.node;
-var _8 = g(g8), v8 = {
+h8.node;
+var g8 = f(h8), _8 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -41998,8 +41996,8 @@ var _8 = g(g8), v8 = {
 	],
 	aliases: ["trash-2"]
 };
-v8.node;
-var y8 = g(v8), b8 = {
+_8.node;
+var v8 = f(_8), y8 = {
 	name: "tree-deciduous",
 	size: 24,
 	node: [["path", {
@@ -42010,8 +42008,8 @@ var y8 = g(v8), b8 = {
 		key: "npa21l"
 	}]]
 };
-b8.node;
-var x8 = g(b8), S8 = {
+y8.node;
+var b8 = f(y8), x8 = {
 	name: "tree-palm",
 	size: 24,
 	node: [
@@ -42034,8 +42032,8 @@ var x8 = g(b8), S8 = {
 	],
 	aliases: ["palmtree"]
 };
-S8.node;
-var C8 = g(S8), w8 = {
+x8.node;
+var S8 = f(x8), C8 = {
 	name: "tree-pine",
 	size: 24,
 	node: [["path", {
@@ -42046,8 +42044,8 @@ var C8 = g(S8), w8 = {
 		key: "kmzjlo"
 	}]]
 };
-w8.node;
-var T8 = g(w8), E8 = {
+C8.node;
+var w8 = f(C8), T8 = {
 	name: "trees",
 	size: 24,
 	node: [
@@ -42069,8 +42067,8 @@ var T8 = g(w8), E8 = {
 		}]
 	]
 };
-E8.node;
-var D8 = g(E8), O8 = {
+T8.node;
+var E8 = f(T8), D8 = {
 	name: "trending-down",
 	size: 24,
 	node: [["path", {
@@ -42081,8 +42079,8 @@ var D8 = g(E8), O8 = {
 		key: "x473p"
 	}]]
 };
-O8.node;
-var k8 = g(O8), A8 = {
+D8.node;
+var O8 = f(D8), k8 = {
 	name: "trending-up-down",
 	size: 24,
 	node: [
@@ -42104,8 +42102,8 @@ var k8 = g(O8), A8 = {
 		}]
 	]
 };
-A8.node;
-var j8 = g(A8), M8 = {
+k8.node;
+var A8 = f(k8), j8 = {
 	name: "trending-up",
 	size: 24,
 	node: [["path", {
@@ -42116,8 +42114,8 @@ var j8 = g(A8), M8 = {
 		key: "1t1m79"
 	}]]
 };
-M8.node;
-var N8 = g(M8), P8 = {
+j8.node;
+var M8 = f(j8), N8 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -42136,8 +42134,8 @@ var N8 = g(M8), P8 = {
 	],
 	aliases: ["alert-triangle"]
 };
-P8.node;
-var F8 = g(P8), I8 = {
+N8.node;
+var P8 = f(N8), F8 = {
 	name: "triangle-dashed",
 	size: 24,
 	node: [
@@ -42179,8 +42177,8 @@ var F8 = g(P8), I8 = {
 		}]
 	]
 };
-I8.node;
-var L8 = g(I8), R8 = {
+F8.node;
+var I8 = f(F8), L8 = {
 	name: "triangle-right",
 	size: 24,
 	node: [["path", {
@@ -42188,8 +42186,8 @@ var L8 = g(I8), R8 = {
 		key: "183wce"
 	}]]
 };
-R8.node;
-var z8 = g(R8), B8 = {
+L8.node;
+var R8 = f(L8), z8 = {
 	name: "triangle",
 	size: 24,
 	node: [["path", {
@@ -42197,8 +42195,8 @@ var z8 = g(R8), B8 = {
 		key: "14u9p9"
 	}]]
 };
-B8.node;
-var V8 = g(B8), H8 = {
+z8.node;
+var B8 = f(z8), V8 = {
 	name: "triangles-centerline-dashed-horizontal",
 	size: 24,
 	node: [
@@ -42229,8 +42227,8 @@ var V8 = g(B8), H8 = {
 	],
 	aliases: ["flip-horizontal-2"]
 };
-H8.node;
-var X = g(H8), U8 = {
+V8.node;
+var H8 = f(V8), U8 = {
 	name: "triangles-centerline-dashed-vertical",
 	size: 24,
 	node: [
@@ -42262,7 +42260,7 @@ var X = g(H8), U8 = {
 	aliases: ["flip-vertical-2"]
 };
 U8.node;
-var W8 = g(U8), G8 = {
+var W8 = f(U8), G8 = {
 	name: "trophy",
 	size: 24,
 	node: [
@@ -42293,7 +42291,7 @@ var W8 = g(U8), G8 = {
 	]
 };
 G8.node;
-var K8 = g(G8), q8 = {
+var K8 = f(G8), q8 = {
 	name: "truck",
 	size: 24,
 	node: [
@@ -42324,7 +42322,7 @@ var K8 = g(G8), q8 = {
 	]
 };
 q8.node;
-var J8 = g(q8), Y8 = {
+var J8 = f(q8), Y8 = {
 	name: "truck-electric",
 	size: 24,
 	node: [
@@ -42363,7 +42361,7 @@ var J8 = g(q8), Y8 = {
 	]
 };
 Y8.node;
-var X8 = g(Y8), Z8 = {
+var X8 = f(Y8), Z8 = {
 	name: "tube-lotion",
 	size: 24,
 	node: [
@@ -42382,7 +42380,7 @@ var X8 = g(Y8), Z8 = {
 	]
 };
 Z8.node;
-var Q8 = g(Z8), $8 = {
+var Q8 = f(Z8), $8 = {
 	name: "turkish-lira",
 	size: 24,
 	node: [
@@ -42401,7 +42399,7 @@ var Q8 = g(Z8), $8 = {
 	]
 };
 $8.node;
-var e5 = g($8), t5 = {
+var e5 = f($8), t5 = {
 	name: "turtle",
 	size: 24,
 	node: [
@@ -42424,7 +42422,7 @@ var e5 = g($8), t5 = {
 	]
 };
 t5.node;
-var n5 = g(t5), r5 = {
+var n5 = f(t5), r5 = {
 	name: "turntable",
 	size: 24,
 	node: [
@@ -42453,7 +42451,7 @@ var n5 = g(t5), r5 = {
 	]
 };
 r5.node;
-var i5 = g(r5), a5 = {
+var i5 = f(r5), a5 = {
 	name: "tv-minimal-play",
 	size: 24,
 	node: [
@@ -42476,7 +42474,7 @@ var i5 = g(r5), a5 = {
 	]
 };
 a5.node;
-var o5 = g(a5), s5 = {
+var o5 = f(a5), s5 = {
 	name: "tv-minimal",
 	size: 24,
 	node: [["path", {
@@ -42493,7 +42491,7 @@ var o5 = g(a5), s5 = {
 	aliases: ["tv-2"]
 };
 s5.node;
-var c5 = g(s5), l5 = {
+var c5 = f(s5), l5 = {
 	name: "tv",
 	size: 24,
 	node: [["path", {
@@ -42509,7 +42507,7 @@ var c5 = g(s5), l5 = {
 	}]]
 };
 l5.node;
-var u5 = g(l5), d5 = {
+var u5 = f(l5), d5 = {
 	name: "type-outline",
 	size: 24,
 	node: [["path", {
@@ -42518,7 +42516,7 @@ var u5 = g(l5), d5 = {
 	}]]
 };
 d5.node;
-var f5 = g(d5), p5 = {
+var f5 = f(d5), p5 = {
 	name: "type",
 	size: 24,
 	node: [
@@ -42537,7 +42535,7 @@ var f5 = g(d5), p5 = {
 	]
 };
 p5.node;
-var m5 = g(p5), h5 = {
+var m5 = f(p5), h5 = {
 	name: "umbrella-off",
 	size: 24,
 	node: [
@@ -42564,7 +42562,7 @@ var m5 = g(p5), h5 = {
 	]
 };
 h5.node;
-var g5 = g(h5), _5 = {
+var g5 = f(h5), _5 = {
 	name: "umbrella",
 	size: 24,
 	node: [
@@ -42583,7 +42581,7 @@ var g5 = g(h5), _5 = {
 	]
 };
 _5.node;
-var v5 = g(_5), y5 = {
+var v5 = f(_5), y5 = {
 	name: "underline",
 	size: 24,
 	node: [["path", {
@@ -42598,7 +42596,7 @@ var v5 = g(_5), y5 = {
 	}]]
 };
 y5.node;
-var b5 = g(y5), x5 = {
+var b5 = f(y5), x5 = {
 	name: "undo-2",
 	size: 24,
 	node: [["path", {
@@ -42610,7 +42608,7 @@ var b5 = g(y5), x5 = {
 	}]]
 };
 x5.node;
-var S5 = g(x5), C5 = {
+var S5 = f(x5), C5 = {
 	name: "undo-dot",
 	size: 24,
 	node: [
@@ -42631,7 +42629,7 @@ var S5 = g(x5), C5 = {
 	]
 };
 C5.node;
-var w5 = g(C5), T5 = {
+var w5 = f(C5), T5 = {
 	name: "undo",
 	size: 24,
 	node: [["path", {
@@ -42643,7 +42641,7 @@ var w5 = g(C5), T5 = {
 	}]]
 };
 T5.node;
-var E5 = g(T5), D5 = {
+var E5 = f(T5), D5 = {
 	name: "unfold-horizontal",
 	size: 24,
 	node: [
@@ -42682,7 +42680,7 @@ var E5 = g(T5), D5 = {
 	]
 };
 D5.node;
-var O5 = g(D5), k5 = {
+var O5 = f(D5), k5 = {
 	name: "unfold-vertical",
 	size: 24,
 	node: [
@@ -42721,7 +42719,7 @@ var O5 = g(D5), k5 = {
 	]
 };
 k5.node;
-var A5 = g(k5), j5 = {
+var A5 = f(k5), j5 = {
 	name: "ungroup",
 	size: 24,
 	node: [["rect", {
@@ -42741,7 +42739,7 @@ var A5 = g(k5), j5 = {
 	}]]
 };
 j5.node;
-var M5 = g(j5), N5 = {
+var M5 = f(j5), N5 = {
 	name: "university",
 	size: 24,
 	node: [
@@ -42779,7 +42777,7 @@ var M5 = g(j5), N5 = {
 	aliases: ["school-2"]
 };
 N5.node;
-var P5 = g(N5), F5 = {
+var P5 = f(N5), F5 = {
 	name: "unlink-2",
 	size: 24,
 	node: [["path", {
@@ -42788,7 +42786,7 @@ var P5 = g(N5), F5 = {
 	}]]
 };
 F5.node;
-var I5 = g(F5), L5 = {
+var I5 = f(F5), L5 = {
 	name: "unlink",
 	size: 24,
 	node: [
@@ -42831,7 +42829,7 @@ var I5 = g(F5), L5 = {
 	]
 };
 L5.node;
-var R5 = g(L5), z5 = {
+var R5 = f(L5), z5 = {
 	name: "unplug",
 	size: 24,
 	node: [
@@ -42862,7 +42860,7 @@ var R5 = g(L5), z5 = {
 	]
 };
 z5.node;
-var B5 = g(z5), V5 = {
+var B5 = f(z5), V5 = {
 	name: "upload",
 	size: 24,
 	node: [
@@ -42881,7 +42879,7 @@ var B5 = g(z5), V5 = {
 	]
 };
 V5.node;
-var H5 = g(V5), U5 = {
+var H5 = f(V5), U5 = {
 	name: "usb-c-port",
 	size: 24,
 	node: [["path", {
@@ -42897,7 +42895,7 @@ var H5 = g(V5), U5 = {
 	}]]
 };
 U5.node;
-var W5 = g(U5), G5 = {
+var W5 = f(U5), G5 = {
 	name: "usb",
 	size: 24,
 	node: [
@@ -42936,7 +42934,7 @@ var W5 = g(U5), G5 = {
 	]
 };
 G5.node;
-var K5 = g(G5), q5 = {
+var K5 = f(G5), q5 = {
 	name: "user-check",
 	size: 24,
 	node: [
@@ -42957,7 +42955,7 @@ var K5 = g(G5), q5 = {
 	]
 };
 q5.node;
-var J5 = g(q5), une = {
+var J5 = f(q5), lne = {
 	name: "user-cog",
 	size: 24,
 	node: [
@@ -43011,8 +43009,8 @@ var J5 = g(q5), une = {
 		}]
 	]
 };
-une.node;
-var Y5 = g(une), dne = {
+lne.node;
+var Y5 = f(lne), une = {
 	name: "user-group",
 	size: 24,
 	node: [
@@ -43048,8 +43046,8 @@ var Y5 = g(une), dne = {
 		}]
 	]
 };
-dne.node;
-var X5 = g(dne), fne = {
+une.node;
+var X5 = f(une), dne = {
 	name: "user-key",
 	size: 24,
 	node: [
@@ -43079,8 +43077,8 @@ var X5 = g(dne), fne = {
 		}]
 	]
 };
-fne.node;
-var Z5 = g(fne), pne = {
+dne.node;
+var Z5 = f(dne), fne = {
 	name: "user-lock",
 	size: 24,
 	node: [
@@ -43108,8 +43106,8 @@ var Z5 = g(fne), pne = {
 		}]
 	]
 };
-pne.node;
-var Q5 = g(pne), mne = {
+fne.node;
+var Q5 = f(fne), pne = {
 	name: "user-minus",
 	size: 24,
 	node: [
@@ -43132,8 +43130,8 @@ var Q5 = g(pne), mne = {
 		}]
 	]
 };
-mne.node;
-var $5 = g(mne), hne = {
+pne.node;
+var $5 = f(pne), mne = {
 	name: "user-pen",
 	size: 24,
 	node: [
@@ -43153,8 +43151,8 @@ var $5 = g(mne), hne = {
 		}]
 	]
 };
-hne.node;
-var e7 = g(hne), gne = {
+mne.node;
+var e7 = f(mne), hne = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -43184,8 +43182,8 @@ var e7 = g(hne), gne = {
 		}]
 	]
 };
-gne.node;
-var t7 = g(gne), _ne = {
+hne.node;
+var t7 = f(hne), gne = {
 	name: "user-round-arrow-left",
 	size: 24,
 	node: [
@@ -43209,8 +43207,8 @@ var t7 = g(gne), _ne = {
 		}]
 	]
 };
-_ne.node;
-var n7 = g(_ne), vne = {
+gne.node;
+var n7 = f(gne), _ne = {
 	name: "user-round-check",
 	size: 24,
 	node: [
@@ -43231,8 +43229,8 @@ var n7 = g(_ne), vne = {
 	],
 	aliases: ["user-check-2"]
 };
-vne.node;
-var r7 = g(vne), yne = {
+_ne.node;
+var r7 = f(_ne), vne = {
 	name: "user-round-cog",
 	size: 24,
 	node: [
@@ -43287,8 +43285,8 @@ var r7 = g(vne), yne = {
 	],
 	aliases: ["user-cog-2"]
 };
-yne.node;
-var i7 = g(yne), bne = {
+vne.node;
+var i7 = f(vne), yne = {
 	name: "user-round-group",
 	size: 24,
 	node: [
@@ -43324,8 +43322,8 @@ var i7 = g(yne), bne = {
 		}]
 	]
 };
-bne.node;
-var a7 = g(bne), xne = {
+yne.node;
+var a7 = f(yne), bne = {
 	name: "user-round-key",
 	size: 24,
 	node: [
@@ -43355,8 +43353,8 @@ var a7 = g(bne), xne = {
 		}]
 	]
 };
-xne.node;
-var o7 = g(xne), Sne = {
+bne.node;
+var o7 = f(bne), xne = {
 	name: "user-round-minus",
 	size: 24,
 	node: [
@@ -43377,8 +43375,8 @@ var o7 = g(xne), Sne = {
 	],
 	aliases: ["user-minus-2"]
 };
-Sne.node;
-var s7 = g(Sne), Cne = {
+xne.node;
+var s7 = f(xne), Sne = {
 	name: "user-round-pen",
 	size: 24,
 	node: [
@@ -43398,8 +43396,8 @@ var s7 = g(Sne), Cne = {
 		}]
 	]
 };
-Cne.node;
-var c7 = g(Cne), wne = {
+Sne.node;
+var c7 = f(Sne), Cne = {
 	name: "user-round-plus",
 	size: 24,
 	node: [
@@ -43424,8 +43422,8 @@ var c7 = g(Cne), wne = {
 	],
 	aliases: ["user-plus-2"]
 };
-wne.node;
-var l7 = g(wne), Tne = {
+Cne.node;
+var l7 = f(Cne), wne = {
 	name: "user-round-search",
 	size: 24,
 	node: [
@@ -43451,8 +43449,8 @@ var l7 = g(wne), Tne = {
 		}]
 	]
 };
-Tne.node;
-var u7 = g(Tne), Ene = {
+wne.node;
+var u7 = f(wne), Tne = {
 	name: "user-round-x",
 	size: 24,
 	node: [
@@ -43477,8 +43475,8 @@ var u7 = g(Tne), Ene = {
 	],
 	aliases: ["user-x-2"]
 };
-Ene.node;
-var d7 = g(Ene), Dne = {
+Tne.node;
+var d7 = f(Tne), Ene = {
 	name: "user-round",
 	size: 24,
 	node: [["circle", {
@@ -43492,8 +43490,8 @@ var d7 = g(Ene), Dne = {
 	}]],
 	aliases: ["user-2"]
 };
-Dne.node;
-var f7 = g(Dne), One = {
+Ene.node;
+var f7 = f(Ene), Dne = {
 	name: "user-search",
 	size: 24,
 	node: [
@@ -43519,8 +43517,8 @@ var f7 = g(Dne), One = {
 		}]
 	]
 };
-One.node;
-var p7 = g(One), kne = {
+Dne.node;
+var p7 = f(Dne), One = {
 	name: "user-star",
 	size: 24,
 	node: [
@@ -43540,8 +43538,8 @@ var p7 = g(One), kne = {
 		}]
 	]
 };
-kne.node;
-var m7 = g(kne), Ane = {
+One.node;
+var m7 = f(One), kne = {
 	name: "user-shield",
 	size: 24,
 	node: [
@@ -43561,8 +43559,8 @@ var m7 = g(kne), Ane = {
 		}]
 	]
 };
-Ane.node;
-var h7 = g(Ane), jne = {
+kne.node;
+var h7 = f(kne), Ane = {
 	name: "user-x",
 	size: 24,
 	node: [
@@ -43592,8 +43590,8 @@ var h7 = g(Ane), jne = {
 		}]
 	]
 };
-jne.node;
-var g7 = g(jne), Mne = {
+Ane.node;
+var g7 = f(Ane), jne = {
 	name: "user",
 	size: 24,
 	node: [["path", {
@@ -43606,8 +43604,8 @@ var g7 = g(jne), Mne = {
 		key: "17ys0d"
 	}]]
 };
-Mne.node;
-var _7 = g(Mne), Nne = {
+jne.node;
+var _7 = f(jne), Mne = {
 	name: "users-round",
 	size: 24,
 	node: [
@@ -43628,8 +43626,8 @@ var _7 = g(Mne), Nne = {
 	],
 	aliases: ["users-2"]
 };
-Nne.node;
-var v7 = g(Nne), Pne = {
+Mne.node;
+var v7 = f(Mne), Nne = {
 	name: "users",
 	size: 24,
 	node: [
@@ -43653,8 +43651,8 @@ var v7 = g(Nne), Pne = {
 		}]
 	]
 };
-Pne.node;
-var y7 = g(Pne), Fne = {
+Nne.node;
+var y7 = f(Nne), Pne = {
 	name: "utensils-crossed",
 	size: 24,
 	node: [
@@ -43677,8 +43675,8 @@ var y7 = g(Pne), Fne = {
 	],
 	aliases: ["fork-knife-crossed"]
 };
-Fne.node;
-var b7 = g(Fne), Ine = {
+Pne.node;
+var b7 = f(Pne), Fne = {
 	name: "utensils",
 	size: 24,
 	node: [
@@ -43697,8 +43695,8 @@ var b7 = g(Fne), Ine = {
 	],
 	aliases: ["fork-knife"]
 };
-Ine.node;
-var x7 = g(Ine), Lne = {
+Fne.node;
+var x7 = f(Fne), Ine = {
 	name: "utility-pole",
 	size: 24,
 	node: [
@@ -43732,8 +43730,8 @@ var x7 = g(Ine), Lne = {
 		}]
 	]
 };
-Lne.node;
-var S7 = g(Lne), Rne = {
+Ine.node;
+var S7 = f(Ine), Lne = {
 	name: "van",
 	size: 24,
 	node: [
@@ -43763,8 +43761,8 @@ var S7 = g(Lne), Rne = {
 		}]
 	]
 };
-Rne.node;
-var C7 = g(Rne), zne = {
+Lne.node;
+var C7 = f(Lne), Rne = {
 	name: "variable",
 	size: 24,
 	node: [
@@ -43792,8 +43790,8 @@ var C7 = g(Rne), zne = {
 		}]
 	]
 };
-zne.node;
-var w7 = g(zne), Bne = {
+Rne.node;
+var w7 = f(Rne), zne = {
 	name: "vault",
 	size: 24,
 	node: [
@@ -43857,8 +43855,8 @@ var w7 = g(zne), Bne = {
 		}]
 	]
 };
-Bne.node;
-var T7 = g(Bne), Vne = {
+zne.node;
+var T7 = f(zne), Bne = {
 	name: "vector-polygon",
 	size: 24,
 	node: [
@@ -43904,8 +43902,8 @@ var T7 = g(Bne), Vne = {
 		}]
 	]
 };
-Vne.node;
-var E7 = g(Vne), Hne = {
+Bne.node;
+var E7 = f(Bne), Vne = {
 	name: "vector-square",
 	size: 24,
 	node: [
@@ -43951,8 +43949,8 @@ var E7 = g(Vne), Hne = {
 		}]
 	]
 };
-Hne.node;
-var D7 = g(Hne), Une = {
+Vne.node;
+var D7 = f(Vne), Hne = {
 	name: "vegan",
 	size: 24,
 	node: [
@@ -43970,8 +43968,8 @@ var D7 = g(Hne), Une = {
 		}]
 	]
 };
-Une.node;
-var O7 = g(Une), Wne = {
+Hne.node;
+var O7 = f(Hne), Une = {
 	name: "venetian-mask",
 	size: 24,
 	node: [
@@ -43989,8 +43987,8 @@ var O7 = g(Une), Wne = {
 		}]
 	]
 };
-Wne.node;
-var k7 = g(Wne), Gne = {
+Une.node;
+var k7 = f(Une), Wne = {
 	name: "venus-and-mars",
 	size: 24,
 	node: [
@@ -44018,8 +44016,8 @@ var k7 = g(Wne), Gne = {
 		}]
 	]
 };
-Gne.node;
-var A7 = g(Gne), Kne = {
+Wne.node;
+var A7 = f(Wne), Gne = {
 	name: "venus",
 	size: 24,
 	node: [
@@ -44039,8 +44037,8 @@ var A7 = g(Gne), Kne = {
 		}]
 	]
 };
-Kne.node;
-var j7 = g(Kne), qne = {
+Gne.node;
+var j7 = f(Gne), Kne = {
 	name: "vibrate-off",
 	size: 24,
 	node: [
@@ -44069,8 +44067,8 @@ var j7 = g(Kne), qne = {
 		}]
 	]
 };
-qne.node;
-var M7 = g(qne), Jne = {
+Kne.node;
+var M7 = f(Kne), qne = {
 	name: "vibrate",
 	size: 24,
 	node: [
@@ -44092,8 +44090,8 @@ var M7 = g(qne), Jne = {
 		}]
 	]
 };
-Jne.node;
-var N7 = g(Jne), Yne = {
+qne.node;
+var N7 = f(qne), Jne = {
 	name: "video-off",
 	size: 24,
 	node: [
@@ -44111,8 +44109,8 @@ var N7 = g(Jne), Yne = {
 		}]
 	]
 };
-Yne.node;
-var P7 = g(Yne), Xne = {
+Jne.node;
+var P7 = f(Jne), Yne = {
 	name: "video",
 	size: 24,
 	node: [["path", {
@@ -44127,8 +44125,8 @@ var P7 = g(Yne), Xne = {
 		key: "158x01"
 	}]]
 };
-Xne.node;
-var F7 = g(Xne), Zne = {
+Yne.node;
+var F7 = f(Yne), Xne = {
 	name: "videotape",
 	size: 24,
 	node: [
@@ -44162,8 +44160,8 @@ var F7 = g(Xne), Zne = {
 		}]
 	]
 };
-Zne.node;
-var I7 = g(Zne), Qne = {
+Xne.node;
+var I7 = f(Xne), Zne = {
 	name: "view",
 	size: 24,
 	node: [
@@ -44187,8 +44185,8 @@ var I7 = g(Zne), Qne = {
 		}]
 	]
 };
-Qne.node;
-var L7 = g(Qne), $ne = {
+Zne.node;
+var L7 = f(Zne), Qne = {
 	name: "virus",
 	size: 24,
 	node: [
@@ -44276,8 +44274,8 @@ var L7 = g(Qne), $ne = {
 		}]
 	]
 };
-$ne.node;
-var R7 = g($ne), ere = {
+Qne.node;
+var R7 = f(Qne), $ne = {
 	name: "voicemail",
 	size: 24,
 	node: [
@@ -44302,8 +44300,8 @@ var R7 = g($ne), ere = {
 		}]
 	]
 };
-ere.node;
-var z7 = g(ere), tre = {
+$ne.node;
+var z7 = f($ne), ere = {
 	name: "virus-off",
 	size: 24,
 	node: [
@@ -44389,8 +44387,8 @@ var z7 = g(ere), tre = {
 		}]
 	]
 };
-tre.node;
-var B7 = g(tre), nre = {
+ere.node;
+var B7 = f(ere), tre = {
 	name: "volleyball",
 	size: 24,
 	node: [
@@ -44422,8 +44420,8 @@ var B7 = g(tre), nre = {
 		}]
 	]
 };
-nre.node;
-var V7 = g(nre), rre = {
+tre.node;
+var V7 = f(tre), nre = {
 	name: "volume-1",
 	size: 24,
 	node: [["path", {
@@ -44434,8 +44432,8 @@ var V7 = g(nre), rre = {
 		key: "1q6k2b"
 	}]]
 };
-rre.node;
-var H7 = g(rre), ire = {
+nre.node;
+var H7 = f(nre), rre = {
 	name: "volume-2",
 	size: 24,
 	node: [
@@ -44453,8 +44451,8 @@ var H7 = g(rre), ire = {
 		}]
 	]
 };
-ire.node;
-var U7 = g(ire), are = {
+rre.node;
+var U7 = f(rre), ire = {
 	name: "volume-off",
 	size: 24,
 	node: [
@@ -44480,8 +44478,8 @@ var U7 = g(ire), are = {
 		}]
 	]
 };
-are.node;
-var W7 = g(are), ore = {
+ire.node;
+var W7 = f(ire), are = {
 	name: "volume-x",
 	size: 24,
 	node: [
@@ -44499,8 +44497,8 @@ var W7 = g(are), ore = {
 		}]
 	]
 };
-ore.node;
-var G7 = g(ore), sre = {
+are.node;
+var G7 = f(are), ore = {
 	name: "volume",
 	size: 24,
 	node: [["path", {
@@ -44508,8 +44506,8 @@ var G7 = g(ore), sre = {
 		key: "uqj9uw"
 	}]]
 };
-sre.node;
-var K7 = g(sre), cre = {
+ore.node;
+var K7 = f(ore), sre = {
 	name: "vote",
 	size: 24,
 	node: [
@@ -44527,8 +44525,8 @@ var K7 = g(sre), cre = {
 		}]
 	]
 };
-cre.node;
-var q7 = g(cre), lre = {
+sre.node;
+var q7 = f(sre), cre = {
 	name: "wallet-cards",
 	size: 24,
 	node: [
@@ -44550,8 +44548,8 @@ var q7 = g(cre), lre = {
 		}]
 	]
 };
-lre.node;
-var J7 = g(lre), ure = {
+cre.node;
+var J7 = f(cre), lre = {
 	name: "wallet-minimal",
 	size: 24,
 	node: [["path", {
@@ -44563,8 +44561,8 @@ var J7 = g(lre), ure = {
 	}]],
 	aliases: ["wallet-2"]
 };
-ure.node;
-var Y7 = g(ure), dre = {
+lre.node;
+var Y7 = f(lre), ure = {
 	name: "wallet",
 	size: 24,
 	node: [["path", {
@@ -44575,8 +44573,8 @@ var Y7 = g(ure), dre = {
 		key: "xoc0q4"
 	}]]
 };
-dre.node;
-var X7 = g(dre), fre = {
+ure.node;
+var X7 = f(ure), dre = {
 	name: "wallpaper",
 	size: 24,
 	node: [
@@ -44608,8 +44606,8 @@ var X7 = g(dre), fre = {
 		}]
 	]
 };
-fre.node;
-var Z7 = g(fre), pre = {
+dre.node;
+var Z7 = f(dre), fre = {
 	name: "wand-sparkles",
 	size: 24,
 	node: [
@@ -44648,8 +44646,8 @@ var Z7 = g(fre), pre = {
 	],
 	aliases: ["wand-2"]
 };
-pre.node;
-var Q7 = g(pre), mre = {
+fre.node;
+var Q7 = f(fre), pre = {
 	name: "wand",
 	size: 24,
 	node: [
@@ -44691,8 +44689,8 @@ var Q7 = g(pre), mre = {
 		}]
 	]
 };
-mre.node;
-var $7 = g(mre), hre = {
+pre.node;
+var $7 = f(pre), mre = {
 	name: "warehouse",
 	size: 24,
 	node: [
@@ -44714,8 +44712,8 @@ var $7 = g(mre), hre = {
 		}]
 	]
 };
-hre.node;
-var e9 = g(hre), gre = {
+mre.node;
+var e9 = f(mre), hre = {
 	name: "washing-machine",
 	size: 24,
 	node: [
@@ -44747,8 +44745,8 @@ var e9 = g(hre), gre = {
 		}]
 	]
 };
-gre.node;
-var t9 = g(gre), _re = {
+hre.node;
+var t9 = f(hre), gre = {
 	name: "watch",
 	size: 24,
 	node: [
@@ -44772,8 +44770,8 @@ var t9 = g(gre), _re = {
 		}]
 	]
 };
-_re.node;
-var n9 = g(_re), vre = {
+gre.node;
+var n9 = f(gre), _re = {
 	name: "waves-arrow-down",
 	size: 24,
 	node: [
@@ -44795,8 +44793,8 @@ var n9 = g(_re), vre = {
 		}]
 	]
 };
-vre.node;
-var r9 = g(vre), yre = {
+_re.node;
+var r9 = f(_re), vre = {
 	name: "waves-arrow-up",
 	size: 24,
 	node: [
@@ -44818,8 +44816,8 @@ var r9 = g(vre), yre = {
 		}]
 	]
 };
-yre.node;
-var i9 = g(yre), bre = {
+vre.node;
+var i9 = f(vre), yre = {
 	name: "waves-horizontal",
 	size: 24,
 	node: [
@@ -44838,8 +44836,8 @@ var i9 = g(yre), bre = {
 	],
 	aliases: ["waves"]
 };
-bre.node;
-var a9 = g(bre), xre = {
+yre.node;
+var a9 = f(yre), bre = {
 	name: "waves-ladder",
 	size: 24,
 	node: [
@@ -44865,8 +44863,8 @@ var a9 = g(bre), xre = {
 		}]
 	]
 };
-xre.node;
-var o9 = g(xre), Sre = {
+bre.node;
+var o9 = f(bre), xre = {
 	name: "waves-vertical",
 	size: 24,
 	node: [
@@ -44884,8 +44882,8 @@ var o9 = g(xre), Sre = {
 		}]
 	]
 };
-Sre.node;
-var s9 = g(Sre), Cre = {
+xre.node;
+var s9 = f(xre), Sre = {
 	name: "waypoints",
 	size: 24,
 	node: [
@@ -44927,8 +44925,8 @@ var s9 = g(Sre), Cre = {
 		}]
 	]
 };
-Cre.node;
-var c9 = g(Cre), wre = {
+Sre.node;
+var c9 = f(Sre), Cre = {
 	name: "webcam-off",
 	size: 24,
 	node: [
@@ -44962,8 +44960,8 @@ var c9 = g(Cre), wre = {
 		}]
 	]
 };
-wre.node;
-var l9 = g(wre), Tre = {
+Cre.node;
+var l9 = f(Cre), wre = {
 	name: "webcam",
 	size: 24,
 	node: [
@@ -44989,8 +44987,8 @@ var l9 = g(wre), Tre = {
 		}]
 	]
 };
-Tre.node;
-var u9 = g(Tre), Ere = {
+wre.node;
+var u9 = f(wre), Tre = {
 	name: "webhook",
 	size: 24,
 	node: [
@@ -45008,8 +45006,8 @@ var u9 = g(Tre), Ere = {
 		}]
 	]
 };
-Ere.node;
-var d9 = g(Ere), Dre = {
+Tre.node;
+var d9 = f(Tre), Ere = {
 	name: "webhook-off",
 	size: 24,
 	node: [
@@ -45043,8 +45041,8 @@ var d9 = g(Ere), Dre = {
 		}]
 	]
 };
-Dre.node;
-var f9 = g(Dre), Ore = {
+Ere.node;
+var f9 = f(Ere), Dre = {
 	name: "weight-tilde",
 	size: 24,
 	node: [
@@ -45064,8 +45062,8 @@ var f9 = g(Dre), Ore = {
 		}]
 	]
 };
-Ore.node;
-var p9 = g(Ore), kre = {
+Dre.node;
+var p9 = f(Dre), Ore = {
 	name: "weight",
 	size: 24,
 	node: [["circle", {
@@ -45078,8 +45076,8 @@ var p9 = g(Ore), kre = {
 		key: "56o5sh"
 	}]]
 };
-kre.node;
-var m9 = g(kre), Are = {
+Ore.node;
+var m9 = f(Ore), kre = {
 	name: "wheat",
 	size: 24,
 	node: [
@@ -45117,8 +45115,8 @@ var m9 = g(kre), Are = {
 		}]
 	]
 };
-Are.node;
-var h9 = g(Are), jre = {
+kre.node;
+var h9 = f(kre), Are = {
 	name: "wheat-off",
 	size: 24,
 	node: [
@@ -45167,8 +45165,8 @@ var h9 = g(Are), jre = {
 		}]
 	]
 };
-jre.node;
-var g9 = g(jre), Mre = {
+Are.node;
+var g9 = f(Are), jre = {
 	name: "whistle",
 	size: 24,
 	node: [["path", {
@@ -45179,8 +45177,8 @@ var g9 = g(jre), Mre = {
 		key: "kuzxl1"
 	}]]
 };
-Mre.node;
-var _9 = g(Mre), Nre = {
+jre.node;
+var _9 = f(jre), Mre = {
 	name: "wifi-cog",
 	size: 24,
 	node: [
@@ -45236,8 +45234,8 @@ var _9 = g(Mre), Nre = {
 		}]
 	]
 };
-Nre.node;
-var v9 = g(Nre), Pre = {
+Mre.node;
+var v9 = f(Mre), Nre = {
 	name: "whole-word",
 	size: 24,
 	node: [
@@ -45267,8 +45265,8 @@ var v9 = g(Nre), Pre = {
 		}]
 	]
 };
-Pre.node;
-var y9 = g(Pre), Fre = {
+Nre.node;
+var y9 = f(Nre), Pre = {
 	name: "wifi-high",
 	size: 24,
 	node: [
@@ -45286,8 +45284,8 @@ var y9 = g(Pre), Fre = {
 		}]
 	]
 };
-Fre.node;
-var b9 = g(Fre), Ire = {
+Pre.node;
+var b9 = f(Pre), Fre = {
 	name: "wifi-low",
 	size: 24,
 	node: [["path", {
@@ -45298,8 +45296,8 @@ var b9 = g(Fre), Ire = {
 		key: "1bycff"
 	}]]
 };
-Ire.node;
-var x9 = g(Ire), Lre = {
+Fre.node;
+var x9 = f(Fre), Ire = {
 	name: "wifi-off",
 	size: 24,
 	node: [
@@ -45333,8 +45331,8 @@ var x9 = g(Ire), Lre = {
 		}]
 	]
 };
-Lre.node;
-var S9 = g(Lre), Rre = {
+Ire.node;
+var S9 = f(Ire), Lre = {
 	name: "wifi-pen",
 	size: 24,
 	node: [
@@ -45356,8 +45354,8 @@ var S9 = g(Lre), Rre = {
 		}]
 	]
 };
-Rre.node;
-var C9 = g(Rre), zre = {
+Lre.node;
+var C9 = f(Lre), Rre = {
 	name: "wifi-sync",
 	size: 24,
 	node: [
@@ -45391,8 +45389,8 @@ var C9 = g(Rre), zre = {
 		}]
 	]
 };
-zre.node;
-var w9 = g(zre), Bre = {
+Rre.node;
+var w9 = f(Rre), zre = {
 	name: "wifi-zero",
 	size: 24,
 	node: [["path", {
@@ -45400,8 +45398,8 @@ var w9 = g(zre), Bre = {
 		key: "zekei9"
 	}]]
 };
-Bre.node;
-var T9 = g(Bre), Vre = {
+zre.node;
+var T9 = f(zre), Bre = {
 	name: "wifi",
 	size: 24,
 	node: [
@@ -45423,8 +45421,8 @@ var T9 = g(Bre), Vre = {
 		}]
 	]
 };
-Vre.node;
-var E9 = g(Vre), Hre = {
+Bre.node;
+var E9 = f(Bre), Vre = {
 	name: "wind-arrow-down",
 	size: 24,
 	node: [
@@ -45446,8 +45444,8 @@ var E9 = g(Vre), Hre = {
 		}]
 	]
 };
-Hre.node;
-var D9 = g(Hre), Ure = {
+Vre.node;
+var D9 = f(Vre), Hre = {
 	name: "wind",
 	size: 24,
 	node: [
@@ -45465,8 +45463,8 @@ var D9 = g(Hre), Ure = {
 		}]
 	]
 };
-Ure.node;
-var O9 = g(Ure), Wre = {
+Hre.node;
+var O9 = f(Hre), Ure = {
 	name: "wine-off",
 	size: 24,
 	node: [
@@ -45495,8 +45493,8 @@ var O9 = g(Ure), Wre = {
 		}]
 	]
 };
-Wre.node;
-var k9 = g(Wre), Gre = {
+Ure.node;
+var k9 = f(Ure), Wre = {
 	name: "wine",
 	size: 24,
 	node: [
@@ -45518,8 +45516,8 @@ var k9 = g(Wre), Gre = {
 		}]
 	]
 };
-Gre.node;
-var A9 = g(Gre), Kre = {
+Wre.node;
+var A9 = f(Wre), Gre = {
 	name: "workflow",
 	size: 24,
 	node: [
@@ -45545,8 +45543,8 @@ var A9 = g(Gre), Kre = {
 		}]
 	]
 };
-Kre.node;
-var j9 = g(Kre), qre = {
+Gre.node;
+var j9 = f(Gre), Kre = {
 	name: "worm",
 	size: 24,
 	node: [
@@ -45564,8 +45562,8 @@ var j9 = g(Kre), qre = {
 		}]
 	]
 };
-qre.node;
-var M9 = g(qre), Jre = {
+Kre.node;
+var M9 = f(Kre), qre = {
 	name: "wrench",
 	size: 24,
 	node: [["path", {
@@ -45573,8 +45571,8 @@ var M9 = g(qre), Jre = {
 		key: "1ngwbx"
 	}]]
 };
-Jre.node;
-var N9 = g(Jre), Yre = {
+qre.node;
+var N9 = f(qre), Jre = {
 	name: "wrench-off",
 	size: 24,
 	node: [
@@ -45592,8 +45590,8 @@ var N9 = g(Jre), Yre = {
 		}]
 	]
 };
-Yre.node;
-var P9 = g(Yre), Xre = {
+Jre.node;
+var P9 = f(Jre), Yre = {
 	name: "x-line-top",
 	size: 24,
 	node: [
@@ -45611,8 +45609,8 @@ var P9 = g(Yre), Xre = {
 		}]
 	]
 };
-Xre.node;
-var F9 = g(Xre), Zre = {
+Yre.node;
+var F9 = f(Yre), Xre = {
 	name: "x",
 	size: 24,
 	node: [["path", {
@@ -45623,8 +45621,8 @@ var F9 = g(Xre), Zre = {
 		key: "d8bk6v"
 	}]]
 };
-Zre.node;
-var I9 = g(Zre), Qre = {
+Xre.node;
+var I9 = f(Xre), Zre = {
 	name: "zap-off",
 	size: 24,
 	node: [
@@ -45646,8 +45644,8 @@ var I9 = g(Zre), Qre = {
 		}]
 	]
 };
-Qre.node;
-var L9 = g(Qre), $re = {
+Zre.node;
+var L9 = f(Zre), Qre = {
 	name: "zap",
 	size: 24,
 	node: [["path", {
@@ -45655,8 +45653,8 @@ var L9 = g(Qre), $re = {
 		key: "1v7up4"
 	}]]
 };
-$re.node;
-var R9 = g($re), eie = {
+Qre.node;
+var R9 = f(Qre), $re = {
 	name: "zodiac-aquarius",
 	size: 24,
 	node: [["path", {
@@ -45667,8 +45665,8 @@ var R9 = g($re), eie = {
 		key: "112qy7"
 	}]]
 };
-eie.node;
-var z9 = g(eie), tie = {
+$re.node;
+var z9 = f($re), eie = {
 	name: "zodiac-aries",
 	size: 24,
 	node: [["path", {
@@ -45679,8 +45677,8 @@ var z9 = g(eie), tie = {
 		key: "mjup0w"
 	}]]
 };
-tie.node;
-var B9 = g(tie), nie = {
+eie.node;
+var B9 = f(eie), tie = {
 	name: "zodiac-cancer",
 	size: 24,
 	node: [
@@ -45706,8 +45704,8 @@ var B9 = g(tie), nie = {
 		}]
 	]
 };
-nie.node;
-var V9 = g(nie), rie = {
+tie.node;
+var V9 = f(tie), nie = {
 	name: "zodiac-gemini",
 	size: 24,
 	node: [
@@ -45729,8 +45727,8 @@ var V9 = g(nie), rie = {
 		}]
 	]
 };
-rie.node;
-var H9 = g(rie), iie = {
+nie.node;
+var H9 = f(nie), rie = {
 	name: "zodiac-leo",
 	size: 24,
 	node: [["path", {
@@ -45743,8 +45741,8 @@ var H9 = g(rie), iie = {
 		key: "yyv3zl"
 	}]]
 };
-iie.node;
-var U9 = g(iie), aie = {
+rie.node;
+var U9 = f(rie), iie = {
 	name: "zodiac-capricorn",
 	size: 24,
 	node: [
@@ -45764,8 +45762,8 @@ var U9 = g(iie), aie = {
 		}]
 	]
 };
-aie.node;
-var W9 = g(aie), oie = {
+iie.node;
+var W9 = f(iie), aie = {
 	name: "zodiac-libra",
 	size: 24,
 	node: [["path", {
@@ -45776,8 +45774,8 @@ var W9 = g(aie), oie = {
 		key: "1l19wn"
 	}]]
 };
-oie.node;
-var G9 = g(oie), sie = {
+aie.node;
+var G9 = f(aie), oie = {
 	name: "zodiac-ophiuchus",
 	size: 24,
 	node: [["path", {
@@ -45788,8 +45786,8 @@ var G9 = g(oie), sie = {
 		key: "1jnivp"
 	}]]
 };
-sie.node;
-var K9 = g(sie), cie = {
+oie.node;
+var K9 = f(oie), sie = {
 	name: "zodiac-pisces",
 	size: 24,
 	node: [
@@ -45807,8 +45805,8 @@ var K9 = g(sie), cie = {
 		}]
 	]
 };
-cie.node;
-var q9 = g(cie), lie = {
+sie.node;
+var q9 = f(sie), cie = {
 	name: "zodiac-sagittarius",
 	size: 24,
 	node: [
@@ -45826,8 +45824,8 @@ var q9 = g(cie), lie = {
 		}]
 	]
 };
-lie.node;
-var J9 = g(lie), uie = {
+cie.node;
+var J9 = f(cie), lie = {
 	name: "zodiac-scorpio",
 	size: 24,
 	node: [
@@ -45849,8 +45847,8 @@ var J9 = g(lie), uie = {
 		}]
 	]
 };
-uie.node;
-var Y9 = g(uie), die = {
+lie.node;
+var Y9 = f(lie), uie = {
 	name: "zodiac-taurus",
 	size: 24,
 	node: [["circle", {
@@ -45863,8 +45861,8 @@ var Y9 = g(uie), die = {
 		key: "1p399e"
 	}]]
 };
-die.node;
-var X9 = g(die), fie = {
+uie.node;
+var X9 = f(uie), die = {
 	name: "zodiac-virgo",
 	size: 24,
 	node: [
@@ -45886,8 +45884,8 @@ var X9 = g(die), fie = {
 		}]
 	]
 };
-fie.node;
-var Z9 = g(fie), pie = {
+die.node;
+var Z9 = f(die), fie = {
 	name: "zoom-in",
 	size: 24,
 	node: [
@@ -45920,8 +45918,8 @@ var Z9 = g(fie), pie = {
 		}]
 	]
 };
-pie.node;
-var Q9 = g(pie), mie = {
+fie.node;
+var Q9 = f(fie), pie = {
 	name: "zoom-out",
 	size: 24,
 	node: [
@@ -45947,509 +45945,509 @@ var Q9 = g(pie), mie = {
 		}]
 	]
 };
-mie.node;
-var $9 = g(mie), hie = /* @__PURE__ */ u({
-	AArrowDown: () => he,
-	AArrowUp: () => de,
-	ALargeSmall: () => pe,
-	Accessibility: () => ye,
-	Activity: () => _e,
-	Ad: () => xe,
-	AirVent: () => Ce,
-	Airplay: () => we,
-	AlarmClock: () => Me,
-	AlarmClockCheck: () => Ee,
-	AlarmClockMinus: () => Ae,
-	AlarmClockOff: () => Oe,
-	AlarmClockPlus: () => Pe,
-	AlarmSmoke: () => Ie,
-	AlignCenterHorizontal: () => Re,
-	AlignCenterVertical: () => Be,
-	AlignEndHorizontal: () => We,
-	AlignEndVertical: () => He,
-	AlignHorizontalDistributeCenter: () => Ke,
-	AlignHorizontalDistributeEnd: () => Je,
-	AlignHorizontalDistributeStart: () => Xe,
-	AlignHorizontalJustifyCenter: () => Qe,
-	AlignHorizontalJustifyEnd: () => et,
-	AlignHorizontalJustifyStart: () => nt,
-	AlignHorizontalSpaceAround: () => it,
-	AlignHorizontalSpaceBetween: () => ot,
-	AlignStartHorizontal: () => ct,
-	AlignStartVertical: () => ut,
-	AlignVerticalDistributeCenter: () => ft,
-	AlignVerticalDistributeEnd: () => mt,
-	AlignVerticalDistributeStart: () => gt,
-	AlignVerticalJustifyCenter: () => vt,
-	AlignVerticalJustifyEnd: () => bt,
-	AlignVerticalJustifyStart: () => St,
-	AlignVerticalSpaceAround: () => Ct,
-	AlignVerticalSpaceBetween: () => wt,
-	Ambulance: () => Tt,
-	Ampersand: () => Dt,
-	Ampersands: () => kt,
-	Amphora: () => jt,
-	Anchor: () => Lt,
-	Angle: () => Nt,
-	Antenna: () => Ft,
-	Anvil: () => zt,
-	Aperture: () => Vt,
-	AppWindow: () => Gt,
-	AppWindowMac: () => Ut,
-	Apple: () => qt,
-	Archive: () => $t,
-	ArchiveRestore: () => Yt,
-	ArchiveX: () => Zt,
-	Armchair: () => tn,
-	ArrowBigDown: () => rn,
-	ArrowBigDownDash: () => on,
-	ArrowBigLeft: () => un,
-	ArrowBigLeftDash: () => cn,
-	ArrowBigRight: () => mn,
-	ArrowBigRightDash: () => fn,
-	ArrowBigUp: () => vn,
-	ArrowBigUpDash: () => gn,
-	ArrowDown: () => Hn,
-	ArrowDown01: () => bn,
-	ArrowDown10: () => Sn,
-	ArrowDownAZ: () => wn,
-	ArrowDownFromLine: () => Tn,
-	ArrowDownLeft: () => Dn,
-	ArrowDownNarrowWide: () => kn,
-	ArrowDownRight: () => jn,
-	ArrowDownToDot: () => Nn,
-	ArrowDownToLine: () => Fn,
-	ArrowDownUp: () => Ln,
-	ArrowDownWideNarrow: () => zn,
-	ArrowDownZA: () => _,
-	ArrowLeft: () => Xn,
-	ArrowLeftFromLine: () => Wn,
-	ArrowLeftRight: () => Kn,
-	ArrowLeftToLine: () => Jn,
-	ArrowRight: () => ir,
-	ArrowRightFromLine: () => Qn,
-	ArrowRightLeft: () => er,
-	ArrowRightToLine: () => nr,
-	ArrowUp: () => Dr,
-	ArrowUp01: () => or,
-	ArrowUp10: () => cr,
-	ArrowUpAZ: () => v,
-	ArrowUpDown: () => dr,
-	ArrowUpFromDot: () => pr,
-	ArrowUpFromLine: () => hr,
-	ArrowUpLeft: () => _r,
-	ArrowUpNarrowWide: () => y,
-	ArrowUpRight: () => br,
-	ArrowUpToLine: () => Sr,
-	ArrowUpWideNarrow: () => wr,
-	ArrowUpZA: () => b,
-	ArrowsUpFromLine: () => kr,
-	Asterisk: () => jr,
-	Astroid: () => Nr,
-	AtSign: () => Fr,
-	Atom: () => Lr,
-	AudioLines: () => Ur,
-	AudioLinesOff: () => zr,
-	AudioLinesX: () => Vr,
-	AudioWaveform: () => Gr,
-	Award: () => qr,
-	Axe: () => Yr,
-	Axis3d: () => x,
-	Baby: () => Zr,
-	Backpack: () => ei,
-	Badge: () => Oi,
-	BadgeAlert: () => ni,
-	BadgeCent: () => ii,
-	BadgeCheck: () => S,
-	BadgeDollarSign: () => si,
-	BadgeEuro: () => li,
-	BadgeIndianRupee: () => di,
-	BadgeInfo: () => pi,
-	BadgeJapaneseYen: () => hi,
-	BadgeMinus: () => _i,
-	BadgePercent: () => yi,
-	BadgePlus: () => xi,
-	BadgePoundSterling: () => Ci,
-	BadgeQuestionMark: () => C,
-	BadgeRussianRuble: () => wi,
-	BadgeSwissFranc: () => Ti,
-	BadgeTurkishLira: () => Di,
-	BadgeX: () => Ei,
-	BaggageClaim: () => ki,
-	Balloon: () => ji,
-	Ban: () => Ni,
-	Banana: () => Fi,
-	Bandage: () => Ii,
-	Banknote: () => Ki,
-	BanknoteArrowDown: () => Ri,
-	BanknoteArrowUp: () => Bi,
-	BanknoteCheck: () => Hi,
-	BanknoteX: () => Wi,
-	Barcode: () => Ji,
-	Barrel: () => Xi,
-	Baseline: () => Qi,
-	Bath: () => ea,
-	Battery: () => ma,
-	BatteryCharging: () => na,
-	BatteryFull: () => ia,
-	BatteryLow: () => oa,
-	BatteryMedium: () => ca,
-	BatteryPlus: () => ua,
-	BatteryWarning: () => fa,
-	Beaker: () => ha,
-	Bean: () => ya,
-	BeanOff: () => _a,
-	Bed: () => Ta,
-	BedDouble: () => Ca,
-	BedSingle: () => xa,
-	Beef: () => ka,
-	BeefOff: () => Da,
-	Beer: () => Na,
-	BeerOff: () => ja,
-	Bell: () => qa,
-	BellCheck: () => Fa,
-	BellDot: () => La,
-	BellElectric: () => za,
-	BellMinus: () => Va,
-	BellOff: () => Ua,
-	BellPlus: () => Ga,
-	BellRing: () => Ya,
-	BetweenHorizontalEnd: () => w,
-	BetweenHorizontalStart: () => T,
-	BetweenVerticalEnd: () => Za,
-	BetweenVerticalStart: () => Qa,
-	BicepsFlexed: () => eo,
-	Bike: () => no,
-	Binary: () => io,
-	Binoculars: () => oo,
-	Biohazard: () => co,
-	Bird: () => uo,
-	Birdhouse: () => po,
-	Bitcoin: () => ho,
-	Blend: () => _o,
-	Blender: () => yo,
-	Blinds: () => xo,
-	Blocks: () => Co,
-	Bluetooth: () => jo,
-	BluetoothConnected: () => To,
-	BluetoothOff: () => Do,
-	BluetoothSearching: () => ko,
-	Bold: () => No,
-	Bolt: () => Fo,
-	Bomb: () => Lo,
-	Bone: () => Vo,
-	BoneFracture: () => zo,
-	Book: () => As,
-	BookA: () => Uo,
-	BookAlert: () => Go,
-	BookAudio: () => Ko,
-	BookBookmark: () => E,
-	BookCheck: () => Yo,
-	BookCopy: () => Zo,
-	BookDashed: () => D,
-	BookDown: () => es,
-	BookHeadphones: () => ns,
-	BookHeart: () => is,
-	BookImage: () => os,
-	BookKey: () => cs,
-	BookLock: () => us,
-	BookMinus: () => fs,
-	BookOpen: () => gs,
-	BookOpenCheck: () => ms,
-	BookOpenText: () => _s,
-	BookPlus: () => vs,
-	BookSearch: () => ys,
-	BookText: () => bs,
-	BookType: () => xs,
-	BookUp: () => ws,
-	BookUp2: () => Ss,
-	BookUser: () => Es,
-	BookX: () => Os,
-	Bookmark: () => Hs,
-	BookmarkCheck: () => Ms,
-	BookmarkMinus: () => Is,
-	BookmarkOff: () => Ps,
-	BookmarkPlus: () => Rs,
-	BookmarkX: () => Bs,
-	BoomBox: () => Ws,
-	Bot: () => Xs,
-	BotMessageSquare: () => Ks,
-	BotOff: () => Js,
-	BottleWine: () => Qs,
-	BowArrow: () => ec,
-	Box: () => nc,
-	Boxes: () => ic,
-	Braces: () => O,
-	Brackets: () => sc,
-	Brain: () => pc,
-	BrainCircuit: () => lc,
-	BrainCog: () => dc,
-	BrickWall: () => _c,
-	BrickWallFire: () => hc,
-	BrickWallShield: () => yc,
-	Bridge: () => xc,
-	Briefcase: () => jc,
-	BriefcaseBusiness: () => Cc,
-	BriefcaseConveyorBelt: () => Tc,
-	BriefcaseMedical: () => kc,
-	BriefcasePlus: () => Dc,
-	BringToFront: () => Nc,
-	Broccoli: () => Fc,
-	Broom: () => zc,
-	BroomSparkles: () => Lc,
-	Brush: () => Uc,
-	BrushCleaning: () => Vc,
-	Bubbles: () => Gc,
-	Bug: () => Zc,
-	BugOff: () => qc,
-	BugPlay: () => Yc,
-	Building: () => tl,
-	BuildingComplex: () => k,
-	BuildingComplexPlus: () => $c,
-	Bus: () => ol,
-	BusFront: () => il,
-	Cable: () => ul,
-	CableCar: () => cl,
-	Cake: () => ml,
-	CakeSlice: () => fl,
-	Calculator: () => gl,
-	Calendar: () => uu,
-	Calendar1: () => vl,
-	CalendarArrowDown: () => bl,
-	CalendarArrowUp: () => Sl,
-	CalendarCheck: () => El,
-	CalendarCheck2: () => wl,
-	CalendarChevronsRight: () => Ol,
-	CalendarClock: () => Al,
-	CalendarCog: () => Pl,
-	CalendarDays: () => Ml,
-	CalendarFold: () => Il,
-	CalendarHeart: () => Rl,
-	CalendarMinus: () => Hl,
-	CalendarMinus2: () => Bl,
-	CalendarOff: () => Wl,
-	CalendarPlus: () => Jl,
-	CalendarPlus2: () => Kl,
-	CalendarRange: () => Xl,
-	CalendarSearch: () => Ql,
-	CalendarSync: () => eu,
-	CalendarX: () => iu,
-	CalendarX2: () => nu,
-	Calendars: () => ou,
-	Camera: () => du,
-	CameraOff: () => cu,
-	Can: () => pu,
-	CanSoda: () => fu,
-	Candy: () => gu,
-	CandyCane: () => mu,
-	CandyOff: () => hu,
-	Cannabis: () => vu,
-	CannabisOff: () => _u,
-	Captions: () => A,
-	CaptionsOff: () => yu,
-	Car: () => Tu,
-	CarBattery: () => bu,
-	CarFront: () => xu,
-	CarTaxiFront: () => Cu,
-	Caravan: () => Du,
-	CardSim: () => ku,
-	Carrot: () => ju,
-	Carton: () => Fu,
-	CartonOff: () => Nu,
-	CaseLower: () => Lu,
-	CaseSensitive: () => zu,
-	CaseUpper: () => Vu,
-	CassetteTape: () => Uu,
-	Cast: () => Gu,
-	Castle: () => qu,
-	Cat: () => Yu,
-	Cctv: () => $u,
-	CctvOff: () => Zu,
-	ChartArea: () => j,
-	ChartBar: () => N,
-	ChartBarBig: () => M,
-	ChartBarDecreasing: () => rd,
-	ChartBarIncreasing: () => ad,
-	ChartBarStacked: () => sd,
-	ChartCandlestick: () => P,
-	ChartColumn: () => L,
-	ChartColumnBig: () => F,
-	ChartColumnDecreasing: () => fd,
-	ChartColumnIncreasing: () => I,
-	ChartColumnStacked: () => hd,
-	ChartGantt: () => vd,
-	ChartLine: () => R,
-	ChartNetwork: () => xd,
-	ChartNoAxesColumn: () => Ed,
-	ChartNoAxesColumnDecreasing: () => Cd,
-	ChartNoAxesColumnIncreasing: () => z,
-	ChartNoAxesCombined: () => Od,
-	ChartNoAxesGantt: () => Ad,
-	ChartPie: () => Md,
-	ChartScatter: () => Pd,
-	ChartSpline: () => Id,
-	Check: () => Bd,
-	CheckCheck: () => Rd,
-	CheckLine: () => Hd,
-	ChefHat: () => Wd,
-	Cherry: () => Kd,
-	ChessBishop: () => Jd,
-	ChessKing: () => Xd,
-	ChessKnight: () => Qd,
-	ChessPawn: () => ef,
-	ChessQueen: () => nf,
-	ChessRook: () => af,
-	ChevronDown: () => sf,
-	ChevronFirst: () => lf,
-	ChevronLast: () => df,
-	ChevronLeft: () => pf,
-	ChevronRight: () => hf,
-	ChevronUp: () => _f,
-	ChevronsDown: () => xf,
-	ChevronsDownUp: () => yf,
-	ChevronsLeft: () => Df,
-	ChevronsLeftRight: () => Tf,
-	ChevronsLeftRightEllipsis: () => Cf,
-	ChevronsRight: () => jf,
-	ChevronsRightLeft: () => kf,
-	ChevronsUp: () => Ff,
-	ChevronsUpDown: () => Nf,
-	Church: () => Lf,
-	Cigarette: () => Vf,
-	CigaretteOff: () => zf,
-	Circle: () => Om,
-	CircleAlert: () => Uf,
-	CircleArrowDown: () => Gf,
-	CircleArrowLeft: () => qf,
-	CircleArrowOutDownLeft: () => Yf,
-	CircleArrowOutDownRight: () => Zf,
-	CircleArrowOutUpLeft: () => $f,
-	CircleArrowOutUpRight: () => tp,
-	CircleArrowRight: () => rp,
-	CircleArrowUp: () => ap,
-	CircleCheck: () => lp,
-	CircleCheckBig: () => sp,
-	CircleChevronDown: () => dp,
-	CircleChevronLeft: () => pp,
-	CircleChevronRight: () => hp,
-	CircleChevronUp: () => _p,
-	CircleDashed: () => xp,
-	CircleDashedCheck: () => yp,
-	CircleDivide: () => Cp,
-	CircleDollarSign: () => Tp,
-	CircleDot: () => kp,
-	CircleDotDashed: () => Dp,
-	CircleEllipsis: () => jp,
-	CircleEqual: () => Np,
-	CircleEuro: () => Fp,
-	CircleFadingArrowUp: () => Lp,
-	CircleFadingPlus: () => zp,
-	CircleGauge: () => Vp,
-	CircleMinus: () => Up,
-	CircleOff: () => Gp,
-	CircleParking: () => Yp,
-	CircleParkingOff: () => qp,
-	CirclePause: () => Zp,
-	CirclePercent: () => $p,
-	CirclePile: () => tm,
-	CirclePlay: () => rm,
-	CirclePlus: () => am,
-	CirclePoundSterling: () => sm,
-	CirclePower: () => lm,
-	CircleQuestionMark: () => B,
-	CircleSlash: () => mm,
-	CircleSlash2: () => fm,
-	CircleSmall: () => gm,
-	CircleStar: () => vm,
-	CircleStop: () => bm,
-	CircleUser: () => wm,
-	CircleUserRound: () => Sm,
-	CircleX: () => Em,
-	CircuitBoard: () => Am,
-	Citrus: () => Mm,
-	Clapperboard: () => Pm,
-	ClefAlto: () => Im,
-	ClefBass: () => Rm,
-	ClefTreble: () => Bm,
-	Clipboard: () => ch,
-	ClipboardCheck: () => Wm,
-	ClipboardClock: () => Hm,
-	ClipboardCopy: () => Km,
-	ClipboardList: () => Jm,
-	ClipboardMinus: () => Xm,
-	ClipboardPaste: () => Qm,
-	ClipboardPen: () => nh,
-	ClipboardPenLine: () => eh,
-	ClipboardPlus: () => ih,
-	ClipboardType: () => oh,
-	ClipboardX: () => fh,
-	Clock: () => Qh,
-	Clock1: () => uh,
-	Clock10: () => mh,
-	Clock11: () => gh,
-	Clock12: () => vh,
-	Clock2: () => bh,
-	Clock3: () => Sh,
-	Clock4: () => wh,
-	Clock5: () => Eh,
-	Clock6: () => Oh,
-	Clock7: () => Ah,
-	Clock8: () => Mh,
-	Clock9: () => Ph,
-	ClockAlert: () => Bh,
-	ClockArrowDown: () => Ih,
-	ClockArrowLeft: () => Rh,
-	ClockArrowRight: () => Hh,
-	ClockArrowUp: () => Wh,
-	ClockCheck: () => Kh,
-	ClockFading: () => Jh,
-	ClockPlus: () => Xh,
-	ClosedCaption: () => eg,
-	Cloud: () => zg,
-	CloudAlert: () => ng,
-	CloudBackup: () => ig,
-	CloudCheck: () => og,
-	CloudCog: () => cg,
-	CloudDownload: () => ug,
-	CloudDrizzle: () => fg,
-	CloudFog: () => mg,
-	CloudHail: () => gg,
-	CloudLightning: () => vg,
-	CloudMoon: () => Sg,
-	CloudMoonRain: () => bg,
-	CloudOff: () => wg,
-	CloudRain: () => Og,
-	CloudRainWind: () => Eg,
-	CloudSnow: () => Ag,
-	CloudSun: () => Pg,
-	CloudSunRain: () => Mg,
-	CloudSync: () => Ig,
-	CloudUpload: () => Rg,
-	Cloudy: () => Bg,
-	Clover: () => Vg,
-	Club: () => Hg,
-	Code: () => Wg,
-	CodeXml: () => Ug,
-	Coffee: () => Kg,
-	Cog: () => Gg,
-	Coins: () => qg,
-	Columns2: () => Jg,
-	Columns3: () => Yg,
-	Columns3Cog: () => V,
-	Columns4: () => Xg,
-	Combine: () => Zg,
-	Command: () => Qg,
-	Compass: () => $g,
-	Component: () => e_,
-	Computer: () => t_,
-	ConciergeBell: () => n_,
-	Cone: () => r_,
-	Construction: () => i_,
-	Contact: () => o_,
-	ContactRound: () => a_,
-	Container: () => s_,
-	Contrast: () => c_,
-	Cookie: () => l_,
+pie.node;
+var $9 = f(pie), mie = /* @__PURE__ */ ee({
+	AArrowDown: () => ve,
+	AArrowUp: () => he,
+	ALargeSmall: () => ge,
+	Accessibility: () => Se,
+	Activity: () => be,
+	Ad: () => we,
+	AirVent: () => Ee,
+	Airplay: () => Oe,
+	AlarmClock: () => Ie,
+	AlarmClockCheck: () => Ae,
+	AlarmClockMinus: () => Pe,
+	AlarmClockOff: () => Me,
+	AlarmClockPlus: () => Re,
+	AlarmSmoke: () => Be,
+	AlignCenterHorizontal: () => He,
+	AlignCenterVertical: () => We,
+	AlignEndHorizontal: () => Je,
+	AlignEndVertical: () => Ke,
+	AlignHorizontalDistributeCenter: () => Xe,
+	AlignHorizontalDistributeEnd: () => Qe,
+	AlignHorizontalDistributeStart: () => et,
+	AlignHorizontalJustifyCenter: () => nt,
+	AlignHorizontalJustifyEnd: () => it,
+	AlignHorizontalJustifyStart: () => ot,
+	AlignHorizontalSpaceAround: () => ct,
+	AlignHorizontalSpaceBetween: () => ut,
+	AlignStartHorizontal: () => ft,
+	AlignStartVertical: () => mt,
+	AlignVerticalDistributeCenter: () => gt,
+	AlignVerticalDistributeEnd: () => _t,
+	AlignVerticalDistributeStart: () => vt,
+	AlignVerticalJustifyCenter: () => bt,
+	AlignVerticalJustifyEnd: () => St,
+	AlignVerticalJustifyStart: () => wt,
+	AlignVerticalSpaceAround: () => Et,
+	AlignVerticalSpaceBetween: () => Ot,
+	Ambulance: () => At,
+	Ampersand: () => Mt,
+	Ampersands: () => Pt,
+	Amphora: () => It,
+	Anchor: () => Ht,
+	Angle: () => Rt,
+	Antenna: () => Bt,
+	Anvil: () => Wt,
+	Aperture: () => Kt,
+	AppWindow: () => Xt,
+	AppWindowMac: () => Jt,
+	Apple: () => Qt,
+	Archive: () => an,
+	ArchiveRestore: () => en,
+	ArchiveX: () => nn,
+	Armchair: () => sn,
+	ArrowBigDown: () => ln,
+	ArrowBigDownDash: () => dn,
+	ArrowBigLeft: () => hn,
+	ArrowBigLeftDash: () => pn,
+	ArrowBigRight: () => vn,
+	ArrowBigRightDash: () => _n,
+	ArrowBigUp: () => xn,
+	ArrowBigUpDash: () => yn,
+	ArrowDown: () => qn,
+	ArrowDown01: () => Cn,
+	ArrowDown10: () => Tn,
+	ArrowDownAZ: () => Dn,
+	ArrowDownFromLine: () => kn,
+	ArrowDownLeft: () => jn,
+	ArrowDownNarrowWide: () => Nn,
+	ArrowDownRight: () => Fn,
+	ArrowDownToDot: () => Ln,
+	ArrowDownToLine: () => zn,
+	ArrowDownUp: () => Vn,
+	ArrowDownWideNarrow: () => Un,
+	ArrowDownZA: () => Gn,
+	ArrowLeft: () => tr,
+	ArrowLeftFromLine: () => Yn,
+	ArrowLeftRight: () => Zn,
+	ArrowLeftToLine: () => $n,
+	ArrowRight: () => lr,
+	ArrowRightFromLine: () => rr,
+	ArrowRightLeft: () => ar,
+	ArrowRightToLine: () => sr,
+	ArrowUp: () => Fr,
+	ArrowUp01: () => dr,
+	ArrowUp10: () => pr,
+	ArrowUpAZ: () => hr,
+	ArrowUpDown: () => _r,
+	ArrowUpFromDot: () => yr,
+	ArrowUpFromLine: () => xr,
+	ArrowUpLeft: () => Cr,
+	ArrowUpNarrowWide: () => Tr,
+	ArrowUpRight: () => Dr,
+	ArrowUpToLine: () => kr,
+	ArrowUpWideNarrow: () => jr,
+	ArrowUpZA: () => Nr,
+	ArrowsUpFromLine: () => Lr,
+	Asterisk: () => zr,
+	Astroid: () => Vr,
+	AtSign: () => Ur,
+	Atom: () => Gr,
+	AudioLines: () => Zr,
+	AudioLinesOff: () => qr,
+	AudioLinesX: () => Yr,
+	AudioWaveform: () => $r,
+	Award: () => ti,
+	Axe: () => ri,
+	Axis3d: () => si,
+	Baby: () => ai,
+	Backpack: () => li,
+	Badge: () => Fi,
+	BadgeAlert: () => di,
+	BadgeCent: () => pi,
+	BadgeCheck: () => p,
+	BadgeDollarSign: () => gi,
+	BadgeEuro: () => vi,
+	BadgeIndianRupee: () => bi,
+	BadgeInfo: () => Si,
+	BadgeJapaneseYen: () => Ci,
+	BadgeMinus: () => wi,
+	BadgePercent: () => Ti,
+	BadgePlus: () => Ei,
+	BadgePoundSterling: () => Di,
+	BadgeQuestionMark: () => m,
+	BadgeRussianRuble: () => Oi,
+	BadgeSwissFranc: () => Ai,
+	BadgeTurkishLira: () => Pi,
+	BadgeX: () => Mi,
+	BaggageClaim: () => Li,
+	Balloon: () => zi,
+	Ban: () => Vi,
+	Banana: () => Ui,
+	Bandage: () => Gi,
+	Banknote: () => ea,
+	BanknoteArrowDown: () => qi,
+	BanknoteArrowUp: () => Ji,
+	BanknoteCheck: () => Xi,
+	BanknoteX: () => Qi,
+	Barcode: () => na,
+	Barrel: () => ia,
+	Baseline: () => oa,
+	Bath: () => ca,
+	Battery: () => xa,
+	BatteryCharging: () => ua,
+	BatteryFull: () => fa,
+	BatteryLow: () => pa,
+	BatteryMedium: () => ha,
+	BatteryPlus: () => _a,
+	BatteryWarning: () => ya,
+	Beaker: () => Ca,
+	Bean: () => Da,
+	BeanOff: () => Ta,
+	Bed: () => Na,
+	BedDouble: () => ja,
+	BedSingle: () => ka,
+	Beef: () => La,
+	BeefOff: () => Fa,
+	Beer: () => Va,
+	BeerOff: () => za,
+	Bell: () => Qa,
+	BellCheck: () => Ua,
+	BellDot: () => Ga,
+	BellElectric: () => qa,
+	BellMinus: () => Ya,
+	BellOff: () => Xa,
+	BellPlus: () => Za,
+	BellRing: () => eo,
+	BetweenHorizontalEnd: () => h,
+	BetweenHorizontalStart: () => g,
+	BetweenVerticalEnd: () => io,
+	BetweenVerticalStart: () => oo,
+	BicepsFlexed: () => co,
+	Bike: () => uo,
+	Binary: () => po,
+	Binoculars: () => ho,
+	Biohazard: () => _o,
+	Bird: () => yo,
+	Birdhouse: () => xo,
+	Bitcoin: () => Co,
+	Blend: () => To,
+	Blender: () => Do,
+	Blinds: () => ko,
+	Blocks: () => jo,
+	Bluetooth: () => zo,
+	BluetoothConnected: () => No,
+	BluetoothOff: () => Fo,
+	BluetoothSearching: () => Lo,
+	Bold: () => Vo,
+	Bolt: () => Uo,
+	Bomb: () => Go,
+	Bone: () => Yo,
+	BoneFracture: () => qo,
+	Book: () => zs,
+	BookA: () => Zo,
+	BookAlert: () => $o,
+	BookAudio: () => ts,
+	BookBookmark: () => _,
+	BookCheck: () => is,
+	BookCopy: () => os,
+	BookDashed: () => v,
+	BookDown: () => ls,
+	BookHeadphones: () => ds,
+	BookHeart: () => ps,
+	BookImage: () => hs,
+	BookKey: () => gs,
+	BookLock: () => _s,
+	BookMinus: () => vs,
+	BookOpen: () => bs,
+	BookOpenCheck: () => ys,
+	BookOpenText: () => xs,
+	BookPlus: () => Cs,
+	BookSearch: () => Ts,
+	BookText: () => Ds,
+	BookType: () => ks,
+	BookUp: () => Ns,
+	BookUp2: () => js,
+	BookUser: () => Fs,
+	BookX: () => Ls,
+	Bookmark: () => Zs,
+	BookmarkCheck: () => Vs,
+	BookmarkMinus: () => Gs,
+	BookmarkOff: () => Us,
+	BookmarkPlus: () => qs,
+	BookmarkX: () => Ys,
+	BoomBox: () => $s,
+	Bot: () => ac,
+	BotMessageSquare: () => tc,
+	BotOff: () => rc,
+	BottleWine: () => sc,
+	BowArrow: () => lc,
+	Box: () => dc,
+	Boxes: () => pc,
+	Braces: () => y,
+	Brackets: () => gc,
+	Brain: () => Sc,
+	BrainCircuit: () => vc,
+	BrainCog: () => bc,
+	BrickWall: () => Ec,
+	BrickWallFire: () => wc,
+	BrickWallShield: () => Oc,
+	Bridge: () => Ac,
+	Briefcase: () => Bc,
+	BriefcaseBusiness: () => Mc,
+	BriefcaseConveyorBelt: () => Pc,
+	BriefcaseMedical: () => Rc,
+	BriefcasePlus: () => Ic,
+	BringToFront: () => Hc,
+	Broccoli: () => Wc,
+	Broom: () => Jc,
+	BroomSparkles: () => Kc,
+	Brush: () => Qc,
+	BrushCleaning: () => Xc,
+	Bubbles: () => el,
+	Bug: () => ol,
+	BugOff: () => nl,
+	BugPlay: () => il,
+	Building: () => ul,
+	BuildingComplex: () => b,
+	BuildingComplexPlus: () => cl,
+	Bus: () => hl,
+	BusFront: () => pl,
+	Cable: () => yl,
+	CableCar: () => _l,
+	Cake: () => Cl,
+	CakeSlice: () => xl,
+	Calculator: () => Tl,
+	Calendar: () => pu,
+	Calendar1: () => Dl,
+	CalendarArrowDown: () => kl,
+	CalendarArrowUp: () => jl,
+	CalendarCheck: () => Fl,
+	CalendarCheck2: () => Nl,
+	CalendarChevronsRight: () => Ll,
+	CalendarClock: () => zl,
+	CalendarCog: () => Ul,
+	CalendarDays: () => Vl,
+	CalendarFold: () => Gl,
+	CalendarHeart: () => ql,
+	CalendarMinus: () => Zl,
+	CalendarMinus2: () => Yl,
+	CalendarOff: () => $l,
+	CalendarPlus: () => ru,
+	CalendarPlus2: () => tu,
+	CalendarRange: () => au,
+	CalendarSearch: () => su,
+	CalendarSync: () => cu,
+	CalendarX: () => uu,
+	CalendarX2: () => lu,
+	Calendars: () => du,
+	Camera: () => mu,
+	CameraOff: () => fu,
+	Can: () => gu,
+	CanSoda: () => hu,
+	Candy: () => yu,
+	CandyCane: () => _u,
+	CandyOff: () => vu,
+	Cannabis: () => Cu,
+	CannabisOff: () => xu,
+	Captions: () => x,
+	CaptionsOff: () => Tu,
+	Car: () => Pu,
+	CarBattery: () => Ou,
+	CarFront: () => Au,
+	CarTaxiFront: () => Mu,
+	Caravan: () => Iu,
+	CardSim: () => Ru,
+	Carrot: () => Bu,
+	Carton: () => Wu,
+	CartonOff: () => Hu,
+	CaseLower: () => Ku,
+	CaseSensitive: () => Ju,
+	CaseUpper: () => Xu,
+	CassetteTape: () => Qu,
+	Cast: () => ed,
+	Castle: () => nd,
+	Cat: () => id,
+	Cctv: () => cd,
+	CctvOff: () => od,
+	ChartArea: () => S,
+	ChartBar: () => w,
+	ChartBarBig: () => C,
+	ChartBarDecreasing: () => fd,
+	ChartBarIncreasing: () => md,
+	ChartBarStacked: () => gd,
+	ChartCandlestick: () => T,
+	ChartColumn: () => O,
+	ChartColumnBig: () => E,
+	ChartColumnDecreasing: () => xd,
+	ChartColumnIncreasing: () => D,
+	ChartColumnStacked: () => wd,
+	ChartGantt: () => Dd,
+	ChartLine: () => k,
+	ChartNetwork: () => Ad,
+	ChartNoAxesColumn: () => j,
+	ChartNoAxesColumnDecreasing: () => Md,
+	ChartNoAxesColumnIncreasing: () => A,
+	ChartNoAxesCombined: () => Id,
+	ChartNoAxesGantt: () => M,
+	ChartPie: () => N,
+	ChartScatter: () => P,
+	ChartSpline: () => Vd,
+	Check: () => Gd,
+	CheckCheck: () => Ud,
+	CheckLine: () => qd,
+	ChefHat: () => Yd,
+	Cherry: () => Zd,
+	ChessBishop: () => $d,
+	ChessKing: () => tf,
+	ChessKnight: () => rf,
+	ChessPawn: () => of,
+	ChessQueen: () => cf,
+	ChessRook: () => uf,
+	ChevronDown: () => ff,
+	ChevronFirst: () => mf,
+	ChevronLast: () => gf,
+	ChevronLeft: () => vf,
+	ChevronRight: () => bf,
+	ChevronUp: () => Sf,
+	ChevronsDown: () => Ef,
+	ChevronsDownUp: () => wf,
+	ChevronsLeft: () => Mf,
+	ChevronsLeftRight: () => Af,
+	ChevronsLeftRightEllipsis: () => Of,
+	ChevronsRight: () => If,
+	ChevronsRightLeft: () => Pf,
+	ChevronsUp: () => Bf,
+	ChevronsUpDown: () => Rf,
+	Church: () => Hf,
+	Cigarette: () => Kf,
+	CigaretteOff: () => Wf,
+	Circle: () => Dm,
+	CircleAlert: () => F,
+	CircleArrowDown: () => I,
+	CircleArrowLeft: () => L,
+	CircleArrowOutDownLeft: () => R,
+	CircleArrowOutDownRight: () => z,
+	CircleArrowOutUpLeft: () => B,
+	CircleArrowOutUpRight: () => ep,
+	CircleArrowRight: () => np,
+	CircleArrowUp: () => ip,
+	CircleCheck: () => cp,
+	CircleCheckBig: () => op,
+	CircleChevronDown: () => up,
+	CircleChevronLeft: () => fp,
+	CircleChevronRight: () => mp,
+	CircleChevronUp: () => gp,
+	CircleDashed: () => bp,
+	CircleDashedCheck: () => vp,
+	CircleDivide: () => Sp,
+	CircleDollarSign: () => wp,
+	CircleDot: () => Op,
+	CircleDotDashed: () => Ep,
+	CircleEllipsis: () => Ap,
+	CircleEqual: () => Mp,
+	CircleEuro: () => Pp,
+	CircleFadingArrowUp: () => Ip,
+	CircleFadingPlus: () => Rp,
+	CircleGauge: () => Bp,
+	CircleMinus: () => Hp,
+	CircleOff: () => Wp,
+	CircleParking: () => Jp,
+	CircleParkingOff: () => Kp,
+	CirclePause: () => Xp,
+	CirclePercent: () => Qp,
+	CirclePile: () => em,
+	CirclePlay: () => nm,
+	CirclePlus: () => im,
+	CirclePoundSterling: () => om,
+	CirclePower: () => cm,
+	CircleQuestionMark: () => V,
+	CircleSlash: () => pm,
+	CircleSlash2: () => dm,
+	CircleSmall: () => hm,
+	CircleStar: () => _m,
+	CircleStop: () => ym,
+	CircleUser: () => Cm,
+	CircleUserRound: () => xm,
+	CircleX: () => Tm,
+	CircuitBoard: () => km,
+	Citrus: () => jm,
+	Clapperboard: () => Nm,
+	ClefAlto: () => Fm,
+	ClefBass: () => Lm,
+	ClefTreble: () => zm,
+	Clipboard: () => sh,
+	ClipboardCheck: () => Um,
+	ClipboardClock: () => Vm,
+	ClipboardCopy: () => Gm,
+	ClipboardList: () => qm,
+	ClipboardMinus: () => Ym,
+	ClipboardPaste: () => Zm,
+	ClipboardPen: () => th,
+	ClipboardPenLine: () => $m,
+	ClipboardPlus: () => rh,
+	ClipboardType: () => ah,
+	ClipboardX: () => dh,
+	Clock: () => Zh,
+	Clock1: () => lh,
+	Clock10: () => ph,
+	Clock11: () => hh,
+	Clock12: () => _h,
+	Clock2: () => yh,
+	Clock3: () => xh,
+	Clock4: () => Ch,
+	Clock5: () => Th,
+	Clock6: () => Dh,
+	Clock7: () => kh,
+	Clock8: () => jh,
+	Clock9: () => Nh,
+	ClockAlert: () => zh,
+	ClockArrowDown: () => Fh,
+	ClockArrowLeft: () => Lh,
+	ClockArrowRight: () => Vh,
+	ClockArrowUp: () => Uh,
+	ClockCheck: () => Gh,
+	ClockFading: () => qh,
+	ClockPlus: () => Yh,
+	ClosedCaption: () => $h,
+	Cloud: () => Mg,
+	CloudAlert: () => tg,
+	CloudBackup: () => rg,
+	CloudCheck: () => ag,
+	CloudCog: () => sg,
+	CloudDownload: () => lg,
+	CloudDrizzle: () => dg,
+	CloudFog: () => pg,
+	CloudHail: () => hg,
+	CloudLightning: () => _g,
+	CloudMoon: () => xg,
+	CloudMoonRain: () => yg,
+	CloudOff: () => Cg,
+	CloudRain: () => Eg,
+	CloudRainWind: () => Tg,
+	CloudSnow: () => Dg,
+	CloudSun: () => kg,
+	CloudSunRain: () => Og,
+	CloudSync: () => Ag,
+	CloudUpload: () => jg,
+	Cloudy: () => Ng,
+	Clover: () => Pg,
+	Club: () => Fg,
+	Code: () => Lg,
+	CodeXml: () => Ig,
+	Coffee: () => zg,
+	Cog: () => Rg,
+	Coins: () => Bg,
+	Columns2: () => Vg,
+	Columns3: () => Hg,
+	Columns3Cog: () => H,
+	Columns4: () => Ug,
+	Combine: () => Wg,
+	Command: () => Gg,
+	Compass: () => Kg,
+	Component: () => qg,
+	Computer: () => Jg,
+	ConciergeBell: () => Yg,
+	Cone: () => Xg,
+	Construction: () => Qg,
+	Contact: () => n_,
+	ContactRound: () => e_,
+	Container: () => i_,
+	Contrast: () => o_,
+	Cookie: () => c_,
 	CookingPot: () => u_,
 	Copy: () => S_,
 	CopyCheck: () => f_,
@@ -46604,7 +46602,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	FileDigit: () => BS,
 	FileDown: () => HS,
 	FileExclamationPoint: () => WS,
-	FileHeadphone: () => H,
+	FileHeadphone: () => U,
 	FileHeart: () => qS,
 	FileImage: () => YS,
 	FileInput: () => ZS,
@@ -46758,7 +46756,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	Grid2x2Plus: () => CO,
 	Grid2x2X: () => TO,
 	Grid3x2: () => kO,
-	Grid3x3: () => U,
+	Grid3x3: () => W,
 	Grip: () => IO,
 	GripHorizontal: () => PO,
 	GripVertical: () => MO,
@@ -46821,592 +46819,592 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	HousePlus: () => BA,
 	HouseWifi: () => HA,
 	Houses: () => KA,
-	IceCreamBowl: () => JA,
-	IceCreamCone: () => XA,
-	IdCard: () => nj,
-	IdCardLanyard: () => QA,
-	Image: () => uj,
-	ImageDown: () => ej,
-	ImageMinus: () => ij,
-	ImageOff: () => aj,
-	ImagePlay: () => oj,
-	ImagePlus: () => sj,
-	ImageUp: () => cj,
-	ImageUpscale: () => lj,
-	Images: () => fj,
-	Import: () => dj,
-	Inbox: () => pj,
-	IndianRupee: () => mj,
-	Infinity: () => gj,
-	Info: () => hj,
-	InspectionPanel: () => _j,
-	Italic: () => vj,
-	IterationCcw: () => yj,
-	IterationCw: () => bj,
-	IvBag: () => xj,
-	JapaneseYen: () => Sj,
-	Joystick: () => Cj,
-	Kanban: () => wj,
-	Kayak: () => Tj,
-	Key: () => Oj,
-	KeyRound: () => Ej,
-	KeySquare: () => Dj,
-	Keyboard: () => jj,
-	KeyboardMusic: () => kj,
-	KeyboardOff: () => Aj,
-	Lambda: () => Mj,
-	Lamp: () => Rj,
-	LampCeiling: () => Nj,
-	LampDesk: () => Pj,
-	LampFloor: () => Fj,
-	LampWallDown: () => Ij,
-	LampWallUp: () => Lj,
-	LandPlot: () => zj,
-	Landmark: () => Bj,
-	Languages: () => Vj,
-	Laptop: () => Wj,
-	LaptopMinimal: () => Uj,
-	LaptopMinimalCheck: () => Hj,
-	Lasso: () => Kj,
-	LassoSelect: () => Gj,
-	LayerArrowDown: () => qj,
-	LayerArrowUp: () => Jj,
-	Layers: () => eM,
-	Layers2: () => Yj,
-	LayersArrowDown: () => Xj,
-	LayersArrowUp: () => Zj,
-	LayersMinus: () => Qj,
-	LayersPlus: () => $j,
-	LayoutArrowDown: () => tM,
-	LayoutArrowRight: () => nM,
-	LayoutDashboard: () => rM,
+	IceCreamBowl: () => qA,
+	IceCreamCone: () => JA,
+	IdCard: () => ZA,
+	IdCardLanyard: () => YA,
+	Image: () => ij,
+	ImageDown: () => XA,
+	ImageMinus: () => QA,
+	ImageOff: () => $A,
+	ImagePlay: () => ej,
+	ImagePlus: () => tj,
+	ImageUp: () => nj,
+	ImageUpscale: () => rj,
+	Images: () => oj,
+	Import: () => aj,
+	Inbox: () => sj,
+	IndianRupee: () => cj,
+	Infinity: () => uj,
+	Info: () => lj,
+	InspectionPanel: () => dj,
+	Italic: () => fj,
+	IterationCcw: () => pj,
+	IterationCw: () => mj,
+	IvBag: () => hj,
+	JapaneseYen: () => gj,
+	Joystick: () => _j,
+	Kanban: () => vj,
+	Kayak: () => yj,
+	Key: () => Sj,
+	KeyRound: () => bj,
+	KeySquare: () => xj,
+	Keyboard: () => Tj,
+	KeyboardMusic: () => Cj,
+	KeyboardOff: () => wj,
+	Lambda: () => Ej,
+	Lamp: () => Mj,
+	LampCeiling: () => Dj,
+	LampDesk: () => Oj,
+	LampFloor: () => kj,
+	LampWallDown: () => Aj,
+	LampWallUp: () => jj,
+	LandPlot: () => Nj,
+	Landmark: () => Pj,
+	Languages: () => Fj,
+	Laptop: () => Rj,
+	LaptopMinimal: () => Lj,
+	LaptopMinimalCheck: () => Ij,
+	Lasso: () => Bj,
+	LassoSelect: () => zj,
+	LayerArrowDown: () => Vj,
+	LayerArrowUp: () => Hj,
+	Layers: () => Xj,
+	Layers2: () => Uj,
+	LayersArrowDown: () => Wj,
+	LayersArrowUp: () => Gj,
+	LayersMinus: () => Kj,
+	LayersPlus: () => Jj,
+	LayoutArrowDown: () => Qj,
+	LayoutArrowRight: () => eM,
+	LayoutDashboard: () => nM,
 	LayoutFreeform: () => iM,
-	LayoutGrid: () => aM,
-	LayoutList: () => sM,
-	LayoutPanelLeft: () => lM,
-	LayoutPanelTop: () => dM,
-	LayoutTemplate: () => pM,
-	Leaf: () => hM,
-	LeafyGreen: () => _M,
-	Lectern: () => yM,
-	LensConcave: () => xM,
-	LensConvex: () => CM,
-	Library: () => TM,
-	LibraryBig: () => DM,
-	LifeBuoy: () => kM,
-	Ligature: () => jM,
-	Lightbulb: () => FM,
-	LightbulbOff: () => NM,
-	Lighthouse: () => LM,
-	LineDotBottomVertical: () => zM,
-	LineDotLeftHorizontal: () => VM,
-	LineDotRightHorizontal: () => GM,
-	LineDotTopVertical: () => UM,
-	LineSquiggle: () => qM,
-	LineStyle: () => YM,
-	Link: () => tN,
-	Link2: () => $M,
-	Link2Off: () => ZM,
-	List: () => qN,
-	ListCheck: () => rN,
-	ListChecks: () => aN,
-	ListChevronsDownUp: () => sN,
-	ListChevronsUpDown: () => lN,
-	ListClock: () => dN,
-	ListCollapse: () => pN,
-	ListEnd: () => hN,
-	ListFilter: () => yN,
-	ListFilterPlus: () => _N,
-	ListIndentDecrease: () => W,
-	ListIndentIncrease: () => G,
-	ListMinus: () => CN,
-	ListMusic: () => TN,
-	ListOrdered: () => DN,
-	ListPlus: () => kN,
-	ListRestart: () => jN,
-	ListSortAscending: () => NN,
-	ListSortDescending: () => FN,
-	ListStart: () => LN,
-	ListTodo: () => zN,
-	ListTree: () => VN,
-	ListVideo: () => UN,
-	ListX: () => GN,
-	Loader: () => $N,
-	LoaderCircle: () => YN,
-	LoaderPinwheel: () => ZN,
-	Locate: () => aP,
-	LocateFixed: () => tP,
-	LocateOff: () => rP,
-	Lock: () => pP,
-	LockKeyhole: () => lP,
-	LockKeyholeOpen: () => sP,
-	LockOpen: () => dP,
-	LogIn: () => hP,
-	LogOut: () => _P,
-	Logs: () => yP,
-	Lollipop: () => xP,
-	Luggage: () => CP,
-	Magnet: () => TP,
-	Mail: () => YP,
-	MailBadge: () => DP,
-	MailCheck: () => kP,
-	MailClock: () => jP,
-	MailMinus: () => NP,
-	MailOpen: () => FP,
-	MailPen: () => LP,
-	MailPlus: () => zP,
-	MailQuestionMark: () => VP,
-	MailSearch: () => GP,
-	MailWarning: () => UP,
-	MailX: () => qP,
-	Mailbox: () => ZP,
-	Mails: () => $P,
-	Map: () => NF,
-	MapMinus: () => tF,
-	MapPin: () => DF,
-	MapPinCheck: () => rF,
-	MapPinCheckInside: () => aF,
-	MapPinHouse: () => sF,
-	MapPinMinus: () => dF,
-	MapPinMinusInside: () => lF,
-	MapPinOff: () => pF,
-	MapPinPen: () => hF,
-	MapPinPlus: () => yF,
-	MapPinPlusInside: () => _F,
-	MapPinSearch: () => xF,
-	MapPinX: () => TF,
-	MapPinXInside: () => CF,
-	MapPinned: () => kF,
-	MapPlus: () => jF,
-	Mars: () => LF,
-	MarsStroke: () => FF,
-	Martini: () => zF,
-	Maximize: () => UF,
-	Maximize2: () => VF,
-	Medal: () => GF,
-	Megaphone: () => YF,
-	MegaphoneOff: () => qF,
-	MemoryStick: () => ZF,
-	Menu: () => $F,
-	Merge: () => tI,
-	MessageCircle: () => DI,
-	MessageCircleCheck: () => rI,
-	MessageCircleCode: () => aI,
-	MessageCircleDashed: () => lI,
-	MessageCircleDashedCheck: () => sI,
-	MessageCircleHeart: () => dI,
-	MessageCircleMore: () => pI,
-	MessageCircleOff: () => hI,
-	MessageCirclePlus: () => _I,
-	MessageCircleQuestionMark: () => yI,
-	MessageCircleReply: () => CI,
-	MessageCircleWarning: () => xI,
-	MessageCircleX: () => TI,
-	MessageSquare: () => aL,
-	MessageSquareCheck: () => kI,
-	MessageSquareCode: () => jI,
-	MessageSquareDashed: () => NI,
-	MessageSquareDiff: () => FI,
-	MessageSquareDot: () => LI,
-	MessageSquareHeart: () => zI,
-	MessageSquareLock: () => VI,
-	MessageSquareMore: () => UI,
-	MessageSquareOff: () => GI,
-	MessageSquarePlus: () => qI,
-	MessageSquareQuote: () => YI,
-	MessageSquareReply: () => ZI,
-	MessageSquareShare: () => $I,
-	MessageSquareText: () => tL,
-	MessageSquareWarning: () => rL,
-	MessageSquareX: () => sL,
-	MessagesCircle: () => lL,
-	MessagesSquare: () => dL,
-	Metronome: () => pL,
-	Mic: () => TL,
-	MicAudioLines: () => hL,
-	MicOff: () => _L,
-	MicSignal: () => yL,
-	MicVocal: () => xL,
-	Microchip: () => CL,
-	Microscope: () => DL,
-	Microwave: () => kL,
-	MidiPort: () => jL,
-	Milestone: () => NL,
-	Milk: () => LL,
-	MilkOff: () => FL,
-	Minimize: () => VL,
-	Minimize2: () => zL,
-	Minus: () => UL,
-	MirrorRectangular: () => GL,
-	MirrorRound: () => YL,
-	Monitor: () => CR,
-	MonitorCheck: () => qL,
-	MonitorCloud: () => ZL,
-	MonitorCog: () => $L,
-	MonitorDot: () => tR,
-	MonitorDown: () => rR,
-	MonitorOff: () => aR,
-	MonitorPause: () => sR,
-	MonitorPc: () => lR,
-	MonitorPlay: () => dR,
-	MonitorSmartphone: () => pR,
-	MonitorSpeaker: () => hR,
-	MonitorStop: () => _R,
-	MonitorUp: () => yR,
-	MonitorX: () => xR,
-	Moon: () => DR,
-	MoonStar: () => TR,
-	Mop: () => jR,
-	MopSparkles: () => kR,
-	Mosque: () => NR,
-	Motorbike: () => FR,
-	Mountain: () => zR,
-	MountainSnow: () => LR,
-	Mouse: () => rz,
-	MouseLeft: () => VR,
-	MouseOff: () => UR,
-	MousePointer: () => $R,
-	MousePointer2: () => qR,
-	MousePointer2Off: () => GR,
-	MousePointerBan: () => YR,
-	MousePointerClick: () => ZR,
-	MouseRight: () => tz,
-	Mouth: () => sz,
-	MouthOff: () => az,
-	Move: () => Fz,
-	Move3d: () => lz,
-	MoveDiagonal: () => pz,
-	MoveDiagonal2: () => dz,
-	MoveDown: () => xz,
-	MoveDownLeft: () => hz,
-	MoveDownRight: () => _z,
-	MoveHorizontal: () => yz,
-	MoveLeft: () => Cz,
-	MoveRight: () => Tz,
-	MoveUp: () => jz,
-	MoveUpLeft: () => Dz,
-	MoveUpRight: () => kz,
-	MoveVertical: () => Nz,
-	Music: () => Uz,
-	Music2: () => Lz,
-	Music3: () => zz,
-	Music4: () => Vz,
-	Navigation: () => Zz,
-	Navigation2: () => qz,
-	Navigation2Off: () => Gz,
-	NavigationOff: () => Yz,
-	NepaliRupee: () => $z,
-	Network: () => tB,
-	Newspaper: () => rB,
-	Nfc: () => aB,
-	NonBinary: () => sB,
-	Notebook: () => _B,
-	NotebookDot: () => lB,
-	NotebookPen: () => dB,
-	NotebookTabs: () => pB,
-	NotebookText: () => hB,
-	NotepadText: () => xB,
-	NotepadTextDashed: () => yB,
-	Nut: () => TB,
-	NutOff: () => CB,
-	Octagon: () => FB,
-	OctagonAlert: () => DB,
-	OctagonMinus: () => kB,
-	OctagonPause: () => jB,
-	OctagonX: () => NB,
-	Omega: () => LB,
-	Option: () => zB,
-	Orbit: () => VB,
-	Origami: () => UB,
-	Package: () => aV,
-	Package2: () => GB,
-	PackageCheck: () => qB,
-	PackageMinus: () => YB,
-	PackageOpen: () => ZB,
-	PackagePlus: () => $B,
-	PackageSearch: () => tV,
-	PackageX: () => rV,
-	PaintBucket: () => sV,
-	PaintRoller: () => lV,
-	Paintbrush: () => pV,
-	PaintbrushVertical: () => dV,
-	Palette: () => hV,
-	Panda: () => _V,
-	PanelBottom: () => TV,
-	PanelBottomClose: () => yV,
-	PanelBottomDashed: () => xV,
-	PanelBottomOpen: () => CV,
-	PanelLeft: () => FV,
-	PanelLeftClose: () => DV,
-	PanelLeftDashed: () => kV,
-	PanelLeftOpen: () => jV,
-	PanelLeftRightDashed: () => NV,
-	PanelRight: () => UV,
-	PanelRightClose: () => LV,
-	PanelRightDashed: () => zV,
-	PanelRightOpen: () => VV,
-	PanelTop: () => $V,
-	PanelTopBottomDashed: () => GV,
-	PanelTopClose: () => qV,
-	PanelTopDashed: () => YV,
-	PanelTopOpen: () => ZV,
-	PanelsLeftBottom: () => tH,
-	PanelsRightBottom: () => rH,
-	PanelsTopLeft: () => aH,
-	PaperBag: () => sH,
-	Paperclip: () => lH,
-	Parasol: () => dH,
-	Parentheses: () => pH,
-	Park: () => hH,
-	ParkingMeter: () => _H,
-	PartyPopper: () => yH,
-	Pause: () => xH,
-	PawPrint: () => TH,
-	PcCase: () => CH,
-	Pen: () => NH,
-	PenLine: () => DH,
-	PenOff: () => kH,
-	PenTool: () => jH,
-	Pencil: () => UH,
-	PencilLine: () => FH,
-	PencilOff: () => zH,
-	PencilRuler: () => LH,
-	PencilSparkles: () => VH,
-	Pentagon: () => GH,
-	Percent: () => qH,
-	PersonStanding: () => ZH,
-	Phi: () => YH,
-	PhilippinePeso: () => $H,
-	Phone: () => pU,
-	PhoneCall: () => tU,
-	PhoneForwarded: () => rU,
-	PhoneIncoming: () => aU,
-	PhoneMissed: () => lU,
-	PhoneOff: () => sU,
-	PhoneOutgoing: () => dU,
-	Pi: () => hU,
-	Piano: () => _U,
-	Pickaxe: () => yU,
-	PictureInPicture: () => CU,
-	PictureInPicture2: () => xU,
-	PiggyBank: () => TU,
-	Pilcrow: () => jU,
-	PilcrowLeft: () => DU,
-	PilcrowRight: () => kU,
-	Pill: () => FU,
-	PillBottle: () => NU,
-	Pin: () => zU,
-	PinOff: () => LU,
-	Pipette: () => VU,
-	Pizza: () => GU,
-	Plane: () => YU,
-	PlaneLanding: () => UU,
-	PlaneTakeoff: () => qU,
-	PlantPot: () => ZU,
-	Play: () => tW,
-	PlayOff: () => $U,
-	PlayingCard: () => rW,
-	PlayingCards: () => sW,
-	PlayingCardsFan: () => aW,
-	Plug: () => pW,
-	Plug2: () => dW,
-	PlugZap: () => lW,
-	Plus: () => hW,
-	PocketKnife: () => _W,
-	Podium: () => yW,
-	Pointer: () => TW,
-	PointerOff: () => xW,
-	Popcorn: () => CW,
-	Popsicle: () => DW,
-	PoundSterling: () => kW,
-	Power: () => NW,
-	PowerOff: () => jW,
-	Presentation: () => FW,
-	Printer: () => VW,
-	PrinterCheck: () => LW,
-	PrinterX: () => zW,
-	Projector: () => UW,
-	Proportions: () => GW,
-	Puzzle: () => qW,
-	Pyramid: () => YW,
-	QrCode: () => ZW,
-	Quote: () => $W,
-	Rabbit: () => tG,
-	Radar: () => rG,
-	Radiation: () => aG,
-	Radical: () => sG,
-	Radio: () => hG,
-	RadioOff: () => lG,
-	RadioReceiver: () => dG,
-	RadioTower: () => pG,
-	Radius: () => yG,
-	Rainbow: () => xG,
-	Rat: () => _G,
-	Ratio: () => CG,
-	Receipt: () => UG,
-	ReceiptCent: () => TG,
-	ReceiptEuro: () => DG,
-	ReceiptIndianRupee: () => kG,
-	ReceiptJapaneseYen: () => jG,
-	ReceiptPoundSterling: () => NG,
-	ReceiptRussianRuble: () => FG,
-	ReceiptSwissFranc: () => LG,
-	ReceiptText: () => zG,
-	ReceiptTurkishLira: () => VG,
-	RectangleCircle: () => GG,
-	RectangleEllipsis: () => qG,
-	RectangleGoggles: () => YG,
-	RectangleHorizontal: () => ZG,
-	RectangleVertical: () => $G,
-	Recycle: () => tK,
-	Redo: () => sK,
-	Redo2: () => rK,
-	RedoDot: () => aK,
-	RefreshCcw: () => dK,
-	RefreshCcwDot: () => lK,
-	RefreshCw: () => hK,
-	RefreshCwOff: () => pK,
-	Refrigerator: () => _K,
-	Regex: () => yK,
-	RemoveFormatting: () => xK,
-	Repeat: () => DK,
-	Repeat1: () => CK,
-	Repeat2: () => TK,
-	RepeatOff: () => kK,
-	Replace: () => NK,
-	ReplaceAll: () => jK,
-	Reply: () => LK,
-	ReplyAll: () => FK,
-	Rewind: () => zK,
-	Ribbon: () => VK,
-	Road: () => UK,
-	RobotArm: () => GK,
-	RobotVacuum: () => qK,
-	Rocket: () => YK,
-	RockingChair: () => ZK,
-	RollerCoaster: () => $K,
-	Rose: () => tq,
-	Rotate3d: () => rq,
-	RotateCcw: () => dq,
-	RotateCcwClock: () => aq,
-	RotateCcwKey: () => sq,
-	RotateCcwSquare: () => lq,
-	RotateCw: () => yq,
-	RotateCwClock: () => pq,
-	RotateCwFadingClock: () => hq,
-	RotateCwSquare: () => _q,
-	Route: () => Cq,
-	RouteOff: () => xq,
-	Router: () => Tq,
-	Rows2: () => Dq,
-	Rows3: () => kq,
-	Rows4: () => jq,
-	Rss: () => Nq,
-	Ruler: () => Lq,
-	RulerDimensionLine: () => Fq,
-	RussianRuble: () => zq,
-	Sailboat: () => Vq,
-	Salad: () => Uq,
-	Sandwich: () => Gq,
-	Satellite: () => qq,
-	SatelliteDish: () => Yq,
-	SaudiRiyal: () => Zq,
-	Save: () => lJ,
-	SaveAll: () => $q,
-	SaveCheck: () => tJ,
-	SaveOff: () => rJ,
-	SavePen: () => aJ,
-	SavePlus: () => sJ,
-	Scale: () => pJ,
-	Scale3d: () => dJ,
-	Scaling: () => hJ,
-	Scan: () => LJ,
-	ScanBarcode: () => _J,
-	ScanBox: () => CJ,
-	ScanEye: () => yJ,
-	ScanFace: () => xJ,
-	ScanHeart: () => TJ,
-	ScanLine: () => DJ,
-	ScanQrCode: () => kJ,
-	ScanSearch: () => jJ,
-	ScanSquare: () => NJ,
-	ScanText: () => FJ,
-	School: () => zJ,
-	Scissors: () => VJ,
-	ScissorsLineDashed: () => UJ,
-	Scooter: () => GJ,
-	ScreenShare: () => YJ,
-	ScreenShareOff: () => qJ,
-	Scroll: () => $J,
-	ScrollText: () => ZJ,
-	Search: () => dY,
-	SearchAlert: () => tY,
-	SearchCheck: () => rY,
-	SearchCode: () => aY,
-	SearchSlash: () => lY,
-	SearchX: () => sY,
-	Section: () => pY,
-	Send: () => yY,
-	SendHorizontal: () => hY,
-	SendToBack: () => _Y,
-	SeparatorHorizontal: () => xY,
-	SeparatorVertical: () => CY,
-	Server: () => NY,
-	ServerCog: () => TY,
-	ServerCrash: () => DY,
-	ServerOff: () => kY,
-	ServerPlus: () => jY,
-	Settings: () => LY,
-	Settings2: () => FY,
-	Shapes: () => zY,
-	Share: () => UY,
-	Share2: () => VY,
-	Sheet: () => GY,
-	Shell: () => qY,
-	ShelvingUnit: () => YY,
-	Shield: () => DX,
-	ShieldAlert: () => ZY,
-	ShieldBan: () => $Y,
-	ShieldCheck: () => tX,
-	ShieldCog: () => aX,
-	ShieldCogCorner: () => rX,
-	ShieldEllipsis: () => sX,
-	ShieldHalf: () => lX,
-	ShieldKeyhole: () => dX,
-	ShieldLock: () => pX,
-	ShieldMinus: () => hX,
-	ShieldOff: () => _X,
-	ShieldPlus: () => yX,
-	ShieldQuestionMark: () => xX,
-	ShieldUser: () => CX,
-	ShieldX: () => TX,
-	Ship: () => NX,
-	ShipCargo: () => kX,
-	ShipWheel: () => jX,
-	Shirt: () => FX,
-	ShoppingBag: () => zX,
-	ShoppingBasket: () => LX,
-	ShoppingCart: () => GX,
-	ShoppingCartMinus: () => VX,
-	ShoppingCartPlus: () => UX,
-	Shovel: () => qX,
-	ShowerHead: () => YX,
-	Shredder: () => ZX,
-	Shrimp: () => tZ,
-	ShrimpOff: () => $X,
-	Shrink: () => rZ,
-	Shrub: () => aZ,
-	Shuffle: () => sZ,
-	Sigma: () => lZ,
-	Signal: () => yZ,
-	SignalHigh: () => dZ,
-	SignalLow: () => pZ,
-	SignalMedium: () => hZ,
-	SignalZero: () => _Z,
-	Signature: () => xZ,
-	Signpost: () => TZ,
-	SignpostBig: () => CZ,
-	Siren: () => DZ,
+	LayoutGrid: () => oM,
+	LayoutList: () => cM,
+	LayoutPanelLeft: () => uM,
+	LayoutPanelTop: () => fM,
+	LayoutTemplate: () => mM,
+	Leaf: () => gM,
+	LeafyGreen: () => vM,
+	Lectern: () => bM,
+	LensConcave: () => SM,
+	LensConvex: () => wM,
+	Library: () => EM,
+	LibraryBig: () => OM,
+	LifeBuoy: () => AM,
+	Ligature: () => MM,
+	Lightbulb: () => IM,
+	LightbulbOff: () => PM,
+	Lighthouse: () => RM,
+	LineDotBottomVertical: () => BM,
+	LineDotLeftHorizontal: () => HM,
+	LineDotRightHorizontal: () => KM,
+	LineDotTopVertical: () => WM,
+	LineSquiggle: () => JM,
+	LineStyle: () => XM,
+	Link: () => nN,
+	Link2: () => eN,
+	Link2Off: () => QM,
+	List: () => JN,
+	ListCheck: () => iN,
+	ListChecks: () => oN,
+	ListChevronsDownUp: () => cN,
+	ListChevronsUpDown: () => uN,
+	ListClock: () => fN,
+	ListCollapse: () => mN,
+	ListEnd: () => gN,
+	ListFilter: () => bN,
+	ListFilterPlus: () => vN,
+	ListIndentDecrease: () => G,
+	ListIndentIncrease: () => K,
+	ListMinus: () => wN,
+	ListMusic: () => EN,
+	ListOrdered: () => ON,
+	ListPlus: () => AN,
+	ListRestart: () => MN,
+	ListSortAscending: () => PN,
+	ListSortDescending: () => IN,
+	ListStart: () => RN,
+	ListTodo: () => BN,
+	ListTree: () => HN,
+	ListVideo: () => WN,
+	ListX: () => KN,
+	Loader: () => eP,
+	LoaderCircle: () => XN,
+	LoaderPinwheel: () => QN,
+	Locate: () => oP,
+	LocateFixed: () => nP,
+	LocateOff: () => iP,
+	Lock: () => mP,
+	LockKeyhole: () => uP,
+	LockKeyholeOpen: () => cP,
+	LockOpen: () => fP,
+	LogIn: () => gP,
+	LogOut: () => vP,
+	Logs: () => bP,
+	Lollipop: () => SP,
+	Luggage: () => wP,
+	Magnet: () => EP,
+	Mail: () => XP,
+	MailBadge: () => OP,
+	MailCheck: () => AP,
+	MailClock: () => MP,
+	MailMinus: () => PP,
+	MailOpen: () => IP,
+	MailPen: () => RP,
+	MailPlus: () => BP,
+	MailQuestionMark: () => HP,
+	MailSearch: () => KP,
+	MailWarning: () => WP,
+	MailX: () => JP,
+	Mailbox: () => QP,
+	Mails: () => eF,
+	Map: () => PF,
+	MapMinus: () => nF,
+	MapPin: () => OF,
+	MapPinCheck: () => iF,
+	MapPinCheckInside: () => oF,
+	MapPinHouse: () => cF,
+	MapPinMinus: () => fF,
+	MapPinMinusInside: () => uF,
+	MapPinOff: () => mF,
+	MapPinPen: () => gF,
+	MapPinPlus: () => bF,
+	MapPinPlusInside: () => vF,
+	MapPinSearch: () => SF,
+	MapPinX: () => EF,
+	MapPinXInside: () => wF,
+	MapPinned: () => AF,
+	MapPlus: () => MF,
+	Mars: () => RF,
+	MarsStroke: () => IF,
+	Martini: () => BF,
+	Maximize: () => WF,
+	Maximize2: () => HF,
+	Medal: () => KF,
+	Megaphone: () => XF,
+	MegaphoneOff: () => JF,
+	MemoryStick: () => QF,
+	Menu: () => eI,
+	Merge: () => nI,
+	MessageCircle: () => OI,
+	MessageCircleCheck: () => iI,
+	MessageCircleCode: () => oI,
+	MessageCircleDashed: () => uI,
+	MessageCircleDashedCheck: () => cI,
+	MessageCircleHeart: () => fI,
+	MessageCircleMore: () => mI,
+	MessageCircleOff: () => gI,
+	MessageCirclePlus: () => vI,
+	MessageCircleQuestionMark: () => bI,
+	MessageCircleReply: () => wI,
+	MessageCircleWarning: () => SI,
+	MessageCircleX: () => EI,
+	MessageSquare: () => oL,
+	MessageSquareCheck: () => AI,
+	MessageSquareCode: () => MI,
+	MessageSquareDashed: () => PI,
+	MessageSquareDiff: () => II,
+	MessageSquareDot: () => RI,
+	MessageSquareHeart: () => BI,
+	MessageSquareLock: () => HI,
+	MessageSquareMore: () => WI,
+	MessageSquareOff: () => KI,
+	MessageSquarePlus: () => JI,
+	MessageSquareQuote: () => XI,
+	MessageSquareReply: () => QI,
+	MessageSquareShare: () => eL,
+	MessageSquareText: () => nL,
+	MessageSquareWarning: () => iL,
+	MessageSquareX: () => cL,
+	MessagesCircle: () => uL,
+	MessagesSquare: () => fL,
+	Metronome: () => mL,
+	Mic: () => EL,
+	MicAudioLines: () => gL,
+	MicOff: () => vL,
+	MicSignal: () => bL,
+	MicVocal: () => SL,
+	Microchip: () => wL,
+	Microscope: () => OL,
+	Microwave: () => AL,
+	MidiPort: () => ML,
+	Milestone: () => PL,
+	Milk: () => RL,
+	MilkOff: () => IL,
+	Minimize: () => HL,
+	Minimize2: () => BL,
+	Minus: () => WL,
+	MirrorRectangular: () => KL,
+	MirrorRound: () => XL,
+	Monitor: () => wR,
+	MonitorCheck: () => JL,
+	MonitorCloud: () => QL,
+	MonitorCog: () => eR,
+	MonitorDot: () => nR,
+	MonitorDown: () => iR,
+	MonitorOff: () => oR,
+	MonitorPause: () => cR,
+	MonitorPc: () => uR,
+	MonitorPlay: () => fR,
+	MonitorSmartphone: () => mR,
+	MonitorSpeaker: () => gR,
+	MonitorStop: () => vR,
+	MonitorUp: () => bR,
+	MonitorX: () => SR,
+	Moon: () => OR,
+	MoonStar: () => ER,
+	Mop: () => MR,
+	MopSparkles: () => AR,
+	Mosque: () => PR,
+	Motorbike: () => IR,
+	Mountain: () => BR,
+	MountainSnow: () => RR,
+	Mouse: () => iz,
+	MouseLeft: () => HR,
+	MouseOff: () => WR,
+	MousePointer: () => ez,
+	MousePointer2: () => JR,
+	MousePointer2Off: () => KR,
+	MousePointerBan: () => XR,
+	MousePointerClick: () => QR,
+	MouseRight: () => nz,
+	Mouth: () => cz,
+	MouthOff: () => oz,
+	Move: () => Iz,
+	Move3d: () => uz,
+	MoveDiagonal: () => mz,
+	MoveDiagonal2: () => fz,
+	MoveDown: () => Sz,
+	MoveDownLeft: () => gz,
+	MoveDownRight: () => vz,
+	MoveHorizontal: () => bz,
+	MoveLeft: () => wz,
+	MoveRight: () => Ez,
+	MoveUp: () => Mz,
+	MoveUpLeft: () => Oz,
+	MoveUpRight: () => Az,
+	MoveVertical: () => Pz,
+	Music: () => Wz,
+	Music2: () => Rz,
+	Music3: () => Bz,
+	Music4: () => Hz,
+	Navigation: () => Qz,
+	Navigation2: () => Jz,
+	Navigation2Off: () => Kz,
+	NavigationOff: () => Xz,
+	NepaliRupee: () => eB,
+	Network: () => nB,
+	Newspaper: () => iB,
+	Nfc: () => oB,
+	NonBinary: () => cB,
+	Notebook: () => vB,
+	NotebookDot: () => uB,
+	NotebookPen: () => fB,
+	NotebookTabs: () => mB,
+	NotebookText: () => gB,
+	NotepadText: () => SB,
+	NotepadTextDashed: () => bB,
+	Nut: () => EB,
+	NutOff: () => wB,
+	Octagon: () => IB,
+	OctagonAlert: () => OB,
+	OctagonMinus: () => AB,
+	OctagonPause: () => MB,
+	OctagonX: () => PB,
+	Omega: () => RB,
+	Option: () => BB,
+	Orbit: () => HB,
+	Origami: () => WB,
+	Package: () => oV,
+	Package2: () => KB,
+	PackageCheck: () => JB,
+	PackageMinus: () => XB,
+	PackageOpen: () => QB,
+	PackagePlus: () => eV,
+	PackageSearch: () => nV,
+	PackageX: () => iV,
+	PaintBucket: () => cV,
+	PaintRoller: () => uV,
+	Paintbrush: () => mV,
+	PaintbrushVertical: () => fV,
+	Palette: () => gV,
+	Panda: () => vV,
+	PanelBottom: () => EV,
+	PanelBottomClose: () => bV,
+	PanelBottomDashed: () => SV,
+	PanelBottomOpen: () => wV,
+	PanelLeft: () => IV,
+	PanelLeftClose: () => OV,
+	PanelLeftDashed: () => AV,
+	PanelLeftOpen: () => MV,
+	PanelLeftRightDashed: () => PV,
+	PanelRight: () => WV,
+	PanelRightClose: () => RV,
+	PanelRightDashed: () => BV,
+	PanelRightOpen: () => HV,
+	PanelTop: () => eH,
+	PanelTopBottomDashed: () => KV,
+	PanelTopClose: () => JV,
+	PanelTopDashed: () => XV,
+	PanelTopOpen: () => QV,
+	PanelsLeftBottom: () => nH,
+	PanelsRightBottom: () => iH,
+	PanelsTopLeft: () => oH,
+	PaperBag: () => cH,
+	Paperclip: () => uH,
+	Parasol: () => fH,
+	Parentheses: () => mH,
+	Park: () => gH,
+	ParkingMeter: () => vH,
+	PartyPopper: () => bH,
+	Pause: () => SH,
+	PawPrint: () => EH,
+	PcCase: () => wH,
+	Pen: () => PH,
+	PenLine: () => OH,
+	PenOff: () => AH,
+	PenTool: () => MH,
+	Pencil: () => WH,
+	PencilLine: () => IH,
+	PencilOff: () => BH,
+	PencilRuler: () => RH,
+	PencilSparkles: () => HH,
+	Pentagon: () => KH,
+	Percent: () => JH,
+	PersonStanding: () => QH,
+	Phi: () => XH,
+	PhilippinePeso: () => eU,
+	Phone: () => mU,
+	PhoneCall: () => nU,
+	PhoneForwarded: () => iU,
+	PhoneIncoming: () => oU,
+	PhoneMissed: () => uU,
+	PhoneOff: () => cU,
+	PhoneOutgoing: () => fU,
+	Pi: () => gU,
+	Piano: () => vU,
+	Pickaxe: () => bU,
+	PictureInPicture: () => wU,
+	PictureInPicture2: () => SU,
+	PiggyBank: () => EU,
+	Pilcrow: () => MU,
+	PilcrowLeft: () => OU,
+	PilcrowRight: () => AU,
+	Pill: () => IU,
+	PillBottle: () => PU,
+	Pin: () => BU,
+	PinOff: () => RU,
+	Pipette: () => HU,
+	Pizza: () => KU,
+	Plane: () => XU,
+	PlaneLanding: () => WU,
+	PlaneTakeoff: () => JU,
+	PlantPot: () => QU,
+	Play: () => nW,
+	PlayOff: () => eW,
+	PlayingCard: () => iW,
+	PlayingCards: () => cW,
+	PlayingCardsFan: () => oW,
+	Plug: () => mW,
+	Plug2: () => fW,
+	PlugZap: () => uW,
+	Plus: () => gW,
+	PocketKnife: () => vW,
+	Podium: () => bW,
+	Pointer: () => EW,
+	PointerOff: () => SW,
+	Popcorn: () => wW,
+	Popsicle: () => OW,
+	PoundSterling: () => AW,
+	Power: () => PW,
+	PowerOff: () => MW,
+	Presentation: () => IW,
+	Printer: () => HW,
+	PrinterCheck: () => RW,
+	PrinterX: () => BW,
+	Projector: () => WW,
+	Proportions: () => KW,
+	Puzzle: () => JW,
+	Pyramid: () => XW,
+	QrCode: () => QW,
+	Quote: () => eG,
+	Rabbit: () => nG,
+	Radar: () => iG,
+	Radiation: () => oG,
+	Radical: () => cG,
+	Radio: () => gG,
+	RadioOff: () => uG,
+	RadioReceiver: () => fG,
+	RadioTower: () => mG,
+	Radius: () => bG,
+	Rainbow: () => SG,
+	Rat: () => vG,
+	Ratio: () => wG,
+	Receipt: () => WG,
+	ReceiptCent: () => EG,
+	ReceiptEuro: () => OG,
+	ReceiptIndianRupee: () => AG,
+	ReceiptJapaneseYen: () => MG,
+	ReceiptPoundSterling: () => PG,
+	ReceiptRussianRuble: () => IG,
+	ReceiptSwissFranc: () => RG,
+	ReceiptText: () => BG,
+	ReceiptTurkishLira: () => HG,
+	RectangleCircle: () => KG,
+	RectangleEllipsis: () => JG,
+	RectangleGoggles: () => XG,
+	RectangleHorizontal: () => QG,
+	RectangleVertical: () => eK,
+	Recycle: () => nK,
+	Redo: () => cK,
+	Redo2: () => iK,
+	RedoDot: () => oK,
+	RefreshCcw: () => fK,
+	RefreshCcwDot: () => uK,
+	RefreshCw: () => gK,
+	RefreshCwOff: () => mK,
+	Refrigerator: () => vK,
+	Regex: () => bK,
+	RemoveFormatting: () => SK,
+	Repeat: () => OK,
+	Repeat1: () => wK,
+	Repeat2: () => EK,
+	RepeatOff: () => AK,
+	Replace: () => PK,
+	ReplaceAll: () => MK,
+	Reply: () => RK,
+	ReplyAll: () => IK,
+	Rewind: () => BK,
+	Ribbon: () => HK,
+	Road: () => WK,
+	RobotArm: () => KK,
+	RobotVacuum: () => JK,
+	Rocket: () => XK,
+	RockingChair: () => QK,
+	RollerCoaster: () => eq,
+	Rose: () => nq,
+	Rotate3d: () => iq,
+	RotateCcw: () => fq,
+	RotateCcwClock: () => oq,
+	RotateCcwKey: () => cq,
+	RotateCcwSquare: () => uq,
+	RotateCw: () => bq,
+	RotateCwClock: () => mq,
+	RotateCwFadingClock: () => gq,
+	RotateCwSquare: () => vq,
+	Route: () => wq,
+	RouteOff: () => Sq,
+	Router: () => Eq,
+	Rows2: () => Oq,
+	Rows3: () => Aq,
+	Rows4: () => Mq,
+	Rss: () => Pq,
+	Ruler: () => Rq,
+	RulerDimensionLine: () => Iq,
+	RussianRuble: () => Bq,
+	Sailboat: () => Hq,
+	Salad: () => Wq,
+	Sandwich: () => Kq,
+	Satellite: () => Jq,
+	SatelliteDish: () => Xq,
+	SaudiRiyal: () => Qq,
+	Save: () => uJ,
+	SaveAll: () => eJ,
+	SaveCheck: () => nJ,
+	SaveOff: () => iJ,
+	SavePen: () => oJ,
+	SavePlus: () => cJ,
+	Scale: () => mJ,
+	Scale3d: () => fJ,
+	Scaling: () => gJ,
+	Scan: () => RJ,
+	ScanBarcode: () => vJ,
+	ScanBox: () => wJ,
+	ScanEye: () => bJ,
+	ScanFace: () => SJ,
+	ScanHeart: () => EJ,
+	ScanLine: () => OJ,
+	ScanQrCode: () => AJ,
+	ScanSearch: () => MJ,
+	ScanSquare: () => PJ,
+	ScanText: () => IJ,
+	School: () => BJ,
+	Scissors: () => HJ,
+	ScissorsLineDashed: () => WJ,
+	Scooter: () => KJ,
+	ScreenShare: () => XJ,
+	ScreenShareOff: () => JJ,
+	Scroll: () => eY,
+	ScrollText: () => QJ,
+	Search: () => fY,
+	SearchAlert: () => nY,
+	SearchCheck: () => iY,
+	SearchCode: () => oY,
+	SearchSlash: () => uY,
+	SearchX: () => cY,
+	Section: () => mY,
+	Send: () => bY,
+	SendHorizontal: () => gY,
+	SendToBack: () => vY,
+	SeparatorHorizontal: () => SY,
+	SeparatorVertical: () => wY,
+	Server: () => PY,
+	ServerCog: () => EY,
+	ServerCrash: () => OY,
+	ServerOff: () => AY,
+	ServerPlus: () => MY,
+	Settings: () => RY,
+	Settings2: () => IY,
+	Shapes: () => BY,
+	Share: () => WY,
+	Share2: () => HY,
+	Sheet: () => KY,
+	Shell: () => JY,
+	ShelvingUnit: () => XY,
+	Shield: () => OX,
+	ShieldAlert: () => QY,
+	ShieldBan: () => eX,
+	ShieldCheck: () => nX,
+	ShieldCog: () => oX,
+	ShieldCogCorner: () => iX,
+	ShieldEllipsis: () => cX,
+	ShieldHalf: () => uX,
+	ShieldKeyhole: () => fX,
+	ShieldLock: () => mX,
+	ShieldMinus: () => gX,
+	ShieldOff: () => vX,
+	ShieldPlus: () => bX,
+	ShieldQuestionMark: () => SX,
+	ShieldUser: () => wX,
+	ShieldX: () => EX,
+	Ship: () => PX,
+	ShipCargo: () => AX,
+	ShipWheel: () => MX,
+	Shirt: () => IX,
+	ShoppingBag: () => BX,
+	ShoppingBasket: () => RX,
+	ShoppingCart: () => KX,
+	ShoppingCartMinus: () => HX,
+	ShoppingCartPlus: () => WX,
+	Shovel: () => JX,
+	ShowerHead: () => XX,
+	Shredder: () => QX,
+	Shrimp: () => nZ,
+	ShrimpOff: () => eZ,
+	Shrink: () => iZ,
+	Shrub: () => oZ,
+	Shuffle: () => cZ,
+	Sigma: () => uZ,
+	Signal: () => bZ,
+	SignalHigh: () => fZ,
+	SignalLow: () => mZ,
+	SignalMedium: () => gZ,
+	SignalZero: () => vZ,
+	Signature: () => SZ,
+	Signpost: () => EZ,
+	SignpostBig: () => wZ,
+	Siren: () => OZ,
 	SkipBack: () => kZ,
 	SkipForward: () => jZ,
 	Skull: () => NZ,
@@ -47460,7 +47458,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareBottomDashedScissors: () => y$,
 	SquareCenterlineDashedHorizontal: () => x$,
 	SquareCenterlineDashedVertical: () => C$,
-	SquareChartGantt: () => K,
+	SquareChartGantt: () => q,
 	SquareCheck: () => O$,
 	SquareCheckBig: () => E$,
 	SquareChevronDown: () => A$,
@@ -47474,7 +47472,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareDashedKanban: () => W$,
 	SquareDashedMousePointer: () => K$,
 	SquareDashedPlus: () => J$,
-	SquareDashedText: () => q,
+	SquareDashedText: () => J,
 	SquareDashedTopSolid: () => Z$,
 	SquareDashedX: () => t1,
 	SquareDashedXCorner: () => $$,
@@ -47494,7 +47492,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareParking: () => N1,
 	SquareParkingOff: () => j1,
 	SquarePause: () => F1,
-	SquarePen: () => J,
+	SquarePen: () => Y,
 	SquarePercent: () => R1,
 	SquarePi: () => B1,
 	SquarePilcrow: () => H1,
@@ -47597,7 +47595,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	TextAlignCenter: () => S3,
 	TextAlignEnd: () => w3,
 	TextAlignJustify: () => E3,
-	TextAlignStart: () => Y,
+	TextAlignStart: () => X,
 	TextCursor: () => j3,
 	TextCursorInput: () => k3,
 	TextInitial: () => N3,
@@ -47644,22 +47642,22 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	TrainFront: () => l8,
 	TrainFrontTunnel: () => s8,
 	TrainTrack: () => d8,
-	TramFront: () => p8,
-	Transgender: () => h8,
-	Trash: () => y8,
-	TrashOff: () => _8,
-	TreeDeciduous: () => x8,
-	TreePalm: () => C8,
-	TreePine: () => T8,
-	Trees: () => D8,
-	TrendingDown: () => k8,
-	TrendingUp: () => N8,
-	TrendingUpDown: () => j8,
-	Triangle: () => V8,
-	TriangleAlert: () => F8,
-	TriangleDashed: () => L8,
-	TriangleRight: () => z8,
-	TrianglesCenterlineDashedHorizontal: () => X,
+	TramFront: () => Z,
+	Transgender: () => m8,
+	Trash: () => v8,
+	TrashOff: () => g8,
+	TreeDeciduous: () => b8,
+	TreePalm: () => S8,
+	TreePine: () => w8,
+	Trees: () => E8,
+	TrendingDown: () => O8,
+	TrendingUp: () => M8,
+	TrendingUpDown: () => A8,
+	Triangle: () => B8,
+	TriangleAlert: () => P8,
+	TriangleDashed: () => I8,
+	TriangleRight: () => R8,
+	TrianglesCenterlineDashedHorizontal: () => H8,
 	TrianglesCenterlineDashedVertical: () => W8,
 	Trophy: () => K8,
 	Truck: () => J8,
@@ -47803,1163 +47801,1163 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	ZodiacVirgo: () => Z9,
 	ZoomIn: () => Q9,
 	ZoomOut: () => $9
-}), gie = /* @__PURE__ */ u({
-	AArrowDown: () => he,
-	AArrowDownIcon: () => he,
-	AArrowUp: () => de,
-	AArrowUpIcon: () => de,
-	ALargeSmall: () => pe,
-	ALargeSmallIcon: () => pe,
-	Accessibility: () => ye,
-	AccessibilityIcon: () => ye,
-	Activity: () => _e,
-	ActivityIcon: () => _e,
+}), hie = /* @__PURE__ */ ee({
+	AArrowDown: () => ve,
+	AArrowDownIcon: () => ve,
+	AArrowUp: () => he,
+	AArrowUpIcon: () => he,
+	ALargeSmall: () => ge,
+	ALargeSmallIcon: () => ge,
+	Accessibility: () => Se,
+	AccessibilityIcon: () => Se,
+	Activity: () => be,
+	ActivityIcon: () => be,
 	ActivitySquare: () => zQ,
 	ActivitySquareIcon: () => zQ,
-	Ad: () => xe,
-	AdIcon: () => xe,
-	AirVent: () => Ce,
-	AirVentIcon: () => Ce,
-	Airplay: () => we,
-	AirplayIcon: () => we,
-	AlarmCheck: () => Ee,
-	AlarmCheckIcon: () => Ee,
-	AlarmClock: () => Me,
-	AlarmClockCheck: () => Ee,
-	AlarmClockCheckIcon: () => Ee,
-	AlarmClockIcon: () => Me,
-	AlarmClockMinus: () => Ae,
-	AlarmClockMinusIcon: () => Ae,
-	AlarmClockOff: () => Oe,
-	AlarmClockOffIcon: () => Oe,
-	AlarmClockPlus: () => Pe,
-	AlarmClockPlusIcon: () => Pe,
-	AlarmMinus: () => Ae,
-	AlarmMinusIcon: () => Ae,
-	AlarmPlus: () => Pe,
-	AlarmPlusIcon: () => Pe,
-	AlarmSmoke: () => Ie,
-	AlarmSmokeIcon: () => Ie,
+	Ad: () => we,
+	AdIcon: () => we,
+	AirVent: () => Ee,
+	AirVentIcon: () => Ee,
+	Airplay: () => Oe,
+	AirplayIcon: () => Oe,
+	AlarmCheck: () => Ae,
+	AlarmCheckIcon: () => Ae,
+	AlarmClock: () => Ie,
+	AlarmClockCheck: () => Ae,
+	AlarmClockCheckIcon: () => Ae,
+	AlarmClockIcon: () => Ie,
+	AlarmClockMinus: () => Pe,
+	AlarmClockMinusIcon: () => Pe,
+	AlarmClockOff: () => Me,
+	AlarmClockOffIcon: () => Me,
+	AlarmClockPlus: () => Re,
+	AlarmClockPlusIcon: () => Re,
+	AlarmMinus: () => Pe,
+	AlarmMinusIcon: () => Pe,
+	AlarmPlus: () => Re,
+	AlarmPlusIcon: () => Re,
+	AlarmSmoke: () => Be,
+	AlarmSmokeIcon: () => Be,
 	Album: () => _$,
 	AlbumIcon: () => _$,
-	AlertCircle: () => Uf,
-	AlertCircleIcon: () => Uf,
-	AlertOctagon: () => DB,
-	AlertOctagonIcon: () => DB,
-	AlertTriangle: () => F8,
-	AlertTriangleIcon: () => F8,
+	AlertCircle: () => F,
+	AlertCircleIcon: () => F,
+	AlertOctagon: () => OB,
+	AlertOctagonIcon: () => OB,
+	AlertTriangle: () => P8,
+	AlertTriangleIcon: () => P8,
 	AlignCenter: () => S3,
-	AlignCenterHorizontal: () => Re,
-	AlignCenterHorizontalIcon: () => Re,
+	AlignCenterHorizontal: () => He,
+	AlignCenterHorizontalIcon: () => He,
 	AlignCenterIcon: () => S3,
-	AlignCenterVertical: () => Be,
-	AlignCenterVerticalIcon: () => Be,
-	AlignEndHorizontal: () => We,
-	AlignEndHorizontalIcon: () => We,
-	AlignEndVertical: () => He,
-	AlignEndVerticalIcon: () => He,
-	AlignHorizontalDistributeCenter: () => Ke,
-	AlignHorizontalDistributeCenterIcon: () => Ke,
-	AlignHorizontalDistributeEnd: () => Je,
-	AlignHorizontalDistributeEndIcon: () => Je,
-	AlignHorizontalDistributeStart: () => Xe,
-	AlignHorizontalDistributeStartIcon: () => Xe,
-	AlignHorizontalJustifyCenter: () => Qe,
-	AlignHorizontalJustifyCenterIcon: () => Qe,
-	AlignHorizontalJustifyEnd: () => et,
-	AlignHorizontalJustifyEndIcon: () => et,
-	AlignHorizontalJustifyStart: () => nt,
-	AlignHorizontalJustifyStartIcon: () => nt,
-	AlignHorizontalSpaceAround: () => it,
-	AlignHorizontalSpaceAroundIcon: () => it,
-	AlignHorizontalSpaceBetween: () => ot,
-	AlignHorizontalSpaceBetweenIcon: () => ot,
+	AlignCenterVertical: () => We,
+	AlignCenterVerticalIcon: () => We,
+	AlignEndHorizontal: () => Je,
+	AlignEndHorizontalIcon: () => Je,
+	AlignEndVertical: () => Ke,
+	AlignEndVerticalIcon: () => Ke,
+	AlignHorizontalDistributeCenter: () => Xe,
+	AlignHorizontalDistributeCenterIcon: () => Xe,
+	AlignHorizontalDistributeEnd: () => Qe,
+	AlignHorizontalDistributeEndIcon: () => Qe,
+	AlignHorizontalDistributeStart: () => et,
+	AlignHorizontalDistributeStartIcon: () => et,
+	AlignHorizontalJustifyCenter: () => nt,
+	AlignHorizontalJustifyCenterIcon: () => nt,
+	AlignHorizontalJustifyEnd: () => it,
+	AlignHorizontalJustifyEndIcon: () => it,
+	AlignHorizontalJustifyStart: () => ot,
+	AlignHorizontalJustifyStartIcon: () => ot,
+	AlignHorizontalSpaceAround: () => ct,
+	AlignHorizontalSpaceAroundIcon: () => ct,
+	AlignHorizontalSpaceBetween: () => ut,
+	AlignHorizontalSpaceBetweenIcon: () => ut,
 	AlignJustify: () => E3,
 	AlignJustifyIcon: () => E3,
-	AlignLeft: () => Y,
-	AlignLeftIcon: () => Y,
+	AlignLeft: () => X,
+	AlignLeftIcon: () => X,
 	AlignRight: () => w3,
 	AlignRightIcon: () => w3,
-	AlignStartHorizontal: () => ct,
-	AlignStartHorizontalIcon: () => ct,
-	AlignStartVertical: () => ut,
-	AlignStartVerticalIcon: () => ut,
-	AlignVerticalDistributeCenter: () => ft,
-	AlignVerticalDistributeCenterIcon: () => ft,
-	AlignVerticalDistributeEnd: () => mt,
-	AlignVerticalDistributeEndIcon: () => mt,
-	AlignVerticalDistributeStart: () => gt,
-	AlignVerticalDistributeStartIcon: () => gt,
-	AlignVerticalJustifyCenter: () => vt,
-	AlignVerticalJustifyCenterIcon: () => vt,
-	AlignVerticalJustifyEnd: () => bt,
-	AlignVerticalJustifyEndIcon: () => bt,
-	AlignVerticalJustifyStart: () => St,
-	AlignVerticalJustifyStartIcon: () => St,
-	AlignVerticalSpaceAround: () => Ct,
-	AlignVerticalSpaceAroundIcon: () => Ct,
-	AlignVerticalSpaceBetween: () => wt,
-	AlignVerticalSpaceBetweenIcon: () => wt,
-	Ambulance: () => Tt,
-	AmbulanceIcon: () => Tt,
-	Ampersand: () => Dt,
-	AmpersandIcon: () => Dt,
-	Ampersands: () => kt,
-	AmpersandsIcon: () => kt,
-	Amphora: () => jt,
-	AmphoraIcon: () => jt,
-	Anchor: () => Lt,
-	AnchorIcon: () => Lt,
-	Angle: () => Nt,
-	AngleIcon: () => Nt,
+	AlignStartHorizontal: () => ft,
+	AlignStartHorizontalIcon: () => ft,
+	AlignStartVertical: () => mt,
+	AlignStartVerticalIcon: () => mt,
+	AlignVerticalDistributeCenter: () => gt,
+	AlignVerticalDistributeCenterIcon: () => gt,
+	AlignVerticalDistributeEnd: () => _t,
+	AlignVerticalDistributeEndIcon: () => _t,
+	AlignVerticalDistributeStart: () => vt,
+	AlignVerticalDistributeStartIcon: () => vt,
+	AlignVerticalJustifyCenter: () => bt,
+	AlignVerticalJustifyCenterIcon: () => bt,
+	AlignVerticalJustifyEnd: () => St,
+	AlignVerticalJustifyEndIcon: () => St,
+	AlignVerticalJustifyStart: () => wt,
+	AlignVerticalJustifyStartIcon: () => wt,
+	AlignVerticalSpaceAround: () => Et,
+	AlignVerticalSpaceAroundIcon: () => Et,
+	AlignVerticalSpaceBetween: () => Ot,
+	AlignVerticalSpaceBetweenIcon: () => Ot,
+	Ambulance: () => At,
+	AmbulanceIcon: () => At,
+	Ampersand: () => Mt,
+	AmpersandIcon: () => Mt,
+	Ampersands: () => Pt,
+	AmpersandsIcon: () => Pt,
+	Amphora: () => It,
+	AmphoraIcon: () => It,
+	Anchor: () => Ht,
+	AnchorIcon: () => Ht,
+	Angle: () => Rt,
+	AngleIcon: () => Rt,
 	Angry: () => Mx,
 	AngryIcon: () => Mx,
 	Annoyed: () => Px,
 	AnnoyedIcon: () => Px,
-	Antenna: () => Ft,
-	AntennaIcon: () => Ft,
-	Anvil: () => zt,
-	AnvilIcon: () => zt,
-	Aperture: () => Vt,
-	ApertureIcon: () => Vt,
-	AppWindow: () => Gt,
-	AppWindowIcon: () => Gt,
-	AppWindowMac: () => Ut,
-	AppWindowMacIcon: () => Ut,
-	Apple: () => qt,
-	AppleIcon: () => qt,
-	Archive: () => $t,
-	ArchiveIcon: () => $t,
-	ArchiveRestore: () => Yt,
-	ArchiveRestoreIcon: () => Yt,
-	ArchiveX: () => Zt,
-	ArchiveXIcon: () => Zt,
-	AreaChart: () => j,
-	AreaChartIcon: () => j,
-	Armchair: () => tn,
-	ArmchairIcon: () => tn,
-	ArrowBigDown: () => rn,
-	ArrowBigDownDash: () => on,
-	ArrowBigDownDashIcon: () => on,
-	ArrowBigDownIcon: () => rn,
-	ArrowBigLeft: () => un,
-	ArrowBigLeftDash: () => cn,
-	ArrowBigLeftDashIcon: () => cn,
-	ArrowBigLeftIcon: () => un,
-	ArrowBigRight: () => mn,
-	ArrowBigRightDash: () => fn,
-	ArrowBigRightDashIcon: () => fn,
-	ArrowBigRightIcon: () => mn,
-	ArrowBigUp: () => vn,
-	ArrowBigUpDash: () => gn,
-	ArrowBigUpDashIcon: () => gn,
-	ArrowBigUpIcon: () => vn,
-	ArrowDown: () => Hn,
-	ArrowDown01: () => bn,
-	ArrowDown01Icon: () => bn,
-	ArrowDown10: () => Sn,
-	ArrowDown10Icon: () => Sn,
-	ArrowDownAZ: () => wn,
-	ArrowDownAZIcon: () => wn,
-	ArrowDownAz: () => wn,
-	ArrowDownAzIcon: () => wn,
-	ArrowDownCircle: () => Gf,
-	ArrowDownCircleIcon: () => Gf,
-	ArrowDownFromLine: () => Tn,
-	ArrowDownFromLineIcon: () => Tn,
-	ArrowDownIcon: () => Hn,
-	ArrowDownLeft: () => Dn,
-	ArrowDownLeftFromCircle: () => Yf,
-	ArrowDownLeftFromCircleIcon: () => Yf,
+	Antenna: () => Bt,
+	AntennaIcon: () => Bt,
+	Anvil: () => Wt,
+	AnvilIcon: () => Wt,
+	Aperture: () => Kt,
+	ApertureIcon: () => Kt,
+	AppWindow: () => Xt,
+	AppWindowIcon: () => Xt,
+	AppWindowMac: () => Jt,
+	AppWindowMacIcon: () => Jt,
+	Apple: () => Qt,
+	AppleIcon: () => Qt,
+	Archive: () => an,
+	ArchiveIcon: () => an,
+	ArchiveRestore: () => en,
+	ArchiveRestoreIcon: () => en,
+	ArchiveX: () => nn,
+	ArchiveXIcon: () => nn,
+	AreaChart: () => S,
+	AreaChartIcon: () => S,
+	Armchair: () => sn,
+	ArmchairIcon: () => sn,
+	ArrowBigDown: () => ln,
+	ArrowBigDownDash: () => dn,
+	ArrowBigDownDashIcon: () => dn,
+	ArrowBigDownIcon: () => ln,
+	ArrowBigLeft: () => hn,
+	ArrowBigLeftDash: () => pn,
+	ArrowBigLeftDashIcon: () => pn,
+	ArrowBigLeftIcon: () => hn,
+	ArrowBigRight: () => vn,
+	ArrowBigRightDash: () => _n,
+	ArrowBigRightDashIcon: () => _n,
+	ArrowBigRightIcon: () => vn,
+	ArrowBigUp: () => xn,
+	ArrowBigUpDash: () => yn,
+	ArrowBigUpDashIcon: () => yn,
+	ArrowBigUpIcon: () => xn,
+	ArrowDown: () => qn,
+	ArrowDown01: () => Cn,
+	ArrowDown01Icon: () => Cn,
+	ArrowDown10: () => Tn,
+	ArrowDown10Icon: () => Tn,
+	ArrowDownAZ: () => Dn,
+	ArrowDownAZIcon: () => Dn,
+	ArrowDownAz: () => Dn,
+	ArrowDownAzIcon: () => Dn,
+	ArrowDownCircle: () => I,
+	ArrowDownCircleIcon: () => I,
+	ArrowDownFromLine: () => kn,
+	ArrowDownFromLineIcon: () => kn,
+	ArrowDownIcon: () => qn,
+	ArrowDownLeft: () => jn,
+	ArrowDownLeftFromCircle: () => R,
+	ArrowDownLeftFromCircleIcon: () => R,
 	ArrowDownLeftFromSquare: () => YQ,
 	ArrowDownLeftFromSquareIcon: () => YQ,
-	ArrowDownLeftIcon: () => Dn,
+	ArrowDownLeftIcon: () => jn,
 	ArrowDownLeftSquare: () => VQ,
 	ArrowDownLeftSquareIcon: () => VQ,
-	ArrowDownNarrowWide: () => kn,
-	ArrowDownNarrowWideIcon: () => kn,
-	ArrowDownRight: () => jn,
-	ArrowDownRightFromCircle: () => Zf,
-	ArrowDownRightFromCircleIcon: () => Zf,
+	ArrowDownNarrowWide: () => Nn,
+	ArrowDownNarrowWideIcon: () => Nn,
+	ArrowDownRight: () => Fn,
+	ArrowDownRightFromCircle: () => z,
+	ArrowDownRightFromCircleIcon: () => z,
 	ArrowDownRightFromSquare: () => ZQ,
 	ArrowDownRightFromSquareIcon: () => ZQ,
-	ArrowDownRightIcon: () => jn,
+	ArrowDownRightIcon: () => Fn,
 	ArrowDownRightSquare: () => UQ,
 	ArrowDownRightSquareIcon: () => UQ,
 	ArrowDownSquare: () => qQ,
 	ArrowDownSquareIcon: () => qQ,
-	ArrowDownToDot: () => Nn,
-	ArrowDownToDotIcon: () => Nn,
-	ArrowDownToLine: () => Fn,
-	ArrowDownToLineIcon: () => Fn,
-	ArrowDownUp: () => Ln,
-	ArrowDownUpIcon: () => Ln,
-	ArrowDownWideNarrow: () => zn,
-	ArrowDownWideNarrowIcon: () => zn,
-	ArrowDownZA: () => _,
-	ArrowDownZAIcon: () => _,
-	ArrowDownZa: () => _,
-	ArrowDownZaIcon: () => _,
-	ArrowLeft: () => Xn,
-	ArrowLeftCircle: () => qf,
-	ArrowLeftCircleIcon: () => qf,
-	ArrowLeftFromLine: () => Wn,
-	ArrowLeftFromLineIcon: () => Wn,
-	ArrowLeftIcon: () => Xn,
-	ArrowLeftRight: () => Kn,
-	ArrowLeftRightIcon: () => Kn,
+	ArrowDownToDot: () => Ln,
+	ArrowDownToDotIcon: () => Ln,
+	ArrowDownToLine: () => zn,
+	ArrowDownToLineIcon: () => zn,
+	ArrowDownUp: () => Vn,
+	ArrowDownUpIcon: () => Vn,
+	ArrowDownWideNarrow: () => Un,
+	ArrowDownWideNarrowIcon: () => Un,
+	ArrowDownZA: () => Gn,
+	ArrowDownZAIcon: () => Gn,
+	ArrowDownZa: () => Gn,
+	ArrowDownZaIcon: () => Gn,
+	ArrowLeft: () => tr,
+	ArrowLeftCircle: () => L,
+	ArrowLeftCircleIcon: () => L,
+	ArrowLeftFromLine: () => Yn,
+	ArrowLeftFromLineIcon: () => Yn,
+	ArrowLeftIcon: () => tr,
+	ArrowLeftRight: () => Zn,
+	ArrowLeftRightIcon: () => Zn,
 	ArrowLeftSquare: () => GQ,
 	ArrowLeftSquareIcon: () => GQ,
-	ArrowLeftToLine: () => Jn,
-	ArrowLeftToLineIcon: () => Jn,
-	ArrowRight: () => ir,
-	ArrowRightCircle: () => rp,
-	ArrowRightCircleIcon: () => rp,
-	ArrowRightFromLine: () => Qn,
-	ArrowRightFromLineIcon: () => Qn,
-	ArrowRightIcon: () => ir,
-	ArrowRightLeft: () => er,
-	ArrowRightLeftIcon: () => er,
+	ArrowLeftToLine: () => $n,
+	ArrowLeftToLineIcon: () => $n,
+	ArrowRight: () => lr,
+	ArrowRightCircle: () => np,
+	ArrowRightCircleIcon: () => np,
+	ArrowRightFromLine: () => rr,
+	ArrowRightFromLineIcon: () => rr,
+	ArrowRightIcon: () => lr,
+	ArrowRightLeft: () => ar,
+	ArrowRightLeftIcon: () => ar,
 	ArrowRightSquare: () => s$,
 	ArrowRightSquareIcon: () => s$,
-	ArrowRightToLine: () => nr,
-	ArrowRightToLineIcon: () => nr,
-	ArrowUp: () => Dr,
-	ArrowUp01: () => or,
-	ArrowUp01Icon: () => or,
-	ArrowUp10: () => cr,
-	ArrowUp10Icon: () => cr,
-	ArrowUpAZ: () => v,
-	ArrowUpAZIcon: () => v,
-	ArrowUpAz: () => v,
-	ArrowUpAzIcon: () => v,
-	ArrowUpCircle: () => ap,
-	ArrowUpCircleIcon: () => ap,
-	ArrowUpDown: () => dr,
-	ArrowUpDownIcon: () => dr,
-	ArrowUpFromDot: () => pr,
-	ArrowUpFromDotIcon: () => pr,
-	ArrowUpFromLine: () => hr,
-	ArrowUpFromLineIcon: () => hr,
-	ArrowUpIcon: () => Dr,
-	ArrowUpLeft: () => _r,
-	ArrowUpLeftFromCircle: () => $f,
-	ArrowUpLeftFromCircleIcon: () => $f,
+	ArrowRightToLine: () => sr,
+	ArrowRightToLineIcon: () => sr,
+	ArrowUp: () => Fr,
+	ArrowUp01: () => dr,
+	ArrowUp01Icon: () => dr,
+	ArrowUp10: () => pr,
+	ArrowUp10Icon: () => pr,
+	ArrowUpAZ: () => hr,
+	ArrowUpAZIcon: () => hr,
+	ArrowUpAz: () => hr,
+	ArrowUpAzIcon: () => hr,
+	ArrowUpCircle: () => ip,
+	ArrowUpCircleIcon: () => ip,
+	ArrowUpDown: () => _r,
+	ArrowUpDownIcon: () => _r,
+	ArrowUpFromDot: () => yr,
+	ArrowUpFromDotIcon: () => yr,
+	ArrowUpFromLine: () => xr,
+	ArrowUpFromLineIcon: () => xr,
+	ArrowUpIcon: () => Fr,
+	ArrowUpLeft: () => Cr,
+	ArrowUpLeftFromCircle: () => B,
+	ArrowUpLeftFromCircleIcon: () => B,
 	ArrowUpLeftFromSquare: () => $Q,
 	ArrowUpLeftFromSquareIcon: () => $Q,
-	ArrowUpLeftIcon: () => _r,
+	ArrowUpLeftIcon: () => Cr,
 	ArrowUpLeftSquare: () => l$,
 	ArrowUpLeftSquareIcon: () => l$,
-	ArrowUpNarrowWide: () => y,
-	ArrowUpNarrowWideIcon: () => y,
-	ArrowUpRight: () => br,
-	ArrowUpRightFromCircle: () => tp,
-	ArrowUpRightFromCircleIcon: () => tp,
+	ArrowUpNarrowWide: () => Tr,
+	ArrowUpNarrowWideIcon: () => Tr,
+	ArrowUpRight: () => Dr,
+	ArrowUpRightFromCircle: () => ep,
+	ArrowUpRightFromCircleIcon: () => ep,
 	ArrowUpRightFromSquare: () => t$,
 	ArrowUpRightFromSquareIcon: () => t$,
-	ArrowUpRightIcon: () => br,
+	ArrowUpRightIcon: () => Dr,
 	ArrowUpRightSquare: () => d$,
 	ArrowUpRightSquareIcon: () => d$,
 	ArrowUpSquare: () => p$,
 	ArrowUpSquareIcon: () => p$,
-	ArrowUpToLine: () => Sr,
-	ArrowUpToLineIcon: () => Sr,
-	ArrowUpWideNarrow: () => wr,
-	ArrowUpWideNarrowIcon: () => wr,
-	ArrowUpZA: () => b,
-	ArrowUpZAIcon: () => b,
-	ArrowUpZa: () => b,
-	ArrowUpZaIcon: () => b,
-	ArrowsUpFromLine: () => kr,
-	ArrowsUpFromLineIcon: () => kr,
-	Asterisk: () => jr,
-	AsteriskIcon: () => jr,
+	ArrowUpToLine: () => kr,
+	ArrowUpToLineIcon: () => kr,
+	ArrowUpWideNarrow: () => jr,
+	ArrowUpWideNarrowIcon: () => jr,
+	ArrowUpZA: () => Nr,
+	ArrowUpZAIcon: () => Nr,
+	ArrowUpZa: () => Nr,
+	ArrowUpZaIcon: () => Nr,
+	ArrowsUpFromLine: () => Lr,
+	ArrowsUpFromLineIcon: () => Lr,
+	Asterisk: () => zr,
+	AsteriskIcon: () => zr,
 	AsteriskSquare: () => h$,
 	AsteriskSquareIcon: () => h$,
-	Astroid: () => Nr,
-	AstroidIcon: () => Nr,
-	AtSign: () => Fr,
-	AtSignIcon: () => Fr,
-	Atom: () => Lr,
-	AtomIcon: () => Lr,
-	AudioLines: () => Ur,
-	AudioLinesIcon: () => Ur,
-	AudioLinesOff: () => zr,
-	AudioLinesOffIcon: () => zr,
-	AudioLinesX: () => Vr,
-	AudioLinesXIcon: () => Vr,
-	AudioWaveform: () => Gr,
-	AudioWaveformIcon: () => Gr,
-	Award: () => qr,
-	AwardIcon: () => qr,
-	Axe: () => Yr,
-	AxeIcon: () => Yr,
-	Axis3D: () => x,
-	Axis3DIcon: () => x,
-	Axis3d: () => x,
-	Axis3dIcon: () => x,
-	Baby: () => Zr,
-	BabyIcon: () => Zr,
-	Backpack: () => ei,
-	BackpackIcon: () => ei,
-	Badge: () => Oi,
-	BadgeAlert: () => ni,
-	BadgeAlertIcon: () => ni,
-	BadgeCent: () => ii,
-	BadgeCentIcon: () => ii,
-	BadgeCheck: () => S,
-	BadgeCheckIcon: () => S,
-	BadgeDollarSign: () => si,
-	BadgeDollarSignIcon: () => si,
-	BadgeEuro: () => li,
-	BadgeEuroIcon: () => li,
-	BadgeHelp: () => C,
-	BadgeHelpIcon: () => C,
-	BadgeIcon: () => Oi,
-	BadgeIndianRupee: () => di,
-	BadgeIndianRupeeIcon: () => di,
-	BadgeInfo: () => pi,
-	BadgeInfoIcon: () => pi,
-	BadgeJapaneseYen: () => hi,
-	BadgeJapaneseYenIcon: () => hi,
-	BadgeMinus: () => _i,
-	BadgeMinusIcon: () => _i,
-	BadgePercent: () => yi,
-	BadgePercentIcon: () => yi,
-	BadgePlus: () => xi,
-	BadgePlusIcon: () => xi,
-	BadgePoundSterling: () => Ci,
-	BadgePoundSterlingIcon: () => Ci,
-	BadgeQuestionMark: () => C,
-	BadgeQuestionMarkIcon: () => C,
-	BadgeRussianRuble: () => wi,
-	BadgeRussianRubleIcon: () => wi,
-	BadgeSwissFranc: () => Ti,
-	BadgeSwissFrancIcon: () => Ti,
-	BadgeTurkishLira: () => Di,
-	BadgeTurkishLiraIcon: () => Di,
-	BadgeX: () => Ei,
-	BadgeXIcon: () => Ei,
-	BaggageClaim: () => ki,
-	BaggageClaimIcon: () => ki,
-	Balloon: () => ji,
-	BalloonIcon: () => ji,
-	Ban: () => Ni,
-	BanIcon: () => Ni,
-	Banana: () => Fi,
-	BananaIcon: () => Fi,
-	Bandage: () => Ii,
-	BandageIcon: () => Ii,
-	Banknote: () => Ki,
-	BanknoteArrowDown: () => Ri,
-	BanknoteArrowDownIcon: () => Ri,
-	BanknoteArrowUp: () => Bi,
-	BanknoteArrowUpIcon: () => Bi,
-	BanknoteCheck: () => Hi,
-	BanknoteCheckIcon: () => Hi,
-	BanknoteIcon: () => Ki,
-	BanknoteX: () => Wi,
-	BanknoteXIcon: () => Wi,
-	BarChart: () => z,
-	BarChart2: () => Ed,
-	BarChart2Icon: () => Ed,
-	BarChart3: () => L,
-	BarChart3Icon: () => L,
-	BarChart4: () => I,
-	BarChart4Icon: () => I,
-	BarChartBig: () => F,
-	BarChartBigIcon: () => F,
-	BarChartHorizontal: () => N,
-	BarChartHorizontalBig: () => M,
-	BarChartHorizontalBigIcon: () => M,
-	BarChartHorizontalIcon: () => N,
-	BarChartIcon: () => z,
-	Barcode: () => Ji,
-	BarcodeIcon: () => Ji,
-	Barrel: () => Xi,
-	BarrelIcon: () => Xi,
-	Baseline: () => Qi,
-	BaselineIcon: () => Qi,
-	Bath: () => ea,
-	BathIcon: () => ea,
-	Battery: () => ma,
-	BatteryCharging: () => na,
-	BatteryChargingIcon: () => na,
-	BatteryFull: () => ia,
-	BatteryFullIcon: () => ia,
-	BatteryIcon: () => ma,
-	BatteryLow: () => oa,
-	BatteryLowIcon: () => oa,
-	BatteryMedium: () => ca,
-	BatteryMediumIcon: () => ca,
-	BatteryPlus: () => ua,
-	BatteryPlusIcon: () => ua,
-	BatteryWarning: () => fa,
-	BatteryWarningIcon: () => fa,
-	Beaker: () => ha,
-	BeakerIcon: () => ha,
-	Bean: () => ya,
-	BeanIcon: () => ya,
-	BeanOff: () => _a,
-	BeanOffIcon: () => _a,
-	Bed: () => Ta,
-	BedDouble: () => Ca,
-	BedDoubleIcon: () => Ca,
-	BedIcon: () => Ta,
-	BedSingle: () => xa,
-	BedSingleIcon: () => xa,
-	Beef: () => ka,
-	BeefIcon: () => ka,
-	BeefOff: () => Da,
-	BeefOffIcon: () => Da,
-	Beer: () => Na,
-	BeerIcon: () => Na,
-	BeerOff: () => ja,
-	BeerOffIcon: () => ja,
-	Bell: () => qa,
-	BellCheck: () => Fa,
-	BellCheckIcon: () => Fa,
-	BellDot: () => La,
-	BellDotIcon: () => La,
-	BellElectric: () => za,
-	BellElectricIcon: () => za,
-	BellIcon: () => qa,
-	BellMinus: () => Va,
-	BellMinusIcon: () => Va,
-	BellOff: () => Ua,
-	BellOffIcon: () => Ua,
-	BellPlus: () => Ga,
-	BellPlusIcon: () => Ga,
-	BellRing: () => Ya,
-	BellRingIcon: () => Ya,
-	BetweenHorizonalEnd: () => w,
-	BetweenHorizonalEndIcon: () => w,
-	BetweenHorizonalStart: () => T,
-	BetweenHorizonalStartIcon: () => T,
-	BetweenHorizontalEnd: () => w,
-	BetweenHorizontalEndIcon: () => w,
-	BetweenHorizontalStart: () => T,
-	BetweenHorizontalStartIcon: () => T,
-	BetweenVerticalEnd: () => Za,
-	BetweenVerticalEndIcon: () => Za,
-	BetweenVerticalStart: () => Qa,
-	BetweenVerticalStartIcon: () => Qa,
-	BicepsFlexed: () => eo,
-	BicepsFlexedIcon: () => eo,
-	Bike: () => no,
-	BikeIcon: () => no,
-	Binary: () => io,
-	BinaryIcon: () => io,
-	Binoculars: () => oo,
-	BinocularsIcon: () => oo,
-	Biohazard: () => co,
-	BiohazardIcon: () => co,
-	Bird: () => uo,
-	BirdIcon: () => uo,
-	Birdhouse: () => po,
-	BirdhouseIcon: () => po,
-	Bitcoin: () => ho,
-	BitcoinIcon: () => ho,
-	Blend: () => _o,
-	BlendIcon: () => _o,
-	Blender: () => yo,
-	BlenderIcon: () => yo,
-	Blinds: () => xo,
-	BlindsIcon: () => xo,
-	Blocks: () => Co,
-	BlocksIcon: () => Co,
-	Bluetooth: () => jo,
-	BluetoothConnected: () => To,
-	BluetoothConnectedIcon: () => To,
-	BluetoothIcon: () => jo,
-	BluetoothOff: () => Do,
-	BluetoothOffIcon: () => Do,
-	BluetoothSearching: () => ko,
-	BluetoothSearchingIcon: () => ko,
-	Bold: () => No,
-	BoldIcon: () => No,
-	Bolt: () => Fo,
-	BoltIcon: () => Fo,
-	Bomb: () => Lo,
-	BombIcon: () => Lo,
-	Bone: () => Vo,
-	BoneFracture: () => zo,
-	BoneFractureIcon: () => zo,
-	BoneIcon: () => Vo,
-	Book: () => As,
-	BookA: () => Uo,
-	BookAIcon: () => Uo,
-	BookAlert: () => Go,
-	BookAlertIcon: () => Go,
-	BookAudio: () => Ko,
-	BookAudioIcon: () => Ko,
-	BookBookmark: () => E,
-	BookBookmarkIcon: () => E,
-	BookCheck: () => Yo,
-	BookCheckIcon: () => Yo,
-	BookCopy: () => Zo,
-	BookCopyIcon: () => Zo,
-	BookDashed: () => D,
-	BookDashedIcon: () => D,
-	BookDown: () => es,
-	BookDownIcon: () => es,
-	BookHeadphones: () => ns,
-	BookHeadphonesIcon: () => ns,
-	BookHeart: () => is,
-	BookHeartIcon: () => is,
-	BookIcon: () => As,
-	BookImage: () => os,
-	BookImageIcon: () => os,
-	BookKey: () => cs,
-	BookKeyIcon: () => cs,
-	BookLock: () => us,
-	BookLockIcon: () => us,
-	BookMarked: () => E,
-	BookMarkedIcon: () => E,
-	BookMinus: () => fs,
-	BookMinusIcon: () => fs,
-	BookOpen: () => gs,
-	BookOpenCheck: () => ms,
-	BookOpenCheckIcon: () => ms,
-	BookOpenIcon: () => gs,
-	BookOpenText: () => _s,
-	BookOpenTextIcon: () => _s,
-	BookPlus: () => vs,
-	BookPlusIcon: () => vs,
-	BookSearch: () => ys,
-	BookSearchIcon: () => ys,
-	BookTemplate: () => D,
-	BookTemplateIcon: () => D,
-	BookText: () => bs,
-	BookTextIcon: () => bs,
-	BookType: () => xs,
-	BookTypeIcon: () => xs,
-	BookUp: () => ws,
-	BookUp2: () => Ss,
-	BookUp2Icon: () => Ss,
-	BookUpIcon: () => ws,
-	BookUser: () => Es,
-	BookUserIcon: () => Es,
-	BookX: () => Os,
-	BookXIcon: () => Os,
-	Bookmark: () => Hs,
-	BookmarkCheck: () => Ms,
-	BookmarkCheckIcon: () => Ms,
-	BookmarkIcon: () => Hs,
-	BookmarkMinus: () => Is,
-	BookmarkMinusIcon: () => Is,
-	BookmarkOff: () => Ps,
-	BookmarkOffIcon: () => Ps,
-	BookmarkPlus: () => Rs,
-	BookmarkPlusIcon: () => Rs,
-	BookmarkX: () => Bs,
-	BookmarkXIcon: () => Bs,
-	BoomBox: () => Ws,
-	BoomBoxIcon: () => Ws,
-	Bot: () => Xs,
-	BotIcon: () => Xs,
-	BotMessageSquare: () => Ks,
-	BotMessageSquareIcon: () => Ks,
-	BotOff: () => Js,
-	BotOffIcon: () => Js,
-	BottleWine: () => Qs,
-	BottleWineIcon: () => Qs,
-	BowArrow: () => ec,
-	BowArrowIcon: () => ec,
-	Box: () => nc,
-	BoxIcon: () => nc,
+	Astroid: () => Vr,
+	AstroidIcon: () => Vr,
+	AtSign: () => Ur,
+	AtSignIcon: () => Ur,
+	Atom: () => Gr,
+	AtomIcon: () => Gr,
+	AudioLines: () => Zr,
+	AudioLinesIcon: () => Zr,
+	AudioLinesOff: () => qr,
+	AudioLinesOffIcon: () => qr,
+	AudioLinesX: () => Yr,
+	AudioLinesXIcon: () => Yr,
+	AudioWaveform: () => $r,
+	AudioWaveformIcon: () => $r,
+	Award: () => ti,
+	AwardIcon: () => ti,
+	Axe: () => ri,
+	AxeIcon: () => ri,
+	Axis3D: () => si,
+	Axis3DIcon: () => si,
+	Axis3d: () => si,
+	Axis3dIcon: () => si,
+	Baby: () => ai,
+	BabyIcon: () => ai,
+	Backpack: () => li,
+	BackpackIcon: () => li,
+	Badge: () => Fi,
+	BadgeAlert: () => di,
+	BadgeAlertIcon: () => di,
+	BadgeCent: () => pi,
+	BadgeCentIcon: () => pi,
+	BadgeCheck: () => p,
+	BadgeCheckIcon: () => p,
+	BadgeDollarSign: () => gi,
+	BadgeDollarSignIcon: () => gi,
+	BadgeEuro: () => vi,
+	BadgeEuroIcon: () => vi,
+	BadgeHelp: () => m,
+	BadgeHelpIcon: () => m,
+	BadgeIcon: () => Fi,
+	BadgeIndianRupee: () => bi,
+	BadgeIndianRupeeIcon: () => bi,
+	BadgeInfo: () => Si,
+	BadgeInfoIcon: () => Si,
+	BadgeJapaneseYen: () => Ci,
+	BadgeJapaneseYenIcon: () => Ci,
+	BadgeMinus: () => wi,
+	BadgeMinusIcon: () => wi,
+	BadgePercent: () => Ti,
+	BadgePercentIcon: () => Ti,
+	BadgePlus: () => Ei,
+	BadgePlusIcon: () => Ei,
+	BadgePoundSterling: () => Di,
+	BadgePoundSterlingIcon: () => Di,
+	BadgeQuestionMark: () => m,
+	BadgeQuestionMarkIcon: () => m,
+	BadgeRussianRuble: () => Oi,
+	BadgeRussianRubleIcon: () => Oi,
+	BadgeSwissFranc: () => Ai,
+	BadgeSwissFrancIcon: () => Ai,
+	BadgeTurkishLira: () => Pi,
+	BadgeTurkishLiraIcon: () => Pi,
+	BadgeX: () => Mi,
+	BadgeXIcon: () => Mi,
+	BaggageClaim: () => Li,
+	BaggageClaimIcon: () => Li,
+	Balloon: () => zi,
+	BalloonIcon: () => zi,
+	Ban: () => Vi,
+	BanIcon: () => Vi,
+	Banana: () => Ui,
+	BananaIcon: () => Ui,
+	Bandage: () => Gi,
+	BandageIcon: () => Gi,
+	Banknote: () => ea,
+	BanknoteArrowDown: () => qi,
+	BanknoteArrowDownIcon: () => qi,
+	BanknoteArrowUp: () => Ji,
+	BanknoteArrowUpIcon: () => Ji,
+	BanknoteCheck: () => Xi,
+	BanknoteCheckIcon: () => Xi,
+	BanknoteIcon: () => ea,
+	BanknoteX: () => Qi,
+	BanknoteXIcon: () => Qi,
+	BarChart: () => A,
+	BarChart2: () => j,
+	BarChart2Icon: () => j,
+	BarChart3: () => O,
+	BarChart3Icon: () => O,
+	BarChart4: () => D,
+	BarChart4Icon: () => D,
+	BarChartBig: () => E,
+	BarChartBigIcon: () => E,
+	BarChartHorizontal: () => w,
+	BarChartHorizontalBig: () => C,
+	BarChartHorizontalBigIcon: () => C,
+	BarChartHorizontalIcon: () => w,
+	BarChartIcon: () => A,
+	Barcode: () => na,
+	BarcodeIcon: () => na,
+	Barrel: () => ia,
+	BarrelIcon: () => ia,
+	Baseline: () => oa,
+	BaselineIcon: () => oa,
+	Bath: () => ca,
+	BathIcon: () => ca,
+	Battery: () => xa,
+	BatteryCharging: () => ua,
+	BatteryChargingIcon: () => ua,
+	BatteryFull: () => fa,
+	BatteryFullIcon: () => fa,
+	BatteryIcon: () => xa,
+	BatteryLow: () => pa,
+	BatteryLowIcon: () => pa,
+	BatteryMedium: () => ha,
+	BatteryMediumIcon: () => ha,
+	BatteryPlus: () => _a,
+	BatteryPlusIcon: () => _a,
+	BatteryWarning: () => ya,
+	BatteryWarningIcon: () => ya,
+	Beaker: () => Ca,
+	BeakerIcon: () => Ca,
+	Bean: () => Da,
+	BeanIcon: () => Da,
+	BeanOff: () => Ta,
+	BeanOffIcon: () => Ta,
+	Bed: () => Na,
+	BedDouble: () => ja,
+	BedDoubleIcon: () => ja,
+	BedIcon: () => Na,
+	BedSingle: () => ka,
+	BedSingleIcon: () => ka,
+	Beef: () => La,
+	BeefIcon: () => La,
+	BeefOff: () => Fa,
+	BeefOffIcon: () => Fa,
+	Beer: () => Va,
+	BeerIcon: () => Va,
+	BeerOff: () => za,
+	BeerOffIcon: () => za,
+	Bell: () => Qa,
+	BellCheck: () => Ua,
+	BellCheckIcon: () => Ua,
+	BellDot: () => Ga,
+	BellDotIcon: () => Ga,
+	BellElectric: () => qa,
+	BellElectricIcon: () => qa,
+	BellIcon: () => Qa,
+	BellMinus: () => Ya,
+	BellMinusIcon: () => Ya,
+	BellOff: () => Xa,
+	BellOffIcon: () => Xa,
+	BellPlus: () => Za,
+	BellPlusIcon: () => Za,
+	BellRing: () => eo,
+	BellRingIcon: () => eo,
+	BetweenHorizonalEnd: () => h,
+	BetweenHorizonalEndIcon: () => h,
+	BetweenHorizonalStart: () => g,
+	BetweenHorizonalStartIcon: () => g,
+	BetweenHorizontalEnd: () => h,
+	BetweenHorizontalEndIcon: () => h,
+	BetweenHorizontalStart: () => g,
+	BetweenHorizontalStartIcon: () => g,
+	BetweenVerticalEnd: () => io,
+	BetweenVerticalEndIcon: () => io,
+	BetweenVerticalStart: () => oo,
+	BetweenVerticalStartIcon: () => oo,
+	BicepsFlexed: () => co,
+	BicepsFlexedIcon: () => co,
+	Bike: () => uo,
+	BikeIcon: () => uo,
+	Binary: () => po,
+	BinaryIcon: () => po,
+	Binoculars: () => ho,
+	BinocularsIcon: () => ho,
+	Biohazard: () => _o,
+	BiohazardIcon: () => _o,
+	Bird: () => yo,
+	BirdIcon: () => yo,
+	Birdhouse: () => xo,
+	BirdhouseIcon: () => xo,
+	Bitcoin: () => Co,
+	BitcoinIcon: () => Co,
+	Blend: () => To,
+	BlendIcon: () => To,
+	Blender: () => Do,
+	BlenderIcon: () => Do,
+	Blinds: () => ko,
+	BlindsIcon: () => ko,
+	Blocks: () => jo,
+	BlocksIcon: () => jo,
+	Bluetooth: () => zo,
+	BluetoothConnected: () => No,
+	BluetoothConnectedIcon: () => No,
+	BluetoothIcon: () => zo,
+	BluetoothOff: () => Fo,
+	BluetoothOffIcon: () => Fo,
+	BluetoothSearching: () => Lo,
+	BluetoothSearchingIcon: () => Lo,
+	Bold: () => Vo,
+	BoldIcon: () => Vo,
+	Bolt: () => Uo,
+	BoltIcon: () => Uo,
+	Bomb: () => Go,
+	BombIcon: () => Go,
+	Bone: () => Yo,
+	BoneFracture: () => qo,
+	BoneFractureIcon: () => qo,
+	BoneIcon: () => Yo,
+	Book: () => zs,
+	BookA: () => Zo,
+	BookAIcon: () => Zo,
+	BookAlert: () => $o,
+	BookAlertIcon: () => $o,
+	BookAudio: () => ts,
+	BookAudioIcon: () => ts,
+	BookBookmark: () => _,
+	BookBookmarkIcon: () => _,
+	BookCheck: () => is,
+	BookCheckIcon: () => is,
+	BookCopy: () => os,
+	BookCopyIcon: () => os,
+	BookDashed: () => v,
+	BookDashedIcon: () => v,
+	BookDown: () => ls,
+	BookDownIcon: () => ls,
+	BookHeadphones: () => ds,
+	BookHeadphonesIcon: () => ds,
+	BookHeart: () => ps,
+	BookHeartIcon: () => ps,
+	BookIcon: () => zs,
+	BookImage: () => hs,
+	BookImageIcon: () => hs,
+	BookKey: () => gs,
+	BookKeyIcon: () => gs,
+	BookLock: () => _s,
+	BookLockIcon: () => _s,
+	BookMarked: () => _,
+	BookMarkedIcon: () => _,
+	BookMinus: () => vs,
+	BookMinusIcon: () => vs,
+	BookOpen: () => bs,
+	BookOpenCheck: () => ys,
+	BookOpenCheckIcon: () => ys,
+	BookOpenIcon: () => bs,
+	BookOpenText: () => xs,
+	BookOpenTextIcon: () => xs,
+	BookPlus: () => Cs,
+	BookPlusIcon: () => Cs,
+	BookSearch: () => Ts,
+	BookSearchIcon: () => Ts,
+	BookTemplate: () => v,
+	BookTemplateIcon: () => v,
+	BookText: () => Ds,
+	BookTextIcon: () => Ds,
+	BookType: () => ks,
+	BookTypeIcon: () => ks,
+	BookUp: () => Ns,
+	BookUp2: () => js,
+	BookUp2Icon: () => js,
+	BookUpIcon: () => Ns,
+	BookUser: () => Fs,
+	BookUserIcon: () => Fs,
+	BookX: () => Ls,
+	BookXIcon: () => Ls,
+	Bookmark: () => Zs,
+	BookmarkCheck: () => Vs,
+	BookmarkCheckIcon: () => Vs,
+	BookmarkIcon: () => Zs,
+	BookmarkMinus: () => Gs,
+	BookmarkMinusIcon: () => Gs,
+	BookmarkOff: () => Us,
+	BookmarkOffIcon: () => Us,
+	BookmarkPlus: () => qs,
+	BookmarkPlusIcon: () => qs,
+	BookmarkX: () => Ys,
+	BookmarkXIcon: () => Ys,
+	BoomBox: () => $s,
+	BoomBoxIcon: () => $s,
+	Bot: () => ac,
+	BotIcon: () => ac,
+	BotMessageSquare: () => tc,
+	BotMessageSquareIcon: () => tc,
+	BotOff: () => rc,
+	BotOffIcon: () => rc,
+	BottleWine: () => sc,
+	BottleWineIcon: () => sc,
+	BowArrow: () => lc,
+	BowArrowIcon: () => lc,
+	Box: () => dc,
+	BoxIcon: () => dc,
 	BoxSelect: () => r1,
 	BoxSelectIcon: () => r1,
-	Boxes: () => ic,
-	BoxesIcon: () => ic,
-	Braces: () => O,
-	BracesIcon: () => O,
-	Brackets: () => sc,
-	BracketsIcon: () => sc,
-	Brain: () => pc,
-	BrainCircuit: () => lc,
-	BrainCircuitIcon: () => lc,
-	BrainCog: () => dc,
-	BrainCogIcon: () => dc,
-	BrainIcon: () => pc,
-	BrickWall: () => _c,
-	BrickWallFire: () => hc,
-	BrickWallFireIcon: () => hc,
-	BrickWallIcon: () => _c,
-	BrickWallShield: () => yc,
-	BrickWallShieldIcon: () => yc,
-	Bridge: () => xc,
-	BridgeIcon: () => xc,
-	Briefcase: () => jc,
-	BriefcaseBusiness: () => Cc,
-	BriefcaseBusinessIcon: () => Cc,
-	BriefcaseConveyorBelt: () => Tc,
-	BriefcaseConveyorBeltIcon: () => Tc,
-	BriefcaseIcon: () => jc,
-	BriefcaseMedical: () => kc,
-	BriefcaseMedicalIcon: () => kc,
-	BriefcasePlus: () => Dc,
-	BriefcasePlusIcon: () => Dc,
-	BringToFront: () => Nc,
-	BringToFrontIcon: () => Nc,
-	Broccoli: () => Fc,
-	BroccoliIcon: () => Fc,
-	Broom: () => zc,
-	BroomIcon: () => zc,
-	BroomSparkles: () => Lc,
-	BroomSparklesIcon: () => Lc,
-	Brush: () => Uc,
-	BrushCleaning: () => Vc,
-	BrushCleaningIcon: () => Vc,
-	BrushIcon: () => Uc,
-	Bubbles: () => Gc,
-	BubblesIcon: () => Gc,
-	Bug: () => Zc,
-	BugIcon: () => Zc,
-	BugOff: () => qc,
-	BugOffIcon: () => qc,
-	BugPlay: () => Yc,
-	BugPlayIcon: () => Yc,
-	Building: () => tl,
-	Building2: () => k,
-	Building2Icon: () => k,
-	BuildingComplex: () => k,
-	BuildingComplexIcon: () => k,
-	BuildingComplexPlus: () => $c,
-	BuildingComplexPlusIcon: () => $c,
-	BuildingIcon: () => tl,
-	Bus: () => ol,
-	BusFront: () => il,
-	BusFrontIcon: () => il,
-	BusIcon: () => ol,
-	Cable: () => ul,
-	CableCar: () => cl,
-	CableCarIcon: () => cl,
-	CableIcon: () => ul,
-	Cake: () => ml,
-	CakeIcon: () => ml,
-	CakeSlice: () => fl,
-	CakeSliceIcon: () => fl,
-	Calculator: () => gl,
-	CalculatorIcon: () => gl,
-	Calendar: () => uu,
-	Calendar1: () => vl,
-	Calendar1Icon: () => vl,
-	CalendarArrowDown: () => bl,
-	CalendarArrowDownIcon: () => bl,
-	CalendarArrowUp: () => Sl,
-	CalendarArrowUpIcon: () => Sl,
-	CalendarCheck: () => El,
-	CalendarCheck2: () => wl,
-	CalendarCheck2Icon: () => wl,
-	CalendarCheckIcon: () => El,
-	CalendarChevronsRight: () => Ol,
-	CalendarChevronsRightIcon: () => Ol,
-	CalendarClock: () => Al,
-	CalendarClockIcon: () => Al,
-	CalendarCog: () => Pl,
-	CalendarCogIcon: () => Pl,
-	CalendarDays: () => Ml,
-	CalendarDaysIcon: () => Ml,
-	CalendarFold: () => Il,
-	CalendarFoldIcon: () => Il,
-	CalendarHeart: () => Rl,
-	CalendarHeartIcon: () => Rl,
-	CalendarIcon: () => uu,
-	CalendarMinus: () => Hl,
-	CalendarMinus2: () => Bl,
-	CalendarMinus2Icon: () => Bl,
-	CalendarMinusIcon: () => Hl,
-	CalendarOff: () => Wl,
-	CalendarOffIcon: () => Wl,
-	CalendarPlus: () => Jl,
-	CalendarPlus2: () => Kl,
-	CalendarPlus2Icon: () => Kl,
-	CalendarPlusIcon: () => Jl,
-	CalendarRange: () => Xl,
-	CalendarRangeIcon: () => Xl,
-	CalendarSearch: () => Ql,
-	CalendarSearchIcon: () => Ql,
-	CalendarSync: () => eu,
-	CalendarSyncIcon: () => eu,
-	CalendarX: () => iu,
-	CalendarX2: () => nu,
-	CalendarX2Icon: () => nu,
-	CalendarXIcon: () => iu,
-	Calendars: () => ou,
-	CalendarsIcon: () => ou,
-	Camera: () => du,
-	CameraIcon: () => du,
-	CameraOff: () => cu,
-	CameraOffIcon: () => cu,
-	Can: () => pu,
-	CanIcon: () => pu,
-	CanSoda: () => fu,
-	CanSodaIcon: () => fu,
-	CandlestickChart: () => P,
-	CandlestickChartIcon: () => P,
-	Candy: () => gu,
-	CandyCane: () => mu,
-	CandyCaneIcon: () => mu,
-	CandyIcon: () => gu,
-	CandyOff: () => hu,
-	CandyOffIcon: () => hu,
-	Cannabis: () => vu,
-	CannabisIcon: () => vu,
-	CannabisOff: () => _u,
-	CannabisOffIcon: () => _u,
-	Captions: () => A,
-	CaptionsIcon: () => A,
-	CaptionsOff: () => yu,
-	CaptionsOffIcon: () => yu,
-	Car: () => Tu,
-	CarBattery: () => bu,
-	CarBatteryIcon: () => bu,
-	CarFront: () => xu,
-	CarFrontIcon: () => xu,
-	CarIcon: () => Tu,
-	CarTaxiFront: () => Cu,
-	CarTaxiFrontIcon: () => Cu,
-	Caravan: () => Du,
-	CaravanIcon: () => Du,
-	CardSim: () => ku,
-	CardSimIcon: () => ku,
-	Carrot: () => ju,
-	CarrotIcon: () => ju,
-	Carton: () => Fu,
-	CartonIcon: () => Fu,
-	CartonOff: () => Nu,
-	CartonOffIcon: () => Nu,
-	CaseLower: () => Lu,
-	CaseLowerIcon: () => Lu,
-	CaseSensitive: () => zu,
-	CaseSensitiveIcon: () => zu,
-	CaseUpper: () => Vu,
-	CaseUpperIcon: () => Vu,
-	CassetteTape: () => Uu,
-	CassetteTapeIcon: () => Uu,
-	Cast: () => Gu,
-	CastIcon: () => Gu,
-	Castle: () => qu,
-	CastleIcon: () => qu,
-	Cat: () => Yu,
-	CatIcon: () => Yu,
-	Cctv: () => $u,
-	CctvIcon: () => $u,
-	CctvOff: () => Zu,
-	CctvOffIcon: () => Zu,
-	ChartArea: () => j,
-	ChartAreaIcon: () => j,
-	ChartBar: () => N,
-	ChartBarBig: () => M,
-	ChartBarBigIcon: () => M,
-	ChartBarDecreasing: () => rd,
-	ChartBarDecreasingIcon: () => rd,
-	ChartBarIcon: () => N,
-	ChartBarIncreasing: () => ad,
-	ChartBarIncreasingIcon: () => ad,
-	ChartBarStacked: () => sd,
-	ChartBarStackedIcon: () => sd,
-	ChartCandlestick: () => P,
-	ChartCandlestickIcon: () => P,
-	ChartColumn: () => L,
-	ChartColumnBig: () => F,
-	ChartColumnBigIcon: () => F,
-	ChartColumnDecreasing: () => fd,
-	ChartColumnDecreasingIcon: () => fd,
-	ChartColumnIcon: () => L,
-	ChartColumnIncreasing: () => I,
-	ChartColumnIncreasingIcon: () => I,
-	ChartColumnStacked: () => hd,
-	ChartColumnStackedIcon: () => hd,
-	ChartGantt: () => vd,
-	ChartGanttIcon: () => vd,
-	ChartLine: () => R,
-	ChartLineIcon: () => R,
-	ChartNetwork: () => xd,
-	ChartNetworkIcon: () => xd,
-	ChartNoAxesColumn: () => Ed,
-	ChartNoAxesColumnDecreasing: () => Cd,
-	ChartNoAxesColumnDecreasingIcon: () => Cd,
-	ChartNoAxesColumnIcon: () => Ed,
-	ChartNoAxesColumnIncreasing: () => z,
-	ChartNoAxesColumnIncreasingIcon: () => z,
-	ChartNoAxesCombined: () => Od,
-	ChartNoAxesCombinedIcon: () => Od,
-	ChartNoAxesGantt: () => Ad,
-	ChartNoAxesGanttIcon: () => Ad,
-	ChartPie: () => Md,
-	ChartPieIcon: () => Md,
-	ChartScatter: () => Pd,
-	ChartScatterIcon: () => Pd,
-	ChartSpline: () => Id,
-	ChartSplineIcon: () => Id,
-	Check: () => Bd,
-	CheckCheck: () => Rd,
-	CheckCheckIcon: () => Rd,
-	CheckCircle: () => sp,
-	CheckCircle2: () => lp,
-	CheckCircle2Icon: () => lp,
-	CheckCircleIcon: () => sp,
-	CheckIcon: () => Bd,
-	CheckLine: () => Hd,
-	CheckLineIcon: () => Hd,
+	Boxes: () => pc,
+	BoxesIcon: () => pc,
+	Braces: () => y,
+	BracesIcon: () => y,
+	Brackets: () => gc,
+	BracketsIcon: () => gc,
+	Brain: () => Sc,
+	BrainCircuit: () => vc,
+	BrainCircuitIcon: () => vc,
+	BrainCog: () => bc,
+	BrainCogIcon: () => bc,
+	BrainIcon: () => Sc,
+	BrickWall: () => Ec,
+	BrickWallFire: () => wc,
+	BrickWallFireIcon: () => wc,
+	BrickWallIcon: () => Ec,
+	BrickWallShield: () => Oc,
+	BrickWallShieldIcon: () => Oc,
+	Bridge: () => Ac,
+	BridgeIcon: () => Ac,
+	Briefcase: () => Bc,
+	BriefcaseBusiness: () => Mc,
+	BriefcaseBusinessIcon: () => Mc,
+	BriefcaseConveyorBelt: () => Pc,
+	BriefcaseConveyorBeltIcon: () => Pc,
+	BriefcaseIcon: () => Bc,
+	BriefcaseMedical: () => Rc,
+	BriefcaseMedicalIcon: () => Rc,
+	BriefcasePlus: () => Ic,
+	BriefcasePlusIcon: () => Ic,
+	BringToFront: () => Hc,
+	BringToFrontIcon: () => Hc,
+	Broccoli: () => Wc,
+	BroccoliIcon: () => Wc,
+	Broom: () => Jc,
+	BroomIcon: () => Jc,
+	BroomSparkles: () => Kc,
+	BroomSparklesIcon: () => Kc,
+	Brush: () => Qc,
+	BrushCleaning: () => Xc,
+	BrushCleaningIcon: () => Xc,
+	BrushIcon: () => Qc,
+	Bubbles: () => el,
+	BubblesIcon: () => el,
+	Bug: () => ol,
+	BugIcon: () => ol,
+	BugOff: () => nl,
+	BugOffIcon: () => nl,
+	BugPlay: () => il,
+	BugPlayIcon: () => il,
+	Building: () => ul,
+	Building2: () => b,
+	Building2Icon: () => b,
+	BuildingComplex: () => b,
+	BuildingComplexIcon: () => b,
+	BuildingComplexPlus: () => cl,
+	BuildingComplexPlusIcon: () => cl,
+	BuildingIcon: () => ul,
+	Bus: () => hl,
+	BusFront: () => pl,
+	BusFrontIcon: () => pl,
+	BusIcon: () => hl,
+	Cable: () => yl,
+	CableCar: () => _l,
+	CableCarIcon: () => _l,
+	CableIcon: () => yl,
+	Cake: () => Cl,
+	CakeIcon: () => Cl,
+	CakeSlice: () => xl,
+	CakeSliceIcon: () => xl,
+	Calculator: () => Tl,
+	CalculatorIcon: () => Tl,
+	Calendar: () => pu,
+	Calendar1: () => Dl,
+	Calendar1Icon: () => Dl,
+	CalendarArrowDown: () => kl,
+	CalendarArrowDownIcon: () => kl,
+	CalendarArrowUp: () => jl,
+	CalendarArrowUpIcon: () => jl,
+	CalendarCheck: () => Fl,
+	CalendarCheck2: () => Nl,
+	CalendarCheck2Icon: () => Nl,
+	CalendarCheckIcon: () => Fl,
+	CalendarChevronsRight: () => Ll,
+	CalendarChevronsRightIcon: () => Ll,
+	CalendarClock: () => zl,
+	CalendarClockIcon: () => zl,
+	CalendarCog: () => Ul,
+	CalendarCogIcon: () => Ul,
+	CalendarDays: () => Vl,
+	CalendarDaysIcon: () => Vl,
+	CalendarFold: () => Gl,
+	CalendarFoldIcon: () => Gl,
+	CalendarHeart: () => ql,
+	CalendarHeartIcon: () => ql,
+	CalendarIcon: () => pu,
+	CalendarMinus: () => Zl,
+	CalendarMinus2: () => Yl,
+	CalendarMinus2Icon: () => Yl,
+	CalendarMinusIcon: () => Zl,
+	CalendarOff: () => $l,
+	CalendarOffIcon: () => $l,
+	CalendarPlus: () => ru,
+	CalendarPlus2: () => tu,
+	CalendarPlus2Icon: () => tu,
+	CalendarPlusIcon: () => ru,
+	CalendarRange: () => au,
+	CalendarRangeIcon: () => au,
+	CalendarSearch: () => su,
+	CalendarSearchIcon: () => su,
+	CalendarSync: () => cu,
+	CalendarSyncIcon: () => cu,
+	CalendarX: () => uu,
+	CalendarX2: () => lu,
+	CalendarX2Icon: () => lu,
+	CalendarXIcon: () => uu,
+	Calendars: () => du,
+	CalendarsIcon: () => du,
+	Camera: () => mu,
+	CameraIcon: () => mu,
+	CameraOff: () => fu,
+	CameraOffIcon: () => fu,
+	Can: () => gu,
+	CanIcon: () => gu,
+	CanSoda: () => hu,
+	CanSodaIcon: () => hu,
+	CandlestickChart: () => T,
+	CandlestickChartIcon: () => T,
+	Candy: () => yu,
+	CandyCane: () => _u,
+	CandyCaneIcon: () => _u,
+	CandyIcon: () => yu,
+	CandyOff: () => vu,
+	CandyOffIcon: () => vu,
+	Cannabis: () => Cu,
+	CannabisIcon: () => Cu,
+	CannabisOff: () => xu,
+	CannabisOffIcon: () => xu,
+	Captions: () => x,
+	CaptionsIcon: () => x,
+	CaptionsOff: () => Tu,
+	CaptionsOffIcon: () => Tu,
+	Car: () => Pu,
+	CarBattery: () => Ou,
+	CarBatteryIcon: () => Ou,
+	CarFront: () => Au,
+	CarFrontIcon: () => Au,
+	CarIcon: () => Pu,
+	CarTaxiFront: () => Mu,
+	CarTaxiFrontIcon: () => Mu,
+	Caravan: () => Iu,
+	CaravanIcon: () => Iu,
+	CardSim: () => Ru,
+	CardSimIcon: () => Ru,
+	Carrot: () => Bu,
+	CarrotIcon: () => Bu,
+	Carton: () => Wu,
+	CartonIcon: () => Wu,
+	CartonOff: () => Hu,
+	CartonOffIcon: () => Hu,
+	CaseLower: () => Ku,
+	CaseLowerIcon: () => Ku,
+	CaseSensitive: () => Ju,
+	CaseSensitiveIcon: () => Ju,
+	CaseUpper: () => Xu,
+	CaseUpperIcon: () => Xu,
+	CassetteTape: () => Qu,
+	CassetteTapeIcon: () => Qu,
+	Cast: () => ed,
+	CastIcon: () => ed,
+	Castle: () => nd,
+	CastleIcon: () => nd,
+	Cat: () => id,
+	CatIcon: () => id,
+	Cctv: () => cd,
+	CctvIcon: () => cd,
+	CctvOff: () => od,
+	CctvOffIcon: () => od,
+	ChartArea: () => S,
+	ChartAreaIcon: () => S,
+	ChartBar: () => w,
+	ChartBarBig: () => C,
+	ChartBarBigIcon: () => C,
+	ChartBarDecreasing: () => fd,
+	ChartBarDecreasingIcon: () => fd,
+	ChartBarIcon: () => w,
+	ChartBarIncreasing: () => md,
+	ChartBarIncreasingIcon: () => md,
+	ChartBarStacked: () => gd,
+	ChartBarStackedIcon: () => gd,
+	ChartCandlestick: () => T,
+	ChartCandlestickIcon: () => T,
+	ChartColumn: () => O,
+	ChartColumnBig: () => E,
+	ChartColumnBigIcon: () => E,
+	ChartColumnDecreasing: () => xd,
+	ChartColumnDecreasingIcon: () => xd,
+	ChartColumnIcon: () => O,
+	ChartColumnIncreasing: () => D,
+	ChartColumnIncreasingIcon: () => D,
+	ChartColumnStacked: () => wd,
+	ChartColumnStackedIcon: () => wd,
+	ChartGantt: () => Dd,
+	ChartGanttIcon: () => Dd,
+	ChartLine: () => k,
+	ChartLineIcon: () => k,
+	ChartNetwork: () => Ad,
+	ChartNetworkIcon: () => Ad,
+	ChartNoAxesColumn: () => j,
+	ChartNoAxesColumnDecreasing: () => Md,
+	ChartNoAxesColumnDecreasingIcon: () => Md,
+	ChartNoAxesColumnIcon: () => j,
+	ChartNoAxesColumnIncreasing: () => A,
+	ChartNoAxesColumnIncreasingIcon: () => A,
+	ChartNoAxesCombined: () => Id,
+	ChartNoAxesCombinedIcon: () => Id,
+	ChartNoAxesGantt: () => M,
+	ChartNoAxesGanttIcon: () => M,
+	ChartPie: () => N,
+	ChartPieIcon: () => N,
+	ChartScatter: () => P,
+	ChartScatterIcon: () => P,
+	ChartSpline: () => Vd,
+	ChartSplineIcon: () => Vd,
+	Check: () => Gd,
+	CheckCheck: () => Ud,
+	CheckCheckIcon: () => Ud,
+	CheckCircle: () => op,
+	CheckCircle2: () => cp,
+	CheckCircle2Icon: () => cp,
+	CheckCircleIcon: () => op,
+	CheckIcon: () => Gd,
+	CheckLine: () => qd,
+	CheckLineIcon: () => qd,
 	CheckSquare: () => E$,
 	CheckSquare2: () => O$,
 	CheckSquare2Icon: () => O$,
 	CheckSquareIcon: () => E$,
-	ChefHat: () => Wd,
-	ChefHatIcon: () => Wd,
-	Cherry: () => Kd,
-	CherryIcon: () => Kd,
-	ChessBishop: () => Jd,
-	ChessBishopIcon: () => Jd,
-	ChessKing: () => Xd,
-	ChessKingIcon: () => Xd,
-	ChessKnight: () => Qd,
-	ChessKnightIcon: () => Qd,
-	ChessPawn: () => ef,
-	ChessPawnIcon: () => ef,
-	ChessQueen: () => nf,
-	ChessQueenIcon: () => nf,
-	ChessRook: () => af,
-	ChessRookIcon: () => af,
-	ChevronDown: () => sf,
-	ChevronDownCircle: () => dp,
-	ChevronDownCircleIcon: () => dp,
-	ChevronDownIcon: () => sf,
+	ChefHat: () => Yd,
+	ChefHatIcon: () => Yd,
+	Cherry: () => Zd,
+	CherryIcon: () => Zd,
+	ChessBishop: () => $d,
+	ChessBishopIcon: () => $d,
+	ChessKing: () => tf,
+	ChessKingIcon: () => tf,
+	ChessKnight: () => rf,
+	ChessKnightIcon: () => rf,
+	ChessPawn: () => of,
+	ChessPawnIcon: () => of,
+	ChessQueen: () => cf,
+	ChessQueenIcon: () => cf,
+	ChessRook: () => uf,
+	ChessRookIcon: () => uf,
+	ChevronDown: () => ff,
+	ChevronDownCircle: () => up,
+	ChevronDownCircleIcon: () => up,
+	ChevronDownIcon: () => ff,
 	ChevronDownSquare: () => A$,
 	ChevronDownSquareIcon: () => A$,
-	ChevronFirst: () => lf,
-	ChevronFirstIcon: () => lf,
-	ChevronLast: () => df,
-	ChevronLastIcon: () => df,
-	ChevronLeft: () => pf,
-	ChevronLeftCircle: () => pp,
-	ChevronLeftCircleIcon: () => pp,
-	ChevronLeftIcon: () => pf,
+	ChevronFirst: () => mf,
+	ChevronFirstIcon: () => mf,
+	ChevronLast: () => gf,
+	ChevronLastIcon: () => gf,
+	ChevronLeft: () => vf,
+	ChevronLeftCircle: () => fp,
+	ChevronLeftCircleIcon: () => fp,
+	ChevronLeftIcon: () => vf,
 	ChevronLeftSquare: () => M$,
 	ChevronLeftSquareIcon: () => M$,
-	ChevronRight: () => hf,
-	ChevronRightCircle: () => hp,
-	ChevronRightCircleIcon: () => hp,
-	ChevronRightIcon: () => hf,
+	ChevronRight: () => bf,
+	ChevronRightCircle: () => mp,
+	ChevronRightCircleIcon: () => mp,
+	ChevronRightIcon: () => bf,
 	ChevronRightSquare: () => P$,
 	ChevronRightSquareIcon: () => P$,
-	ChevronUp: () => _f,
-	ChevronUpCircle: () => _p,
-	ChevronUpCircleIcon: () => _p,
-	ChevronUpIcon: () => _f,
+	ChevronUp: () => Sf,
+	ChevronUpCircle: () => gp,
+	ChevronUpCircleIcon: () => gp,
+	ChevronUpIcon: () => Sf,
 	ChevronUpSquare: () => I$,
 	ChevronUpSquareIcon: () => I$,
-	ChevronsDown: () => xf,
-	ChevronsDownIcon: () => xf,
-	ChevronsDownUp: () => yf,
-	ChevronsDownUpIcon: () => yf,
-	ChevronsLeft: () => Df,
-	ChevronsLeftIcon: () => Df,
-	ChevronsLeftRight: () => Tf,
-	ChevronsLeftRightEllipsis: () => Cf,
-	ChevronsLeftRightEllipsisIcon: () => Cf,
-	ChevronsLeftRightIcon: () => Tf,
-	ChevronsRight: () => jf,
-	ChevronsRightIcon: () => jf,
-	ChevronsRightLeft: () => kf,
-	ChevronsRightLeftIcon: () => kf,
-	ChevronsUp: () => Ff,
-	ChevronsUpDown: () => Nf,
-	ChevronsUpDownIcon: () => Nf,
-	ChevronsUpIcon: () => Ff,
-	Church: () => Lf,
-	ChurchIcon: () => Lf,
-	Cigarette: () => Vf,
-	CigaretteIcon: () => Vf,
-	CigaretteOff: () => zf,
-	CigaretteOffIcon: () => zf,
-	Circle: () => Om,
-	CircleAlert: () => Uf,
-	CircleAlertIcon: () => Uf,
-	CircleArrowDown: () => Gf,
-	CircleArrowDownIcon: () => Gf,
-	CircleArrowLeft: () => qf,
-	CircleArrowLeftIcon: () => qf,
-	CircleArrowOutDownLeft: () => Yf,
-	CircleArrowOutDownLeftIcon: () => Yf,
-	CircleArrowOutDownRight: () => Zf,
-	CircleArrowOutDownRightIcon: () => Zf,
-	CircleArrowOutUpLeft: () => $f,
-	CircleArrowOutUpLeftIcon: () => $f,
-	CircleArrowOutUpRight: () => tp,
-	CircleArrowOutUpRightIcon: () => tp,
-	CircleArrowRight: () => rp,
-	CircleArrowRightIcon: () => rp,
-	CircleArrowUp: () => ap,
-	CircleArrowUpIcon: () => ap,
-	CircleCheck: () => lp,
-	CircleCheckBig: () => sp,
-	CircleCheckBigIcon: () => sp,
-	CircleCheckIcon: () => lp,
-	CircleChevronDown: () => dp,
-	CircleChevronDownIcon: () => dp,
-	CircleChevronLeft: () => pp,
-	CircleChevronLeftIcon: () => pp,
-	CircleChevronRight: () => hp,
-	CircleChevronRightIcon: () => hp,
-	CircleChevronUp: () => _p,
-	CircleChevronUpIcon: () => _p,
-	CircleDashed: () => xp,
-	CircleDashedCheck: () => yp,
-	CircleDashedCheckIcon: () => yp,
-	CircleDashedIcon: () => xp,
-	CircleDivide: () => Cp,
-	CircleDivideIcon: () => Cp,
-	CircleDollarSign: () => Tp,
-	CircleDollarSignIcon: () => Tp,
-	CircleDot: () => kp,
-	CircleDotDashed: () => Dp,
-	CircleDotDashedIcon: () => Dp,
-	CircleDotIcon: () => kp,
-	CircleEllipsis: () => jp,
-	CircleEllipsisIcon: () => jp,
-	CircleEqual: () => Np,
-	CircleEqualIcon: () => Np,
-	CircleEuro: () => Fp,
-	CircleEuroIcon: () => Fp,
-	CircleFadingArrowUp: () => Lp,
-	CircleFadingArrowUpIcon: () => Lp,
-	CircleFadingPlus: () => zp,
-	CircleFadingPlusIcon: () => zp,
-	CircleGauge: () => Vp,
-	CircleGaugeIcon: () => Vp,
-	CircleHelp: () => B,
-	CircleHelpIcon: () => B,
-	CircleIcon: () => Om,
-	CircleMinus: () => Up,
-	CircleMinusIcon: () => Up,
-	CircleOff: () => Gp,
-	CircleOffIcon: () => Gp,
-	CircleParking: () => Yp,
-	CircleParkingIcon: () => Yp,
-	CircleParkingOff: () => qp,
-	CircleParkingOffIcon: () => qp,
-	CirclePause: () => Zp,
-	CirclePauseIcon: () => Zp,
-	CirclePercent: () => $p,
-	CirclePercentIcon: () => $p,
-	CirclePile: () => tm,
-	CirclePileIcon: () => tm,
-	CirclePlay: () => rm,
-	CirclePlayIcon: () => rm,
-	CirclePlus: () => am,
-	CirclePlusIcon: () => am,
-	CirclePoundSterling: () => sm,
-	CirclePoundSterlingIcon: () => sm,
-	CirclePower: () => lm,
-	CirclePowerIcon: () => lm,
-	CircleQuestionMark: () => B,
-	CircleQuestionMarkIcon: () => B,
-	CircleSlash: () => mm,
-	CircleSlash2: () => fm,
-	CircleSlash2Icon: () => fm,
-	CircleSlashIcon: () => mm,
-	CircleSlashed: () => fm,
-	CircleSlashedIcon: () => fm,
-	CircleSmall: () => gm,
-	CircleSmallIcon: () => gm,
-	CircleStar: () => vm,
-	CircleStarIcon: () => vm,
-	CircleStop: () => bm,
-	CircleStopIcon: () => bm,
-	CircleUser: () => wm,
-	CircleUserIcon: () => wm,
-	CircleUserRound: () => Sm,
-	CircleUserRoundIcon: () => Sm,
-	CircleX: () => Em,
-	CircleXIcon: () => Em,
-	CircuitBoard: () => Am,
-	CircuitBoardIcon: () => Am,
-	Citrus: () => Mm,
-	CitrusIcon: () => Mm,
-	Clapperboard: () => Pm,
-	ClapperboardIcon: () => Pm,
-	ClefAlto: () => Im,
-	ClefAltoIcon: () => Im,
-	ClefBass: () => Rm,
-	ClefBassIcon: () => Rm,
-	ClefTreble: () => Bm,
-	ClefTrebleIcon: () => Bm,
-	Clipboard: () => ch,
-	ClipboardCheck: () => Wm,
-	ClipboardCheckIcon: () => Wm,
-	ClipboardClock: () => Hm,
-	ClipboardClockIcon: () => Hm,
-	ClipboardCopy: () => Km,
-	ClipboardCopyIcon: () => Km,
-	ClipboardEdit: () => nh,
-	ClipboardEditIcon: () => nh,
-	ClipboardIcon: () => ch,
-	ClipboardList: () => Jm,
-	ClipboardListIcon: () => Jm,
-	ClipboardMinus: () => Xm,
-	ClipboardMinusIcon: () => Xm,
-	ClipboardPaste: () => Qm,
-	ClipboardPasteIcon: () => Qm,
-	ClipboardPen: () => nh,
-	ClipboardPenIcon: () => nh,
-	ClipboardPenLine: () => eh,
-	ClipboardPenLineIcon: () => eh,
-	ClipboardPlus: () => ih,
-	ClipboardPlusIcon: () => ih,
-	ClipboardSignature: () => eh,
-	ClipboardSignatureIcon: () => eh,
-	ClipboardType: () => oh,
-	ClipboardTypeIcon: () => oh,
-	ClipboardX: () => fh,
-	ClipboardXIcon: () => fh,
-	Clock: () => Qh,
-	Clock1: () => uh,
-	Clock10: () => mh,
-	Clock10Icon: () => mh,
-	Clock11: () => gh,
-	Clock11Icon: () => gh,
-	Clock12: () => vh,
-	Clock12Icon: () => vh,
-	Clock1Icon: () => uh,
-	Clock2: () => bh,
-	Clock2Icon: () => bh,
-	Clock3: () => Sh,
-	Clock3Icon: () => Sh,
-	Clock4: () => wh,
-	Clock4Icon: () => wh,
-	Clock5: () => Eh,
-	Clock5Icon: () => Eh,
-	Clock6: () => Oh,
-	Clock6Icon: () => Oh,
-	Clock7: () => Ah,
-	Clock7Icon: () => Ah,
-	Clock8: () => Mh,
-	Clock8Icon: () => Mh,
-	Clock9: () => Ph,
-	Clock9Icon: () => Ph,
-	ClockAlert: () => Bh,
-	ClockAlertIcon: () => Bh,
-	ClockArrowDown: () => Ih,
-	ClockArrowDownIcon: () => Ih,
-	ClockArrowLeft: () => Rh,
-	ClockArrowLeftIcon: () => Rh,
-	ClockArrowRight: () => Hh,
-	ClockArrowRightIcon: () => Hh,
-	ClockArrowUp: () => Wh,
-	ClockArrowUpIcon: () => Wh,
-	ClockCheck: () => Kh,
-	ClockCheckIcon: () => Kh,
-	ClockFading: () => Jh,
-	ClockFadingIcon: () => Jh,
-	ClockIcon: () => Qh,
-	ClockPlus: () => Xh,
-	ClockPlusIcon: () => Xh,
-	ClosedCaption: () => eg,
-	ClosedCaptionIcon: () => eg,
-	Cloud: () => zg,
-	CloudAlert: () => ng,
-	CloudAlertIcon: () => ng,
-	CloudBackup: () => ig,
-	CloudBackupIcon: () => ig,
-	CloudCheck: () => og,
-	CloudCheckIcon: () => og,
-	CloudCog: () => cg,
-	CloudCogIcon: () => cg,
-	CloudDownload: () => ug,
-	CloudDownloadIcon: () => ug,
-	CloudDrizzle: () => fg,
-	CloudDrizzleIcon: () => fg,
-	CloudFog: () => mg,
-	CloudFogIcon: () => mg,
-	CloudHail: () => gg,
-	CloudHailIcon: () => gg,
-	CloudIcon: () => zg,
-	CloudLightning: () => vg,
-	CloudLightningIcon: () => vg,
-	CloudMoon: () => Sg,
-	CloudMoonIcon: () => Sg,
-	CloudMoonRain: () => bg,
-	CloudMoonRainIcon: () => bg,
-	CloudOff: () => wg,
-	CloudOffIcon: () => wg,
-	CloudRain: () => Og,
-	CloudRainIcon: () => Og,
-	CloudRainWind: () => Eg,
-	CloudRainWindIcon: () => Eg,
-	CloudSnow: () => Ag,
-	CloudSnowIcon: () => Ag,
-	CloudSun: () => Pg,
-	CloudSunIcon: () => Pg,
-	CloudSunRain: () => Mg,
-	CloudSunRainIcon: () => Mg,
-	CloudSync: () => Ig,
-	CloudSyncIcon: () => Ig,
-	CloudUpload: () => Rg,
-	CloudUploadIcon: () => Rg,
-	Cloudy: () => Bg,
-	CloudyIcon: () => Bg,
-	Clover: () => Vg,
-	CloverIcon: () => Vg,
-	Club: () => Hg,
-	ClubIcon: () => Hg,
-	Code: () => Wg,
-	Code2: () => Ug,
-	Code2Icon: () => Ug,
-	CodeIcon: () => Wg,
+	ChevronsDown: () => Ef,
+	ChevronsDownIcon: () => Ef,
+	ChevronsDownUp: () => wf,
+	ChevronsDownUpIcon: () => wf,
+	ChevronsLeft: () => Mf,
+	ChevronsLeftIcon: () => Mf,
+	ChevronsLeftRight: () => Af,
+	ChevronsLeftRightEllipsis: () => Of,
+	ChevronsLeftRightEllipsisIcon: () => Of,
+	ChevronsLeftRightIcon: () => Af,
+	ChevronsRight: () => If,
+	ChevronsRightIcon: () => If,
+	ChevronsRightLeft: () => Pf,
+	ChevronsRightLeftIcon: () => Pf,
+	ChevronsUp: () => Bf,
+	ChevronsUpDown: () => Rf,
+	ChevronsUpDownIcon: () => Rf,
+	ChevronsUpIcon: () => Bf,
+	Church: () => Hf,
+	ChurchIcon: () => Hf,
+	Cigarette: () => Kf,
+	CigaretteIcon: () => Kf,
+	CigaretteOff: () => Wf,
+	CigaretteOffIcon: () => Wf,
+	Circle: () => Dm,
+	CircleAlert: () => F,
+	CircleAlertIcon: () => F,
+	CircleArrowDown: () => I,
+	CircleArrowDownIcon: () => I,
+	CircleArrowLeft: () => L,
+	CircleArrowLeftIcon: () => L,
+	CircleArrowOutDownLeft: () => R,
+	CircleArrowOutDownLeftIcon: () => R,
+	CircleArrowOutDownRight: () => z,
+	CircleArrowOutDownRightIcon: () => z,
+	CircleArrowOutUpLeft: () => B,
+	CircleArrowOutUpLeftIcon: () => B,
+	CircleArrowOutUpRight: () => ep,
+	CircleArrowOutUpRightIcon: () => ep,
+	CircleArrowRight: () => np,
+	CircleArrowRightIcon: () => np,
+	CircleArrowUp: () => ip,
+	CircleArrowUpIcon: () => ip,
+	CircleCheck: () => cp,
+	CircleCheckBig: () => op,
+	CircleCheckBigIcon: () => op,
+	CircleCheckIcon: () => cp,
+	CircleChevronDown: () => up,
+	CircleChevronDownIcon: () => up,
+	CircleChevronLeft: () => fp,
+	CircleChevronLeftIcon: () => fp,
+	CircleChevronRight: () => mp,
+	CircleChevronRightIcon: () => mp,
+	CircleChevronUp: () => gp,
+	CircleChevronUpIcon: () => gp,
+	CircleDashed: () => bp,
+	CircleDashedCheck: () => vp,
+	CircleDashedCheckIcon: () => vp,
+	CircleDashedIcon: () => bp,
+	CircleDivide: () => Sp,
+	CircleDivideIcon: () => Sp,
+	CircleDollarSign: () => wp,
+	CircleDollarSignIcon: () => wp,
+	CircleDot: () => Op,
+	CircleDotDashed: () => Ep,
+	CircleDotDashedIcon: () => Ep,
+	CircleDotIcon: () => Op,
+	CircleEllipsis: () => Ap,
+	CircleEllipsisIcon: () => Ap,
+	CircleEqual: () => Mp,
+	CircleEqualIcon: () => Mp,
+	CircleEuro: () => Pp,
+	CircleEuroIcon: () => Pp,
+	CircleFadingArrowUp: () => Ip,
+	CircleFadingArrowUpIcon: () => Ip,
+	CircleFadingPlus: () => Rp,
+	CircleFadingPlusIcon: () => Rp,
+	CircleGauge: () => Bp,
+	CircleGaugeIcon: () => Bp,
+	CircleHelp: () => V,
+	CircleHelpIcon: () => V,
+	CircleIcon: () => Dm,
+	CircleMinus: () => Hp,
+	CircleMinusIcon: () => Hp,
+	CircleOff: () => Wp,
+	CircleOffIcon: () => Wp,
+	CircleParking: () => Jp,
+	CircleParkingIcon: () => Jp,
+	CircleParkingOff: () => Kp,
+	CircleParkingOffIcon: () => Kp,
+	CirclePause: () => Xp,
+	CirclePauseIcon: () => Xp,
+	CirclePercent: () => Qp,
+	CirclePercentIcon: () => Qp,
+	CirclePile: () => em,
+	CirclePileIcon: () => em,
+	CirclePlay: () => nm,
+	CirclePlayIcon: () => nm,
+	CirclePlus: () => im,
+	CirclePlusIcon: () => im,
+	CirclePoundSterling: () => om,
+	CirclePoundSterlingIcon: () => om,
+	CirclePower: () => cm,
+	CirclePowerIcon: () => cm,
+	CircleQuestionMark: () => V,
+	CircleQuestionMarkIcon: () => V,
+	CircleSlash: () => pm,
+	CircleSlash2: () => dm,
+	CircleSlash2Icon: () => dm,
+	CircleSlashIcon: () => pm,
+	CircleSlashed: () => dm,
+	CircleSlashedIcon: () => dm,
+	CircleSmall: () => hm,
+	CircleSmallIcon: () => hm,
+	CircleStar: () => _m,
+	CircleStarIcon: () => _m,
+	CircleStop: () => ym,
+	CircleStopIcon: () => ym,
+	CircleUser: () => Cm,
+	CircleUserIcon: () => Cm,
+	CircleUserRound: () => xm,
+	CircleUserRoundIcon: () => xm,
+	CircleX: () => Tm,
+	CircleXIcon: () => Tm,
+	CircuitBoard: () => km,
+	CircuitBoardIcon: () => km,
+	Citrus: () => jm,
+	CitrusIcon: () => jm,
+	Clapperboard: () => Nm,
+	ClapperboardIcon: () => Nm,
+	ClefAlto: () => Fm,
+	ClefAltoIcon: () => Fm,
+	ClefBass: () => Lm,
+	ClefBassIcon: () => Lm,
+	ClefTreble: () => zm,
+	ClefTrebleIcon: () => zm,
+	Clipboard: () => sh,
+	ClipboardCheck: () => Um,
+	ClipboardCheckIcon: () => Um,
+	ClipboardClock: () => Vm,
+	ClipboardClockIcon: () => Vm,
+	ClipboardCopy: () => Gm,
+	ClipboardCopyIcon: () => Gm,
+	ClipboardEdit: () => th,
+	ClipboardEditIcon: () => th,
+	ClipboardIcon: () => sh,
+	ClipboardList: () => qm,
+	ClipboardListIcon: () => qm,
+	ClipboardMinus: () => Ym,
+	ClipboardMinusIcon: () => Ym,
+	ClipboardPaste: () => Zm,
+	ClipboardPasteIcon: () => Zm,
+	ClipboardPen: () => th,
+	ClipboardPenIcon: () => th,
+	ClipboardPenLine: () => $m,
+	ClipboardPenLineIcon: () => $m,
+	ClipboardPlus: () => rh,
+	ClipboardPlusIcon: () => rh,
+	ClipboardSignature: () => $m,
+	ClipboardSignatureIcon: () => $m,
+	ClipboardType: () => ah,
+	ClipboardTypeIcon: () => ah,
+	ClipboardX: () => dh,
+	ClipboardXIcon: () => dh,
+	Clock: () => Zh,
+	Clock1: () => lh,
+	Clock10: () => ph,
+	Clock10Icon: () => ph,
+	Clock11: () => hh,
+	Clock11Icon: () => hh,
+	Clock12: () => _h,
+	Clock12Icon: () => _h,
+	Clock1Icon: () => lh,
+	Clock2: () => yh,
+	Clock2Icon: () => yh,
+	Clock3: () => xh,
+	Clock3Icon: () => xh,
+	Clock4: () => Ch,
+	Clock4Icon: () => Ch,
+	Clock5: () => Th,
+	Clock5Icon: () => Th,
+	Clock6: () => Dh,
+	Clock6Icon: () => Dh,
+	Clock7: () => kh,
+	Clock7Icon: () => kh,
+	Clock8: () => jh,
+	Clock8Icon: () => jh,
+	Clock9: () => Nh,
+	Clock9Icon: () => Nh,
+	ClockAlert: () => zh,
+	ClockAlertIcon: () => zh,
+	ClockArrowDown: () => Fh,
+	ClockArrowDownIcon: () => Fh,
+	ClockArrowLeft: () => Lh,
+	ClockArrowLeftIcon: () => Lh,
+	ClockArrowRight: () => Vh,
+	ClockArrowRightIcon: () => Vh,
+	ClockArrowUp: () => Uh,
+	ClockArrowUpIcon: () => Uh,
+	ClockCheck: () => Gh,
+	ClockCheckIcon: () => Gh,
+	ClockFading: () => qh,
+	ClockFadingIcon: () => qh,
+	ClockIcon: () => Zh,
+	ClockPlus: () => Yh,
+	ClockPlusIcon: () => Yh,
+	ClosedCaption: () => $h,
+	ClosedCaptionIcon: () => $h,
+	Cloud: () => Mg,
+	CloudAlert: () => tg,
+	CloudAlertIcon: () => tg,
+	CloudBackup: () => rg,
+	CloudBackupIcon: () => rg,
+	CloudCheck: () => ag,
+	CloudCheckIcon: () => ag,
+	CloudCog: () => sg,
+	CloudCogIcon: () => sg,
+	CloudDownload: () => lg,
+	CloudDownloadIcon: () => lg,
+	CloudDrizzle: () => dg,
+	CloudDrizzleIcon: () => dg,
+	CloudFog: () => pg,
+	CloudFogIcon: () => pg,
+	CloudHail: () => hg,
+	CloudHailIcon: () => hg,
+	CloudIcon: () => Mg,
+	CloudLightning: () => _g,
+	CloudLightningIcon: () => _g,
+	CloudMoon: () => xg,
+	CloudMoonIcon: () => xg,
+	CloudMoonRain: () => yg,
+	CloudMoonRainIcon: () => yg,
+	CloudOff: () => Cg,
+	CloudOffIcon: () => Cg,
+	CloudRain: () => Eg,
+	CloudRainIcon: () => Eg,
+	CloudRainWind: () => Tg,
+	CloudRainWindIcon: () => Tg,
+	CloudSnow: () => Dg,
+	CloudSnowIcon: () => Dg,
+	CloudSun: () => kg,
+	CloudSunIcon: () => kg,
+	CloudSunRain: () => Og,
+	CloudSunRainIcon: () => Og,
+	CloudSync: () => Ag,
+	CloudSyncIcon: () => Ag,
+	CloudUpload: () => jg,
+	CloudUploadIcon: () => jg,
+	Cloudy: () => Ng,
+	CloudyIcon: () => Ng,
+	Clover: () => Pg,
+	CloverIcon: () => Pg,
+	Club: () => Fg,
+	ClubIcon: () => Fg,
+	Code: () => Lg,
+	Code2: () => Ig,
+	Code2Icon: () => Ig,
+	CodeIcon: () => Lg,
 	CodeSquare: () => R$,
 	CodeSquareIcon: () => R$,
-	CodeXml: () => Ug,
-	CodeXmlIcon: () => Ug,
-	Coffee: () => Kg,
-	CoffeeIcon: () => Kg,
-	Cog: () => Gg,
-	CogIcon: () => Gg,
-	Coins: () => qg,
-	CoinsIcon: () => qg,
-	Columns: () => Jg,
-	Columns2: () => Jg,
-	Columns2Icon: () => Jg,
-	Columns3: () => Yg,
-	Columns3Cog: () => V,
-	Columns3CogIcon: () => V,
-	Columns3Icon: () => Yg,
-	Columns4: () => Xg,
-	Columns4Icon: () => Xg,
-	ColumnsIcon: () => Jg,
-	ColumnsSettings: () => V,
-	ColumnsSettingsIcon: () => V,
-	Combine: () => Zg,
-	CombineIcon: () => Zg,
-	Command: () => Qg,
-	CommandIcon: () => Qg,
-	Compass: () => $g,
-	CompassIcon: () => $g,
-	Component: () => e_,
-	ComponentIcon: () => e_,
-	Computer: () => t_,
-	ComputerIcon: () => t_,
-	ConciergeBell: () => n_,
-	ConciergeBellIcon: () => n_,
-	Cone: () => r_,
-	ConeIcon: () => r_,
-	Construction: () => i_,
-	ConstructionIcon: () => i_,
-	Contact: () => o_,
-	Contact2: () => a_,
-	Contact2Icon: () => a_,
-	ContactIcon: () => o_,
-	ContactRound: () => a_,
-	ContactRoundIcon: () => a_,
-	Container: () => s_,
-	ContainerIcon: () => s_,
-	Contrast: () => c_,
-	ContrastIcon: () => c_,
-	Cookie: () => l_,
-	CookieIcon: () => l_,
+	CodeXml: () => Ig,
+	CodeXmlIcon: () => Ig,
+	Coffee: () => zg,
+	CoffeeIcon: () => zg,
+	Cog: () => Rg,
+	CogIcon: () => Rg,
+	Coins: () => Bg,
+	CoinsIcon: () => Bg,
+	Columns: () => Vg,
+	Columns2: () => Vg,
+	Columns2Icon: () => Vg,
+	Columns3: () => Hg,
+	Columns3Cog: () => H,
+	Columns3CogIcon: () => H,
+	Columns3Icon: () => Hg,
+	Columns4: () => Ug,
+	Columns4Icon: () => Ug,
+	ColumnsIcon: () => Vg,
+	ColumnsSettings: () => H,
+	ColumnsSettingsIcon: () => H,
+	Combine: () => Wg,
+	CombineIcon: () => Wg,
+	Command: () => Gg,
+	CommandIcon: () => Gg,
+	Compass: () => Kg,
+	CompassIcon: () => Kg,
+	Component: () => qg,
+	ComponentIcon: () => qg,
+	Computer: () => Jg,
+	ComputerIcon: () => Jg,
+	ConciergeBell: () => Yg,
+	ConciergeBellIcon: () => Yg,
+	Cone: () => Xg,
+	ConeIcon: () => Xg,
+	Construction: () => Qg,
+	ConstructionIcon: () => Qg,
+	Contact: () => n_,
+	Contact2: () => e_,
+	Contact2Icon: () => e_,
+	ContactIcon: () => n_,
+	ContactRound: () => e_,
+	ContactRoundIcon: () => e_,
+	Container: () => i_,
+	ContainerIcon: () => i_,
+	Contrast: () => o_,
+	ContrastIcon: () => o_,
+	Cookie: () => c_,
+	CookieIcon: () => c_,
 	CookingPot: () => u_,
 	CookingPotIcon: () => u_,
 	Copy: () => S_,
@@ -49026,8 +49024,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	CupSodaIcon: () => vv,
 	Cupcake: () => bv,
 	CupcakeIcon: () => bv,
-	CurlyBraces: () => O,
-	CurlyBracesIcon: () => O,
+	CurlyBraces: () => y,
+	CurlyBracesIcon: () => y,
 	Currency: () => Sv,
 	CurrencyIcon: () => Sv,
 	Cylinder: () => wv,
@@ -49097,8 +49095,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	DiscAlbumIcon: () => My,
 	DiscIcon: () => Py,
 	Divide: () => Iy,
-	DivideCircle: () => Cp,
-	DivideCircleIcon: () => Cp,
+	DivideCircle: () => Sp,
+	DivideCircleIcon: () => Sp,
 	DivideIcon: () => Iy,
 	DivideSquare: () => s1,
 	DivideSquareIcon: () => s1,
@@ -49131,8 +49129,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	DotSquare: () => l1,
 	DotSquareIcon: () => l1,
 	Download: () => fb,
-	DownloadCloud: () => ug,
-	DownloadCloudIcon: () => ug,
+	DownloadCloud: () => lg,
+	DownloadCloudIcon: () => lg,
 	DownloadIcon: () => fb,
 	DraftingCompass: () => ub,
 	DraftingCompassIcon: () => ub,
@@ -49164,12 +49162,12 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	EarthLockIcon: () => Ib,
 	Eclipse: () => Bb,
 	EclipseIcon: () => Bb,
-	Edit: () => J,
-	Edit2: () => NH,
-	Edit2Icon: () => NH,
-	Edit3: () => DH,
-	Edit3Icon: () => DH,
-	EditIcon: () => J,
+	Edit: () => Y,
+	Edit2: () => PH,
+	Edit2Icon: () => PH,
+	Edit3: () => OH,
+	Edit3Icon: () => OH,
+	EditIcon: () => Y,
 	Egg: () => Kb,
 	EggFried: () => Hb,
 	EggFriedIcon: () => Hb,
@@ -49247,10 +49245,10 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	File: () => aw,
 	FileArchive: () => oS,
 	FileArchiveIcon: () => oS,
-	FileAudio: () => H,
-	FileAudio2: () => H,
-	FileAudio2Icon: () => H,
-	FileAudioIcon: () => H,
+	FileAudio: () => U,
+	FileAudio2: () => U,
+	FileAudio2Icon: () => U,
+	FileAudioIcon: () => U,
 	FileAxis3D: () => cS,
 	FileAxis3DIcon: () => cS,
 	FileAxis3d: () => cS,
@@ -49305,8 +49303,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	FileEditIcon: () => pC,
 	FileExclamationPoint: () => WS,
 	FileExclamationPointIcon: () => WS,
-	FileHeadphone: () => H,
-	FileHeadphoneIcon: () => H,
+	FileHeadphone: () => U,
+	FileHeadphoneIcon: () => U,
 	FileHeart: () => qS,
 	FileHeartIcon: () => qS,
 	FileIcon: () => aw,
@@ -49455,8 +49453,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	FlaskRound: () => Gw,
 	FlaskRoundIcon: () => Gw,
 	FlipHorizontal: () => x$,
-	FlipHorizontal2: () => X,
-	FlipHorizontal2Icon: () => X,
+	FlipHorizontal2: () => H8,
+	FlipHorizontal2Icon: () => H8,
 	FlipHorizontalIcon: () => x$,
 	FlipVertical: () => C$,
 	FlipVertical2: () => W8,
@@ -49550,8 +49548,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	ForkliftIcon: () => hE,
 	Form: () => _E,
 	FormIcon: () => _E,
-	FormInput: () => qG,
-	FormInputIcon: () => qG,
+	FormInput: () => JG,
+	FormInputIcon: () => JG,
 	Forward: () => yE,
 	ForwardIcon: () => yE,
 	Frame: () => xE,
@@ -49588,17 +49586,17 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	GamepadDirectional: () => qE,
 	GamepadDirectionalIcon: () => qE,
 	GamepadIcon: () => YE,
-	GanttChart: () => Ad,
-	GanttChartIcon: () => Ad,
-	GanttChartSquare: () => K,
-	GanttChartSquareIcon: () => K,
+	GanttChart: () => M,
+	GanttChartIcon: () => M,
+	GanttChartSquare: () => q,
+	GanttChartSquareIcon: () => q,
 	GapHorizontal: () => ZE,
 	GapHorizontalIcon: () => ZE,
 	GapVertical: () => $E,
 	GapVerticalIcon: () => $E,
 	Gauge: () => tD,
-	GaugeCircle: () => Vp,
-	GaugeCircleIcon: () => Vp,
+	GaugeCircle: () => Bp,
+	GaugeCircleIcon: () => Bp,
 	GaugeIcon: () => tD,
 	Gavel: () => rD,
 	GavelIcon: () => rD,
@@ -49678,7 +49676,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	GraduationCapIcon: () => _O,
 	Grape: () => yO,
 	GrapeIcon: () => yO,
-	Grid: () => U,
+	Grid: () => W,
 	Grid2X2: () => DO,
 	Grid2X2Check: () => xO,
 	Grid2X2CheckIcon: () => xO,
@@ -49695,13 +49693,13 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	Grid2x2PlusIcon: () => CO,
 	Grid2x2X: () => TO,
 	Grid2x2XIcon: () => TO,
-	Grid3X3: () => U,
-	Grid3X3Icon: () => U,
+	Grid3X3: () => W,
+	Grid3X3Icon: () => W,
 	Grid3x2: () => kO,
 	Grid3x2Icon: () => kO,
-	Grid3x3: () => U,
-	Grid3x3Icon: () => U,
-	GridIcon: () => U,
+	Grid3x3: () => W,
+	Grid3x3Icon: () => W,
+	GridIcon: () => W,
 	Grip: () => IO,
 	GripHorizontal: () => PO,
 	GripHorizontalIcon: () => PO,
@@ -49796,16 +49794,16 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	HeaterIcon: () => mA,
 	Helicopter: () => gA,
 	HelicopterIcon: () => gA,
-	HelpCircle: () => B,
-	HelpCircleIcon: () => B,
+	HelpCircle: () => V,
+	HelpCircleIcon: () => V,
 	HelpingHand: () => nk,
 	HelpingHandIcon: () => nk,
 	Hexagon: () => vA,
 	HexagonIcon: () => vA,
 	Highlighter: () => bA,
 	HighlighterIcon: () => bA,
-	History: () => aq,
-	HistoryIcon: () => aq,
+	History: () => oq,
+	HistoryIcon: () => oq,
 	Home: () => WA,
 	HomeIcon: () => WA,
 	Hop: () => wA,
@@ -49834,867 +49832,867 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	HouseWifiIcon: () => HA,
 	Houses: () => KA,
 	HousesIcon: () => KA,
-	IceCream: () => XA,
-	IceCream2: () => JA,
-	IceCream2Icon: () => JA,
-	IceCreamBowl: () => JA,
-	IceCreamBowlIcon: () => JA,
-	IceCreamCone: () => XA,
-	IceCreamConeIcon: () => XA,
-	IceCreamIcon: () => XA,
-	Icon: () => le,
-	IdCard: () => nj,
-	IdCardIcon: () => nj,
-	IdCardLanyard: () => QA,
-	IdCardLanyardIcon: () => QA,
-	Image: () => uj,
-	ImageDown: () => ej,
-	ImageDownIcon: () => ej,
-	ImageIcon: () => uj,
-	ImageMinus: () => ij,
-	ImageMinusIcon: () => ij,
-	ImageOff: () => aj,
-	ImageOffIcon: () => aj,
-	ImagePlay: () => oj,
-	ImagePlayIcon: () => oj,
-	ImagePlus: () => sj,
-	ImagePlusIcon: () => sj,
-	ImageUp: () => cj,
-	ImageUpIcon: () => cj,
-	ImageUpscale: () => lj,
-	ImageUpscaleIcon: () => lj,
-	Images: () => fj,
-	ImagesIcon: () => fj,
-	Import: () => dj,
-	ImportIcon: () => dj,
-	Inbox: () => pj,
-	InboxIcon: () => pj,
-	Indent: () => G,
-	IndentDecrease: () => W,
-	IndentDecreaseIcon: () => W,
-	IndentIcon: () => G,
-	IndentIncrease: () => G,
-	IndentIncreaseIcon: () => G,
-	IndianRupee: () => mj,
-	IndianRupeeIcon: () => mj,
-	Infinity: () => gj,
-	InfinityIcon: () => gj,
-	Info: () => hj,
-	InfoIcon: () => hj,
+	IceCream: () => JA,
+	IceCream2: () => qA,
+	IceCream2Icon: () => qA,
+	IceCreamBowl: () => qA,
+	IceCreamBowlIcon: () => qA,
+	IceCreamCone: () => JA,
+	IceCreamConeIcon: () => JA,
+	IceCreamIcon: () => JA,
+	Icon: () => pe,
+	IdCard: () => ZA,
+	IdCardIcon: () => ZA,
+	IdCardLanyard: () => YA,
+	IdCardLanyardIcon: () => YA,
+	Image: () => ij,
+	ImageDown: () => XA,
+	ImageDownIcon: () => XA,
+	ImageIcon: () => ij,
+	ImageMinus: () => QA,
+	ImageMinusIcon: () => QA,
+	ImageOff: () => $A,
+	ImageOffIcon: () => $A,
+	ImagePlay: () => ej,
+	ImagePlayIcon: () => ej,
+	ImagePlus: () => tj,
+	ImagePlusIcon: () => tj,
+	ImageUp: () => nj,
+	ImageUpIcon: () => nj,
+	ImageUpscale: () => rj,
+	ImageUpscaleIcon: () => rj,
+	Images: () => oj,
+	ImagesIcon: () => oj,
+	Import: () => aj,
+	ImportIcon: () => aj,
+	Inbox: () => sj,
+	InboxIcon: () => sj,
+	Indent: () => K,
+	IndentDecrease: () => G,
+	IndentDecreaseIcon: () => G,
+	IndentIcon: () => K,
+	IndentIncrease: () => K,
+	IndentIncreaseIcon: () => K,
+	IndianRupee: () => cj,
+	IndianRupeeIcon: () => cj,
+	Infinity: () => uj,
+	InfinityIcon: () => uj,
+	Info: () => lj,
+	InfoIcon: () => lj,
 	Inspect: () => D1,
 	InspectIcon: () => D1,
-	InspectionPanel: () => _j,
-	InspectionPanelIcon: () => _j,
-	Italic: () => vj,
-	ItalicIcon: () => vj,
-	IterationCcw: () => yj,
-	IterationCcwIcon: () => yj,
-	IterationCw: () => bj,
-	IterationCwIcon: () => bj,
-	IvBag: () => xj,
-	IvBagIcon: () => xj,
-	JapaneseYen: () => Sj,
-	JapaneseYenIcon: () => Sj,
-	Joystick: () => Cj,
-	JoystickIcon: () => Cj,
-	Kanban: () => wj,
-	KanbanIcon: () => wj,
+	InspectionPanel: () => dj,
+	InspectionPanelIcon: () => dj,
+	Italic: () => fj,
+	ItalicIcon: () => fj,
+	IterationCcw: () => pj,
+	IterationCcwIcon: () => pj,
+	IterationCw: () => mj,
+	IterationCwIcon: () => mj,
+	IvBag: () => hj,
+	IvBagIcon: () => hj,
+	JapaneseYen: () => gj,
+	JapaneseYenIcon: () => gj,
+	Joystick: () => _j,
+	JoystickIcon: () => _j,
+	Kanban: () => vj,
+	KanbanIcon: () => vj,
 	KanbanSquare: () => _1,
 	KanbanSquareDashed: () => W$,
 	KanbanSquareDashedIcon: () => W$,
 	KanbanSquareIcon: () => _1,
-	Kayak: () => Tj,
-	KayakIcon: () => Tj,
-	Key: () => Oj,
-	KeyIcon: () => Oj,
-	KeyRound: () => Ej,
-	KeyRoundIcon: () => Ej,
-	KeySquare: () => Dj,
-	KeySquareIcon: () => Dj,
-	Keyboard: () => jj,
-	KeyboardIcon: () => jj,
-	KeyboardMusic: () => kj,
-	KeyboardMusicIcon: () => kj,
-	KeyboardOff: () => Aj,
-	KeyboardOffIcon: () => Aj,
-	Lambda: () => Mj,
-	LambdaIcon: () => Mj,
-	Lamp: () => Rj,
-	LampCeiling: () => Nj,
-	LampCeilingIcon: () => Nj,
-	LampDesk: () => Pj,
-	LampDeskIcon: () => Pj,
-	LampFloor: () => Fj,
-	LampFloorIcon: () => Fj,
-	LampIcon: () => Rj,
-	LampWallDown: () => Ij,
-	LampWallDownIcon: () => Ij,
-	LampWallUp: () => Lj,
-	LampWallUpIcon: () => Lj,
-	LandPlot: () => zj,
-	LandPlotIcon: () => zj,
-	Landmark: () => Bj,
-	LandmarkIcon: () => Bj,
-	Languages: () => Vj,
-	LanguagesIcon: () => Vj,
-	Laptop: () => Wj,
-	Laptop2: () => Uj,
-	Laptop2Icon: () => Uj,
-	LaptopIcon: () => Wj,
-	LaptopMinimal: () => Uj,
-	LaptopMinimalCheck: () => Hj,
-	LaptopMinimalCheckIcon: () => Hj,
-	LaptopMinimalIcon: () => Uj,
-	Lasso: () => Kj,
-	LassoIcon: () => Kj,
-	LassoSelect: () => Gj,
-	LassoSelectIcon: () => Gj,
+	Kayak: () => yj,
+	KayakIcon: () => yj,
+	Key: () => Sj,
+	KeyIcon: () => Sj,
+	KeyRound: () => bj,
+	KeyRoundIcon: () => bj,
+	KeySquare: () => xj,
+	KeySquareIcon: () => xj,
+	Keyboard: () => Tj,
+	KeyboardIcon: () => Tj,
+	KeyboardMusic: () => Cj,
+	KeyboardMusicIcon: () => Cj,
+	KeyboardOff: () => wj,
+	KeyboardOffIcon: () => wj,
+	Lambda: () => Ej,
+	LambdaIcon: () => Ej,
+	Lamp: () => Mj,
+	LampCeiling: () => Dj,
+	LampCeilingIcon: () => Dj,
+	LampDesk: () => Oj,
+	LampDeskIcon: () => Oj,
+	LampFloor: () => kj,
+	LampFloorIcon: () => kj,
+	LampIcon: () => Mj,
+	LampWallDown: () => Aj,
+	LampWallDownIcon: () => Aj,
+	LampWallUp: () => jj,
+	LampWallUpIcon: () => jj,
+	LandPlot: () => Nj,
+	LandPlotIcon: () => Nj,
+	Landmark: () => Pj,
+	LandmarkIcon: () => Pj,
+	Languages: () => Fj,
+	LanguagesIcon: () => Fj,
+	Laptop: () => Rj,
+	Laptop2: () => Lj,
+	Laptop2Icon: () => Lj,
+	LaptopIcon: () => Rj,
+	LaptopMinimal: () => Lj,
+	LaptopMinimalCheck: () => Ij,
+	LaptopMinimalCheckIcon: () => Ij,
+	LaptopMinimalIcon: () => Lj,
+	Lasso: () => Bj,
+	LassoIcon: () => Bj,
+	LassoSelect: () => zj,
+	LassoSelectIcon: () => zj,
 	Laugh: () => Ix,
 	LaughIcon: () => Ix,
-	LayerArrowDown: () => qj,
-	LayerArrowDownIcon: () => qj,
-	LayerArrowUp: () => Jj,
-	LayerArrowUpIcon: () => Jj,
-	Layers: () => eM,
-	Layers2: () => Yj,
-	Layers2Icon: () => Yj,
-	Layers3: () => eM,
-	Layers3Icon: () => eM,
-	LayersArrowDown: () => Xj,
-	LayersArrowDownIcon: () => Xj,
-	LayersArrowUp: () => Zj,
-	LayersArrowUpIcon: () => Zj,
-	LayersIcon: () => eM,
-	LayersMinus: () => Qj,
-	LayersMinusIcon: () => Qj,
-	LayersPlus: () => $j,
-	LayersPlusIcon: () => $j,
-	Layout: () => aH,
-	LayoutArrowDown: () => tM,
-	LayoutArrowDownIcon: () => tM,
-	LayoutArrowRight: () => nM,
-	LayoutArrowRightIcon: () => nM,
-	LayoutDashboard: () => rM,
-	LayoutDashboardIcon: () => rM,
+	LayerArrowDown: () => Vj,
+	LayerArrowDownIcon: () => Vj,
+	LayerArrowUp: () => Hj,
+	LayerArrowUpIcon: () => Hj,
+	Layers: () => Xj,
+	Layers2: () => Uj,
+	Layers2Icon: () => Uj,
+	Layers3: () => Xj,
+	Layers3Icon: () => Xj,
+	LayersArrowDown: () => Wj,
+	LayersArrowDownIcon: () => Wj,
+	LayersArrowUp: () => Gj,
+	LayersArrowUpIcon: () => Gj,
+	LayersIcon: () => Xj,
+	LayersMinus: () => Kj,
+	LayersMinusIcon: () => Kj,
+	LayersPlus: () => Jj,
+	LayersPlusIcon: () => Jj,
+	Layout: () => oH,
+	LayoutArrowDown: () => Qj,
+	LayoutArrowDownIcon: () => Qj,
+	LayoutArrowRight: () => eM,
+	LayoutArrowRightIcon: () => eM,
+	LayoutDashboard: () => nM,
+	LayoutDashboardIcon: () => nM,
 	LayoutFreeform: () => iM,
 	LayoutFreeformIcon: () => iM,
-	LayoutGrid: () => aM,
-	LayoutGridIcon: () => aM,
-	LayoutIcon: () => aH,
-	LayoutList: () => sM,
-	LayoutListIcon: () => sM,
-	LayoutPanelLeft: () => lM,
-	LayoutPanelLeftIcon: () => lM,
-	LayoutPanelTop: () => dM,
-	LayoutPanelTopIcon: () => dM,
-	LayoutTemplate: () => pM,
-	LayoutTemplateIcon: () => pM,
-	Leaf: () => hM,
-	LeafIcon: () => hM,
-	LeafyGreen: () => _M,
-	LeafyGreenIcon: () => _M,
-	Lectern: () => yM,
-	LecternIcon: () => yM,
-	LensConcave: () => xM,
-	LensConcaveIcon: () => xM,
-	LensConvex: () => CM,
-	LensConvexIcon: () => CM,
+	LayoutGrid: () => oM,
+	LayoutGridIcon: () => oM,
+	LayoutIcon: () => oH,
+	LayoutList: () => cM,
+	LayoutListIcon: () => cM,
+	LayoutPanelLeft: () => uM,
+	LayoutPanelLeftIcon: () => uM,
+	LayoutPanelTop: () => fM,
+	LayoutPanelTopIcon: () => fM,
+	LayoutTemplate: () => mM,
+	LayoutTemplateIcon: () => mM,
+	Leaf: () => gM,
+	LeafIcon: () => gM,
+	LeafyGreen: () => vM,
+	LeafyGreenIcon: () => vM,
+	Lectern: () => bM,
+	LecternIcon: () => bM,
+	LensConcave: () => SM,
+	LensConcaveIcon: () => SM,
+	LensConvex: () => wM,
+	LensConvexIcon: () => wM,
 	LetterText: () => N3,
 	LetterTextIcon: () => N3,
-	Library: () => TM,
-	LibraryBig: () => DM,
-	LibraryBigIcon: () => DM,
-	LibraryIcon: () => TM,
+	Library: () => EM,
+	LibraryBig: () => OM,
+	LibraryBigIcon: () => OM,
+	LibraryIcon: () => EM,
 	LibrarySquare: () => y1,
 	LibrarySquareIcon: () => y1,
-	LifeBuoy: () => kM,
-	LifeBuoyIcon: () => kM,
-	Ligature: () => jM,
-	LigatureIcon: () => jM,
-	Lightbulb: () => FM,
-	LightbulbIcon: () => FM,
-	LightbulbOff: () => NM,
-	LightbulbOffIcon: () => NM,
-	Lighthouse: () => LM,
-	LighthouseIcon: () => LM,
-	LineChart: () => R,
-	LineChartIcon: () => R,
-	LineDotBottomVertical: () => zM,
-	LineDotBottomVerticalIcon: () => zM,
-	LineDotLeftHorizontal: () => VM,
-	LineDotLeftHorizontalIcon: () => VM,
-	LineDotRightHorizontal: () => GM,
-	LineDotRightHorizontalIcon: () => GM,
-	LineDotTopVertical: () => UM,
-	LineDotTopVerticalIcon: () => UM,
-	LineSquiggle: () => qM,
-	LineSquiggleIcon: () => qM,
-	LineStyle: () => YM,
-	LineStyleIcon: () => YM,
-	Link: () => tN,
-	Link2: () => $M,
-	Link2Icon: () => $M,
-	Link2Off: () => ZM,
-	Link2OffIcon: () => ZM,
-	LinkIcon: () => tN,
-	List: () => qN,
-	ListCheck: () => rN,
-	ListCheckIcon: () => rN,
-	ListChecks: () => aN,
-	ListChecksIcon: () => aN,
-	ListChevronsDownUp: () => sN,
-	ListChevronsDownUpIcon: () => sN,
-	ListChevronsUpDown: () => lN,
-	ListChevronsUpDownIcon: () => lN,
-	ListClock: () => dN,
-	ListClockIcon: () => dN,
-	ListCollapse: () => pN,
-	ListCollapseIcon: () => pN,
-	ListEnd: () => hN,
-	ListEndIcon: () => hN,
-	ListFilter: () => yN,
-	ListFilterIcon: () => yN,
-	ListFilterPlus: () => _N,
-	ListFilterPlusIcon: () => _N,
-	ListIcon: () => qN,
-	ListIndentDecrease: () => W,
-	ListIndentDecreaseIcon: () => W,
-	ListIndentIncrease: () => G,
-	ListIndentIncreaseIcon: () => G,
-	ListMinus: () => CN,
-	ListMinusIcon: () => CN,
-	ListMusic: () => TN,
-	ListMusicIcon: () => TN,
-	ListOrdered: () => DN,
-	ListOrderedIcon: () => DN,
-	ListPlus: () => kN,
-	ListPlusIcon: () => kN,
-	ListRestart: () => jN,
-	ListRestartIcon: () => jN,
-	ListSortAscending: () => NN,
-	ListSortAscendingIcon: () => NN,
-	ListSortDescending: () => FN,
-	ListSortDescendingIcon: () => FN,
-	ListStart: () => LN,
-	ListStartIcon: () => LN,
-	ListTodo: () => zN,
-	ListTodoIcon: () => zN,
-	ListTree: () => VN,
-	ListTreeIcon: () => VN,
-	ListVideo: () => UN,
-	ListVideoIcon: () => UN,
-	ListX: () => GN,
-	ListXIcon: () => GN,
-	Loader: () => $N,
-	Loader2: () => YN,
-	Loader2Icon: () => YN,
-	LoaderCircle: () => YN,
-	LoaderCircleIcon: () => YN,
-	LoaderIcon: () => $N,
-	LoaderPinwheel: () => ZN,
-	LoaderPinwheelIcon: () => ZN,
-	Locate: () => aP,
-	LocateFixed: () => tP,
-	LocateFixedIcon: () => tP,
-	LocateIcon: () => aP,
-	LocateOff: () => rP,
-	LocateOffIcon: () => rP,
-	LocationEdit: () => hF,
-	LocationEditIcon: () => hF,
-	Lock: () => pP,
-	LockIcon: () => pP,
-	LockKeyhole: () => lP,
-	LockKeyholeIcon: () => lP,
-	LockKeyholeOpen: () => sP,
-	LockKeyholeOpenIcon: () => sP,
-	LockOpen: () => dP,
-	LockOpenIcon: () => dP,
-	LogIn: () => hP,
-	LogInIcon: () => hP,
-	LogOut: () => _P,
-	LogOutIcon: () => _P,
-	Logs: () => yP,
-	LogsIcon: () => yP,
-	Lollipop: () => xP,
-	LollipopIcon: () => xP,
-	LucideAArrowDown: () => he,
-	LucideAArrowUp: () => de,
-	LucideALargeSmall: () => pe,
-	LucideAccessibility: () => ye,
-	LucideActivity: () => _e,
+	LifeBuoy: () => AM,
+	LifeBuoyIcon: () => AM,
+	Ligature: () => MM,
+	LigatureIcon: () => MM,
+	Lightbulb: () => IM,
+	LightbulbIcon: () => IM,
+	LightbulbOff: () => PM,
+	LightbulbOffIcon: () => PM,
+	Lighthouse: () => RM,
+	LighthouseIcon: () => RM,
+	LineChart: () => k,
+	LineChartIcon: () => k,
+	LineDotBottomVertical: () => BM,
+	LineDotBottomVerticalIcon: () => BM,
+	LineDotLeftHorizontal: () => HM,
+	LineDotLeftHorizontalIcon: () => HM,
+	LineDotRightHorizontal: () => KM,
+	LineDotRightHorizontalIcon: () => KM,
+	LineDotTopVertical: () => WM,
+	LineDotTopVerticalIcon: () => WM,
+	LineSquiggle: () => JM,
+	LineSquiggleIcon: () => JM,
+	LineStyle: () => XM,
+	LineStyleIcon: () => XM,
+	Link: () => nN,
+	Link2: () => eN,
+	Link2Icon: () => eN,
+	Link2Off: () => QM,
+	Link2OffIcon: () => QM,
+	LinkIcon: () => nN,
+	List: () => JN,
+	ListCheck: () => iN,
+	ListCheckIcon: () => iN,
+	ListChecks: () => oN,
+	ListChecksIcon: () => oN,
+	ListChevronsDownUp: () => cN,
+	ListChevronsDownUpIcon: () => cN,
+	ListChevronsUpDown: () => uN,
+	ListChevronsUpDownIcon: () => uN,
+	ListClock: () => fN,
+	ListClockIcon: () => fN,
+	ListCollapse: () => mN,
+	ListCollapseIcon: () => mN,
+	ListEnd: () => gN,
+	ListEndIcon: () => gN,
+	ListFilter: () => bN,
+	ListFilterIcon: () => bN,
+	ListFilterPlus: () => vN,
+	ListFilterPlusIcon: () => vN,
+	ListIcon: () => JN,
+	ListIndentDecrease: () => G,
+	ListIndentDecreaseIcon: () => G,
+	ListIndentIncrease: () => K,
+	ListIndentIncreaseIcon: () => K,
+	ListMinus: () => wN,
+	ListMinusIcon: () => wN,
+	ListMusic: () => EN,
+	ListMusicIcon: () => EN,
+	ListOrdered: () => ON,
+	ListOrderedIcon: () => ON,
+	ListPlus: () => AN,
+	ListPlusIcon: () => AN,
+	ListRestart: () => MN,
+	ListRestartIcon: () => MN,
+	ListSortAscending: () => PN,
+	ListSortAscendingIcon: () => PN,
+	ListSortDescending: () => IN,
+	ListSortDescendingIcon: () => IN,
+	ListStart: () => RN,
+	ListStartIcon: () => RN,
+	ListTodo: () => BN,
+	ListTodoIcon: () => BN,
+	ListTree: () => HN,
+	ListTreeIcon: () => HN,
+	ListVideo: () => WN,
+	ListVideoIcon: () => WN,
+	ListX: () => KN,
+	ListXIcon: () => KN,
+	Loader: () => eP,
+	Loader2: () => XN,
+	Loader2Icon: () => XN,
+	LoaderCircle: () => XN,
+	LoaderCircleIcon: () => XN,
+	LoaderIcon: () => eP,
+	LoaderPinwheel: () => QN,
+	LoaderPinwheelIcon: () => QN,
+	Locate: () => oP,
+	LocateFixed: () => nP,
+	LocateFixedIcon: () => nP,
+	LocateIcon: () => oP,
+	LocateOff: () => iP,
+	LocateOffIcon: () => iP,
+	LocationEdit: () => gF,
+	LocationEditIcon: () => gF,
+	Lock: () => mP,
+	LockIcon: () => mP,
+	LockKeyhole: () => uP,
+	LockKeyholeIcon: () => uP,
+	LockKeyholeOpen: () => cP,
+	LockKeyholeOpenIcon: () => cP,
+	LockOpen: () => fP,
+	LockOpenIcon: () => fP,
+	LogIn: () => gP,
+	LogInIcon: () => gP,
+	LogOut: () => vP,
+	LogOutIcon: () => vP,
+	Logs: () => bP,
+	LogsIcon: () => bP,
+	Lollipop: () => SP,
+	LollipopIcon: () => SP,
+	LucideAArrowDown: () => ve,
+	LucideAArrowUp: () => he,
+	LucideALargeSmall: () => ge,
+	LucideAccessibility: () => Se,
+	LucideActivity: () => be,
 	LucideActivitySquare: () => zQ,
-	LucideAd: () => xe,
-	LucideAirVent: () => Ce,
-	LucideAirplay: () => we,
-	LucideAlarmCheck: () => Ee,
-	LucideAlarmClock: () => Me,
-	LucideAlarmClockCheck: () => Ee,
-	LucideAlarmClockMinus: () => Ae,
-	LucideAlarmClockOff: () => Oe,
-	LucideAlarmClockPlus: () => Pe,
-	LucideAlarmMinus: () => Ae,
-	LucideAlarmPlus: () => Pe,
-	LucideAlarmSmoke: () => Ie,
+	LucideAd: () => we,
+	LucideAirVent: () => Ee,
+	LucideAirplay: () => Oe,
+	LucideAlarmCheck: () => Ae,
+	LucideAlarmClock: () => Ie,
+	LucideAlarmClockCheck: () => Ae,
+	LucideAlarmClockMinus: () => Pe,
+	LucideAlarmClockOff: () => Me,
+	LucideAlarmClockPlus: () => Re,
+	LucideAlarmMinus: () => Pe,
+	LucideAlarmPlus: () => Re,
+	LucideAlarmSmoke: () => Be,
 	LucideAlbum: () => _$,
-	LucideAlertCircle: () => Uf,
-	LucideAlertOctagon: () => DB,
-	LucideAlertTriangle: () => F8,
+	LucideAlertCircle: () => F,
+	LucideAlertOctagon: () => OB,
+	LucideAlertTriangle: () => P8,
 	LucideAlignCenter: () => S3,
-	LucideAlignCenterHorizontal: () => Re,
-	LucideAlignCenterVertical: () => Be,
-	LucideAlignEndHorizontal: () => We,
-	LucideAlignEndVertical: () => He,
-	LucideAlignHorizontalDistributeCenter: () => Ke,
-	LucideAlignHorizontalDistributeEnd: () => Je,
-	LucideAlignHorizontalDistributeStart: () => Xe,
-	LucideAlignHorizontalJustifyCenter: () => Qe,
-	LucideAlignHorizontalJustifyEnd: () => et,
-	LucideAlignHorizontalJustifyStart: () => nt,
-	LucideAlignHorizontalSpaceAround: () => it,
-	LucideAlignHorizontalSpaceBetween: () => ot,
+	LucideAlignCenterHorizontal: () => He,
+	LucideAlignCenterVertical: () => We,
+	LucideAlignEndHorizontal: () => Je,
+	LucideAlignEndVertical: () => Ke,
+	LucideAlignHorizontalDistributeCenter: () => Xe,
+	LucideAlignHorizontalDistributeEnd: () => Qe,
+	LucideAlignHorizontalDistributeStart: () => et,
+	LucideAlignHorizontalJustifyCenter: () => nt,
+	LucideAlignHorizontalJustifyEnd: () => it,
+	LucideAlignHorizontalJustifyStart: () => ot,
+	LucideAlignHorizontalSpaceAround: () => ct,
+	LucideAlignHorizontalSpaceBetween: () => ut,
 	LucideAlignJustify: () => E3,
-	LucideAlignLeft: () => Y,
+	LucideAlignLeft: () => X,
 	LucideAlignRight: () => w3,
-	LucideAlignStartHorizontal: () => ct,
-	LucideAlignStartVertical: () => ut,
-	LucideAlignVerticalDistributeCenter: () => ft,
-	LucideAlignVerticalDistributeEnd: () => mt,
-	LucideAlignVerticalDistributeStart: () => gt,
-	LucideAlignVerticalJustifyCenter: () => vt,
-	LucideAlignVerticalJustifyEnd: () => bt,
-	LucideAlignVerticalJustifyStart: () => St,
-	LucideAlignVerticalSpaceAround: () => Ct,
-	LucideAlignVerticalSpaceBetween: () => wt,
-	LucideAmbulance: () => Tt,
-	LucideAmpersand: () => Dt,
-	LucideAmpersands: () => kt,
-	LucideAmphora: () => jt,
-	LucideAnchor: () => Lt,
-	LucideAngle: () => Nt,
+	LucideAlignStartHorizontal: () => ft,
+	LucideAlignStartVertical: () => mt,
+	LucideAlignVerticalDistributeCenter: () => gt,
+	LucideAlignVerticalDistributeEnd: () => _t,
+	LucideAlignVerticalDistributeStart: () => vt,
+	LucideAlignVerticalJustifyCenter: () => bt,
+	LucideAlignVerticalJustifyEnd: () => St,
+	LucideAlignVerticalJustifyStart: () => wt,
+	LucideAlignVerticalSpaceAround: () => Et,
+	LucideAlignVerticalSpaceBetween: () => Ot,
+	LucideAmbulance: () => At,
+	LucideAmpersand: () => Mt,
+	LucideAmpersands: () => Pt,
+	LucideAmphora: () => It,
+	LucideAnchor: () => Ht,
+	LucideAngle: () => Rt,
 	LucideAngry: () => Mx,
 	LucideAnnoyed: () => Px,
-	LucideAntenna: () => Ft,
-	LucideAnvil: () => zt,
-	LucideAperture: () => Vt,
-	LucideAppWindow: () => Gt,
-	LucideAppWindowMac: () => Ut,
-	LucideApple: () => qt,
-	LucideArchive: () => $t,
-	LucideArchiveRestore: () => Yt,
-	LucideArchiveX: () => Zt,
-	LucideAreaChart: () => j,
-	LucideArmchair: () => tn,
-	LucideArrowBigDown: () => rn,
-	LucideArrowBigDownDash: () => on,
-	LucideArrowBigLeft: () => un,
-	LucideArrowBigLeftDash: () => cn,
-	LucideArrowBigRight: () => mn,
-	LucideArrowBigRightDash: () => fn,
-	LucideArrowBigUp: () => vn,
-	LucideArrowBigUpDash: () => gn,
-	LucideArrowDown: () => Hn,
-	LucideArrowDown01: () => bn,
-	LucideArrowDown10: () => Sn,
-	LucideArrowDownAZ: () => wn,
-	LucideArrowDownAz: () => wn,
-	LucideArrowDownCircle: () => Gf,
-	LucideArrowDownFromLine: () => Tn,
-	LucideArrowDownLeft: () => Dn,
-	LucideArrowDownLeftFromCircle: () => Yf,
+	LucideAntenna: () => Bt,
+	LucideAnvil: () => Wt,
+	LucideAperture: () => Kt,
+	LucideAppWindow: () => Xt,
+	LucideAppWindowMac: () => Jt,
+	LucideApple: () => Qt,
+	LucideArchive: () => an,
+	LucideArchiveRestore: () => en,
+	LucideArchiveX: () => nn,
+	LucideAreaChart: () => S,
+	LucideArmchair: () => sn,
+	LucideArrowBigDown: () => ln,
+	LucideArrowBigDownDash: () => dn,
+	LucideArrowBigLeft: () => hn,
+	LucideArrowBigLeftDash: () => pn,
+	LucideArrowBigRight: () => vn,
+	LucideArrowBigRightDash: () => _n,
+	LucideArrowBigUp: () => xn,
+	LucideArrowBigUpDash: () => yn,
+	LucideArrowDown: () => qn,
+	LucideArrowDown01: () => Cn,
+	LucideArrowDown10: () => Tn,
+	LucideArrowDownAZ: () => Dn,
+	LucideArrowDownAz: () => Dn,
+	LucideArrowDownCircle: () => I,
+	LucideArrowDownFromLine: () => kn,
+	LucideArrowDownLeft: () => jn,
+	LucideArrowDownLeftFromCircle: () => R,
 	LucideArrowDownLeftFromSquare: () => YQ,
 	LucideArrowDownLeftSquare: () => VQ,
-	LucideArrowDownNarrowWide: () => kn,
-	LucideArrowDownRight: () => jn,
-	LucideArrowDownRightFromCircle: () => Zf,
+	LucideArrowDownNarrowWide: () => Nn,
+	LucideArrowDownRight: () => Fn,
+	LucideArrowDownRightFromCircle: () => z,
 	LucideArrowDownRightFromSquare: () => ZQ,
 	LucideArrowDownRightSquare: () => UQ,
 	LucideArrowDownSquare: () => qQ,
-	LucideArrowDownToDot: () => Nn,
-	LucideArrowDownToLine: () => Fn,
-	LucideArrowDownUp: () => Ln,
-	LucideArrowDownWideNarrow: () => zn,
-	LucideArrowDownZA: () => _,
-	LucideArrowDownZa: () => _,
-	LucideArrowLeft: () => Xn,
-	LucideArrowLeftCircle: () => qf,
-	LucideArrowLeftFromLine: () => Wn,
-	LucideArrowLeftRight: () => Kn,
+	LucideArrowDownToDot: () => Ln,
+	LucideArrowDownToLine: () => zn,
+	LucideArrowDownUp: () => Vn,
+	LucideArrowDownWideNarrow: () => Un,
+	LucideArrowDownZA: () => Gn,
+	LucideArrowDownZa: () => Gn,
+	LucideArrowLeft: () => tr,
+	LucideArrowLeftCircle: () => L,
+	LucideArrowLeftFromLine: () => Yn,
+	LucideArrowLeftRight: () => Zn,
 	LucideArrowLeftSquare: () => GQ,
-	LucideArrowLeftToLine: () => Jn,
-	LucideArrowRight: () => ir,
-	LucideArrowRightCircle: () => rp,
-	LucideArrowRightFromLine: () => Qn,
-	LucideArrowRightLeft: () => er,
+	LucideArrowLeftToLine: () => $n,
+	LucideArrowRight: () => lr,
+	LucideArrowRightCircle: () => np,
+	LucideArrowRightFromLine: () => rr,
+	LucideArrowRightLeft: () => ar,
 	LucideArrowRightSquare: () => s$,
-	LucideArrowRightToLine: () => nr,
-	LucideArrowUp: () => Dr,
-	LucideArrowUp01: () => or,
-	LucideArrowUp10: () => cr,
-	LucideArrowUpAZ: () => v,
-	LucideArrowUpAz: () => v,
-	LucideArrowUpCircle: () => ap,
-	LucideArrowUpDown: () => dr,
-	LucideArrowUpFromDot: () => pr,
-	LucideArrowUpFromLine: () => hr,
-	LucideArrowUpLeft: () => _r,
-	LucideArrowUpLeftFromCircle: () => $f,
+	LucideArrowRightToLine: () => sr,
+	LucideArrowUp: () => Fr,
+	LucideArrowUp01: () => dr,
+	LucideArrowUp10: () => pr,
+	LucideArrowUpAZ: () => hr,
+	LucideArrowUpAz: () => hr,
+	LucideArrowUpCircle: () => ip,
+	LucideArrowUpDown: () => _r,
+	LucideArrowUpFromDot: () => yr,
+	LucideArrowUpFromLine: () => xr,
+	LucideArrowUpLeft: () => Cr,
+	LucideArrowUpLeftFromCircle: () => B,
 	LucideArrowUpLeftFromSquare: () => $Q,
 	LucideArrowUpLeftSquare: () => l$,
-	LucideArrowUpNarrowWide: () => y,
-	LucideArrowUpRight: () => br,
-	LucideArrowUpRightFromCircle: () => tp,
+	LucideArrowUpNarrowWide: () => Tr,
+	LucideArrowUpRight: () => Dr,
+	LucideArrowUpRightFromCircle: () => ep,
 	LucideArrowUpRightFromSquare: () => t$,
 	LucideArrowUpRightSquare: () => d$,
 	LucideArrowUpSquare: () => p$,
-	LucideArrowUpToLine: () => Sr,
-	LucideArrowUpWideNarrow: () => wr,
-	LucideArrowUpZA: () => b,
-	LucideArrowUpZa: () => b,
-	LucideArrowsUpFromLine: () => kr,
-	LucideAsterisk: () => jr,
+	LucideArrowUpToLine: () => kr,
+	LucideArrowUpWideNarrow: () => jr,
+	LucideArrowUpZA: () => Nr,
+	LucideArrowUpZa: () => Nr,
+	LucideArrowsUpFromLine: () => Lr,
+	LucideAsterisk: () => zr,
 	LucideAsteriskSquare: () => h$,
-	LucideAstroid: () => Nr,
-	LucideAtSign: () => Fr,
-	LucideAtom: () => Lr,
-	LucideAudioLines: () => Ur,
-	LucideAudioLinesOff: () => zr,
-	LucideAudioLinesX: () => Vr,
-	LucideAudioWaveform: () => Gr,
-	LucideAward: () => qr,
-	LucideAxe: () => Yr,
-	LucideAxis3D: () => x,
-	LucideAxis3d: () => x,
-	LucideBaby: () => Zr,
-	LucideBackpack: () => ei,
-	LucideBadge: () => Oi,
-	LucideBadgeAlert: () => ni,
-	LucideBadgeCent: () => ii,
-	LucideBadgeCheck: () => S,
-	LucideBadgeDollarSign: () => si,
-	LucideBadgeEuro: () => li,
-	LucideBadgeHelp: () => C,
-	LucideBadgeIndianRupee: () => di,
-	LucideBadgeInfo: () => pi,
-	LucideBadgeJapaneseYen: () => hi,
-	LucideBadgeMinus: () => _i,
-	LucideBadgePercent: () => yi,
-	LucideBadgePlus: () => xi,
-	LucideBadgePoundSterling: () => Ci,
-	LucideBadgeQuestionMark: () => C,
-	LucideBadgeRussianRuble: () => wi,
-	LucideBadgeSwissFranc: () => Ti,
-	LucideBadgeTurkishLira: () => Di,
-	LucideBadgeX: () => Ei,
-	LucideBaggageClaim: () => ki,
-	LucideBalloon: () => ji,
-	LucideBan: () => Ni,
-	LucideBanana: () => Fi,
-	LucideBandage: () => Ii,
-	LucideBanknote: () => Ki,
-	LucideBanknoteArrowDown: () => Ri,
-	LucideBanknoteArrowUp: () => Bi,
-	LucideBanknoteCheck: () => Hi,
-	LucideBanknoteX: () => Wi,
-	LucideBarChart: () => z,
-	LucideBarChart2: () => Ed,
-	LucideBarChart3: () => L,
-	LucideBarChart4: () => I,
-	LucideBarChartBig: () => F,
-	LucideBarChartHorizontal: () => N,
-	LucideBarChartHorizontalBig: () => M,
-	LucideBarcode: () => Ji,
-	LucideBarrel: () => Xi,
-	LucideBaseline: () => Qi,
-	LucideBath: () => ea,
-	LucideBattery: () => ma,
-	LucideBatteryCharging: () => na,
-	LucideBatteryFull: () => ia,
-	LucideBatteryLow: () => oa,
-	LucideBatteryMedium: () => ca,
-	LucideBatteryPlus: () => ua,
-	LucideBatteryWarning: () => fa,
-	LucideBeaker: () => ha,
-	LucideBean: () => ya,
-	LucideBeanOff: () => _a,
-	LucideBed: () => Ta,
-	LucideBedDouble: () => Ca,
-	LucideBedSingle: () => xa,
-	LucideBeef: () => ka,
-	LucideBeefOff: () => Da,
-	LucideBeer: () => Na,
-	LucideBeerOff: () => ja,
-	LucideBell: () => qa,
-	LucideBellCheck: () => Fa,
-	LucideBellDot: () => La,
-	LucideBellElectric: () => za,
-	LucideBellMinus: () => Va,
-	LucideBellOff: () => Ua,
-	LucideBellPlus: () => Ga,
-	LucideBellRing: () => Ya,
-	LucideBetweenHorizonalEnd: () => w,
-	LucideBetweenHorizonalStart: () => T,
-	LucideBetweenHorizontalEnd: () => w,
-	LucideBetweenHorizontalStart: () => T,
-	LucideBetweenVerticalEnd: () => Za,
-	LucideBetweenVerticalStart: () => Qa,
-	LucideBicepsFlexed: () => eo,
-	LucideBike: () => no,
-	LucideBinary: () => io,
-	LucideBinoculars: () => oo,
-	LucideBiohazard: () => co,
-	LucideBird: () => uo,
-	LucideBirdhouse: () => po,
-	LucideBitcoin: () => ho,
-	LucideBlend: () => _o,
-	LucideBlender: () => yo,
-	LucideBlinds: () => xo,
-	LucideBlocks: () => Co,
-	LucideBluetooth: () => jo,
-	LucideBluetoothConnected: () => To,
-	LucideBluetoothOff: () => Do,
-	LucideBluetoothSearching: () => ko,
-	LucideBold: () => No,
-	LucideBolt: () => Fo,
-	LucideBomb: () => Lo,
-	LucideBone: () => Vo,
-	LucideBoneFracture: () => zo,
-	LucideBook: () => As,
-	LucideBookA: () => Uo,
-	LucideBookAlert: () => Go,
-	LucideBookAudio: () => Ko,
-	LucideBookBookmark: () => E,
-	LucideBookCheck: () => Yo,
-	LucideBookCopy: () => Zo,
-	LucideBookDashed: () => D,
-	LucideBookDown: () => es,
-	LucideBookHeadphones: () => ns,
-	LucideBookHeart: () => is,
-	LucideBookImage: () => os,
-	LucideBookKey: () => cs,
-	LucideBookLock: () => us,
-	LucideBookMarked: () => E,
-	LucideBookMinus: () => fs,
-	LucideBookOpen: () => gs,
-	LucideBookOpenCheck: () => ms,
-	LucideBookOpenText: () => _s,
-	LucideBookPlus: () => vs,
-	LucideBookSearch: () => ys,
-	LucideBookTemplate: () => D,
-	LucideBookText: () => bs,
-	LucideBookType: () => xs,
-	LucideBookUp: () => ws,
-	LucideBookUp2: () => Ss,
-	LucideBookUser: () => Es,
-	LucideBookX: () => Os,
-	LucideBookmark: () => Hs,
-	LucideBookmarkCheck: () => Ms,
-	LucideBookmarkMinus: () => Is,
-	LucideBookmarkOff: () => Ps,
-	LucideBookmarkPlus: () => Rs,
-	LucideBookmarkX: () => Bs,
-	LucideBoomBox: () => Ws,
-	LucideBot: () => Xs,
-	LucideBotMessageSquare: () => Ks,
-	LucideBotOff: () => Js,
-	LucideBottleWine: () => Qs,
-	LucideBowArrow: () => ec,
-	LucideBox: () => nc,
+	LucideAstroid: () => Vr,
+	LucideAtSign: () => Ur,
+	LucideAtom: () => Gr,
+	LucideAudioLines: () => Zr,
+	LucideAudioLinesOff: () => qr,
+	LucideAudioLinesX: () => Yr,
+	LucideAudioWaveform: () => $r,
+	LucideAward: () => ti,
+	LucideAxe: () => ri,
+	LucideAxis3D: () => si,
+	LucideAxis3d: () => si,
+	LucideBaby: () => ai,
+	LucideBackpack: () => li,
+	LucideBadge: () => Fi,
+	LucideBadgeAlert: () => di,
+	LucideBadgeCent: () => pi,
+	LucideBadgeCheck: () => p,
+	LucideBadgeDollarSign: () => gi,
+	LucideBadgeEuro: () => vi,
+	LucideBadgeHelp: () => m,
+	LucideBadgeIndianRupee: () => bi,
+	LucideBadgeInfo: () => Si,
+	LucideBadgeJapaneseYen: () => Ci,
+	LucideBadgeMinus: () => wi,
+	LucideBadgePercent: () => Ti,
+	LucideBadgePlus: () => Ei,
+	LucideBadgePoundSterling: () => Di,
+	LucideBadgeQuestionMark: () => m,
+	LucideBadgeRussianRuble: () => Oi,
+	LucideBadgeSwissFranc: () => Ai,
+	LucideBadgeTurkishLira: () => Pi,
+	LucideBadgeX: () => Mi,
+	LucideBaggageClaim: () => Li,
+	LucideBalloon: () => zi,
+	LucideBan: () => Vi,
+	LucideBanana: () => Ui,
+	LucideBandage: () => Gi,
+	LucideBanknote: () => ea,
+	LucideBanknoteArrowDown: () => qi,
+	LucideBanknoteArrowUp: () => Ji,
+	LucideBanknoteCheck: () => Xi,
+	LucideBanknoteX: () => Qi,
+	LucideBarChart: () => A,
+	LucideBarChart2: () => j,
+	LucideBarChart3: () => O,
+	LucideBarChart4: () => D,
+	LucideBarChartBig: () => E,
+	LucideBarChartHorizontal: () => w,
+	LucideBarChartHorizontalBig: () => C,
+	LucideBarcode: () => na,
+	LucideBarrel: () => ia,
+	LucideBaseline: () => oa,
+	LucideBath: () => ca,
+	LucideBattery: () => xa,
+	LucideBatteryCharging: () => ua,
+	LucideBatteryFull: () => fa,
+	LucideBatteryLow: () => pa,
+	LucideBatteryMedium: () => ha,
+	LucideBatteryPlus: () => _a,
+	LucideBatteryWarning: () => ya,
+	LucideBeaker: () => Ca,
+	LucideBean: () => Da,
+	LucideBeanOff: () => Ta,
+	LucideBed: () => Na,
+	LucideBedDouble: () => ja,
+	LucideBedSingle: () => ka,
+	LucideBeef: () => La,
+	LucideBeefOff: () => Fa,
+	LucideBeer: () => Va,
+	LucideBeerOff: () => za,
+	LucideBell: () => Qa,
+	LucideBellCheck: () => Ua,
+	LucideBellDot: () => Ga,
+	LucideBellElectric: () => qa,
+	LucideBellMinus: () => Ya,
+	LucideBellOff: () => Xa,
+	LucideBellPlus: () => Za,
+	LucideBellRing: () => eo,
+	LucideBetweenHorizonalEnd: () => h,
+	LucideBetweenHorizonalStart: () => g,
+	LucideBetweenHorizontalEnd: () => h,
+	LucideBetweenHorizontalStart: () => g,
+	LucideBetweenVerticalEnd: () => io,
+	LucideBetweenVerticalStart: () => oo,
+	LucideBicepsFlexed: () => co,
+	LucideBike: () => uo,
+	LucideBinary: () => po,
+	LucideBinoculars: () => ho,
+	LucideBiohazard: () => _o,
+	LucideBird: () => yo,
+	LucideBirdhouse: () => xo,
+	LucideBitcoin: () => Co,
+	LucideBlend: () => To,
+	LucideBlender: () => Do,
+	LucideBlinds: () => ko,
+	LucideBlocks: () => jo,
+	LucideBluetooth: () => zo,
+	LucideBluetoothConnected: () => No,
+	LucideBluetoothOff: () => Fo,
+	LucideBluetoothSearching: () => Lo,
+	LucideBold: () => Vo,
+	LucideBolt: () => Uo,
+	LucideBomb: () => Go,
+	LucideBone: () => Yo,
+	LucideBoneFracture: () => qo,
+	LucideBook: () => zs,
+	LucideBookA: () => Zo,
+	LucideBookAlert: () => $o,
+	LucideBookAudio: () => ts,
+	LucideBookBookmark: () => _,
+	LucideBookCheck: () => is,
+	LucideBookCopy: () => os,
+	LucideBookDashed: () => v,
+	LucideBookDown: () => ls,
+	LucideBookHeadphones: () => ds,
+	LucideBookHeart: () => ps,
+	LucideBookImage: () => hs,
+	LucideBookKey: () => gs,
+	LucideBookLock: () => _s,
+	LucideBookMarked: () => _,
+	LucideBookMinus: () => vs,
+	LucideBookOpen: () => bs,
+	LucideBookOpenCheck: () => ys,
+	LucideBookOpenText: () => xs,
+	LucideBookPlus: () => Cs,
+	LucideBookSearch: () => Ts,
+	LucideBookTemplate: () => v,
+	LucideBookText: () => Ds,
+	LucideBookType: () => ks,
+	LucideBookUp: () => Ns,
+	LucideBookUp2: () => js,
+	LucideBookUser: () => Fs,
+	LucideBookX: () => Ls,
+	LucideBookmark: () => Zs,
+	LucideBookmarkCheck: () => Vs,
+	LucideBookmarkMinus: () => Gs,
+	LucideBookmarkOff: () => Us,
+	LucideBookmarkPlus: () => qs,
+	LucideBookmarkX: () => Ys,
+	LucideBoomBox: () => $s,
+	LucideBot: () => ac,
+	LucideBotMessageSquare: () => tc,
+	LucideBotOff: () => rc,
+	LucideBottleWine: () => sc,
+	LucideBowArrow: () => lc,
+	LucideBox: () => dc,
 	LucideBoxSelect: () => r1,
-	LucideBoxes: () => ic,
-	LucideBraces: () => O,
-	LucideBrackets: () => sc,
-	LucideBrain: () => pc,
-	LucideBrainCircuit: () => lc,
-	LucideBrainCog: () => dc,
-	LucideBrickWall: () => _c,
-	LucideBrickWallFire: () => hc,
-	LucideBrickWallShield: () => yc,
-	LucideBridge: () => xc,
-	LucideBriefcase: () => jc,
-	LucideBriefcaseBusiness: () => Cc,
-	LucideBriefcaseConveyorBelt: () => Tc,
-	LucideBriefcaseMedical: () => kc,
-	LucideBriefcasePlus: () => Dc,
-	LucideBringToFront: () => Nc,
-	LucideBroccoli: () => Fc,
-	LucideBroom: () => zc,
-	LucideBroomSparkles: () => Lc,
-	LucideBrush: () => Uc,
-	LucideBrushCleaning: () => Vc,
-	LucideBubbles: () => Gc,
-	LucideBug: () => Zc,
-	LucideBugOff: () => qc,
-	LucideBugPlay: () => Yc,
-	LucideBuilding: () => tl,
-	LucideBuilding2: () => k,
-	LucideBuildingComplex: () => k,
-	LucideBuildingComplexPlus: () => $c,
-	LucideBus: () => ol,
-	LucideBusFront: () => il,
-	LucideCable: () => ul,
-	LucideCableCar: () => cl,
-	LucideCake: () => ml,
-	LucideCakeSlice: () => fl,
-	LucideCalculator: () => gl,
-	LucideCalendar: () => uu,
-	LucideCalendar1: () => vl,
-	LucideCalendarArrowDown: () => bl,
-	LucideCalendarArrowUp: () => Sl,
-	LucideCalendarCheck: () => El,
-	LucideCalendarCheck2: () => wl,
-	LucideCalendarChevronsRight: () => Ol,
-	LucideCalendarClock: () => Al,
-	LucideCalendarCog: () => Pl,
-	LucideCalendarDays: () => Ml,
-	LucideCalendarFold: () => Il,
-	LucideCalendarHeart: () => Rl,
-	LucideCalendarMinus: () => Hl,
-	LucideCalendarMinus2: () => Bl,
-	LucideCalendarOff: () => Wl,
-	LucideCalendarPlus: () => Jl,
-	LucideCalendarPlus2: () => Kl,
-	LucideCalendarRange: () => Xl,
-	LucideCalendarSearch: () => Ql,
-	LucideCalendarSync: () => eu,
-	LucideCalendarX: () => iu,
-	LucideCalendarX2: () => nu,
-	LucideCalendars: () => ou,
-	LucideCamera: () => du,
-	LucideCameraOff: () => cu,
-	LucideCan: () => pu,
-	LucideCanSoda: () => fu,
-	LucideCandlestickChart: () => P,
-	LucideCandy: () => gu,
-	LucideCandyCane: () => mu,
-	LucideCandyOff: () => hu,
-	LucideCannabis: () => vu,
-	LucideCannabisOff: () => _u,
-	LucideCaptions: () => A,
-	LucideCaptionsOff: () => yu,
-	LucideCar: () => Tu,
-	LucideCarBattery: () => bu,
-	LucideCarFront: () => xu,
-	LucideCarTaxiFront: () => Cu,
-	LucideCaravan: () => Du,
-	LucideCardSim: () => ku,
-	LucideCarrot: () => ju,
-	LucideCarton: () => Fu,
-	LucideCartonOff: () => Nu,
-	LucideCaseLower: () => Lu,
-	LucideCaseSensitive: () => zu,
-	LucideCaseUpper: () => Vu,
-	LucideCassetteTape: () => Uu,
-	LucideCast: () => Gu,
-	LucideCastle: () => qu,
-	LucideCat: () => Yu,
-	LucideCctv: () => $u,
-	LucideCctvOff: () => Zu,
-	LucideChartArea: () => j,
-	LucideChartBar: () => N,
-	LucideChartBarBig: () => M,
-	LucideChartBarDecreasing: () => rd,
-	LucideChartBarIncreasing: () => ad,
-	LucideChartBarStacked: () => sd,
-	LucideChartCandlestick: () => P,
-	LucideChartColumn: () => L,
-	LucideChartColumnBig: () => F,
-	LucideChartColumnDecreasing: () => fd,
-	LucideChartColumnIncreasing: () => I,
-	LucideChartColumnStacked: () => hd,
-	LucideChartGantt: () => vd,
-	LucideChartLine: () => R,
-	LucideChartNetwork: () => xd,
-	LucideChartNoAxesColumn: () => Ed,
-	LucideChartNoAxesColumnDecreasing: () => Cd,
-	LucideChartNoAxesColumnIncreasing: () => z,
-	LucideChartNoAxesCombined: () => Od,
-	LucideChartNoAxesGantt: () => Ad,
-	LucideChartPie: () => Md,
-	LucideChartScatter: () => Pd,
-	LucideChartSpline: () => Id,
-	LucideCheck: () => Bd,
-	LucideCheckCheck: () => Rd,
-	LucideCheckCircle: () => sp,
-	LucideCheckCircle2: () => lp,
-	LucideCheckLine: () => Hd,
+	LucideBoxes: () => pc,
+	LucideBraces: () => y,
+	LucideBrackets: () => gc,
+	LucideBrain: () => Sc,
+	LucideBrainCircuit: () => vc,
+	LucideBrainCog: () => bc,
+	LucideBrickWall: () => Ec,
+	LucideBrickWallFire: () => wc,
+	LucideBrickWallShield: () => Oc,
+	LucideBridge: () => Ac,
+	LucideBriefcase: () => Bc,
+	LucideBriefcaseBusiness: () => Mc,
+	LucideBriefcaseConveyorBelt: () => Pc,
+	LucideBriefcaseMedical: () => Rc,
+	LucideBriefcasePlus: () => Ic,
+	LucideBringToFront: () => Hc,
+	LucideBroccoli: () => Wc,
+	LucideBroom: () => Jc,
+	LucideBroomSparkles: () => Kc,
+	LucideBrush: () => Qc,
+	LucideBrushCleaning: () => Xc,
+	LucideBubbles: () => el,
+	LucideBug: () => ol,
+	LucideBugOff: () => nl,
+	LucideBugPlay: () => il,
+	LucideBuilding: () => ul,
+	LucideBuilding2: () => b,
+	LucideBuildingComplex: () => b,
+	LucideBuildingComplexPlus: () => cl,
+	LucideBus: () => hl,
+	LucideBusFront: () => pl,
+	LucideCable: () => yl,
+	LucideCableCar: () => _l,
+	LucideCake: () => Cl,
+	LucideCakeSlice: () => xl,
+	LucideCalculator: () => Tl,
+	LucideCalendar: () => pu,
+	LucideCalendar1: () => Dl,
+	LucideCalendarArrowDown: () => kl,
+	LucideCalendarArrowUp: () => jl,
+	LucideCalendarCheck: () => Fl,
+	LucideCalendarCheck2: () => Nl,
+	LucideCalendarChevronsRight: () => Ll,
+	LucideCalendarClock: () => zl,
+	LucideCalendarCog: () => Ul,
+	LucideCalendarDays: () => Vl,
+	LucideCalendarFold: () => Gl,
+	LucideCalendarHeart: () => ql,
+	LucideCalendarMinus: () => Zl,
+	LucideCalendarMinus2: () => Yl,
+	LucideCalendarOff: () => $l,
+	LucideCalendarPlus: () => ru,
+	LucideCalendarPlus2: () => tu,
+	LucideCalendarRange: () => au,
+	LucideCalendarSearch: () => su,
+	LucideCalendarSync: () => cu,
+	LucideCalendarX: () => uu,
+	LucideCalendarX2: () => lu,
+	LucideCalendars: () => du,
+	LucideCamera: () => mu,
+	LucideCameraOff: () => fu,
+	LucideCan: () => gu,
+	LucideCanSoda: () => hu,
+	LucideCandlestickChart: () => T,
+	LucideCandy: () => yu,
+	LucideCandyCane: () => _u,
+	LucideCandyOff: () => vu,
+	LucideCannabis: () => Cu,
+	LucideCannabisOff: () => xu,
+	LucideCaptions: () => x,
+	LucideCaptionsOff: () => Tu,
+	LucideCar: () => Pu,
+	LucideCarBattery: () => Ou,
+	LucideCarFront: () => Au,
+	LucideCarTaxiFront: () => Mu,
+	LucideCaravan: () => Iu,
+	LucideCardSim: () => Ru,
+	LucideCarrot: () => Bu,
+	LucideCarton: () => Wu,
+	LucideCartonOff: () => Hu,
+	LucideCaseLower: () => Ku,
+	LucideCaseSensitive: () => Ju,
+	LucideCaseUpper: () => Xu,
+	LucideCassetteTape: () => Qu,
+	LucideCast: () => ed,
+	LucideCastle: () => nd,
+	LucideCat: () => id,
+	LucideCctv: () => cd,
+	LucideCctvOff: () => od,
+	LucideChartArea: () => S,
+	LucideChartBar: () => w,
+	LucideChartBarBig: () => C,
+	LucideChartBarDecreasing: () => fd,
+	LucideChartBarIncreasing: () => md,
+	LucideChartBarStacked: () => gd,
+	LucideChartCandlestick: () => T,
+	LucideChartColumn: () => O,
+	LucideChartColumnBig: () => E,
+	LucideChartColumnDecreasing: () => xd,
+	LucideChartColumnIncreasing: () => D,
+	LucideChartColumnStacked: () => wd,
+	LucideChartGantt: () => Dd,
+	LucideChartLine: () => k,
+	LucideChartNetwork: () => Ad,
+	LucideChartNoAxesColumn: () => j,
+	LucideChartNoAxesColumnDecreasing: () => Md,
+	LucideChartNoAxesColumnIncreasing: () => A,
+	LucideChartNoAxesCombined: () => Id,
+	LucideChartNoAxesGantt: () => M,
+	LucideChartPie: () => N,
+	LucideChartScatter: () => P,
+	LucideChartSpline: () => Vd,
+	LucideCheck: () => Gd,
+	LucideCheckCheck: () => Ud,
+	LucideCheckCircle: () => op,
+	LucideCheckCircle2: () => cp,
+	LucideCheckLine: () => qd,
 	LucideCheckSquare: () => E$,
 	LucideCheckSquare2: () => O$,
-	LucideChefHat: () => Wd,
-	LucideCherry: () => Kd,
-	LucideChessBishop: () => Jd,
-	LucideChessKing: () => Xd,
-	LucideChessKnight: () => Qd,
-	LucideChessPawn: () => ef,
-	LucideChessQueen: () => nf,
-	LucideChessRook: () => af,
-	LucideChevronDown: () => sf,
-	LucideChevronDownCircle: () => dp,
+	LucideChefHat: () => Yd,
+	LucideCherry: () => Zd,
+	LucideChessBishop: () => $d,
+	LucideChessKing: () => tf,
+	LucideChessKnight: () => rf,
+	LucideChessPawn: () => of,
+	LucideChessQueen: () => cf,
+	LucideChessRook: () => uf,
+	LucideChevronDown: () => ff,
+	LucideChevronDownCircle: () => up,
 	LucideChevronDownSquare: () => A$,
-	LucideChevronFirst: () => lf,
-	LucideChevronLast: () => df,
-	LucideChevronLeft: () => pf,
-	LucideChevronLeftCircle: () => pp,
+	LucideChevronFirst: () => mf,
+	LucideChevronLast: () => gf,
+	LucideChevronLeft: () => vf,
+	LucideChevronLeftCircle: () => fp,
 	LucideChevronLeftSquare: () => M$,
-	LucideChevronRight: () => hf,
-	LucideChevronRightCircle: () => hp,
+	LucideChevronRight: () => bf,
+	LucideChevronRightCircle: () => mp,
 	LucideChevronRightSquare: () => P$,
-	LucideChevronUp: () => _f,
-	LucideChevronUpCircle: () => _p,
+	LucideChevronUp: () => Sf,
+	LucideChevronUpCircle: () => gp,
 	LucideChevronUpSquare: () => I$,
-	LucideChevronsDown: () => xf,
-	LucideChevronsDownUp: () => yf,
-	LucideChevronsLeft: () => Df,
-	LucideChevronsLeftRight: () => Tf,
-	LucideChevronsLeftRightEllipsis: () => Cf,
-	LucideChevronsRight: () => jf,
-	LucideChevronsRightLeft: () => kf,
-	LucideChevronsUp: () => Ff,
-	LucideChevronsUpDown: () => Nf,
-	LucideChurch: () => Lf,
-	LucideCigarette: () => Vf,
-	LucideCigaretteOff: () => zf,
-	LucideCircle: () => Om,
-	LucideCircleAlert: () => Uf,
-	LucideCircleArrowDown: () => Gf,
-	LucideCircleArrowLeft: () => qf,
-	LucideCircleArrowOutDownLeft: () => Yf,
-	LucideCircleArrowOutDownRight: () => Zf,
-	LucideCircleArrowOutUpLeft: () => $f,
-	LucideCircleArrowOutUpRight: () => tp,
-	LucideCircleArrowRight: () => rp,
-	LucideCircleArrowUp: () => ap,
-	LucideCircleCheck: () => lp,
-	LucideCircleCheckBig: () => sp,
-	LucideCircleChevronDown: () => dp,
-	LucideCircleChevronLeft: () => pp,
-	LucideCircleChevronRight: () => hp,
-	LucideCircleChevronUp: () => _p,
-	LucideCircleDashed: () => xp,
-	LucideCircleDashedCheck: () => yp,
-	LucideCircleDivide: () => Cp,
-	LucideCircleDollarSign: () => Tp,
-	LucideCircleDot: () => kp,
-	LucideCircleDotDashed: () => Dp,
-	LucideCircleEllipsis: () => jp,
-	LucideCircleEqual: () => Np,
-	LucideCircleEuro: () => Fp,
-	LucideCircleFadingArrowUp: () => Lp,
-	LucideCircleFadingPlus: () => zp,
-	LucideCircleGauge: () => Vp,
-	LucideCircleHelp: () => B,
-	LucideCircleMinus: () => Up,
-	LucideCircleOff: () => Gp,
-	LucideCircleParking: () => Yp,
-	LucideCircleParkingOff: () => qp,
-	LucideCirclePause: () => Zp,
-	LucideCirclePercent: () => $p,
-	LucideCirclePile: () => tm,
-	LucideCirclePlay: () => rm,
-	LucideCirclePlus: () => am,
-	LucideCirclePoundSterling: () => sm,
-	LucideCirclePower: () => lm,
-	LucideCircleQuestionMark: () => B,
-	LucideCircleSlash: () => mm,
-	LucideCircleSlash2: () => fm,
-	LucideCircleSlashed: () => fm,
-	LucideCircleSmall: () => gm,
-	LucideCircleStar: () => vm,
-	LucideCircleStop: () => bm,
-	LucideCircleUser: () => wm,
-	LucideCircleUserRound: () => Sm,
-	LucideCircleX: () => Em,
-	LucideCircuitBoard: () => Am,
-	LucideCitrus: () => Mm,
-	LucideClapperboard: () => Pm,
-	LucideClefAlto: () => Im,
-	LucideClefBass: () => Rm,
-	LucideClefTreble: () => Bm,
-	LucideClipboard: () => ch,
-	LucideClipboardCheck: () => Wm,
-	LucideClipboardClock: () => Hm,
-	LucideClipboardCopy: () => Km,
-	LucideClipboardEdit: () => nh,
-	LucideClipboardList: () => Jm,
-	LucideClipboardMinus: () => Xm,
-	LucideClipboardPaste: () => Qm,
-	LucideClipboardPen: () => nh,
-	LucideClipboardPenLine: () => eh,
-	LucideClipboardPlus: () => ih,
-	LucideClipboardSignature: () => eh,
-	LucideClipboardType: () => oh,
-	LucideClipboardX: () => fh,
-	LucideClock: () => Qh,
-	LucideClock1: () => uh,
-	LucideClock10: () => mh,
-	LucideClock11: () => gh,
-	LucideClock12: () => vh,
-	LucideClock2: () => bh,
-	LucideClock3: () => Sh,
-	LucideClock4: () => wh,
-	LucideClock5: () => Eh,
-	LucideClock6: () => Oh,
-	LucideClock7: () => Ah,
-	LucideClock8: () => Mh,
-	LucideClock9: () => Ph,
-	LucideClockAlert: () => Bh,
-	LucideClockArrowDown: () => Ih,
-	LucideClockArrowLeft: () => Rh,
-	LucideClockArrowRight: () => Hh,
-	LucideClockArrowUp: () => Wh,
-	LucideClockCheck: () => Kh,
-	LucideClockFading: () => Jh,
-	LucideClockPlus: () => Xh,
-	LucideClosedCaption: () => eg,
-	LucideCloud: () => zg,
-	LucideCloudAlert: () => ng,
-	LucideCloudBackup: () => ig,
-	LucideCloudCheck: () => og,
-	LucideCloudCog: () => cg,
-	LucideCloudDownload: () => ug,
-	LucideCloudDrizzle: () => fg,
-	LucideCloudFog: () => mg,
-	LucideCloudHail: () => gg,
-	LucideCloudLightning: () => vg,
-	LucideCloudMoon: () => Sg,
-	LucideCloudMoonRain: () => bg,
-	LucideCloudOff: () => wg,
-	LucideCloudRain: () => Og,
-	LucideCloudRainWind: () => Eg,
-	LucideCloudSnow: () => Ag,
-	LucideCloudSun: () => Pg,
-	LucideCloudSunRain: () => Mg,
-	LucideCloudSync: () => Ig,
-	LucideCloudUpload: () => Rg,
-	LucideCloudy: () => Bg,
-	LucideClover: () => Vg,
-	LucideClub: () => Hg,
-	LucideCode: () => Wg,
-	LucideCode2: () => Ug,
+	LucideChevronsDown: () => Ef,
+	LucideChevronsDownUp: () => wf,
+	LucideChevronsLeft: () => Mf,
+	LucideChevronsLeftRight: () => Af,
+	LucideChevronsLeftRightEllipsis: () => Of,
+	LucideChevronsRight: () => If,
+	LucideChevronsRightLeft: () => Pf,
+	LucideChevronsUp: () => Bf,
+	LucideChevronsUpDown: () => Rf,
+	LucideChurch: () => Hf,
+	LucideCigarette: () => Kf,
+	LucideCigaretteOff: () => Wf,
+	LucideCircle: () => Dm,
+	LucideCircleAlert: () => F,
+	LucideCircleArrowDown: () => I,
+	LucideCircleArrowLeft: () => L,
+	LucideCircleArrowOutDownLeft: () => R,
+	LucideCircleArrowOutDownRight: () => z,
+	LucideCircleArrowOutUpLeft: () => B,
+	LucideCircleArrowOutUpRight: () => ep,
+	LucideCircleArrowRight: () => np,
+	LucideCircleArrowUp: () => ip,
+	LucideCircleCheck: () => cp,
+	LucideCircleCheckBig: () => op,
+	LucideCircleChevronDown: () => up,
+	LucideCircleChevronLeft: () => fp,
+	LucideCircleChevronRight: () => mp,
+	LucideCircleChevronUp: () => gp,
+	LucideCircleDashed: () => bp,
+	LucideCircleDashedCheck: () => vp,
+	LucideCircleDivide: () => Sp,
+	LucideCircleDollarSign: () => wp,
+	LucideCircleDot: () => Op,
+	LucideCircleDotDashed: () => Ep,
+	LucideCircleEllipsis: () => Ap,
+	LucideCircleEqual: () => Mp,
+	LucideCircleEuro: () => Pp,
+	LucideCircleFadingArrowUp: () => Ip,
+	LucideCircleFadingPlus: () => Rp,
+	LucideCircleGauge: () => Bp,
+	LucideCircleHelp: () => V,
+	LucideCircleMinus: () => Hp,
+	LucideCircleOff: () => Wp,
+	LucideCircleParking: () => Jp,
+	LucideCircleParkingOff: () => Kp,
+	LucideCirclePause: () => Xp,
+	LucideCirclePercent: () => Qp,
+	LucideCirclePile: () => em,
+	LucideCirclePlay: () => nm,
+	LucideCirclePlus: () => im,
+	LucideCirclePoundSterling: () => om,
+	LucideCirclePower: () => cm,
+	LucideCircleQuestionMark: () => V,
+	LucideCircleSlash: () => pm,
+	LucideCircleSlash2: () => dm,
+	LucideCircleSlashed: () => dm,
+	LucideCircleSmall: () => hm,
+	LucideCircleStar: () => _m,
+	LucideCircleStop: () => ym,
+	LucideCircleUser: () => Cm,
+	LucideCircleUserRound: () => xm,
+	LucideCircleX: () => Tm,
+	LucideCircuitBoard: () => km,
+	LucideCitrus: () => jm,
+	LucideClapperboard: () => Nm,
+	LucideClefAlto: () => Fm,
+	LucideClefBass: () => Lm,
+	LucideClefTreble: () => zm,
+	LucideClipboard: () => sh,
+	LucideClipboardCheck: () => Um,
+	LucideClipboardClock: () => Vm,
+	LucideClipboardCopy: () => Gm,
+	LucideClipboardEdit: () => th,
+	LucideClipboardList: () => qm,
+	LucideClipboardMinus: () => Ym,
+	LucideClipboardPaste: () => Zm,
+	LucideClipboardPen: () => th,
+	LucideClipboardPenLine: () => $m,
+	LucideClipboardPlus: () => rh,
+	LucideClipboardSignature: () => $m,
+	LucideClipboardType: () => ah,
+	LucideClipboardX: () => dh,
+	LucideClock: () => Zh,
+	LucideClock1: () => lh,
+	LucideClock10: () => ph,
+	LucideClock11: () => hh,
+	LucideClock12: () => _h,
+	LucideClock2: () => yh,
+	LucideClock3: () => xh,
+	LucideClock4: () => Ch,
+	LucideClock5: () => Th,
+	LucideClock6: () => Dh,
+	LucideClock7: () => kh,
+	LucideClock8: () => jh,
+	LucideClock9: () => Nh,
+	LucideClockAlert: () => zh,
+	LucideClockArrowDown: () => Fh,
+	LucideClockArrowLeft: () => Lh,
+	LucideClockArrowRight: () => Vh,
+	LucideClockArrowUp: () => Uh,
+	LucideClockCheck: () => Gh,
+	LucideClockFading: () => qh,
+	LucideClockPlus: () => Yh,
+	LucideClosedCaption: () => $h,
+	LucideCloud: () => Mg,
+	LucideCloudAlert: () => tg,
+	LucideCloudBackup: () => rg,
+	LucideCloudCheck: () => ag,
+	LucideCloudCog: () => sg,
+	LucideCloudDownload: () => lg,
+	LucideCloudDrizzle: () => dg,
+	LucideCloudFog: () => pg,
+	LucideCloudHail: () => hg,
+	LucideCloudLightning: () => _g,
+	LucideCloudMoon: () => xg,
+	LucideCloudMoonRain: () => yg,
+	LucideCloudOff: () => Cg,
+	LucideCloudRain: () => Eg,
+	LucideCloudRainWind: () => Tg,
+	LucideCloudSnow: () => Dg,
+	LucideCloudSun: () => kg,
+	LucideCloudSunRain: () => Og,
+	LucideCloudSync: () => Ag,
+	LucideCloudUpload: () => jg,
+	LucideCloudy: () => Ng,
+	LucideClover: () => Pg,
+	LucideClub: () => Fg,
+	LucideCode: () => Lg,
+	LucideCode2: () => Ig,
 	LucideCodeSquare: () => R$,
-	LucideCodeXml: () => Ug,
-	LucideCoffee: () => Kg,
-	LucideCog: () => Gg,
-	LucideCoins: () => qg,
-	LucideColumns: () => Jg,
-	LucideColumns2: () => Jg,
-	LucideColumns3: () => Yg,
-	LucideColumns3Cog: () => V,
-	LucideColumns4: () => Xg,
-	LucideColumnsSettings: () => V,
-	LucideCombine: () => Zg,
-	LucideCommand: () => Qg,
-	LucideCompass: () => $g,
-	LucideComponent: () => e_,
-	LucideComputer: () => t_,
-	LucideConciergeBell: () => n_,
-	LucideCone: () => r_,
-	LucideConstruction: () => i_,
-	LucideContact: () => o_,
-	LucideContact2: () => a_,
-	LucideContactRound: () => a_,
-	LucideContainer: () => s_,
-	LucideContrast: () => c_,
-	LucideCookie: () => l_,
+	LucideCodeXml: () => Ig,
+	LucideCoffee: () => zg,
+	LucideCog: () => Rg,
+	LucideCoins: () => Bg,
+	LucideColumns: () => Vg,
+	LucideColumns2: () => Vg,
+	LucideColumns3: () => Hg,
+	LucideColumns3Cog: () => H,
+	LucideColumns4: () => Ug,
+	LucideColumnsSettings: () => H,
+	LucideCombine: () => Wg,
+	LucideCommand: () => Gg,
+	LucideCompass: () => Kg,
+	LucideComponent: () => qg,
+	LucideComputer: () => Jg,
+	LucideConciergeBell: () => Yg,
+	LucideCone: () => Xg,
+	LucideConstruction: () => Qg,
+	LucideContact: () => n_,
+	LucideContact2: () => e_,
+	LucideContactRound: () => e_,
+	LucideContainer: () => i_,
+	LucideContrast: () => o_,
+	LucideCookie: () => c_,
 	LucideCookingPot: () => u_,
 	LucideCopy: () => S_,
 	LucideCopyCheck: () => f_,
@@ -50728,7 +50726,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideCuboid: () => gv,
 	LucideCupSoda: () => vv,
 	LucideCupcake: () => bv,
-	LucideCurlyBraces: () => O,
+	LucideCurlyBraces: () => y,
 	LucideCurrency: () => Sv,
 	LucideCylinder: () => wv,
 	LucideDam: () => Ev,
@@ -50764,7 +50762,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideDisc3: () => Ay,
 	LucideDiscAlbum: () => My,
 	LucideDivide: () => Iy,
-	LucideDivideCircle: () => Cp,
+	LucideDivideCircle: () => Sp,
 	LucideDivideSquare: () => s1,
 	LucideDna: () => By,
 	LucideDnaOff: () => Ry,
@@ -50781,7 +50779,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideDot: () => cb,
 	LucideDotSquare: () => l1,
 	LucideDownload: () => fb,
-	LucideDownloadCloud: () => ug,
+	LucideDownloadCloud: () => lg,
 	LucideDraftingCompass: () => ub,
 	LucideDrama: () => mb,
 	LucideDrill: () => gb,
@@ -50797,9 +50795,9 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideEarth: () => Rb,
 	LucideEarthLock: () => Ib,
 	LucideEclipse: () => Bb,
-	LucideEdit: () => J,
-	LucideEdit2: () => NH,
-	LucideEdit3: () => DH,
+	LucideEdit: () => Y,
+	LucideEdit2: () => PH,
+	LucideEdit3: () => OH,
 	LucideEgg: () => Kb,
 	LucideEggFried: () => Hb,
 	LucideEggOff: () => Wb,
@@ -50839,8 +50837,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideFerrisWheel: () => iS,
 	LucideFile: () => aw,
 	LucideFileArchive: () => oS,
-	LucideFileAudio: () => H,
-	LucideFileAudio2: () => H,
+	LucideFileAudio: () => U,
+	LucideFileAudio2: () => U,
 	LucideFileAxis3D: () => cS,
 	LucideFileAxis3d: () => cS,
 	LucideFileBadge: () => uS,
@@ -50868,7 +50866,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideFileDown: () => HS,
 	LucideFileEdit: () => pC,
 	LucideFileExclamationPoint: () => WS,
-	LucideFileHeadphone: () => H,
+	LucideFileHeadphone: () => U,
 	LucideFileHeart: () => qS,
 	LucideFileImage: () => YS,
 	LucideFileInput: () => ZS,
@@ -50943,7 +50941,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideFlaskConicalOff: () => Vw,
 	LucideFlaskRound: () => Gw,
 	LucideFlipHorizontal: () => x$,
-	LucideFlipHorizontal2: () => X,
+	LucideFlipHorizontal2: () => H8,
 	LucideFlipVertical: () => C$,
 	LucideFlipVertical2: () => W8,
 	LucideFlower: () => Yw,
@@ -50990,7 +50988,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideForkKnifeCrossed: () => b7,
 	LucideForklift: () => hE,
 	LucideForm: () => _E,
-	LucideFormInput: () => qG,
+	LucideFormInput: () => JG,
 	LucideForward: () => yE,
 	LucideFrame: () => xE,
 	LucideFrown: () => Bx,
@@ -51009,12 +51007,12 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideGamepad: () => YE,
 	LucideGamepad2: () => GE,
 	LucideGamepadDirectional: () => qE,
-	LucideGanttChart: () => Ad,
-	LucideGanttChartSquare: () => K,
+	LucideGanttChart: () => M,
+	LucideGanttChartSquare: () => q,
 	LucideGapHorizontal: () => ZE,
 	LucideGapVertical: () => $E,
 	LucideGauge: () => tD,
-	LucideGaugeCircle: () => Vp,
+	LucideGaugeCircle: () => Bp,
 	LucideGavel: () => rD,
 	LucideGem: () => aD,
 	LucideGeorgianLari: () => sD,
@@ -51054,7 +51052,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideGrab: () => QO,
 	LucideGraduationCap: () => _O,
 	LucideGrape: () => yO,
-	LucideGrid: () => U,
+	LucideGrid: () => W,
 	LucideGrid2X2: () => DO,
 	LucideGrid2X2Check: () => xO,
 	LucideGrid2X2Plus: () => CO,
@@ -51063,9 +51061,9 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideGrid2x2Check: () => xO,
 	LucideGrid2x2Plus: () => CO,
 	LucideGrid2x2X: () => TO,
-	LucideGrid3X3: () => U,
+	LucideGrid3X3: () => W,
 	LucideGrid3x2: () => kO,
-	LucideGrid3x3: () => U,
+	LucideGrid3x3: () => W,
 	LucideGrip: () => IO,
 	LucideGripHorizontal: () => PO,
 	LucideGripVertical: () => MO,
@@ -51113,11 +51111,11 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideHeartX: () => uA,
 	LucideHeater: () => mA,
 	LucideHelicopter: () => gA,
-	LucideHelpCircle: () => B,
+	LucideHelpCircle: () => V,
 	LucideHelpingHand: () => nk,
 	LucideHexagon: () => vA,
 	LucideHighlighter: () => bA,
-	LucideHistory: () => aq,
+	LucideHistory: () => oq,
 	LucideHome: () => WA,
 	LucideHop: () => wA,
 	LucideHopOff: () => SA,
@@ -51132,667 +51130,667 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideHousePlus: () => BA,
 	LucideHouseWifi: () => HA,
 	LucideHouses: () => KA,
-	LucideIceCream: () => XA,
-	LucideIceCream2: () => JA,
-	LucideIceCreamBowl: () => JA,
-	LucideIceCreamCone: () => XA,
-	LucideIdCard: () => nj,
-	LucideIdCardLanyard: () => QA,
-	LucideImage: () => uj,
-	LucideImageDown: () => ej,
-	LucideImageMinus: () => ij,
-	LucideImageOff: () => aj,
-	LucideImagePlay: () => oj,
-	LucideImagePlus: () => sj,
-	LucideImageUp: () => cj,
-	LucideImageUpscale: () => lj,
-	LucideImages: () => fj,
-	LucideImport: () => dj,
-	LucideInbox: () => pj,
-	LucideIndent: () => G,
-	LucideIndentDecrease: () => W,
-	LucideIndentIncrease: () => G,
-	LucideIndianRupee: () => mj,
-	LucideInfinity: () => gj,
-	LucideInfo: () => hj,
+	LucideIceCream: () => JA,
+	LucideIceCream2: () => qA,
+	LucideIceCreamBowl: () => qA,
+	LucideIceCreamCone: () => JA,
+	LucideIdCard: () => ZA,
+	LucideIdCardLanyard: () => YA,
+	LucideImage: () => ij,
+	LucideImageDown: () => XA,
+	LucideImageMinus: () => QA,
+	LucideImageOff: () => $A,
+	LucideImagePlay: () => ej,
+	LucideImagePlus: () => tj,
+	LucideImageUp: () => nj,
+	LucideImageUpscale: () => rj,
+	LucideImages: () => oj,
+	LucideImport: () => aj,
+	LucideInbox: () => sj,
+	LucideIndent: () => K,
+	LucideIndentDecrease: () => G,
+	LucideIndentIncrease: () => K,
+	LucideIndianRupee: () => cj,
+	LucideInfinity: () => uj,
+	LucideInfo: () => lj,
 	LucideInspect: () => D1,
-	LucideInspectionPanel: () => _j,
-	LucideItalic: () => vj,
-	LucideIterationCcw: () => yj,
-	LucideIterationCw: () => bj,
-	LucideIvBag: () => xj,
-	LucideJapaneseYen: () => Sj,
-	LucideJoystick: () => Cj,
-	LucideKanban: () => wj,
+	LucideInspectionPanel: () => dj,
+	LucideItalic: () => fj,
+	LucideIterationCcw: () => pj,
+	LucideIterationCw: () => mj,
+	LucideIvBag: () => hj,
+	LucideJapaneseYen: () => gj,
+	LucideJoystick: () => _j,
+	LucideKanban: () => vj,
 	LucideKanbanSquare: () => _1,
 	LucideKanbanSquareDashed: () => W$,
-	LucideKayak: () => Tj,
-	LucideKey: () => Oj,
-	LucideKeyRound: () => Ej,
-	LucideKeySquare: () => Dj,
-	LucideKeyboard: () => jj,
-	LucideKeyboardMusic: () => kj,
-	LucideKeyboardOff: () => Aj,
-	LucideLambda: () => Mj,
-	LucideLamp: () => Rj,
-	LucideLampCeiling: () => Nj,
-	LucideLampDesk: () => Pj,
-	LucideLampFloor: () => Fj,
-	LucideLampWallDown: () => Ij,
-	LucideLampWallUp: () => Lj,
-	LucideLandPlot: () => zj,
-	LucideLandmark: () => Bj,
-	LucideLanguages: () => Vj,
-	LucideLaptop: () => Wj,
-	LucideLaptop2: () => Uj,
-	LucideLaptopMinimal: () => Uj,
-	LucideLaptopMinimalCheck: () => Hj,
-	LucideLasso: () => Kj,
-	LucideLassoSelect: () => Gj,
+	LucideKayak: () => yj,
+	LucideKey: () => Sj,
+	LucideKeyRound: () => bj,
+	LucideKeySquare: () => xj,
+	LucideKeyboard: () => Tj,
+	LucideKeyboardMusic: () => Cj,
+	LucideKeyboardOff: () => wj,
+	LucideLambda: () => Ej,
+	LucideLamp: () => Mj,
+	LucideLampCeiling: () => Dj,
+	LucideLampDesk: () => Oj,
+	LucideLampFloor: () => kj,
+	LucideLampWallDown: () => Aj,
+	LucideLampWallUp: () => jj,
+	LucideLandPlot: () => Nj,
+	LucideLandmark: () => Pj,
+	LucideLanguages: () => Fj,
+	LucideLaptop: () => Rj,
+	LucideLaptop2: () => Lj,
+	LucideLaptopMinimal: () => Lj,
+	LucideLaptopMinimalCheck: () => Ij,
+	LucideLasso: () => Bj,
+	LucideLassoSelect: () => zj,
 	LucideLaugh: () => Ix,
-	LucideLayerArrowDown: () => qj,
-	LucideLayerArrowUp: () => Jj,
-	LucideLayers: () => eM,
-	LucideLayers2: () => Yj,
-	LucideLayers3: () => eM,
-	LucideLayersArrowDown: () => Xj,
-	LucideLayersArrowUp: () => Zj,
-	LucideLayersMinus: () => Qj,
-	LucideLayersPlus: () => $j,
-	LucideLayout: () => aH,
-	LucideLayoutArrowDown: () => tM,
-	LucideLayoutArrowRight: () => nM,
-	LucideLayoutDashboard: () => rM,
+	LucideLayerArrowDown: () => Vj,
+	LucideLayerArrowUp: () => Hj,
+	LucideLayers: () => Xj,
+	LucideLayers2: () => Uj,
+	LucideLayers3: () => Xj,
+	LucideLayersArrowDown: () => Wj,
+	LucideLayersArrowUp: () => Gj,
+	LucideLayersMinus: () => Kj,
+	LucideLayersPlus: () => Jj,
+	LucideLayout: () => oH,
+	LucideLayoutArrowDown: () => Qj,
+	LucideLayoutArrowRight: () => eM,
+	LucideLayoutDashboard: () => nM,
 	LucideLayoutFreeform: () => iM,
-	LucideLayoutGrid: () => aM,
-	LucideLayoutList: () => sM,
-	LucideLayoutPanelLeft: () => lM,
-	LucideLayoutPanelTop: () => dM,
-	LucideLayoutTemplate: () => pM,
-	LucideLeaf: () => hM,
-	LucideLeafyGreen: () => _M,
-	LucideLectern: () => yM,
-	LucideLensConcave: () => xM,
-	LucideLensConvex: () => CM,
+	LucideLayoutGrid: () => oM,
+	LucideLayoutList: () => cM,
+	LucideLayoutPanelLeft: () => uM,
+	LucideLayoutPanelTop: () => fM,
+	LucideLayoutTemplate: () => mM,
+	LucideLeaf: () => gM,
+	LucideLeafyGreen: () => vM,
+	LucideLectern: () => bM,
+	LucideLensConcave: () => SM,
+	LucideLensConvex: () => wM,
 	LucideLetterText: () => N3,
-	LucideLibrary: () => TM,
-	LucideLibraryBig: () => DM,
+	LucideLibrary: () => EM,
+	LucideLibraryBig: () => OM,
 	LucideLibrarySquare: () => y1,
-	LucideLifeBuoy: () => kM,
-	LucideLigature: () => jM,
-	LucideLightbulb: () => FM,
-	LucideLightbulbOff: () => NM,
-	LucideLighthouse: () => LM,
-	LucideLineChart: () => R,
-	LucideLineDotBottomVertical: () => zM,
-	LucideLineDotLeftHorizontal: () => VM,
-	LucideLineDotRightHorizontal: () => GM,
-	LucideLineDotTopVertical: () => UM,
-	LucideLineSquiggle: () => qM,
-	LucideLineStyle: () => YM,
-	LucideLink: () => tN,
-	LucideLink2: () => $M,
-	LucideLink2Off: () => ZM,
-	LucideList: () => qN,
-	LucideListCheck: () => rN,
-	LucideListChecks: () => aN,
-	LucideListChevronsDownUp: () => sN,
-	LucideListChevronsUpDown: () => lN,
-	LucideListClock: () => dN,
-	LucideListCollapse: () => pN,
-	LucideListEnd: () => hN,
-	LucideListFilter: () => yN,
-	LucideListFilterPlus: () => _N,
-	LucideListIndentDecrease: () => W,
-	LucideListIndentIncrease: () => G,
-	LucideListMinus: () => CN,
-	LucideListMusic: () => TN,
-	LucideListOrdered: () => DN,
-	LucideListPlus: () => kN,
-	LucideListRestart: () => jN,
-	LucideListSortAscending: () => NN,
-	LucideListSortDescending: () => FN,
-	LucideListStart: () => LN,
-	LucideListTodo: () => zN,
-	LucideListTree: () => VN,
-	LucideListVideo: () => UN,
-	LucideListX: () => GN,
-	LucideLoader: () => $N,
-	LucideLoader2: () => YN,
-	LucideLoaderCircle: () => YN,
-	LucideLoaderPinwheel: () => ZN,
-	LucideLocate: () => aP,
-	LucideLocateFixed: () => tP,
-	LucideLocateOff: () => rP,
-	LucideLocationEdit: () => hF,
-	LucideLock: () => pP,
-	LucideLockKeyhole: () => lP,
-	LucideLockKeyholeOpen: () => sP,
-	LucideLockOpen: () => dP,
-	LucideLogIn: () => hP,
-	LucideLogOut: () => _P,
-	LucideLogs: () => yP,
-	LucideLollipop: () => xP,
-	LucideLuggage: () => CP,
+	LucideLifeBuoy: () => AM,
+	LucideLigature: () => MM,
+	LucideLightbulb: () => IM,
+	LucideLightbulbOff: () => PM,
+	LucideLighthouse: () => RM,
+	LucideLineChart: () => k,
+	LucideLineDotBottomVertical: () => BM,
+	LucideLineDotLeftHorizontal: () => HM,
+	LucideLineDotRightHorizontal: () => KM,
+	LucideLineDotTopVertical: () => WM,
+	LucideLineSquiggle: () => JM,
+	LucideLineStyle: () => XM,
+	LucideLink: () => nN,
+	LucideLink2: () => eN,
+	LucideLink2Off: () => QM,
+	LucideList: () => JN,
+	LucideListCheck: () => iN,
+	LucideListChecks: () => oN,
+	LucideListChevronsDownUp: () => cN,
+	LucideListChevronsUpDown: () => uN,
+	LucideListClock: () => fN,
+	LucideListCollapse: () => mN,
+	LucideListEnd: () => gN,
+	LucideListFilter: () => bN,
+	LucideListFilterPlus: () => vN,
+	LucideListIndentDecrease: () => G,
+	LucideListIndentIncrease: () => K,
+	LucideListMinus: () => wN,
+	LucideListMusic: () => EN,
+	LucideListOrdered: () => ON,
+	LucideListPlus: () => AN,
+	LucideListRestart: () => MN,
+	LucideListSortAscending: () => PN,
+	LucideListSortDescending: () => IN,
+	LucideListStart: () => RN,
+	LucideListTodo: () => BN,
+	LucideListTree: () => HN,
+	LucideListVideo: () => WN,
+	LucideListX: () => KN,
+	LucideLoader: () => eP,
+	LucideLoader2: () => XN,
+	LucideLoaderCircle: () => XN,
+	LucideLoaderPinwheel: () => QN,
+	LucideLocate: () => oP,
+	LucideLocateFixed: () => nP,
+	LucideLocateOff: () => iP,
+	LucideLocationEdit: () => gF,
+	LucideLock: () => mP,
+	LucideLockKeyhole: () => uP,
+	LucideLockKeyholeOpen: () => cP,
+	LucideLockOpen: () => fP,
+	LucideLogIn: () => gP,
+	LucideLogOut: () => vP,
+	LucideLogs: () => bP,
+	LucideLollipop: () => SP,
+	LucideLuggage: () => wP,
 	LucideMSquare: () => x1,
-	LucideMagnet: () => TP,
-	LucideMail: () => YP,
-	LucideMailBadge: () => DP,
-	LucideMailCheck: () => kP,
-	LucideMailClock: () => jP,
-	LucideMailMinus: () => NP,
-	LucideMailOpen: () => FP,
-	LucideMailPen: () => LP,
-	LucideMailPlus: () => zP,
-	LucideMailQuestion: () => VP,
-	LucideMailQuestionMark: () => VP,
-	LucideMailSearch: () => GP,
-	LucideMailWarning: () => UP,
-	LucideMailX: () => qP,
-	LucideMailbox: () => ZP,
-	LucideMails: () => $P,
-	LucideMap: () => NF,
-	LucideMapMinus: () => tF,
-	LucideMapPin: () => DF,
-	LucideMapPinCheck: () => rF,
-	LucideMapPinCheckInside: () => aF,
-	LucideMapPinHouse: () => sF,
-	LucideMapPinMinus: () => dF,
-	LucideMapPinMinusInside: () => lF,
-	LucideMapPinOff: () => pF,
-	LucideMapPinPen: () => hF,
-	LucideMapPinPlus: () => yF,
-	LucideMapPinPlusInside: () => _F,
-	LucideMapPinSearch: () => xF,
-	LucideMapPinX: () => TF,
-	LucideMapPinXInside: () => CF,
-	LucideMapPinned: () => kF,
-	LucideMapPlus: () => jF,
-	LucideMars: () => LF,
-	LucideMarsStroke: () => FF,
-	LucideMartini: () => zF,
-	LucideMaximize: () => UF,
-	LucideMaximize2: () => VF,
-	LucideMedal: () => GF,
-	LucideMegaphone: () => YF,
-	LucideMegaphoneOff: () => qF,
+	LucideMagnet: () => EP,
+	LucideMail: () => XP,
+	LucideMailBadge: () => OP,
+	LucideMailCheck: () => AP,
+	LucideMailClock: () => MP,
+	LucideMailMinus: () => PP,
+	LucideMailOpen: () => IP,
+	LucideMailPen: () => RP,
+	LucideMailPlus: () => BP,
+	LucideMailQuestion: () => HP,
+	LucideMailQuestionMark: () => HP,
+	LucideMailSearch: () => KP,
+	LucideMailWarning: () => WP,
+	LucideMailX: () => JP,
+	LucideMailbox: () => QP,
+	LucideMails: () => eF,
+	LucideMap: () => PF,
+	LucideMapMinus: () => nF,
+	LucideMapPin: () => OF,
+	LucideMapPinCheck: () => iF,
+	LucideMapPinCheckInside: () => oF,
+	LucideMapPinHouse: () => cF,
+	LucideMapPinMinus: () => fF,
+	LucideMapPinMinusInside: () => uF,
+	LucideMapPinOff: () => mF,
+	LucideMapPinPen: () => gF,
+	LucideMapPinPlus: () => bF,
+	LucideMapPinPlusInside: () => vF,
+	LucideMapPinSearch: () => SF,
+	LucideMapPinX: () => EF,
+	LucideMapPinXInside: () => wF,
+	LucideMapPinned: () => AF,
+	LucideMapPlus: () => MF,
+	LucideMars: () => RF,
+	LucideMarsStroke: () => IF,
+	LucideMartini: () => BF,
+	LucideMaximize: () => WF,
+	LucideMaximize2: () => HF,
+	LucideMedal: () => KF,
+	LucideMegaphone: () => XF,
+	LucideMegaphoneOff: () => JF,
 	LucideMeh: () => Rx,
-	LucideMemoryStick: () => ZF,
-	LucideMenu: () => $F,
+	LucideMemoryStick: () => QF,
+	LucideMenu: () => eI,
 	LucideMenuSquare: () => C1,
-	LucideMerge: () => tI,
-	LucideMessageCircle: () => DI,
-	LucideMessageCircleCheck: () => rI,
-	LucideMessageCircleCode: () => aI,
-	LucideMessageCircleDashed: () => lI,
-	LucideMessageCircleDashedCheck: () => sI,
-	LucideMessageCircleHeart: () => dI,
-	LucideMessageCircleMore: () => pI,
-	LucideMessageCircleOff: () => hI,
-	LucideMessageCirclePlus: () => _I,
-	LucideMessageCircleQuestion: () => yI,
-	LucideMessageCircleQuestionMark: () => yI,
-	LucideMessageCircleReply: () => CI,
-	LucideMessageCircleWarning: () => xI,
-	LucideMessageCircleX: () => TI,
-	LucideMessageSquare: () => aL,
-	LucideMessageSquareCheck: () => kI,
-	LucideMessageSquareCode: () => jI,
-	LucideMessageSquareDashed: () => NI,
-	LucideMessageSquareDiff: () => FI,
-	LucideMessageSquareDot: () => LI,
-	LucideMessageSquareHeart: () => zI,
-	LucideMessageSquareLock: () => VI,
-	LucideMessageSquareMore: () => UI,
-	LucideMessageSquareOff: () => GI,
-	LucideMessageSquarePlus: () => qI,
-	LucideMessageSquareQuote: () => YI,
-	LucideMessageSquareReply: () => ZI,
-	LucideMessageSquareShare: () => $I,
-	LucideMessageSquareText: () => tL,
-	LucideMessageSquareWarning: () => rL,
-	LucideMessageSquareX: () => sL,
-	LucideMessagesCircle: () => lL,
-	LucideMessagesSquare: () => dL,
-	LucideMetronome: () => pL,
-	LucideMic: () => TL,
-	LucideMic2: () => xL,
-	LucideMicAudioLines: () => hL,
-	LucideMicOff: () => _L,
-	LucideMicSignal: () => yL,
-	LucideMicVocal: () => xL,
-	LucideMicrochip: () => CL,
-	LucideMicroscope: () => DL,
-	LucideMicrowave: () => kL,
-	LucideMidiPort: () => jL,
-	LucideMilestone: () => NL,
-	LucideMilk: () => LL,
-	LucideMilkOff: () => FL,
-	LucideMinimize: () => VL,
-	LucideMinimize2: () => zL,
-	LucideMinus: () => UL,
-	LucideMinusCircle: () => Up,
+	LucideMerge: () => nI,
+	LucideMessageCircle: () => OI,
+	LucideMessageCircleCheck: () => iI,
+	LucideMessageCircleCode: () => oI,
+	LucideMessageCircleDashed: () => uI,
+	LucideMessageCircleDashedCheck: () => cI,
+	LucideMessageCircleHeart: () => fI,
+	LucideMessageCircleMore: () => mI,
+	LucideMessageCircleOff: () => gI,
+	LucideMessageCirclePlus: () => vI,
+	LucideMessageCircleQuestion: () => bI,
+	LucideMessageCircleQuestionMark: () => bI,
+	LucideMessageCircleReply: () => wI,
+	LucideMessageCircleWarning: () => SI,
+	LucideMessageCircleX: () => EI,
+	LucideMessageSquare: () => oL,
+	LucideMessageSquareCheck: () => AI,
+	LucideMessageSquareCode: () => MI,
+	LucideMessageSquareDashed: () => PI,
+	LucideMessageSquareDiff: () => II,
+	LucideMessageSquareDot: () => RI,
+	LucideMessageSquareHeart: () => BI,
+	LucideMessageSquareLock: () => HI,
+	LucideMessageSquareMore: () => WI,
+	LucideMessageSquareOff: () => KI,
+	LucideMessageSquarePlus: () => JI,
+	LucideMessageSquareQuote: () => XI,
+	LucideMessageSquareReply: () => QI,
+	LucideMessageSquareShare: () => eL,
+	LucideMessageSquareText: () => nL,
+	LucideMessageSquareWarning: () => iL,
+	LucideMessageSquareX: () => cL,
+	LucideMessagesCircle: () => uL,
+	LucideMessagesSquare: () => fL,
+	LucideMetronome: () => mL,
+	LucideMic: () => EL,
+	LucideMic2: () => SL,
+	LucideMicAudioLines: () => gL,
+	LucideMicOff: () => vL,
+	LucideMicSignal: () => bL,
+	LucideMicVocal: () => SL,
+	LucideMicrochip: () => wL,
+	LucideMicroscope: () => OL,
+	LucideMicrowave: () => AL,
+	LucideMidiPort: () => ML,
+	LucideMilestone: () => PL,
+	LucideMilk: () => RL,
+	LucideMilkOff: () => IL,
+	LucideMinimize: () => HL,
+	LucideMinimize2: () => BL,
+	LucideMinus: () => WL,
+	LucideMinusCircle: () => Hp,
 	LucideMinusSquare: () => T1,
-	LucideMirrorRectangular: () => GL,
-	LucideMirrorRound: () => YL,
-	LucideMonitor: () => CR,
-	LucideMonitorCheck: () => qL,
-	LucideMonitorCloud: () => ZL,
-	LucideMonitorCog: () => $L,
-	LucideMonitorDot: () => tR,
-	LucideMonitorDown: () => rR,
-	LucideMonitorOff: () => aR,
-	LucideMonitorPause: () => sR,
-	LucideMonitorPc: () => lR,
-	LucideMonitorPlay: () => dR,
-	LucideMonitorSmartphone: () => pR,
-	LucideMonitorSpeaker: () => hR,
-	LucideMonitorStop: () => _R,
-	LucideMonitorUp: () => yR,
-	LucideMonitorX: () => xR,
-	LucideMoon: () => DR,
-	LucideMoonStar: () => TR,
-	LucideMop: () => jR,
-	LucideMopSparkles: () => kR,
+	LucideMirrorRectangular: () => KL,
+	LucideMirrorRound: () => XL,
+	LucideMonitor: () => wR,
+	LucideMonitorCheck: () => JL,
+	LucideMonitorCloud: () => QL,
+	LucideMonitorCog: () => eR,
+	LucideMonitorDot: () => nR,
+	LucideMonitorDown: () => iR,
+	LucideMonitorOff: () => oR,
+	LucideMonitorPause: () => cR,
+	LucideMonitorPc: () => uR,
+	LucideMonitorPlay: () => fR,
+	LucideMonitorSmartphone: () => mR,
+	LucideMonitorSpeaker: () => gR,
+	LucideMonitorStop: () => vR,
+	LucideMonitorUp: () => bR,
+	LucideMonitorX: () => SR,
+	LucideMoon: () => OR,
+	LucideMoonStar: () => ER,
+	LucideMop: () => MR,
+	LucideMopSparkles: () => AR,
 	LucideMoreHorizontal: () => ex,
 	LucideMoreVertical: () => Qb,
-	LucideMosque: () => NR,
-	LucideMotorbike: () => FR,
-	LucideMountain: () => zR,
-	LucideMountainSnow: () => LR,
-	LucideMouse: () => rz,
-	LucideMouseLeft: () => VR,
-	LucideMouseOff: () => UR,
-	LucideMousePointer: () => $R,
-	LucideMousePointer2: () => qR,
-	LucideMousePointer2Off: () => GR,
-	LucideMousePointerBan: () => YR,
-	LucideMousePointerClick: () => ZR,
+	LucideMosque: () => PR,
+	LucideMotorbike: () => IR,
+	LucideMountain: () => BR,
+	LucideMountainSnow: () => RR,
+	LucideMouse: () => iz,
+	LucideMouseLeft: () => HR,
+	LucideMouseOff: () => WR,
+	LucideMousePointer: () => ez,
+	LucideMousePointer2: () => JR,
+	LucideMousePointer2Off: () => KR,
+	LucideMousePointerBan: () => XR,
+	LucideMousePointerClick: () => QR,
 	LucideMousePointerSquareDashed: () => K$,
-	LucideMouseRight: () => tz,
-	LucideMouth: () => sz,
-	LucideMouthOff: () => az,
-	LucideMove: () => Fz,
-	LucideMove3D: () => lz,
-	LucideMove3d: () => lz,
-	LucideMoveDiagonal: () => pz,
-	LucideMoveDiagonal2: () => dz,
-	LucideMoveDown: () => xz,
-	LucideMoveDownLeft: () => hz,
-	LucideMoveDownRight: () => _z,
-	LucideMoveHorizontal: () => yz,
-	LucideMoveLeft: () => Cz,
-	LucideMoveRight: () => Tz,
-	LucideMoveUp: () => jz,
-	LucideMoveUpLeft: () => Dz,
-	LucideMoveUpRight: () => kz,
-	LucideMoveVertical: () => Nz,
-	LucideMusic: () => Uz,
-	LucideMusic2: () => Lz,
-	LucideMusic3: () => zz,
-	LucideMusic4: () => Vz,
-	LucideNavigation: () => Zz,
-	LucideNavigation2: () => qz,
-	LucideNavigation2Off: () => Gz,
-	LucideNavigationOff: () => Yz,
-	LucideNepaliRupee: () => $z,
-	LucideNetwork: () => tB,
-	LucideNewspaper: () => rB,
-	LucideNfc: () => aB,
-	LucideNonBinary: () => sB,
-	LucideNotebook: () => _B,
-	LucideNotebookDot: () => lB,
-	LucideNotebookPen: () => dB,
-	LucideNotebookTabs: () => pB,
-	LucideNotebookText: () => hB,
-	LucideNotepadText: () => xB,
-	LucideNotepadTextDashed: () => yB,
-	LucideNut: () => TB,
-	LucideNutOff: () => CB,
-	LucideOctagon: () => FB,
-	LucideOctagonAlert: () => DB,
-	LucideOctagonMinus: () => kB,
-	LucideOctagonPause: () => jB,
-	LucideOctagonX: () => NB,
-	LucideOmega: () => LB,
-	LucideOption: () => zB,
-	LucideOrbit: () => VB,
-	LucideOrigami: () => UB,
-	LucideOutdent: () => W,
-	LucidePackage: () => aV,
-	LucidePackage2: () => GB,
-	LucidePackageCheck: () => qB,
-	LucidePackageMinus: () => YB,
-	LucidePackageOpen: () => ZB,
-	LucidePackagePlus: () => $B,
-	LucidePackageSearch: () => tV,
-	LucidePackageX: () => rV,
-	LucidePaintBucket: () => sV,
-	LucidePaintRoller: () => lV,
-	LucidePaintbrush: () => pV,
-	LucidePaintbrush2: () => dV,
-	LucidePaintbrushVertical: () => dV,
-	LucidePalette: () => hV,
-	LucidePalmtree: () => C8,
-	LucidePanda: () => _V,
-	LucidePanelBottom: () => TV,
-	LucidePanelBottomClose: () => yV,
-	LucidePanelBottomDashed: () => xV,
-	LucidePanelBottomInactive: () => xV,
-	LucidePanelBottomOpen: () => CV,
-	LucidePanelLeft: () => FV,
-	LucidePanelLeftClose: () => DV,
-	LucidePanelLeftDashed: () => kV,
-	LucidePanelLeftInactive: () => kV,
-	LucidePanelLeftOpen: () => jV,
-	LucidePanelLeftRightDashed: () => NV,
-	LucidePanelRight: () => UV,
-	LucidePanelRightClose: () => LV,
-	LucidePanelRightDashed: () => zV,
-	LucidePanelRightInactive: () => zV,
-	LucidePanelRightOpen: () => VV,
-	LucidePanelTop: () => $V,
-	LucidePanelTopBottomDashed: () => GV,
-	LucidePanelTopClose: () => qV,
-	LucidePanelTopDashed: () => YV,
-	LucidePanelTopInactive: () => YV,
-	LucidePanelTopOpen: () => ZV,
-	LucidePanelsLeftBottom: () => tH,
-	LucidePanelsLeftRight: () => Yg,
-	LucidePanelsRightBottom: () => rH,
-	LucidePanelsTopBottom: () => kq,
-	LucidePanelsTopLeft: () => aH,
-	LucidePaperBag: () => sH,
-	LucidePaperclip: () => lH,
-	LucideParasol: () => dH,
-	LucideParentheses: () => pH,
-	LucidePark: () => hH,
-	LucideParkingCircle: () => Yp,
-	LucideParkingCircleOff: () => qp,
-	LucideParkingMeter: () => _H,
+	LucideMouseRight: () => nz,
+	LucideMouth: () => cz,
+	LucideMouthOff: () => oz,
+	LucideMove: () => Iz,
+	LucideMove3D: () => uz,
+	LucideMove3d: () => uz,
+	LucideMoveDiagonal: () => mz,
+	LucideMoveDiagonal2: () => fz,
+	LucideMoveDown: () => Sz,
+	LucideMoveDownLeft: () => gz,
+	LucideMoveDownRight: () => vz,
+	LucideMoveHorizontal: () => bz,
+	LucideMoveLeft: () => wz,
+	LucideMoveRight: () => Ez,
+	LucideMoveUp: () => Mz,
+	LucideMoveUpLeft: () => Oz,
+	LucideMoveUpRight: () => Az,
+	LucideMoveVertical: () => Pz,
+	LucideMusic: () => Wz,
+	LucideMusic2: () => Rz,
+	LucideMusic3: () => Bz,
+	LucideMusic4: () => Hz,
+	LucideNavigation: () => Qz,
+	LucideNavigation2: () => Jz,
+	LucideNavigation2Off: () => Kz,
+	LucideNavigationOff: () => Xz,
+	LucideNepaliRupee: () => eB,
+	LucideNetwork: () => nB,
+	LucideNewspaper: () => iB,
+	LucideNfc: () => oB,
+	LucideNonBinary: () => cB,
+	LucideNotebook: () => vB,
+	LucideNotebookDot: () => uB,
+	LucideNotebookPen: () => fB,
+	LucideNotebookTabs: () => mB,
+	LucideNotebookText: () => gB,
+	LucideNotepadText: () => SB,
+	LucideNotepadTextDashed: () => bB,
+	LucideNut: () => EB,
+	LucideNutOff: () => wB,
+	LucideOctagon: () => IB,
+	LucideOctagonAlert: () => OB,
+	LucideOctagonMinus: () => AB,
+	LucideOctagonPause: () => MB,
+	LucideOctagonX: () => PB,
+	LucideOmega: () => RB,
+	LucideOption: () => BB,
+	LucideOrbit: () => HB,
+	LucideOrigami: () => WB,
+	LucideOutdent: () => G,
+	LucidePackage: () => oV,
+	LucidePackage2: () => KB,
+	LucidePackageCheck: () => JB,
+	LucidePackageMinus: () => XB,
+	LucidePackageOpen: () => QB,
+	LucidePackagePlus: () => eV,
+	LucidePackageSearch: () => nV,
+	LucidePackageX: () => iV,
+	LucidePaintBucket: () => cV,
+	LucidePaintRoller: () => uV,
+	LucidePaintbrush: () => mV,
+	LucidePaintbrush2: () => fV,
+	LucidePaintbrushVertical: () => fV,
+	LucidePalette: () => gV,
+	LucidePalmtree: () => S8,
+	LucidePanda: () => vV,
+	LucidePanelBottom: () => EV,
+	LucidePanelBottomClose: () => bV,
+	LucidePanelBottomDashed: () => SV,
+	LucidePanelBottomInactive: () => SV,
+	LucidePanelBottomOpen: () => wV,
+	LucidePanelLeft: () => IV,
+	LucidePanelLeftClose: () => OV,
+	LucidePanelLeftDashed: () => AV,
+	LucidePanelLeftInactive: () => AV,
+	LucidePanelLeftOpen: () => MV,
+	LucidePanelLeftRightDashed: () => PV,
+	LucidePanelRight: () => WV,
+	LucidePanelRightClose: () => RV,
+	LucidePanelRightDashed: () => BV,
+	LucidePanelRightInactive: () => BV,
+	LucidePanelRightOpen: () => HV,
+	LucidePanelTop: () => eH,
+	LucidePanelTopBottomDashed: () => KV,
+	LucidePanelTopClose: () => JV,
+	LucidePanelTopDashed: () => XV,
+	LucidePanelTopInactive: () => XV,
+	LucidePanelTopOpen: () => QV,
+	LucidePanelsLeftBottom: () => nH,
+	LucidePanelsLeftRight: () => Hg,
+	LucidePanelsRightBottom: () => iH,
+	LucidePanelsTopBottom: () => Aq,
+	LucidePanelsTopLeft: () => oH,
+	LucidePaperBag: () => cH,
+	LucidePaperclip: () => uH,
+	LucideParasol: () => fH,
+	LucideParentheses: () => mH,
+	LucidePark: () => gH,
+	LucideParkingCircle: () => Jp,
+	LucideParkingCircleOff: () => Kp,
+	LucideParkingMeter: () => vH,
 	LucideParkingSquare: () => N1,
 	LucideParkingSquareOff: () => j1,
-	LucidePartyPopper: () => yH,
-	LucidePause: () => xH,
-	LucidePauseCircle: () => Zp,
-	LucidePauseOctagon: () => jB,
-	LucidePawPrint: () => TH,
-	LucidePcCase: () => CH,
-	LucidePen: () => NH,
-	LucidePenBox: () => J,
-	LucidePenLine: () => DH,
-	LucidePenOff: () => kH,
-	LucidePenSquare: () => J,
-	LucidePenTool: () => jH,
-	LucidePencil: () => UH,
-	LucidePencilLine: () => FH,
-	LucidePencilOff: () => zH,
-	LucidePencilRuler: () => LH,
-	LucidePencilSparkles: () => VH,
-	LucidePentagon: () => GH,
-	LucidePercent: () => qH,
-	LucidePercentCircle: () => $p,
+	LucidePartyPopper: () => bH,
+	LucidePause: () => SH,
+	LucidePauseCircle: () => Xp,
+	LucidePauseOctagon: () => MB,
+	LucidePawPrint: () => EH,
+	LucidePcCase: () => wH,
+	LucidePen: () => PH,
+	LucidePenBox: () => Y,
+	LucidePenLine: () => OH,
+	LucidePenOff: () => AH,
+	LucidePenSquare: () => Y,
+	LucidePenTool: () => MH,
+	LucidePencil: () => WH,
+	LucidePencilLine: () => IH,
+	LucidePencilOff: () => BH,
+	LucidePencilRuler: () => RH,
+	LucidePencilSparkles: () => HH,
+	LucidePentagon: () => KH,
+	LucidePercent: () => JH,
+	LucidePercentCircle: () => Qp,
 	LucidePercentDiamond: () => oy,
 	LucidePercentSquare: () => R1,
-	LucidePersonStanding: () => ZH,
-	LucidePhi: () => YH,
-	LucidePhilippinePeso: () => $H,
-	LucidePhone: () => pU,
-	LucidePhoneCall: () => tU,
-	LucidePhoneForwarded: () => rU,
-	LucidePhoneIncoming: () => aU,
-	LucidePhoneMissed: () => lU,
-	LucidePhoneOff: () => sU,
-	LucidePhoneOutgoing: () => dU,
-	LucidePi: () => hU,
+	LucidePersonStanding: () => QH,
+	LucidePhi: () => XH,
+	LucidePhilippinePeso: () => eU,
+	LucidePhone: () => mU,
+	LucidePhoneCall: () => nU,
+	LucidePhoneForwarded: () => iU,
+	LucidePhoneIncoming: () => oU,
+	LucidePhoneMissed: () => uU,
+	LucidePhoneOff: () => cU,
+	LucidePhoneOutgoing: () => fU,
+	LucidePi: () => gU,
 	LucidePiSquare: () => B1,
-	LucidePiano: () => _U,
-	LucidePickaxe: () => yU,
-	LucidePictureInPicture: () => CU,
-	LucidePictureInPicture2: () => xU,
-	LucidePieChart: () => Md,
-	LucidePiggyBank: () => TU,
-	LucidePilcrow: () => jU,
-	LucidePilcrowLeft: () => DU,
-	LucidePilcrowRight: () => kU,
+	LucidePiano: () => vU,
+	LucidePickaxe: () => bU,
+	LucidePictureInPicture: () => wU,
+	LucidePictureInPicture2: () => SU,
+	LucidePieChart: () => N,
+	LucidePiggyBank: () => EU,
+	LucidePilcrow: () => MU,
+	LucidePilcrowLeft: () => OU,
+	LucidePilcrowRight: () => AU,
 	LucidePilcrowSquare: () => H1,
-	LucidePill: () => FU,
-	LucidePillBottle: () => NU,
-	LucidePin: () => zU,
-	LucidePinOff: () => LU,
-	LucidePipette: () => VU,
-	LucidePizza: () => GU,
-	LucidePlane: () => YU,
-	LucidePlaneLanding: () => UU,
-	LucidePlaneTakeoff: () => qU,
-	LucidePlantPot: () => ZU,
-	LucidePlay: () => tW,
-	LucidePlayCircle: () => rm,
-	LucidePlayOff: () => $U,
+	LucidePill: () => IU,
+	LucidePillBottle: () => PU,
+	LucidePin: () => BU,
+	LucidePinOff: () => RU,
+	LucidePipette: () => HU,
+	LucidePizza: () => KU,
+	LucidePlane: () => XU,
+	LucidePlaneLanding: () => WU,
+	LucidePlaneTakeoff: () => JU,
+	LucidePlantPot: () => QU,
+	LucidePlay: () => nW,
+	LucidePlayCircle: () => nm,
+	LucidePlayOff: () => eW,
 	LucidePlaySquare: () => W1,
-	LucidePlayingCard: () => rW,
-	LucidePlayingCards: () => sW,
-	LucidePlayingCardsFan: () => aW,
-	LucidePlug: () => pW,
-	LucidePlug2: () => dW,
-	LucidePlugZap: () => lW,
-	LucidePlugZap2: () => lW,
-	LucidePlus: () => hW,
-	LucidePlusCircle: () => am,
+	LucidePlayingCard: () => iW,
+	LucidePlayingCards: () => cW,
+	LucidePlayingCardsFan: () => oW,
+	LucidePlug: () => mW,
+	LucidePlug2: () => fW,
+	LucidePlugZap: () => uW,
+	LucidePlugZap2: () => uW,
+	LucidePlus: () => gW,
+	LucidePlusCircle: () => im,
 	LucidePlusSquare: () => K1,
-	LucidePocketKnife: () => _W,
-	LucidePodcast: () => yL,
-	LucidePodium: () => yW,
-	LucidePointer: () => TW,
-	LucidePointerOff: () => xW,
-	LucidePopcorn: () => CW,
-	LucidePopsicle: () => DW,
-	LucidePoundSterling: () => kW,
-	LucidePower: () => NW,
-	LucidePowerCircle: () => lm,
-	LucidePowerOff: () => jW,
+	LucidePocketKnife: () => vW,
+	LucidePodcast: () => bL,
+	LucidePodium: () => bW,
+	LucidePointer: () => EW,
+	LucidePointerOff: () => SW,
+	LucidePopcorn: () => wW,
+	LucidePopsicle: () => OW,
+	LucidePoundSterling: () => AW,
+	LucidePower: () => PW,
+	LucidePowerCircle: () => cm,
+	LucidePowerOff: () => MW,
 	LucidePowerSquare: () => J1,
-	LucidePresentation: () => FW,
-	LucidePrinter: () => VW,
-	LucidePrinterCheck: () => LW,
-	LucidePrinterX: () => zW,
-	LucideProjector: () => UW,
-	LucideProportions: () => GW,
-	LucideProvider: () => se,
-	LucidePuzzle: () => qW,
-	LucidePyramid: () => YW,
-	LucideQrCode: () => ZW,
-	LucideQuote: () => $W,
-	LucideRabbit: () => tG,
-	LucideRadar: () => rG,
-	LucideRadiation: () => aG,
-	LucideRadical: () => sG,
-	LucideRadio: () => hG,
-	LucideRadioOff: () => lG,
-	LucideRadioReceiver: () => dG,
-	LucideRadioTower: () => pG,
-	LucideRadius: () => yG,
-	LucideRainbow: () => xG,
-	LucideRat: () => _G,
-	LucideRatio: () => CG,
-	LucideReceipt: () => UG,
-	LucideReceiptCent: () => TG,
-	LucideReceiptEuro: () => DG,
-	LucideReceiptIndianRupee: () => kG,
-	LucideReceiptJapaneseYen: () => jG,
-	LucideReceiptPoundSterling: () => NG,
-	LucideReceiptRussianRuble: () => FG,
-	LucideReceiptSwissFranc: () => LG,
-	LucideReceiptText: () => zG,
-	LucideReceiptTurkishLira: () => VG,
-	LucideRectangleCircle: () => GG,
-	LucideRectangleEllipsis: () => qG,
-	LucideRectangleGoggles: () => YG,
-	LucideRectangleHorizontal: () => ZG,
-	LucideRectangleVertical: () => $G,
-	LucideRecycle: () => tK,
-	LucideRedo: () => sK,
-	LucideRedo2: () => rK,
-	LucideRedoDot: () => aK,
-	LucideRefreshCcw: () => dK,
-	LucideRefreshCcwDot: () => lK,
-	LucideRefreshCw: () => hK,
-	LucideRefreshCwOff: () => pK,
-	LucideRefrigerator: () => _K,
-	LucideRegex: () => yK,
-	LucideRemoveFormatting: () => xK,
-	LucideRepeat: () => DK,
-	LucideRepeat1: () => CK,
-	LucideRepeat2: () => TK,
-	LucideRepeatOff: () => kK,
-	LucideReplace: () => NK,
-	LucideReplaceAll: () => jK,
-	LucideReply: () => LK,
-	LucideReplyAll: () => FK,
-	LucideRewind: () => zK,
-	LucideRibbon: () => VK,
-	LucideRoad: () => UK,
-	LucideRobotArm: () => GK,
-	LucideRobotVacuum: () => qK,
-	LucideRocket: () => YK,
-	LucideRockingChair: () => ZK,
-	LucideRollerCoaster: () => $K,
-	LucideRose: () => tq,
-	LucideRotate3D: () => rq,
-	LucideRotate3d: () => rq,
-	LucideRotateCcw: () => dq,
-	LucideRotateCcwClock: () => aq,
-	LucideRotateCcwKey: () => sq,
-	LucideRotateCcwSquare: () => lq,
-	LucideRotateCw: () => yq,
-	LucideRotateCwClock: () => pq,
-	LucideRotateCwFadingClock: () => hq,
-	LucideRotateCwSquare: () => _q,
-	LucideRoute: () => Cq,
-	LucideRouteOff: () => xq,
-	LucideRouter: () => Tq,
-	LucideRows: () => Dq,
-	LucideRows2: () => Dq,
-	LucideRows3: () => kq,
-	LucideRows4: () => jq,
-	LucideRss: () => Nq,
-	LucideRuler: () => Lq,
-	LucideRulerDimensionLine: () => Fq,
-	LucideRussianRuble: () => zq,
-	LucideSailboat: () => Vq,
-	LucideSalad: () => Uq,
-	LucideSandwich: () => Gq,
-	LucideSatellite: () => qq,
-	LucideSatelliteDish: () => Yq,
-	LucideSaudiRiyal: () => Zq,
-	LucideSave: () => lJ,
-	LucideSaveAll: () => $q,
-	LucideSaveCheck: () => tJ,
-	LucideSaveOff: () => rJ,
-	LucideSavePen: () => aJ,
-	LucideSavePlus: () => sJ,
-	LucideScale: () => pJ,
-	LucideScale3D: () => dJ,
-	LucideScale3d: () => dJ,
-	LucideScaling: () => hJ,
-	LucideScan: () => LJ,
-	LucideScanBarcode: () => _J,
-	LucideScanBox: () => CJ,
-	LucideScanEye: () => yJ,
-	LucideScanFace: () => xJ,
-	LucideScanHeart: () => TJ,
-	LucideScanLine: () => DJ,
-	LucideScanQrCode: () => kJ,
-	LucideScanSearch: () => jJ,
-	LucideScanSquare: () => NJ,
-	LucideScanText: () => FJ,
-	LucideScatterChart: () => Pd,
-	LucideSchool: () => zJ,
+	LucidePresentation: () => IW,
+	LucidePrinter: () => HW,
+	LucidePrinterCheck: () => RW,
+	LucidePrinterX: () => BW,
+	LucideProjector: () => WW,
+	LucideProportions: () => KW,
+	LucideProvider: () => de,
+	LucidePuzzle: () => JW,
+	LucidePyramid: () => XW,
+	LucideQrCode: () => QW,
+	LucideQuote: () => eG,
+	LucideRabbit: () => nG,
+	LucideRadar: () => iG,
+	LucideRadiation: () => oG,
+	LucideRadical: () => cG,
+	LucideRadio: () => gG,
+	LucideRadioOff: () => uG,
+	LucideRadioReceiver: () => fG,
+	LucideRadioTower: () => mG,
+	LucideRadius: () => bG,
+	LucideRainbow: () => SG,
+	LucideRat: () => vG,
+	LucideRatio: () => wG,
+	LucideReceipt: () => WG,
+	LucideReceiptCent: () => EG,
+	LucideReceiptEuro: () => OG,
+	LucideReceiptIndianRupee: () => AG,
+	LucideReceiptJapaneseYen: () => MG,
+	LucideReceiptPoundSterling: () => PG,
+	LucideReceiptRussianRuble: () => IG,
+	LucideReceiptSwissFranc: () => RG,
+	LucideReceiptText: () => BG,
+	LucideReceiptTurkishLira: () => HG,
+	LucideRectangleCircle: () => KG,
+	LucideRectangleEllipsis: () => JG,
+	LucideRectangleGoggles: () => XG,
+	LucideRectangleHorizontal: () => QG,
+	LucideRectangleVertical: () => eK,
+	LucideRecycle: () => nK,
+	LucideRedo: () => cK,
+	LucideRedo2: () => iK,
+	LucideRedoDot: () => oK,
+	LucideRefreshCcw: () => fK,
+	LucideRefreshCcwDot: () => uK,
+	LucideRefreshCw: () => gK,
+	LucideRefreshCwOff: () => mK,
+	LucideRefrigerator: () => vK,
+	LucideRegex: () => bK,
+	LucideRemoveFormatting: () => SK,
+	LucideRepeat: () => OK,
+	LucideRepeat1: () => wK,
+	LucideRepeat2: () => EK,
+	LucideRepeatOff: () => AK,
+	LucideReplace: () => PK,
+	LucideReplaceAll: () => MK,
+	LucideReply: () => RK,
+	LucideReplyAll: () => IK,
+	LucideRewind: () => BK,
+	LucideRibbon: () => HK,
+	LucideRoad: () => WK,
+	LucideRobotArm: () => KK,
+	LucideRobotVacuum: () => JK,
+	LucideRocket: () => XK,
+	LucideRockingChair: () => QK,
+	LucideRollerCoaster: () => eq,
+	LucideRose: () => nq,
+	LucideRotate3D: () => iq,
+	LucideRotate3d: () => iq,
+	LucideRotateCcw: () => fq,
+	LucideRotateCcwClock: () => oq,
+	LucideRotateCcwKey: () => cq,
+	LucideRotateCcwSquare: () => uq,
+	LucideRotateCw: () => bq,
+	LucideRotateCwClock: () => mq,
+	LucideRotateCwFadingClock: () => gq,
+	LucideRotateCwSquare: () => vq,
+	LucideRoute: () => wq,
+	LucideRouteOff: () => Sq,
+	LucideRouter: () => Eq,
+	LucideRows: () => Oq,
+	LucideRows2: () => Oq,
+	LucideRows3: () => Aq,
+	LucideRows4: () => Mq,
+	LucideRss: () => Pq,
+	LucideRuler: () => Rq,
+	LucideRulerDimensionLine: () => Iq,
+	LucideRussianRuble: () => Bq,
+	LucideSailboat: () => Hq,
+	LucideSalad: () => Wq,
+	LucideSandwich: () => Kq,
+	LucideSatellite: () => Jq,
+	LucideSatelliteDish: () => Xq,
+	LucideSaudiRiyal: () => Qq,
+	LucideSave: () => uJ,
+	LucideSaveAll: () => eJ,
+	LucideSaveCheck: () => nJ,
+	LucideSaveOff: () => iJ,
+	LucideSavePen: () => oJ,
+	LucideSavePlus: () => cJ,
+	LucideScale: () => mJ,
+	LucideScale3D: () => fJ,
+	LucideScale3d: () => fJ,
+	LucideScaling: () => gJ,
+	LucideScan: () => RJ,
+	LucideScanBarcode: () => vJ,
+	LucideScanBox: () => wJ,
+	LucideScanEye: () => bJ,
+	LucideScanFace: () => SJ,
+	LucideScanHeart: () => EJ,
+	LucideScanLine: () => OJ,
+	LucideScanQrCode: () => AJ,
+	LucideScanSearch: () => MJ,
+	LucideScanSquare: () => PJ,
+	LucideScanText: () => IJ,
+	LucideScatterChart: () => P,
+	LucideSchool: () => BJ,
 	LucideSchool2: () => P5,
-	LucideScissors: () => VJ,
-	LucideScissorsLineDashed: () => UJ,
+	LucideScissors: () => HJ,
+	LucideScissorsLineDashed: () => WJ,
 	LucideScissorsSquare: () => e0,
 	LucideScissorsSquareDashedBottom: () => y$,
-	LucideScooter: () => GJ,
-	LucideScreenShare: () => YJ,
-	LucideScreenShareOff: () => qJ,
-	LucideScroll: () => $J,
-	LucideScrollText: () => ZJ,
-	LucideSearch: () => dY,
-	LucideSearchAlert: () => tY,
-	LucideSearchCheck: () => rY,
-	LucideSearchCode: () => aY,
-	LucideSearchSlash: () => lY,
-	LucideSearchX: () => sY,
-	LucideSection: () => pY,
-	LucideSend: () => yY,
-	LucideSendHorizonal: () => hY,
-	LucideSendHorizontal: () => hY,
-	LucideSendToBack: () => _Y,
-	LucideSeparatorHorizontal: () => xY,
-	LucideSeparatorVertical: () => CY,
-	LucideServer: () => NY,
-	LucideServerCog: () => TY,
-	LucideServerCrash: () => DY,
-	LucideServerOff: () => kY,
-	LucideServerPlus: () => jY,
-	LucideSettings: () => LY,
-	LucideSettings2: () => FY,
-	LucideShapes: () => zY,
-	LucideShare: () => UY,
-	LucideShare2: () => VY,
-	LucideSheet: () => GY,
-	LucideShell: () => qY,
-	LucideShelvingUnit: () => YY,
-	LucideShield: () => DX,
-	LucideShieldAlert: () => ZY,
-	LucideShieldBan: () => $Y,
-	LucideShieldCheck: () => tX,
-	LucideShieldClose: () => TX,
-	LucideShieldCog: () => aX,
-	LucideShieldCogCorner: () => rX,
-	LucideShieldEllipsis: () => sX,
-	LucideShieldHalf: () => lX,
-	LucideShieldKeyhole: () => dX,
-	LucideShieldLock: () => pX,
-	LucideShieldMinus: () => hX,
-	LucideShieldOff: () => _X,
-	LucideShieldPlus: () => yX,
-	LucideShieldQuestion: () => xX,
-	LucideShieldQuestionMark: () => xX,
-	LucideShieldUser: () => CX,
-	LucideShieldX: () => TX,
-	LucideShip: () => NX,
-	LucideShipCargo: () => kX,
-	LucideShipWheel: () => jX,
-	LucideShirt: () => FX,
-	LucideShoppingBag: () => zX,
-	LucideShoppingBasket: () => LX,
-	LucideShoppingCart: () => GX,
-	LucideShoppingCartMinus: () => VX,
-	LucideShoppingCartPlus: () => UX,
-	LucideShovel: () => qX,
-	LucideShowerHead: () => YX,
-	LucideShredder: () => ZX,
-	LucideShrimp: () => tZ,
-	LucideShrimpOff: () => $X,
-	LucideShrink: () => rZ,
-	LucideShrub: () => aZ,
-	LucideShuffle: () => sZ,
-	LucideSidebar: () => FV,
-	LucideSidebarClose: () => DV,
-	LucideSidebarOpen: () => jV,
-	LucideSigma: () => lZ,
+	LucideScooter: () => KJ,
+	LucideScreenShare: () => XJ,
+	LucideScreenShareOff: () => JJ,
+	LucideScroll: () => eY,
+	LucideScrollText: () => QJ,
+	LucideSearch: () => fY,
+	LucideSearchAlert: () => nY,
+	LucideSearchCheck: () => iY,
+	LucideSearchCode: () => oY,
+	LucideSearchSlash: () => uY,
+	LucideSearchX: () => cY,
+	LucideSection: () => mY,
+	LucideSend: () => bY,
+	LucideSendHorizonal: () => gY,
+	LucideSendHorizontal: () => gY,
+	LucideSendToBack: () => vY,
+	LucideSeparatorHorizontal: () => SY,
+	LucideSeparatorVertical: () => wY,
+	LucideServer: () => PY,
+	LucideServerCog: () => EY,
+	LucideServerCrash: () => OY,
+	LucideServerOff: () => AY,
+	LucideServerPlus: () => MY,
+	LucideSettings: () => RY,
+	LucideSettings2: () => IY,
+	LucideShapes: () => BY,
+	LucideShare: () => WY,
+	LucideShare2: () => HY,
+	LucideSheet: () => KY,
+	LucideShell: () => JY,
+	LucideShelvingUnit: () => XY,
+	LucideShield: () => OX,
+	LucideShieldAlert: () => QY,
+	LucideShieldBan: () => eX,
+	LucideShieldCheck: () => nX,
+	LucideShieldClose: () => EX,
+	LucideShieldCog: () => oX,
+	LucideShieldCogCorner: () => iX,
+	LucideShieldEllipsis: () => cX,
+	LucideShieldHalf: () => uX,
+	LucideShieldKeyhole: () => fX,
+	LucideShieldLock: () => mX,
+	LucideShieldMinus: () => gX,
+	LucideShieldOff: () => vX,
+	LucideShieldPlus: () => bX,
+	LucideShieldQuestion: () => SX,
+	LucideShieldQuestionMark: () => SX,
+	LucideShieldUser: () => wX,
+	LucideShieldX: () => EX,
+	LucideShip: () => PX,
+	LucideShipCargo: () => AX,
+	LucideShipWheel: () => MX,
+	LucideShirt: () => IX,
+	LucideShoppingBag: () => BX,
+	LucideShoppingBasket: () => RX,
+	LucideShoppingCart: () => KX,
+	LucideShoppingCartMinus: () => HX,
+	LucideShoppingCartPlus: () => WX,
+	LucideShovel: () => JX,
+	LucideShowerHead: () => XX,
+	LucideShredder: () => QX,
+	LucideShrimp: () => nZ,
+	LucideShrimpOff: () => eZ,
+	LucideShrink: () => iZ,
+	LucideShrub: () => oZ,
+	LucideShuffle: () => cZ,
+	LucideSidebar: () => IV,
+	LucideSidebarClose: () => OV,
+	LucideSidebarOpen: () => MV,
+	LucideSigma: () => uZ,
 	LucideSigmaSquare: () => n0,
-	LucideSignal: () => yZ,
-	LucideSignalHigh: () => dZ,
-	LucideSignalLow: () => pZ,
-	LucideSignalMedium: () => hZ,
-	LucideSignalZero: () => _Z,
-	LucideSignature: () => xZ,
-	LucideSignpost: () => TZ,
-	LucideSignpostBig: () => CZ,
-	LucideSiren: () => DZ,
+	LucideSignal: () => bZ,
+	LucideSignalHigh: () => fZ,
+	LucideSignalLow: () => mZ,
+	LucideSignalMedium: () => gZ,
+	LucideSignalZero: () => vZ,
+	LucideSignature: () => SZ,
+	LucideSignpost: () => EZ,
+	LucideSignpostBig: () => wZ,
+	LucideSiren: () => OZ,
 	LucideSkipBack: () => kZ,
 	LucideSkipForward: () => jZ,
 	LucideSkull: () => NZ,
@@ -51812,8 +51810,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideSoapDispenserDroplet: () => $Z,
 	LucideSofa: () => tQ,
 	LucideSolarPanel: () => rQ,
-	LucideSortAsc: () => y,
-	LucideSortDesc: () => zn,
+	LucideSortAsc: () => Tr,
+	LucideSortDesc: () => Un,
 	LucideSoup: () => aQ,
 	LucideSpace: () => sQ,
 	LucideSpade: () => lQ,
@@ -51854,7 +51852,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideSquareBottomDashedScissors: () => y$,
 	LucideSquareCenterlineDashedHorizontal: () => x$,
 	LucideSquareCenterlineDashedVertical: () => C$,
-	LucideSquareChartGantt: () => K,
+	LucideSquareChartGantt: () => q,
 	LucideSquareCheck: () => O$,
 	LucideSquareCheckBig: () => E$,
 	LucideSquareChevronDown: () => A$,
@@ -51868,7 +51866,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideSquareDashedKanban: () => W$,
 	LucideSquareDashedMousePointer: () => K$,
 	LucideSquareDashedPlus: () => J$,
-	LucideSquareDashedText: () => q,
+	LucideSquareDashedText: () => J,
 	LucideSquareDashedTopSolid: () => Z$,
 	LucideSquareDashedX: () => t1,
 	LucideSquareDashedXCorner: () => $$,
@@ -51878,7 +51876,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideSquareEqual: () => d1,
 	LucideSquareExclamationPoint: () => p1,
 	LucideSquareFunction: () => h1,
-	LucideSquareGanttChart: () => K,
+	LucideSquareGanttChart: () => q,
 	LucideSquareKanban: () => _1,
 	LucideSquareLibrary: () => y1,
 	LucideSquareM: () => x1,
@@ -51889,7 +51887,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideSquareParking: () => N1,
 	LucideSquareParkingOff: () => j1,
 	LucideSquarePause: () => F1,
-	LucideSquarePen: () => J,
+	LucideSquarePen: () => Y,
 	LucideSquarePercent: () => R1,
 	LucideSquarePi: () => B1,
 	LucideSquarePilcrow: () => H1,
@@ -51941,13 +51939,13 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideStickyNoteX: () => w2,
 	LucideStickyNotes: () => O2,
 	LucideStone: () => A2,
-	LucideStopCircle: () => bm,
+	LucideStopCircle: () => ym,
 	LucideStore: () => I2,
 	LucideStretchHorizontal: () => M2,
 	LucideStretchVertical: () => P2,
 	LucideStrikethrough: () => R2,
 	LucideSubscript: () => B2,
-	LucideSubtitles: () => A,
+	LucideSubtitles: () => x,
 	LucideSummary: () => H2,
 	LucideSun: () => Q2,
 	LucideSunDim: () => W2,
@@ -51968,7 +51966,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideTableCellsMerge: () => b4,
 	LucideTableCellsSplit: () => w4,
 	LucideTableColumnsSplit: () => S4,
-	LucideTableConfig: () => V,
+	LucideTableConfig: () => H,
 	LucideTableOfContents: () => E4,
 	LucideTableProperties: () => O4,
 	LucideTableRowsSplit: () => A4,
@@ -51995,18 +51993,18 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideTestTube2: () => g3,
 	LucideTestTubeDiagonal: () => g3,
 	LucideTestTubes: () => b3,
-	LucideText: () => Y,
+	LucideText: () => X,
 	LucideTextAlignCenter: () => S3,
 	LucideTextAlignEnd: () => w3,
 	LucideTextAlignJustify: () => E3,
-	LucideTextAlignStart: () => Y,
+	LucideTextAlignStart: () => X,
 	LucideTextCursor: () => j3,
 	LucideTextCursorInput: () => k3,
 	LucideTextInitial: () => N3,
 	LucideTextQuote: () => F3,
 	LucideTextSearch: () => L3,
-	LucideTextSelect: () => q,
-	LucideTextSelection: () => q,
+	LucideTextSelect: () => J,
+	LucideTextSelection: () => J,
 	LucideTextWrap: () => z3,
 	LucideTheater: () => V3,
 	LucideThermometer: () => q3,
@@ -52045,27 +52043,27 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideTractor: () => t8,
 	LucideTrafficCone: () => r8,
 	LucideTrailer: () => a8,
-	LucideTrain: () => p8,
+	LucideTrain: () => Z,
 	LucideTrainFront: () => l8,
 	LucideTrainFrontTunnel: () => s8,
 	LucideTrainTrack: () => d8,
-	LucideTramFront: () => p8,
-	LucideTransgender: () => h8,
-	LucideTrash: () => y8,
-	LucideTrash2: () => y8,
-	LucideTrashOff: () => _8,
-	LucideTreeDeciduous: () => x8,
-	LucideTreePalm: () => C8,
-	LucideTreePine: () => T8,
-	LucideTrees: () => D8,
-	LucideTrendingDown: () => k8,
-	LucideTrendingUp: () => N8,
-	LucideTrendingUpDown: () => j8,
-	LucideTriangle: () => V8,
-	LucideTriangleAlert: () => F8,
-	LucideTriangleDashed: () => L8,
-	LucideTriangleRight: () => z8,
-	LucideTrianglesCenterlineDashedHorizontal: () => X,
+	LucideTramFront: () => Z,
+	LucideTransgender: () => m8,
+	LucideTrash: () => v8,
+	LucideTrash2: () => v8,
+	LucideTrashOff: () => g8,
+	LucideTreeDeciduous: () => b8,
+	LucideTreePalm: () => S8,
+	LucideTreePine: () => w8,
+	LucideTrees: () => E8,
+	LucideTrendingDown: () => O8,
+	LucideTrendingUp: () => M8,
+	LucideTrendingUpDown: () => A8,
+	LucideTriangle: () => B8,
+	LucideTriangleAlert: () => P8,
+	LucideTriangleDashed: () => I8,
+	LucideTriangleRight: () => R8,
+	LucideTrianglesCenterlineDashedHorizontal: () => H8,
 	LucideTrianglesCenterlineDashedVertical: () => W8,
 	LucideTrophy: () => K8,
 	LucideTruck: () => J8,
@@ -52092,19 +52090,19 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideUniversity: () => P5,
 	LucideUnlink: () => R5,
 	LucideUnlink2: () => I5,
-	LucideUnlock: () => dP,
-	LucideUnlockKeyhole: () => sP,
+	LucideUnlock: () => fP,
+	LucideUnlockKeyhole: () => cP,
 	LucideUnplug: () => B5,
 	LucideUpload: () => H5,
-	LucideUploadCloud: () => Rg,
+	LucideUploadCloud: () => jg,
 	LucideUsb: () => K5,
 	LucideUsbCPort: () => W5,
 	LucideUser: () => _7,
 	LucideUser2: () => f7,
 	LucideUserCheck: () => J5,
 	LucideUserCheck2: () => r7,
-	LucideUserCircle: () => wm,
-	LucideUserCircle2: () => Sm,
+	LucideUserCircle: () => Cm,
+	LucideUserCircle2: () => xm,
 	LucideUserCog: () => Y5,
 	LucideUserCog2: () => i7,
 	LucideUserGroup: () => X5,
@@ -52148,7 +52146,7 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideVenetianMask: () => k7,
 	LucideVenus: () => j7,
 	LucideVenusAndMars: () => A7,
-	LucideVerified: () => S,
+	LucideVerified: () => p,
 	LucideVibrate: () => N7,
 	LucideVibrateOff: () => M7,
 	LucideVideo: () => F7,
@@ -52211,9 +52209,9 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideWrench: () => N9,
 	LucideWrenchOff: () => P9,
 	LucideX: () => I9,
-	LucideXCircle: () => Em,
+	LucideXCircle: () => Tm,
 	LucideXLineTop: () => F9,
-	LucideXOctagon: () => NB,
+	LucideXOctagon: () => PB,
 	LucideXSquare: () => O0,
 	LucideZap: () => R9,
 	LucideZapOff: () => L9,
@@ -52232,1044 +52230,1044 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	LucideZodiacVirgo: () => Z9,
 	LucideZoomIn: () => Q9,
 	LucideZoomOut: () => $9,
-	Luggage: () => CP,
-	LuggageIcon: () => CP,
+	Luggage: () => wP,
+	LuggageIcon: () => wP,
 	MSquare: () => x1,
 	MSquareIcon: () => x1,
-	Magnet: () => TP,
-	MagnetIcon: () => TP,
-	Mail: () => YP,
-	MailBadge: () => DP,
-	MailBadgeIcon: () => DP,
-	MailCheck: () => kP,
-	MailCheckIcon: () => kP,
-	MailClock: () => jP,
-	MailClockIcon: () => jP,
-	MailIcon: () => YP,
-	MailMinus: () => NP,
-	MailMinusIcon: () => NP,
-	MailOpen: () => FP,
-	MailOpenIcon: () => FP,
-	MailPen: () => LP,
-	MailPenIcon: () => LP,
-	MailPlus: () => zP,
-	MailPlusIcon: () => zP,
-	MailQuestion: () => VP,
-	MailQuestionIcon: () => VP,
-	MailQuestionMark: () => VP,
-	MailQuestionMarkIcon: () => VP,
-	MailSearch: () => GP,
-	MailSearchIcon: () => GP,
-	MailWarning: () => UP,
-	MailWarningIcon: () => UP,
-	MailX: () => qP,
-	MailXIcon: () => qP,
-	Mailbox: () => ZP,
-	MailboxIcon: () => ZP,
-	Mails: () => $P,
-	MailsIcon: () => $P,
-	Map: () => NF,
-	MapIcon: () => NF,
-	MapMinus: () => tF,
-	MapMinusIcon: () => tF,
-	MapPin: () => DF,
-	MapPinCheck: () => rF,
-	MapPinCheckIcon: () => rF,
-	MapPinCheckInside: () => aF,
-	MapPinCheckInsideIcon: () => aF,
-	MapPinHouse: () => sF,
-	MapPinHouseIcon: () => sF,
-	MapPinIcon: () => DF,
-	MapPinMinus: () => dF,
-	MapPinMinusIcon: () => dF,
-	MapPinMinusInside: () => lF,
-	MapPinMinusInsideIcon: () => lF,
-	MapPinOff: () => pF,
-	MapPinOffIcon: () => pF,
-	MapPinPen: () => hF,
-	MapPinPenIcon: () => hF,
-	MapPinPlus: () => yF,
-	MapPinPlusIcon: () => yF,
-	MapPinPlusInside: () => _F,
-	MapPinPlusInsideIcon: () => _F,
-	MapPinSearch: () => xF,
-	MapPinSearchIcon: () => xF,
-	MapPinX: () => TF,
-	MapPinXIcon: () => TF,
-	MapPinXInside: () => CF,
-	MapPinXInsideIcon: () => CF,
-	MapPinned: () => kF,
-	MapPinnedIcon: () => kF,
-	MapPlus: () => jF,
-	MapPlusIcon: () => jF,
-	Mars: () => LF,
-	MarsIcon: () => LF,
-	MarsStroke: () => FF,
-	MarsStrokeIcon: () => FF,
-	Martini: () => zF,
-	MartiniIcon: () => zF,
-	Maximize: () => UF,
-	Maximize2: () => VF,
-	Maximize2Icon: () => VF,
-	MaximizeIcon: () => UF,
-	Medal: () => GF,
-	MedalIcon: () => GF,
-	Megaphone: () => YF,
-	MegaphoneIcon: () => YF,
-	MegaphoneOff: () => qF,
-	MegaphoneOffIcon: () => qF,
+	Magnet: () => EP,
+	MagnetIcon: () => EP,
+	Mail: () => XP,
+	MailBadge: () => OP,
+	MailBadgeIcon: () => OP,
+	MailCheck: () => AP,
+	MailCheckIcon: () => AP,
+	MailClock: () => MP,
+	MailClockIcon: () => MP,
+	MailIcon: () => XP,
+	MailMinus: () => PP,
+	MailMinusIcon: () => PP,
+	MailOpen: () => IP,
+	MailOpenIcon: () => IP,
+	MailPen: () => RP,
+	MailPenIcon: () => RP,
+	MailPlus: () => BP,
+	MailPlusIcon: () => BP,
+	MailQuestion: () => HP,
+	MailQuestionIcon: () => HP,
+	MailQuestionMark: () => HP,
+	MailQuestionMarkIcon: () => HP,
+	MailSearch: () => KP,
+	MailSearchIcon: () => KP,
+	MailWarning: () => WP,
+	MailWarningIcon: () => WP,
+	MailX: () => JP,
+	MailXIcon: () => JP,
+	Mailbox: () => QP,
+	MailboxIcon: () => QP,
+	Mails: () => eF,
+	MailsIcon: () => eF,
+	Map: () => PF,
+	MapIcon: () => PF,
+	MapMinus: () => nF,
+	MapMinusIcon: () => nF,
+	MapPin: () => OF,
+	MapPinCheck: () => iF,
+	MapPinCheckIcon: () => iF,
+	MapPinCheckInside: () => oF,
+	MapPinCheckInsideIcon: () => oF,
+	MapPinHouse: () => cF,
+	MapPinHouseIcon: () => cF,
+	MapPinIcon: () => OF,
+	MapPinMinus: () => fF,
+	MapPinMinusIcon: () => fF,
+	MapPinMinusInside: () => uF,
+	MapPinMinusInsideIcon: () => uF,
+	MapPinOff: () => mF,
+	MapPinOffIcon: () => mF,
+	MapPinPen: () => gF,
+	MapPinPenIcon: () => gF,
+	MapPinPlus: () => bF,
+	MapPinPlusIcon: () => bF,
+	MapPinPlusInside: () => vF,
+	MapPinPlusInsideIcon: () => vF,
+	MapPinSearch: () => SF,
+	MapPinSearchIcon: () => SF,
+	MapPinX: () => EF,
+	MapPinXIcon: () => EF,
+	MapPinXInside: () => wF,
+	MapPinXInsideIcon: () => wF,
+	MapPinned: () => AF,
+	MapPinnedIcon: () => AF,
+	MapPlus: () => MF,
+	MapPlusIcon: () => MF,
+	Mars: () => RF,
+	MarsIcon: () => RF,
+	MarsStroke: () => IF,
+	MarsStrokeIcon: () => IF,
+	Martini: () => BF,
+	MartiniIcon: () => BF,
+	Maximize: () => WF,
+	Maximize2: () => HF,
+	Maximize2Icon: () => HF,
+	MaximizeIcon: () => WF,
+	Medal: () => KF,
+	MedalIcon: () => KF,
+	Megaphone: () => XF,
+	MegaphoneIcon: () => XF,
+	MegaphoneOff: () => JF,
+	MegaphoneOffIcon: () => JF,
 	Meh: () => Rx,
 	MehIcon: () => Rx,
-	MemoryStick: () => ZF,
-	MemoryStickIcon: () => ZF,
-	Menu: () => $F,
-	MenuIcon: () => $F,
+	MemoryStick: () => QF,
+	MemoryStickIcon: () => QF,
+	Menu: () => eI,
+	MenuIcon: () => eI,
 	MenuSquare: () => C1,
 	MenuSquareIcon: () => C1,
-	Merge: () => tI,
-	MergeIcon: () => tI,
-	MessageCircle: () => DI,
-	MessageCircleCheck: () => rI,
-	MessageCircleCheckIcon: () => rI,
-	MessageCircleCode: () => aI,
-	MessageCircleCodeIcon: () => aI,
-	MessageCircleDashed: () => lI,
-	MessageCircleDashedCheck: () => sI,
-	MessageCircleDashedCheckIcon: () => sI,
-	MessageCircleDashedIcon: () => lI,
-	MessageCircleHeart: () => dI,
-	MessageCircleHeartIcon: () => dI,
-	MessageCircleIcon: () => DI,
-	MessageCircleMore: () => pI,
-	MessageCircleMoreIcon: () => pI,
-	MessageCircleOff: () => hI,
-	MessageCircleOffIcon: () => hI,
-	MessageCirclePlus: () => _I,
-	MessageCirclePlusIcon: () => _I,
-	MessageCircleQuestion: () => yI,
-	MessageCircleQuestionIcon: () => yI,
-	MessageCircleQuestionMark: () => yI,
-	MessageCircleQuestionMarkIcon: () => yI,
-	MessageCircleReply: () => CI,
-	MessageCircleReplyIcon: () => CI,
-	MessageCircleWarning: () => xI,
-	MessageCircleWarningIcon: () => xI,
-	MessageCircleX: () => TI,
-	MessageCircleXIcon: () => TI,
-	MessageSquare: () => aL,
-	MessageSquareCheck: () => kI,
-	MessageSquareCheckIcon: () => kI,
-	MessageSquareCode: () => jI,
-	MessageSquareCodeIcon: () => jI,
-	MessageSquareDashed: () => NI,
-	MessageSquareDashedIcon: () => NI,
-	MessageSquareDiff: () => FI,
-	MessageSquareDiffIcon: () => FI,
-	MessageSquareDot: () => LI,
-	MessageSquareDotIcon: () => LI,
-	MessageSquareHeart: () => zI,
-	MessageSquareHeartIcon: () => zI,
-	MessageSquareIcon: () => aL,
-	MessageSquareLock: () => VI,
-	MessageSquareLockIcon: () => VI,
-	MessageSquareMore: () => UI,
-	MessageSquareMoreIcon: () => UI,
-	MessageSquareOff: () => GI,
-	MessageSquareOffIcon: () => GI,
-	MessageSquarePlus: () => qI,
-	MessageSquarePlusIcon: () => qI,
-	MessageSquareQuote: () => YI,
-	MessageSquareQuoteIcon: () => YI,
-	MessageSquareReply: () => ZI,
-	MessageSquareReplyIcon: () => ZI,
-	MessageSquareShare: () => $I,
-	MessageSquareShareIcon: () => $I,
-	MessageSquareText: () => tL,
-	MessageSquareTextIcon: () => tL,
-	MessageSquareWarning: () => rL,
-	MessageSquareWarningIcon: () => rL,
-	MessageSquareX: () => sL,
-	MessageSquareXIcon: () => sL,
-	MessagesCircle: () => lL,
-	MessagesCircleIcon: () => lL,
-	MessagesSquare: () => dL,
-	MessagesSquareIcon: () => dL,
-	Metronome: () => pL,
-	MetronomeIcon: () => pL,
-	Mic: () => TL,
-	Mic2: () => xL,
-	Mic2Icon: () => xL,
-	MicAudioLines: () => hL,
-	MicAudioLinesIcon: () => hL,
-	MicIcon: () => TL,
-	MicOff: () => _L,
-	MicOffIcon: () => _L,
-	MicSignal: () => yL,
-	MicSignalIcon: () => yL,
-	MicVocal: () => xL,
-	MicVocalIcon: () => xL,
-	Microchip: () => CL,
-	MicrochipIcon: () => CL,
-	Microscope: () => DL,
-	MicroscopeIcon: () => DL,
-	Microwave: () => kL,
-	MicrowaveIcon: () => kL,
-	MidiPort: () => jL,
-	MidiPortIcon: () => jL,
-	Milestone: () => NL,
-	MilestoneIcon: () => NL,
-	Milk: () => LL,
-	MilkIcon: () => LL,
-	MilkOff: () => FL,
-	MilkOffIcon: () => FL,
-	Minimize: () => VL,
-	Minimize2: () => zL,
-	Minimize2Icon: () => zL,
-	MinimizeIcon: () => VL,
-	Minus: () => UL,
-	MinusCircle: () => Up,
-	MinusCircleIcon: () => Up,
-	MinusIcon: () => UL,
+	Merge: () => nI,
+	MergeIcon: () => nI,
+	MessageCircle: () => OI,
+	MessageCircleCheck: () => iI,
+	MessageCircleCheckIcon: () => iI,
+	MessageCircleCode: () => oI,
+	MessageCircleCodeIcon: () => oI,
+	MessageCircleDashed: () => uI,
+	MessageCircleDashedCheck: () => cI,
+	MessageCircleDashedCheckIcon: () => cI,
+	MessageCircleDashedIcon: () => uI,
+	MessageCircleHeart: () => fI,
+	MessageCircleHeartIcon: () => fI,
+	MessageCircleIcon: () => OI,
+	MessageCircleMore: () => mI,
+	MessageCircleMoreIcon: () => mI,
+	MessageCircleOff: () => gI,
+	MessageCircleOffIcon: () => gI,
+	MessageCirclePlus: () => vI,
+	MessageCirclePlusIcon: () => vI,
+	MessageCircleQuestion: () => bI,
+	MessageCircleQuestionIcon: () => bI,
+	MessageCircleQuestionMark: () => bI,
+	MessageCircleQuestionMarkIcon: () => bI,
+	MessageCircleReply: () => wI,
+	MessageCircleReplyIcon: () => wI,
+	MessageCircleWarning: () => SI,
+	MessageCircleWarningIcon: () => SI,
+	MessageCircleX: () => EI,
+	MessageCircleXIcon: () => EI,
+	MessageSquare: () => oL,
+	MessageSquareCheck: () => AI,
+	MessageSquareCheckIcon: () => AI,
+	MessageSquareCode: () => MI,
+	MessageSquareCodeIcon: () => MI,
+	MessageSquareDashed: () => PI,
+	MessageSquareDashedIcon: () => PI,
+	MessageSquareDiff: () => II,
+	MessageSquareDiffIcon: () => II,
+	MessageSquareDot: () => RI,
+	MessageSquareDotIcon: () => RI,
+	MessageSquareHeart: () => BI,
+	MessageSquareHeartIcon: () => BI,
+	MessageSquareIcon: () => oL,
+	MessageSquareLock: () => HI,
+	MessageSquareLockIcon: () => HI,
+	MessageSquareMore: () => WI,
+	MessageSquareMoreIcon: () => WI,
+	MessageSquareOff: () => KI,
+	MessageSquareOffIcon: () => KI,
+	MessageSquarePlus: () => JI,
+	MessageSquarePlusIcon: () => JI,
+	MessageSquareQuote: () => XI,
+	MessageSquareQuoteIcon: () => XI,
+	MessageSquareReply: () => QI,
+	MessageSquareReplyIcon: () => QI,
+	MessageSquareShare: () => eL,
+	MessageSquareShareIcon: () => eL,
+	MessageSquareText: () => nL,
+	MessageSquareTextIcon: () => nL,
+	MessageSquareWarning: () => iL,
+	MessageSquareWarningIcon: () => iL,
+	MessageSquareX: () => cL,
+	MessageSquareXIcon: () => cL,
+	MessagesCircle: () => uL,
+	MessagesCircleIcon: () => uL,
+	MessagesSquare: () => fL,
+	MessagesSquareIcon: () => fL,
+	Metronome: () => mL,
+	MetronomeIcon: () => mL,
+	Mic: () => EL,
+	Mic2: () => SL,
+	Mic2Icon: () => SL,
+	MicAudioLines: () => gL,
+	MicAudioLinesIcon: () => gL,
+	MicIcon: () => EL,
+	MicOff: () => vL,
+	MicOffIcon: () => vL,
+	MicSignal: () => bL,
+	MicSignalIcon: () => bL,
+	MicVocal: () => SL,
+	MicVocalIcon: () => SL,
+	Microchip: () => wL,
+	MicrochipIcon: () => wL,
+	Microscope: () => OL,
+	MicroscopeIcon: () => OL,
+	Microwave: () => AL,
+	MicrowaveIcon: () => AL,
+	MidiPort: () => ML,
+	MidiPortIcon: () => ML,
+	Milestone: () => PL,
+	MilestoneIcon: () => PL,
+	Milk: () => RL,
+	MilkIcon: () => RL,
+	MilkOff: () => IL,
+	MilkOffIcon: () => IL,
+	Minimize: () => HL,
+	Minimize2: () => BL,
+	Minimize2Icon: () => BL,
+	MinimizeIcon: () => HL,
+	Minus: () => WL,
+	MinusCircle: () => Hp,
+	MinusCircleIcon: () => Hp,
+	MinusIcon: () => WL,
 	MinusSquare: () => T1,
 	MinusSquareIcon: () => T1,
-	MirrorRectangular: () => GL,
-	MirrorRectangularIcon: () => GL,
-	MirrorRound: () => YL,
-	MirrorRoundIcon: () => YL,
-	Monitor: () => CR,
-	MonitorCheck: () => qL,
-	MonitorCheckIcon: () => qL,
-	MonitorCloud: () => ZL,
-	MonitorCloudIcon: () => ZL,
-	MonitorCog: () => $L,
-	MonitorCogIcon: () => $L,
-	MonitorDot: () => tR,
-	MonitorDotIcon: () => tR,
-	MonitorDown: () => rR,
-	MonitorDownIcon: () => rR,
-	MonitorIcon: () => CR,
-	MonitorOff: () => aR,
-	MonitorOffIcon: () => aR,
-	MonitorPause: () => sR,
-	MonitorPauseIcon: () => sR,
-	MonitorPc: () => lR,
-	MonitorPcIcon: () => lR,
-	MonitorPlay: () => dR,
-	MonitorPlayIcon: () => dR,
-	MonitorSmartphone: () => pR,
-	MonitorSmartphoneIcon: () => pR,
-	MonitorSpeaker: () => hR,
-	MonitorSpeakerIcon: () => hR,
-	MonitorStop: () => _R,
-	MonitorStopIcon: () => _R,
-	MonitorUp: () => yR,
-	MonitorUpIcon: () => yR,
-	MonitorX: () => xR,
-	MonitorXIcon: () => xR,
-	Moon: () => DR,
-	MoonIcon: () => DR,
-	MoonStar: () => TR,
-	MoonStarIcon: () => TR,
-	Mop: () => jR,
-	MopIcon: () => jR,
-	MopSparkles: () => kR,
-	MopSparklesIcon: () => kR,
+	MirrorRectangular: () => KL,
+	MirrorRectangularIcon: () => KL,
+	MirrorRound: () => XL,
+	MirrorRoundIcon: () => XL,
+	Monitor: () => wR,
+	MonitorCheck: () => JL,
+	MonitorCheckIcon: () => JL,
+	MonitorCloud: () => QL,
+	MonitorCloudIcon: () => QL,
+	MonitorCog: () => eR,
+	MonitorCogIcon: () => eR,
+	MonitorDot: () => nR,
+	MonitorDotIcon: () => nR,
+	MonitorDown: () => iR,
+	MonitorDownIcon: () => iR,
+	MonitorIcon: () => wR,
+	MonitorOff: () => oR,
+	MonitorOffIcon: () => oR,
+	MonitorPause: () => cR,
+	MonitorPauseIcon: () => cR,
+	MonitorPc: () => uR,
+	MonitorPcIcon: () => uR,
+	MonitorPlay: () => fR,
+	MonitorPlayIcon: () => fR,
+	MonitorSmartphone: () => mR,
+	MonitorSmartphoneIcon: () => mR,
+	MonitorSpeaker: () => gR,
+	MonitorSpeakerIcon: () => gR,
+	MonitorStop: () => vR,
+	MonitorStopIcon: () => vR,
+	MonitorUp: () => bR,
+	MonitorUpIcon: () => bR,
+	MonitorX: () => SR,
+	MonitorXIcon: () => SR,
+	Moon: () => OR,
+	MoonIcon: () => OR,
+	MoonStar: () => ER,
+	MoonStarIcon: () => ER,
+	Mop: () => MR,
+	MopIcon: () => MR,
+	MopSparkles: () => AR,
+	MopSparklesIcon: () => AR,
 	MoreHorizontal: () => ex,
 	MoreHorizontalIcon: () => ex,
 	MoreVertical: () => Qb,
 	MoreVerticalIcon: () => Qb,
-	Mosque: () => NR,
-	MosqueIcon: () => NR,
-	Motorbike: () => FR,
-	MotorbikeIcon: () => FR,
-	Mountain: () => zR,
-	MountainIcon: () => zR,
-	MountainSnow: () => LR,
-	MountainSnowIcon: () => LR,
-	Mouse: () => rz,
-	MouseIcon: () => rz,
-	MouseLeft: () => VR,
-	MouseLeftIcon: () => VR,
-	MouseOff: () => UR,
-	MouseOffIcon: () => UR,
-	MousePointer: () => $R,
-	MousePointer2: () => qR,
-	MousePointer2Icon: () => qR,
-	MousePointer2Off: () => GR,
-	MousePointer2OffIcon: () => GR,
-	MousePointerBan: () => YR,
-	MousePointerBanIcon: () => YR,
-	MousePointerClick: () => ZR,
-	MousePointerClickIcon: () => ZR,
-	MousePointerIcon: () => $R,
+	Mosque: () => PR,
+	MosqueIcon: () => PR,
+	Motorbike: () => IR,
+	MotorbikeIcon: () => IR,
+	Mountain: () => BR,
+	MountainIcon: () => BR,
+	MountainSnow: () => RR,
+	MountainSnowIcon: () => RR,
+	Mouse: () => iz,
+	MouseIcon: () => iz,
+	MouseLeft: () => HR,
+	MouseLeftIcon: () => HR,
+	MouseOff: () => WR,
+	MouseOffIcon: () => WR,
+	MousePointer: () => ez,
+	MousePointer2: () => JR,
+	MousePointer2Icon: () => JR,
+	MousePointer2Off: () => KR,
+	MousePointer2OffIcon: () => KR,
+	MousePointerBan: () => XR,
+	MousePointerBanIcon: () => XR,
+	MousePointerClick: () => QR,
+	MousePointerClickIcon: () => QR,
+	MousePointerIcon: () => ez,
 	MousePointerSquareDashed: () => K$,
 	MousePointerSquareDashedIcon: () => K$,
-	MouseRight: () => tz,
-	MouseRightIcon: () => tz,
-	Mouth: () => sz,
-	MouthIcon: () => sz,
-	MouthOff: () => az,
-	MouthOffIcon: () => az,
-	Move: () => Fz,
-	Move3D: () => lz,
-	Move3DIcon: () => lz,
-	Move3d: () => lz,
-	Move3dIcon: () => lz,
-	MoveDiagonal: () => pz,
-	MoveDiagonal2: () => dz,
-	MoveDiagonal2Icon: () => dz,
-	MoveDiagonalIcon: () => pz,
-	MoveDown: () => xz,
-	MoveDownIcon: () => xz,
-	MoveDownLeft: () => hz,
-	MoveDownLeftIcon: () => hz,
-	MoveDownRight: () => _z,
-	MoveDownRightIcon: () => _z,
-	MoveHorizontal: () => yz,
-	MoveHorizontalIcon: () => yz,
-	MoveIcon: () => Fz,
-	MoveLeft: () => Cz,
-	MoveLeftIcon: () => Cz,
-	MoveRight: () => Tz,
-	MoveRightIcon: () => Tz,
-	MoveUp: () => jz,
-	MoveUpIcon: () => jz,
-	MoveUpLeft: () => Dz,
-	MoveUpLeftIcon: () => Dz,
-	MoveUpRight: () => kz,
-	MoveUpRightIcon: () => kz,
-	MoveVertical: () => Nz,
-	MoveVerticalIcon: () => Nz,
-	Music: () => Uz,
-	Music2: () => Lz,
-	Music2Icon: () => Lz,
-	Music3: () => zz,
-	Music3Icon: () => zz,
-	Music4: () => Vz,
-	Music4Icon: () => Vz,
-	MusicIcon: () => Uz,
-	Navigation: () => Zz,
-	Navigation2: () => qz,
-	Navigation2Icon: () => qz,
-	Navigation2Off: () => Gz,
-	Navigation2OffIcon: () => Gz,
-	NavigationIcon: () => Zz,
-	NavigationOff: () => Yz,
-	NavigationOffIcon: () => Yz,
-	NepaliRupee: () => $z,
-	NepaliRupeeIcon: () => $z,
-	Network: () => tB,
-	NetworkIcon: () => tB,
-	Newspaper: () => rB,
-	NewspaperIcon: () => rB,
-	Nfc: () => aB,
-	NfcIcon: () => aB,
-	NonBinary: () => sB,
-	NonBinaryIcon: () => sB,
-	Notebook: () => _B,
-	NotebookDot: () => lB,
-	NotebookDotIcon: () => lB,
-	NotebookIcon: () => _B,
-	NotebookPen: () => dB,
-	NotebookPenIcon: () => dB,
-	NotebookTabs: () => pB,
-	NotebookTabsIcon: () => pB,
-	NotebookText: () => hB,
-	NotebookTextIcon: () => hB,
-	NotepadText: () => xB,
-	NotepadTextDashed: () => yB,
-	NotepadTextDashedIcon: () => yB,
-	NotepadTextIcon: () => xB,
-	Nut: () => TB,
-	NutIcon: () => TB,
-	NutOff: () => CB,
-	NutOffIcon: () => CB,
-	Octagon: () => FB,
-	OctagonAlert: () => DB,
-	OctagonAlertIcon: () => DB,
-	OctagonIcon: () => FB,
-	OctagonMinus: () => kB,
-	OctagonMinusIcon: () => kB,
-	OctagonPause: () => jB,
-	OctagonPauseIcon: () => jB,
-	OctagonX: () => NB,
-	OctagonXIcon: () => NB,
-	Omega: () => LB,
-	OmegaIcon: () => LB,
-	Option: () => zB,
-	OptionIcon: () => zB,
-	Orbit: () => VB,
-	OrbitIcon: () => VB,
-	Origami: () => UB,
-	OrigamiIcon: () => UB,
-	Outdent: () => W,
-	OutdentIcon: () => W,
-	Package: () => aV,
-	Package2: () => GB,
-	Package2Icon: () => GB,
-	PackageCheck: () => qB,
-	PackageCheckIcon: () => qB,
-	PackageIcon: () => aV,
-	PackageMinus: () => YB,
-	PackageMinusIcon: () => YB,
-	PackageOpen: () => ZB,
-	PackageOpenIcon: () => ZB,
-	PackagePlus: () => $B,
-	PackagePlusIcon: () => $B,
-	PackageSearch: () => tV,
-	PackageSearchIcon: () => tV,
-	PackageX: () => rV,
-	PackageXIcon: () => rV,
-	PaintBucket: () => sV,
-	PaintBucketIcon: () => sV,
-	PaintRoller: () => lV,
-	PaintRollerIcon: () => lV,
-	Paintbrush: () => pV,
-	Paintbrush2: () => dV,
-	Paintbrush2Icon: () => dV,
-	PaintbrushIcon: () => pV,
-	PaintbrushVertical: () => dV,
-	PaintbrushVerticalIcon: () => dV,
-	Palette: () => hV,
-	PaletteIcon: () => hV,
-	Palmtree: () => C8,
-	PalmtreeIcon: () => C8,
-	Panda: () => _V,
-	PandaIcon: () => _V,
-	PanelBottom: () => TV,
-	PanelBottomClose: () => yV,
-	PanelBottomCloseIcon: () => yV,
-	PanelBottomDashed: () => xV,
-	PanelBottomDashedIcon: () => xV,
-	PanelBottomIcon: () => TV,
-	PanelBottomInactive: () => xV,
-	PanelBottomInactiveIcon: () => xV,
-	PanelBottomOpen: () => CV,
-	PanelBottomOpenIcon: () => CV,
-	PanelLeft: () => FV,
-	PanelLeftClose: () => DV,
-	PanelLeftCloseIcon: () => DV,
-	PanelLeftDashed: () => kV,
-	PanelLeftDashedIcon: () => kV,
-	PanelLeftIcon: () => FV,
-	PanelLeftInactive: () => kV,
-	PanelLeftInactiveIcon: () => kV,
-	PanelLeftOpen: () => jV,
-	PanelLeftOpenIcon: () => jV,
-	PanelLeftRightDashed: () => NV,
-	PanelLeftRightDashedIcon: () => NV,
-	PanelRight: () => UV,
-	PanelRightClose: () => LV,
-	PanelRightCloseIcon: () => LV,
-	PanelRightDashed: () => zV,
-	PanelRightDashedIcon: () => zV,
-	PanelRightIcon: () => UV,
-	PanelRightInactive: () => zV,
-	PanelRightInactiveIcon: () => zV,
-	PanelRightOpen: () => VV,
-	PanelRightOpenIcon: () => VV,
-	PanelTop: () => $V,
-	PanelTopBottomDashed: () => GV,
-	PanelTopBottomDashedIcon: () => GV,
-	PanelTopClose: () => qV,
-	PanelTopCloseIcon: () => qV,
-	PanelTopDashed: () => YV,
-	PanelTopDashedIcon: () => YV,
-	PanelTopIcon: () => $V,
-	PanelTopInactive: () => YV,
-	PanelTopInactiveIcon: () => YV,
-	PanelTopOpen: () => ZV,
-	PanelTopOpenIcon: () => ZV,
-	PanelsLeftBottom: () => tH,
-	PanelsLeftBottomIcon: () => tH,
-	PanelsLeftRight: () => Yg,
-	PanelsLeftRightIcon: () => Yg,
-	PanelsRightBottom: () => rH,
-	PanelsRightBottomIcon: () => rH,
-	PanelsTopBottom: () => kq,
-	PanelsTopBottomIcon: () => kq,
-	PanelsTopLeft: () => aH,
-	PanelsTopLeftIcon: () => aH,
-	PaperBag: () => sH,
-	PaperBagIcon: () => sH,
-	Paperclip: () => lH,
-	PaperclipIcon: () => lH,
-	Parasol: () => dH,
-	ParasolIcon: () => dH,
-	Parentheses: () => pH,
-	ParenthesesIcon: () => pH,
-	Park: () => hH,
-	ParkIcon: () => hH,
-	ParkingCircle: () => Yp,
-	ParkingCircleIcon: () => Yp,
-	ParkingCircleOff: () => qp,
-	ParkingCircleOffIcon: () => qp,
-	ParkingMeter: () => _H,
-	ParkingMeterIcon: () => _H,
+	MouseRight: () => nz,
+	MouseRightIcon: () => nz,
+	Mouth: () => cz,
+	MouthIcon: () => cz,
+	MouthOff: () => oz,
+	MouthOffIcon: () => oz,
+	Move: () => Iz,
+	Move3D: () => uz,
+	Move3DIcon: () => uz,
+	Move3d: () => uz,
+	Move3dIcon: () => uz,
+	MoveDiagonal: () => mz,
+	MoveDiagonal2: () => fz,
+	MoveDiagonal2Icon: () => fz,
+	MoveDiagonalIcon: () => mz,
+	MoveDown: () => Sz,
+	MoveDownIcon: () => Sz,
+	MoveDownLeft: () => gz,
+	MoveDownLeftIcon: () => gz,
+	MoveDownRight: () => vz,
+	MoveDownRightIcon: () => vz,
+	MoveHorizontal: () => bz,
+	MoveHorizontalIcon: () => bz,
+	MoveIcon: () => Iz,
+	MoveLeft: () => wz,
+	MoveLeftIcon: () => wz,
+	MoveRight: () => Ez,
+	MoveRightIcon: () => Ez,
+	MoveUp: () => Mz,
+	MoveUpIcon: () => Mz,
+	MoveUpLeft: () => Oz,
+	MoveUpLeftIcon: () => Oz,
+	MoveUpRight: () => Az,
+	MoveUpRightIcon: () => Az,
+	MoveVertical: () => Pz,
+	MoveVerticalIcon: () => Pz,
+	Music: () => Wz,
+	Music2: () => Rz,
+	Music2Icon: () => Rz,
+	Music3: () => Bz,
+	Music3Icon: () => Bz,
+	Music4: () => Hz,
+	Music4Icon: () => Hz,
+	MusicIcon: () => Wz,
+	Navigation: () => Qz,
+	Navigation2: () => Jz,
+	Navigation2Icon: () => Jz,
+	Navigation2Off: () => Kz,
+	Navigation2OffIcon: () => Kz,
+	NavigationIcon: () => Qz,
+	NavigationOff: () => Xz,
+	NavigationOffIcon: () => Xz,
+	NepaliRupee: () => eB,
+	NepaliRupeeIcon: () => eB,
+	Network: () => nB,
+	NetworkIcon: () => nB,
+	Newspaper: () => iB,
+	NewspaperIcon: () => iB,
+	Nfc: () => oB,
+	NfcIcon: () => oB,
+	NonBinary: () => cB,
+	NonBinaryIcon: () => cB,
+	Notebook: () => vB,
+	NotebookDot: () => uB,
+	NotebookDotIcon: () => uB,
+	NotebookIcon: () => vB,
+	NotebookPen: () => fB,
+	NotebookPenIcon: () => fB,
+	NotebookTabs: () => mB,
+	NotebookTabsIcon: () => mB,
+	NotebookText: () => gB,
+	NotebookTextIcon: () => gB,
+	NotepadText: () => SB,
+	NotepadTextDashed: () => bB,
+	NotepadTextDashedIcon: () => bB,
+	NotepadTextIcon: () => SB,
+	Nut: () => EB,
+	NutIcon: () => EB,
+	NutOff: () => wB,
+	NutOffIcon: () => wB,
+	Octagon: () => IB,
+	OctagonAlert: () => OB,
+	OctagonAlertIcon: () => OB,
+	OctagonIcon: () => IB,
+	OctagonMinus: () => AB,
+	OctagonMinusIcon: () => AB,
+	OctagonPause: () => MB,
+	OctagonPauseIcon: () => MB,
+	OctagonX: () => PB,
+	OctagonXIcon: () => PB,
+	Omega: () => RB,
+	OmegaIcon: () => RB,
+	Option: () => BB,
+	OptionIcon: () => BB,
+	Orbit: () => HB,
+	OrbitIcon: () => HB,
+	Origami: () => WB,
+	OrigamiIcon: () => WB,
+	Outdent: () => G,
+	OutdentIcon: () => G,
+	Package: () => oV,
+	Package2: () => KB,
+	Package2Icon: () => KB,
+	PackageCheck: () => JB,
+	PackageCheckIcon: () => JB,
+	PackageIcon: () => oV,
+	PackageMinus: () => XB,
+	PackageMinusIcon: () => XB,
+	PackageOpen: () => QB,
+	PackageOpenIcon: () => QB,
+	PackagePlus: () => eV,
+	PackagePlusIcon: () => eV,
+	PackageSearch: () => nV,
+	PackageSearchIcon: () => nV,
+	PackageX: () => iV,
+	PackageXIcon: () => iV,
+	PaintBucket: () => cV,
+	PaintBucketIcon: () => cV,
+	PaintRoller: () => uV,
+	PaintRollerIcon: () => uV,
+	Paintbrush: () => mV,
+	Paintbrush2: () => fV,
+	Paintbrush2Icon: () => fV,
+	PaintbrushIcon: () => mV,
+	PaintbrushVertical: () => fV,
+	PaintbrushVerticalIcon: () => fV,
+	Palette: () => gV,
+	PaletteIcon: () => gV,
+	Palmtree: () => S8,
+	PalmtreeIcon: () => S8,
+	Panda: () => vV,
+	PandaIcon: () => vV,
+	PanelBottom: () => EV,
+	PanelBottomClose: () => bV,
+	PanelBottomCloseIcon: () => bV,
+	PanelBottomDashed: () => SV,
+	PanelBottomDashedIcon: () => SV,
+	PanelBottomIcon: () => EV,
+	PanelBottomInactive: () => SV,
+	PanelBottomInactiveIcon: () => SV,
+	PanelBottomOpen: () => wV,
+	PanelBottomOpenIcon: () => wV,
+	PanelLeft: () => IV,
+	PanelLeftClose: () => OV,
+	PanelLeftCloseIcon: () => OV,
+	PanelLeftDashed: () => AV,
+	PanelLeftDashedIcon: () => AV,
+	PanelLeftIcon: () => IV,
+	PanelLeftInactive: () => AV,
+	PanelLeftInactiveIcon: () => AV,
+	PanelLeftOpen: () => MV,
+	PanelLeftOpenIcon: () => MV,
+	PanelLeftRightDashed: () => PV,
+	PanelLeftRightDashedIcon: () => PV,
+	PanelRight: () => WV,
+	PanelRightClose: () => RV,
+	PanelRightCloseIcon: () => RV,
+	PanelRightDashed: () => BV,
+	PanelRightDashedIcon: () => BV,
+	PanelRightIcon: () => WV,
+	PanelRightInactive: () => BV,
+	PanelRightInactiveIcon: () => BV,
+	PanelRightOpen: () => HV,
+	PanelRightOpenIcon: () => HV,
+	PanelTop: () => eH,
+	PanelTopBottomDashed: () => KV,
+	PanelTopBottomDashedIcon: () => KV,
+	PanelTopClose: () => JV,
+	PanelTopCloseIcon: () => JV,
+	PanelTopDashed: () => XV,
+	PanelTopDashedIcon: () => XV,
+	PanelTopIcon: () => eH,
+	PanelTopInactive: () => XV,
+	PanelTopInactiveIcon: () => XV,
+	PanelTopOpen: () => QV,
+	PanelTopOpenIcon: () => QV,
+	PanelsLeftBottom: () => nH,
+	PanelsLeftBottomIcon: () => nH,
+	PanelsLeftRight: () => Hg,
+	PanelsLeftRightIcon: () => Hg,
+	PanelsRightBottom: () => iH,
+	PanelsRightBottomIcon: () => iH,
+	PanelsTopBottom: () => Aq,
+	PanelsTopBottomIcon: () => Aq,
+	PanelsTopLeft: () => oH,
+	PanelsTopLeftIcon: () => oH,
+	PaperBag: () => cH,
+	PaperBagIcon: () => cH,
+	Paperclip: () => uH,
+	PaperclipIcon: () => uH,
+	Parasol: () => fH,
+	ParasolIcon: () => fH,
+	Parentheses: () => mH,
+	ParenthesesIcon: () => mH,
+	Park: () => gH,
+	ParkIcon: () => gH,
+	ParkingCircle: () => Jp,
+	ParkingCircleIcon: () => Jp,
+	ParkingCircleOff: () => Kp,
+	ParkingCircleOffIcon: () => Kp,
+	ParkingMeter: () => vH,
+	ParkingMeterIcon: () => vH,
 	ParkingSquare: () => N1,
 	ParkingSquareIcon: () => N1,
 	ParkingSquareOff: () => j1,
 	ParkingSquareOffIcon: () => j1,
-	PartyPopper: () => yH,
-	PartyPopperIcon: () => yH,
-	Pause: () => xH,
-	PauseCircle: () => Zp,
-	PauseCircleIcon: () => Zp,
-	PauseIcon: () => xH,
-	PauseOctagon: () => jB,
-	PauseOctagonIcon: () => jB,
-	PawPrint: () => TH,
-	PawPrintIcon: () => TH,
-	PcCase: () => CH,
-	PcCaseIcon: () => CH,
-	Pen: () => NH,
-	PenBox: () => J,
-	PenBoxIcon: () => J,
-	PenIcon: () => NH,
-	PenLine: () => DH,
-	PenLineIcon: () => DH,
-	PenOff: () => kH,
-	PenOffIcon: () => kH,
-	PenSquare: () => J,
-	PenSquareIcon: () => J,
-	PenTool: () => jH,
-	PenToolIcon: () => jH,
-	Pencil: () => UH,
-	PencilIcon: () => UH,
-	PencilLine: () => FH,
-	PencilLineIcon: () => FH,
-	PencilOff: () => zH,
-	PencilOffIcon: () => zH,
-	PencilRuler: () => LH,
-	PencilRulerIcon: () => LH,
-	PencilSparkles: () => VH,
-	PencilSparklesIcon: () => VH,
-	Pentagon: () => GH,
-	PentagonIcon: () => GH,
-	Percent: () => qH,
-	PercentCircle: () => $p,
-	PercentCircleIcon: () => $p,
+	PartyPopper: () => bH,
+	PartyPopperIcon: () => bH,
+	Pause: () => SH,
+	PauseCircle: () => Xp,
+	PauseCircleIcon: () => Xp,
+	PauseIcon: () => SH,
+	PauseOctagon: () => MB,
+	PauseOctagonIcon: () => MB,
+	PawPrint: () => EH,
+	PawPrintIcon: () => EH,
+	PcCase: () => wH,
+	PcCaseIcon: () => wH,
+	Pen: () => PH,
+	PenBox: () => Y,
+	PenBoxIcon: () => Y,
+	PenIcon: () => PH,
+	PenLine: () => OH,
+	PenLineIcon: () => OH,
+	PenOff: () => AH,
+	PenOffIcon: () => AH,
+	PenSquare: () => Y,
+	PenSquareIcon: () => Y,
+	PenTool: () => MH,
+	PenToolIcon: () => MH,
+	Pencil: () => WH,
+	PencilIcon: () => WH,
+	PencilLine: () => IH,
+	PencilLineIcon: () => IH,
+	PencilOff: () => BH,
+	PencilOffIcon: () => BH,
+	PencilRuler: () => RH,
+	PencilRulerIcon: () => RH,
+	PencilSparkles: () => HH,
+	PencilSparklesIcon: () => HH,
+	Pentagon: () => KH,
+	PentagonIcon: () => KH,
+	Percent: () => JH,
+	PercentCircle: () => Qp,
+	PercentCircleIcon: () => Qp,
 	PercentDiamond: () => oy,
 	PercentDiamondIcon: () => oy,
-	PercentIcon: () => qH,
+	PercentIcon: () => JH,
 	PercentSquare: () => R1,
 	PercentSquareIcon: () => R1,
-	PersonStanding: () => ZH,
-	PersonStandingIcon: () => ZH,
-	Phi: () => YH,
-	PhiIcon: () => YH,
-	PhilippinePeso: () => $H,
-	PhilippinePesoIcon: () => $H,
-	Phone: () => pU,
-	PhoneCall: () => tU,
-	PhoneCallIcon: () => tU,
-	PhoneForwarded: () => rU,
-	PhoneForwardedIcon: () => rU,
-	PhoneIcon: () => pU,
-	PhoneIncoming: () => aU,
-	PhoneIncomingIcon: () => aU,
-	PhoneMissed: () => lU,
-	PhoneMissedIcon: () => lU,
-	PhoneOff: () => sU,
-	PhoneOffIcon: () => sU,
-	PhoneOutgoing: () => dU,
-	PhoneOutgoingIcon: () => dU,
-	Pi: () => hU,
-	PiIcon: () => hU,
+	PersonStanding: () => QH,
+	PersonStandingIcon: () => QH,
+	Phi: () => XH,
+	PhiIcon: () => XH,
+	PhilippinePeso: () => eU,
+	PhilippinePesoIcon: () => eU,
+	Phone: () => mU,
+	PhoneCall: () => nU,
+	PhoneCallIcon: () => nU,
+	PhoneForwarded: () => iU,
+	PhoneForwardedIcon: () => iU,
+	PhoneIcon: () => mU,
+	PhoneIncoming: () => oU,
+	PhoneIncomingIcon: () => oU,
+	PhoneMissed: () => uU,
+	PhoneMissedIcon: () => uU,
+	PhoneOff: () => cU,
+	PhoneOffIcon: () => cU,
+	PhoneOutgoing: () => fU,
+	PhoneOutgoingIcon: () => fU,
+	Pi: () => gU,
+	PiIcon: () => gU,
 	PiSquare: () => B1,
 	PiSquareIcon: () => B1,
-	Piano: () => _U,
-	PianoIcon: () => _U,
-	Pickaxe: () => yU,
-	PickaxeIcon: () => yU,
-	PictureInPicture: () => CU,
-	PictureInPicture2: () => xU,
-	PictureInPicture2Icon: () => xU,
-	PictureInPictureIcon: () => CU,
-	PieChart: () => Md,
-	PieChartIcon: () => Md,
-	PiggyBank: () => TU,
-	PiggyBankIcon: () => TU,
-	Pilcrow: () => jU,
-	PilcrowIcon: () => jU,
-	PilcrowLeft: () => DU,
-	PilcrowLeftIcon: () => DU,
-	PilcrowRight: () => kU,
-	PilcrowRightIcon: () => kU,
+	Piano: () => vU,
+	PianoIcon: () => vU,
+	Pickaxe: () => bU,
+	PickaxeIcon: () => bU,
+	PictureInPicture: () => wU,
+	PictureInPicture2: () => SU,
+	PictureInPicture2Icon: () => SU,
+	PictureInPictureIcon: () => wU,
+	PieChart: () => N,
+	PieChartIcon: () => N,
+	PiggyBank: () => EU,
+	PiggyBankIcon: () => EU,
+	Pilcrow: () => MU,
+	PilcrowIcon: () => MU,
+	PilcrowLeft: () => OU,
+	PilcrowLeftIcon: () => OU,
+	PilcrowRight: () => AU,
+	PilcrowRightIcon: () => AU,
 	PilcrowSquare: () => H1,
 	PilcrowSquareIcon: () => H1,
-	Pill: () => FU,
-	PillBottle: () => NU,
-	PillBottleIcon: () => NU,
-	PillIcon: () => FU,
-	Pin: () => zU,
-	PinIcon: () => zU,
-	PinOff: () => LU,
-	PinOffIcon: () => LU,
-	Pipette: () => VU,
-	PipetteIcon: () => VU,
-	Pizza: () => GU,
-	PizzaIcon: () => GU,
-	Plane: () => YU,
-	PlaneIcon: () => YU,
-	PlaneLanding: () => UU,
-	PlaneLandingIcon: () => UU,
-	PlaneTakeoff: () => qU,
-	PlaneTakeoffIcon: () => qU,
-	PlantPot: () => ZU,
-	PlantPotIcon: () => ZU,
-	Play: () => tW,
-	PlayCircle: () => rm,
-	PlayCircleIcon: () => rm,
-	PlayIcon: () => tW,
-	PlayOff: () => $U,
-	PlayOffIcon: () => $U,
+	Pill: () => IU,
+	PillBottle: () => PU,
+	PillBottleIcon: () => PU,
+	PillIcon: () => IU,
+	Pin: () => BU,
+	PinIcon: () => BU,
+	PinOff: () => RU,
+	PinOffIcon: () => RU,
+	Pipette: () => HU,
+	PipetteIcon: () => HU,
+	Pizza: () => KU,
+	PizzaIcon: () => KU,
+	Plane: () => XU,
+	PlaneIcon: () => XU,
+	PlaneLanding: () => WU,
+	PlaneLandingIcon: () => WU,
+	PlaneTakeoff: () => JU,
+	PlaneTakeoffIcon: () => JU,
+	PlantPot: () => QU,
+	PlantPotIcon: () => QU,
+	Play: () => nW,
+	PlayCircle: () => nm,
+	PlayCircleIcon: () => nm,
+	PlayIcon: () => nW,
+	PlayOff: () => eW,
+	PlayOffIcon: () => eW,
 	PlaySquare: () => W1,
 	PlaySquareIcon: () => W1,
-	PlayingCard: () => rW,
-	PlayingCardIcon: () => rW,
-	PlayingCards: () => sW,
-	PlayingCardsFan: () => aW,
-	PlayingCardsFanIcon: () => aW,
-	PlayingCardsIcon: () => sW,
-	Plug: () => pW,
-	Plug2: () => dW,
-	Plug2Icon: () => dW,
-	PlugIcon: () => pW,
-	PlugZap: () => lW,
-	PlugZap2: () => lW,
-	PlugZap2Icon: () => lW,
-	PlugZapIcon: () => lW,
-	Plus: () => hW,
-	PlusCircle: () => am,
-	PlusCircleIcon: () => am,
-	PlusIcon: () => hW,
+	PlayingCard: () => iW,
+	PlayingCardIcon: () => iW,
+	PlayingCards: () => cW,
+	PlayingCardsFan: () => oW,
+	PlayingCardsFanIcon: () => oW,
+	PlayingCardsIcon: () => cW,
+	Plug: () => mW,
+	Plug2: () => fW,
+	Plug2Icon: () => fW,
+	PlugIcon: () => mW,
+	PlugZap: () => uW,
+	PlugZap2: () => uW,
+	PlugZap2Icon: () => uW,
+	PlugZapIcon: () => uW,
+	Plus: () => gW,
+	PlusCircle: () => im,
+	PlusCircleIcon: () => im,
+	PlusIcon: () => gW,
 	PlusSquare: () => K1,
 	PlusSquareIcon: () => K1,
-	PocketKnife: () => _W,
-	PocketKnifeIcon: () => _W,
-	Podcast: () => yL,
-	PodcastIcon: () => yL,
-	Podium: () => yW,
-	PodiumIcon: () => yW,
-	Pointer: () => TW,
-	PointerIcon: () => TW,
-	PointerOff: () => xW,
-	PointerOffIcon: () => xW,
-	Popcorn: () => CW,
-	PopcornIcon: () => CW,
-	Popsicle: () => DW,
-	PopsicleIcon: () => DW,
-	PoundSterling: () => kW,
-	PoundSterlingIcon: () => kW,
-	Power: () => NW,
-	PowerCircle: () => lm,
-	PowerCircleIcon: () => lm,
-	PowerIcon: () => NW,
-	PowerOff: () => jW,
-	PowerOffIcon: () => jW,
+	PocketKnife: () => vW,
+	PocketKnifeIcon: () => vW,
+	Podcast: () => bL,
+	PodcastIcon: () => bL,
+	Podium: () => bW,
+	PodiumIcon: () => bW,
+	Pointer: () => EW,
+	PointerIcon: () => EW,
+	PointerOff: () => SW,
+	PointerOffIcon: () => SW,
+	Popcorn: () => wW,
+	PopcornIcon: () => wW,
+	Popsicle: () => OW,
+	PopsicleIcon: () => OW,
+	PoundSterling: () => AW,
+	PoundSterlingIcon: () => AW,
+	Power: () => PW,
+	PowerCircle: () => cm,
+	PowerCircleIcon: () => cm,
+	PowerIcon: () => PW,
+	PowerOff: () => MW,
+	PowerOffIcon: () => MW,
 	PowerSquare: () => J1,
 	PowerSquareIcon: () => J1,
-	Presentation: () => FW,
-	PresentationIcon: () => FW,
-	Printer: () => VW,
-	PrinterCheck: () => LW,
-	PrinterCheckIcon: () => LW,
-	PrinterIcon: () => VW,
-	PrinterX: () => zW,
-	PrinterXIcon: () => zW,
-	Projector: () => UW,
-	ProjectorIcon: () => UW,
-	Proportions: () => GW,
-	ProportionsIcon: () => GW,
-	Puzzle: () => qW,
-	PuzzleIcon: () => qW,
-	Pyramid: () => YW,
-	PyramidIcon: () => YW,
-	QrCode: () => ZW,
-	QrCodeIcon: () => ZW,
-	Quote: () => $W,
-	QuoteIcon: () => $W,
-	Rabbit: () => tG,
-	RabbitIcon: () => tG,
-	Radar: () => rG,
-	RadarIcon: () => rG,
-	Radiation: () => aG,
-	RadiationIcon: () => aG,
-	Radical: () => sG,
-	RadicalIcon: () => sG,
-	Radio: () => hG,
-	RadioIcon: () => hG,
-	RadioOff: () => lG,
-	RadioOffIcon: () => lG,
-	RadioReceiver: () => dG,
-	RadioReceiverIcon: () => dG,
-	RadioTower: () => pG,
-	RadioTowerIcon: () => pG,
-	Radius: () => yG,
-	RadiusIcon: () => yG,
-	Rainbow: () => xG,
-	RainbowIcon: () => xG,
-	Rat: () => _G,
-	RatIcon: () => _G,
-	Ratio: () => CG,
-	RatioIcon: () => CG,
-	Receipt: () => UG,
-	ReceiptCent: () => TG,
-	ReceiptCentIcon: () => TG,
-	ReceiptEuro: () => DG,
-	ReceiptEuroIcon: () => DG,
-	ReceiptIcon: () => UG,
-	ReceiptIndianRupee: () => kG,
-	ReceiptIndianRupeeIcon: () => kG,
-	ReceiptJapaneseYen: () => jG,
-	ReceiptJapaneseYenIcon: () => jG,
-	ReceiptPoundSterling: () => NG,
-	ReceiptPoundSterlingIcon: () => NG,
-	ReceiptRussianRuble: () => FG,
-	ReceiptRussianRubleIcon: () => FG,
-	ReceiptSwissFranc: () => LG,
-	ReceiptSwissFrancIcon: () => LG,
-	ReceiptText: () => zG,
-	ReceiptTextIcon: () => zG,
-	ReceiptTurkishLira: () => VG,
-	ReceiptTurkishLiraIcon: () => VG,
-	RectangleCircle: () => GG,
-	RectangleCircleIcon: () => GG,
-	RectangleEllipsis: () => qG,
-	RectangleEllipsisIcon: () => qG,
-	RectangleGoggles: () => YG,
-	RectangleGogglesIcon: () => YG,
-	RectangleHorizontal: () => ZG,
-	RectangleHorizontalIcon: () => ZG,
-	RectangleVertical: () => $G,
-	RectangleVerticalIcon: () => $G,
-	Recycle: () => tK,
-	RecycleIcon: () => tK,
-	Redo: () => sK,
-	Redo2: () => rK,
-	Redo2Icon: () => rK,
-	RedoDot: () => aK,
-	RedoDotIcon: () => aK,
-	RedoIcon: () => sK,
-	RefreshCcw: () => dK,
-	RefreshCcwDot: () => lK,
-	RefreshCcwDotIcon: () => lK,
-	RefreshCcwIcon: () => dK,
-	RefreshCw: () => hK,
-	RefreshCwIcon: () => hK,
-	RefreshCwOff: () => pK,
-	RefreshCwOffIcon: () => pK,
-	Refrigerator: () => _K,
-	RefrigeratorIcon: () => _K,
-	Regex: () => yK,
-	RegexIcon: () => yK,
-	RemoveFormatting: () => xK,
-	RemoveFormattingIcon: () => xK,
-	Repeat: () => DK,
-	Repeat1: () => CK,
-	Repeat1Icon: () => CK,
-	Repeat2: () => TK,
-	Repeat2Icon: () => TK,
-	RepeatIcon: () => DK,
-	RepeatOff: () => kK,
-	RepeatOffIcon: () => kK,
-	Replace: () => NK,
-	ReplaceAll: () => jK,
-	ReplaceAllIcon: () => jK,
-	ReplaceIcon: () => NK,
-	Reply: () => LK,
-	ReplyAll: () => FK,
-	ReplyAllIcon: () => FK,
-	ReplyIcon: () => LK,
-	Rewind: () => zK,
-	RewindIcon: () => zK,
-	Ribbon: () => VK,
-	RibbonIcon: () => VK,
-	Road: () => UK,
-	RoadIcon: () => UK,
-	RobotArm: () => GK,
-	RobotArmIcon: () => GK,
-	RobotVacuum: () => qK,
-	RobotVacuumIcon: () => qK,
-	Rocket: () => YK,
-	RocketIcon: () => YK,
-	RockingChair: () => ZK,
-	RockingChairIcon: () => ZK,
-	RollerCoaster: () => $K,
-	RollerCoasterIcon: () => $K,
-	Rose: () => tq,
-	RoseIcon: () => tq,
-	Rotate3D: () => rq,
-	Rotate3DIcon: () => rq,
-	Rotate3d: () => rq,
-	Rotate3dIcon: () => rq,
-	RotateCcw: () => dq,
-	RotateCcwClock: () => aq,
-	RotateCcwClockIcon: () => aq,
-	RotateCcwIcon: () => dq,
-	RotateCcwKey: () => sq,
-	RotateCcwKeyIcon: () => sq,
-	RotateCcwSquare: () => lq,
-	RotateCcwSquareIcon: () => lq,
-	RotateCw: () => yq,
-	RotateCwClock: () => pq,
-	RotateCwClockIcon: () => pq,
-	RotateCwFadingClock: () => hq,
-	RotateCwFadingClockIcon: () => hq,
-	RotateCwIcon: () => yq,
-	RotateCwSquare: () => _q,
-	RotateCwSquareIcon: () => _q,
-	Route: () => Cq,
-	RouteIcon: () => Cq,
-	RouteOff: () => xq,
-	RouteOffIcon: () => xq,
-	Router: () => Tq,
-	RouterIcon: () => Tq,
-	Rows: () => Dq,
-	Rows2: () => Dq,
-	Rows2Icon: () => Dq,
-	Rows3: () => kq,
-	Rows3Icon: () => kq,
-	Rows4: () => jq,
-	Rows4Icon: () => jq,
-	RowsIcon: () => Dq,
-	Rss: () => Nq,
-	RssIcon: () => Nq,
-	Ruler: () => Lq,
-	RulerDimensionLine: () => Fq,
-	RulerDimensionLineIcon: () => Fq,
-	RulerIcon: () => Lq,
-	RussianRuble: () => zq,
-	RussianRubleIcon: () => zq,
-	Sailboat: () => Vq,
-	SailboatIcon: () => Vq,
-	Salad: () => Uq,
-	SaladIcon: () => Uq,
-	Sandwich: () => Gq,
-	SandwichIcon: () => Gq,
-	Satellite: () => qq,
-	SatelliteDish: () => Yq,
-	SatelliteDishIcon: () => Yq,
-	SatelliteIcon: () => qq,
-	SaudiRiyal: () => Zq,
-	SaudiRiyalIcon: () => Zq,
-	Save: () => lJ,
-	SaveAll: () => $q,
-	SaveAllIcon: () => $q,
-	SaveCheck: () => tJ,
-	SaveCheckIcon: () => tJ,
-	SaveIcon: () => lJ,
-	SaveOff: () => rJ,
-	SaveOffIcon: () => rJ,
-	SavePen: () => aJ,
-	SavePenIcon: () => aJ,
-	SavePlus: () => sJ,
-	SavePlusIcon: () => sJ,
-	Scale: () => pJ,
-	Scale3D: () => dJ,
-	Scale3DIcon: () => dJ,
-	Scale3d: () => dJ,
-	Scale3dIcon: () => dJ,
-	ScaleIcon: () => pJ,
-	Scaling: () => hJ,
-	ScalingIcon: () => hJ,
-	Scan: () => LJ,
-	ScanBarcode: () => _J,
-	ScanBarcodeIcon: () => _J,
-	ScanBox: () => CJ,
-	ScanBoxIcon: () => CJ,
-	ScanEye: () => yJ,
-	ScanEyeIcon: () => yJ,
-	ScanFace: () => xJ,
-	ScanFaceIcon: () => xJ,
-	ScanHeart: () => TJ,
-	ScanHeartIcon: () => TJ,
-	ScanIcon: () => LJ,
-	ScanLine: () => DJ,
-	ScanLineIcon: () => DJ,
-	ScanQrCode: () => kJ,
-	ScanQrCodeIcon: () => kJ,
-	ScanSearch: () => jJ,
-	ScanSearchIcon: () => jJ,
-	ScanSquare: () => NJ,
-	ScanSquareIcon: () => NJ,
-	ScanText: () => FJ,
-	ScanTextIcon: () => FJ,
-	ScatterChart: () => Pd,
-	ScatterChartIcon: () => Pd,
-	School: () => zJ,
+	Presentation: () => IW,
+	PresentationIcon: () => IW,
+	Printer: () => HW,
+	PrinterCheck: () => RW,
+	PrinterCheckIcon: () => RW,
+	PrinterIcon: () => HW,
+	PrinterX: () => BW,
+	PrinterXIcon: () => BW,
+	Projector: () => WW,
+	ProjectorIcon: () => WW,
+	Proportions: () => KW,
+	ProportionsIcon: () => KW,
+	Puzzle: () => JW,
+	PuzzleIcon: () => JW,
+	Pyramid: () => XW,
+	PyramidIcon: () => XW,
+	QrCode: () => QW,
+	QrCodeIcon: () => QW,
+	Quote: () => eG,
+	QuoteIcon: () => eG,
+	Rabbit: () => nG,
+	RabbitIcon: () => nG,
+	Radar: () => iG,
+	RadarIcon: () => iG,
+	Radiation: () => oG,
+	RadiationIcon: () => oG,
+	Radical: () => cG,
+	RadicalIcon: () => cG,
+	Radio: () => gG,
+	RadioIcon: () => gG,
+	RadioOff: () => uG,
+	RadioOffIcon: () => uG,
+	RadioReceiver: () => fG,
+	RadioReceiverIcon: () => fG,
+	RadioTower: () => mG,
+	RadioTowerIcon: () => mG,
+	Radius: () => bG,
+	RadiusIcon: () => bG,
+	Rainbow: () => SG,
+	RainbowIcon: () => SG,
+	Rat: () => vG,
+	RatIcon: () => vG,
+	Ratio: () => wG,
+	RatioIcon: () => wG,
+	Receipt: () => WG,
+	ReceiptCent: () => EG,
+	ReceiptCentIcon: () => EG,
+	ReceiptEuro: () => OG,
+	ReceiptEuroIcon: () => OG,
+	ReceiptIcon: () => WG,
+	ReceiptIndianRupee: () => AG,
+	ReceiptIndianRupeeIcon: () => AG,
+	ReceiptJapaneseYen: () => MG,
+	ReceiptJapaneseYenIcon: () => MG,
+	ReceiptPoundSterling: () => PG,
+	ReceiptPoundSterlingIcon: () => PG,
+	ReceiptRussianRuble: () => IG,
+	ReceiptRussianRubleIcon: () => IG,
+	ReceiptSwissFranc: () => RG,
+	ReceiptSwissFrancIcon: () => RG,
+	ReceiptText: () => BG,
+	ReceiptTextIcon: () => BG,
+	ReceiptTurkishLira: () => HG,
+	ReceiptTurkishLiraIcon: () => HG,
+	RectangleCircle: () => KG,
+	RectangleCircleIcon: () => KG,
+	RectangleEllipsis: () => JG,
+	RectangleEllipsisIcon: () => JG,
+	RectangleGoggles: () => XG,
+	RectangleGogglesIcon: () => XG,
+	RectangleHorizontal: () => QG,
+	RectangleHorizontalIcon: () => QG,
+	RectangleVertical: () => eK,
+	RectangleVerticalIcon: () => eK,
+	Recycle: () => nK,
+	RecycleIcon: () => nK,
+	Redo: () => cK,
+	Redo2: () => iK,
+	Redo2Icon: () => iK,
+	RedoDot: () => oK,
+	RedoDotIcon: () => oK,
+	RedoIcon: () => cK,
+	RefreshCcw: () => fK,
+	RefreshCcwDot: () => uK,
+	RefreshCcwDotIcon: () => uK,
+	RefreshCcwIcon: () => fK,
+	RefreshCw: () => gK,
+	RefreshCwIcon: () => gK,
+	RefreshCwOff: () => mK,
+	RefreshCwOffIcon: () => mK,
+	Refrigerator: () => vK,
+	RefrigeratorIcon: () => vK,
+	Regex: () => bK,
+	RegexIcon: () => bK,
+	RemoveFormatting: () => SK,
+	RemoveFormattingIcon: () => SK,
+	Repeat: () => OK,
+	Repeat1: () => wK,
+	Repeat1Icon: () => wK,
+	Repeat2: () => EK,
+	Repeat2Icon: () => EK,
+	RepeatIcon: () => OK,
+	RepeatOff: () => AK,
+	RepeatOffIcon: () => AK,
+	Replace: () => PK,
+	ReplaceAll: () => MK,
+	ReplaceAllIcon: () => MK,
+	ReplaceIcon: () => PK,
+	Reply: () => RK,
+	ReplyAll: () => IK,
+	ReplyAllIcon: () => IK,
+	ReplyIcon: () => RK,
+	Rewind: () => BK,
+	RewindIcon: () => BK,
+	Ribbon: () => HK,
+	RibbonIcon: () => HK,
+	Road: () => WK,
+	RoadIcon: () => WK,
+	RobotArm: () => KK,
+	RobotArmIcon: () => KK,
+	RobotVacuum: () => JK,
+	RobotVacuumIcon: () => JK,
+	Rocket: () => XK,
+	RocketIcon: () => XK,
+	RockingChair: () => QK,
+	RockingChairIcon: () => QK,
+	RollerCoaster: () => eq,
+	RollerCoasterIcon: () => eq,
+	Rose: () => nq,
+	RoseIcon: () => nq,
+	Rotate3D: () => iq,
+	Rotate3DIcon: () => iq,
+	Rotate3d: () => iq,
+	Rotate3dIcon: () => iq,
+	RotateCcw: () => fq,
+	RotateCcwClock: () => oq,
+	RotateCcwClockIcon: () => oq,
+	RotateCcwIcon: () => fq,
+	RotateCcwKey: () => cq,
+	RotateCcwKeyIcon: () => cq,
+	RotateCcwSquare: () => uq,
+	RotateCcwSquareIcon: () => uq,
+	RotateCw: () => bq,
+	RotateCwClock: () => mq,
+	RotateCwClockIcon: () => mq,
+	RotateCwFadingClock: () => gq,
+	RotateCwFadingClockIcon: () => gq,
+	RotateCwIcon: () => bq,
+	RotateCwSquare: () => vq,
+	RotateCwSquareIcon: () => vq,
+	Route: () => wq,
+	RouteIcon: () => wq,
+	RouteOff: () => Sq,
+	RouteOffIcon: () => Sq,
+	Router: () => Eq,
+	RouterIcon: () => Eq,
+	Rows: () => Oq,
+	Rows2: () => Oq,
+	Rows2Icon: () => Oq,
+	Rows3: () => Aq,
+	Rows3Icon: () => Aq,
+	Rows4: () => Mq,
+	Rows4Icon: () => Mq,
+	RowsIcon: () => Oq,
+	Rss: () => Pq,
+	RssIcon: () => Pq,
+	Ruler: () => Rq,
+	RulerDimensionLine: () => Iq,
+	RulerDimensionLineIcon: () => Iq,
+	RulerIcon: () => Rq,
+	RussianRuble: () => Bq,
+	RussianRubleIcon: () => Bq,
+	Sailboat: () => Hq,
+	SailboatIcon: () => Hq,
+	Salad: () => Wq,
+	SaladIcon: () => Wq,
+	Sandwich: () => Kq,
+	SandwichIcon: () => Kq,
+	Satellite: () => Jq,
+	SatelliteDish: () => Xq,
+	SatelliteDishIcon: () => Xq,
+	SatelliteIcon: () => Jq,
+	SaudiRiyal: () => Qq,
+	SaudiRiyalIcon: () => Qq,
+	Save: () => uJ,
+	SaveAll: () => eJ,
+	SaveAllIcon: () => eJ,
+	SaveCheck: () => nJ,
+	SaveCheckIcon: () => nJ,
+	SaveIcon: () => uJ,
+	SaveOff: () => iJ,
+	SaveOffIcon: () => iJ,
+	SavePen: () => oJ,
+	SavePenIcon: () => oJ,
+	SavePlus: () => cJ,
+	SavePlusIcon: () => cJ,
+	Scale: () => mJ,
+	Scale3D: () => fJ,
+	Scale3DIcon: () => fJ,
+	Scale3d: () => fJ,
+	Scale3dIcon: () => fJ,
+	ScaleIcon: () => mJ,
+	Scaling: () => gJ,
+	ScalingIcon: () => gJ,
+	Scan: () => RJ,
+	ScanBarcode: () => vJ,
+	ScanBarcodeIcon: () => vJ,
+	ScanBox: () => wJ,
+	ScanBoxIcon: () => wJ,
+	ScanEye: () => bJ,
+	ScanEyeIcon: () => bJ,
+	ScanFace: () => SJ,
+	ScanFaceIcon: () => SJ,
+	ScanHeart: () => EJ,
+	ScanHeartIcon: () => EJ,
+	ScanIcon: () => RJ,
+	ScanLine: () => OJ,
+	ScanLineIcon: () => OJ,
+	ScanQrCode: () => AJ,
+	ScanQrCodeIcon: () => AJ,
+	ScanSearch: () => MJ,
+	ScanSearchIcon: () => MJ,
+	ScanSquare: () => PJ,
+	ScanSquareIcon: () => PJ,
+	ScanText: () => IJ,
+	ScanTextIcon: () => IJ,
+	ScatterChart: () => P,
+	ScatterChartIcon: () => P,
+	School: () => BJ,
 	School2: () => P5,
 	School2Icon: () => P5,
-	SchoolIcon: () => zJ,
-	Scissors: () => VJ,
-	ScissorsIcon: () => VJ,
-	ScissorsLineDashed: () => UJ,
-	ScissorsLineDashedIcon: () => UJ,
+	SchoolIcon: () => BJ,
+	Scissors: () => HJ,
+	ScissorsIcon: () => HJ,
+	ScissorsLineDashed: () => WJ,
+	ScissorsLineDashedIcon: () => WJ,
 	ScissorsSquare: () => e0,
 	ScissorsSquareDashedBottom: () => y$,
 	ScissorsSquareDashedBottomIcon: () => y$,
 	ScissorsSquareIcon: () => e0,
-	Scooter: () => GJ,
-	ScooterIcon: () => GJ,
-	ScreenShare: () => YJ,
-	ScreenShareIcon: () => YJ,
-	ScreenShareOff: () => qJ,
-	ScreenShareOffIcon: () => qJ,
-	Scroll: () => $J,
-	ScrollIcon: () => $J,
-	ScrollText: () => ZJ,
-	ScrollTextIcon: () => ZJ,
-	Search: () => dY,
-	SearchAlert: () => tY,
-	SearchAlertIcon: () => tY,
-	SearchCheck: () => rY,
-	SearchCheckIcon: () => rY,
-	SearchCode: () => aY,
-	SearchCodeIcon: () => aY,
-	SearchIcon: () => dY,
-	SearchSlash: () => lY,
-	SearchSlashIcon: () => lY,
-	SearchX: () => sY,
-	SearchXIcon: () => sY,
-	Section: () => pY,
-	SectionIcon: () => pY,
-	Send: () => yY,
-	SendHorizonal: () => hY,
-	SendHorizonalIcon: () => hY,
-	SendHorizontal: () => hY,
-	SendHorizontalIcon: () => hY,
-	SendIcon: () => yY,
-	SendToBack: () => _Y,
-	SendToBackIcon: () => _Y,
-	SeparatorHorizontal: () => xY,
-	SeparatorHorizontalIcon: () => xY,
-	SeparatorVertical: () => CY,
-	SeparatorVerticalIcon: () => CY,
-	Server: () => NY,
-	ServerCog: () => TY,
-	ServerCogIcon: () => TY,
-	ServerCrash: () => DY,
-	ServerCrashIcon: () => DY,
-	ServerIcon: () => NY,
-	ServerOff: () => kY,
-	ServerOffIcon: () => kY,
-	ServerPlus: () => jY,
-	ServerPlusIcon: () => jY,
-	Settings: () => LY,
-	Settings2: () => FY,
-	Settings2Icon: () => FY,
-	SettingsIcon: () => LY,
-	Shapes: () => zY,
-	ShapesIcon: () => zY,
-	Share: () => UY,
-	Share2: () => VY,
-	Share2Icon: () => VY,
-	ShareIcon: () => UY,
-	Sheet: () => GY,
-	SheetIcon: () => GY,
-	Shell: () => qY,
-	ShellIcon: () => qY,
-	ShelvingUnit: () => YY,
-	ShelvingUnitIcon: () => YY,
-	Shield: () => DX,
-	ShieldAlert: () => ZY,
-	ShieldAlertIcon: () => ZY,
-	ShieldBan: () => $Y,
-	ShieldBanIcon: () => $Y,
-	ShieldCheck: () => tX,
-	ShieldCheckIcon: () => tX,
-	ShieldClose: () => TX,
-	ShieldCloseIcon: () => TX,
-	ShieldCog: () => aX,
-	ShieldCogCorner: () => rX,
-	ShieldCogCornerIcon: () => rX,
-	ShieldCogIcon: () => aX,
-	ShieldEllipsis: () => sX,
-	ShieldEllipsisIcon: () => sX,
-	ShieldHalf: () => lX,
-	ShieldHalfIcon: () => lX,
-	ShieldIcon: () => DX,
-	ShieldKeyhole: () => dX,
-	ShieldKeyholeIcon: () => dX,
-	ShieldLock: () => pX,
-	ShieldLockIcon: () => pX,
-	ShieldMinus: () => hX,
-	ShieldMinusIcon: () => hX,
-	ShieldOff: () => _X,
-	ShieldOffIcon: () => _X,
-	ShieldPlus: () => yX,
-	ShieldPlusIcon: () => yX,
-	ShieldQuestion: () => xX,
-	ShieldQuestionIcon: () => xX,
-	ShieldQuestionMark: () => xX,
-	ShieldQuestionMarkIcon: () => xX,
-	ShieldUser: () => CX,
-	ShieldUserIcon: () => CX,
-	ShieldX: () => TX,
-	ShieldXIcon: () => TX,
-	Ship: () => NX,
-	ShipCargo: () => kX,
-	ShipCargoIcon: () => kX,
-	ShipIcon: () => NX,
-	ShipWheel: () => jX,
-	ShipWheelIcon: () => jX,
-	Shirt: () => FX,
-	ShirtIcon: () => FX,
-	ShoppingBag: () => zX,
-	ShoppingBagIcon: () => zX,
-	ShoppingBasket: () => LX,
-	ShoppingBasketIcon: () => LX,
-	ShoppingCart: () => GX,
-	ShoppingCartIcon: () => GX,
-	ShoppingCartMinus: () => VX,
-	ShoppingCartMinusIcon: () => VX,
-	ShoppingCartPlus: () => UX,
-	ShoppingCartPlusIcon: () => UX,
-	Shovel: () => qX,
-	ShovelIcon: () => qX,
-	ShowerHead: () => YX,
-	ShowerHeadIcon: () => YX,
-	Shredder: () => ZX,
-	ShredderIcon: () => ZX,
-	Shrimp: () => tZ,
-	ShrimpIcon: () => tZ,
-	ShrimpOff: () => $X,
-	ShrimpOffIcon: () => $X,
-	Shrink: () => rZ,
-	ShrinkIcon: () => rZ,
-	Shrub: () => aZ,
-	ShrubIcon: () => aZ,
-	Shuffle: () => sZ,
-	ShuffleIcon: () => sZ,
-	Sidebar: () => FV,
-	SidebarClose: () => DV,
-	SidebarCloseIcon: () => DV,
-	SidebarIcon: () => FV,
-	SidebarOpen: () => jV,
-	SidebarOpenIcon: () => jV,
-	Sigma: () => lZ,
-	SigmaIcon: () => lZ,
+	Scooter: () => KJ,
+	ScooterIcon: () => KJ,
+	ScreenShare: () => XJ,
+	ScreenShareIcon: () => XJ,
+	ScreenShareOff: () => JJ,
+	ScreenShareOffIcon: () => JJ,
+	Scroll: () => eY,
+	ScrollIcon: () => eY,
+	ScrollText: () => QJ,
+	ScrollTextIcon: () => QJ,
+	Search: () => fY,
+	SearchAlert: () => nY,
+	SearchAlertIcon: () => nY,
+	SearchCheck: () => iY,
+	SearchCheckIcon: () => iY,
+	SearchCode: () => oY,
+	SearchCodeIcon: () => oY,
+	SearchIcon: () => fY,
+	SearchSlash: () => uY,
+	SearchSlashIcon: () => uY,
+	SearchX: () => cY,
+	SearchXIcon: () => cY,
+	Section: () => mY,
+	SectionIcon: () => mY,
+	Send: () => bY,
+	SendHorizonal: () => gY,
+	SendHorizonalIcon: () => gY,
+	SendHorizontal: () => gY,
+	SendHorizontalIcon: () => gY,
+	SendIcon: () => bY,
+	SendToBack: () => vY,
+	SendToBackIcon: () => vY,
+	SeparatorHorizontal: () => SY,
+	SeparatorHorizontalIcon: () => SY,
+	SeparatorVertical: () => wY,
+	SeparatorVerticalIcon: () => wY,
+	Server: () => PY,
+	ServerCog: () => EY,
+	ServerCogIcon: () => EY,
+	ServerCrash: () => OY,
+	ServerCrashIcon: () => OY,
+	ServerIcon: () => PY,
+	ServerOff: () => AY,
+	ServerOffIcon: () => AY,
+	ServerPlus: () => MY,
+	ServerPlusIcon: () => MY,
+	Settings: () => RY,
+	Settings2: () => IY,
+	Settings2Icon: () => IY,
+	SettingsIcon: () => RY,
+	Shapes: () => BY,
+	ShapesIcon: () => BY,
+	Share: () => WY,
+	Share2: () => HY,
+	Share2Icon: () => HY,
+	ShareIcon: () => WY,
+	Sheet: () => KY,
+	SheetIcon: () => KY,
+	Shell: () => JY,
+	ShellIcon: () => JY,
+	ShelvingUnit: () => XY,
+	ShelvingUnitIcon: () => XY,
+	Shield: () => OX,
+	ShieldAlert: () => QY,
+	ShieldAlertIcon: () => QY,
+	ShieldBan: () => eX,
+	ShieldBanIcon: () => eX,
+	ShieldCheck: () => nX,
+	ShieldCheckIcon: () => nX,
+	ShieldClose: () => EX,
+	ShieldCloseIcon: () => EX,
+	ShieldCog: () => oX,
+	ShieldCogCorner: () => iX,
+	ShieldCogCornerIcon: () => iX,
+	ShieldCogIcon: () => oX,
+	ShieldEllipsis: () => cX,
+	ShieldEllipsisIcon: () => cX,
+	ShieldHalf: () => uX,
+	ShieldHalfIcon: () => uX,
+	ShieldIcon: () => OX,
+	ShieldKeyhole: () => fX,
+	ShieldKeyholeIcon: () => fX,
+	ShieldLock: () => mX,
+	ShieldLockIcon: () => mX,
+	ShieldMinus: () => gX,
+	ShieldMinusIcon: () => gX,
+	ShieldOff: () => vX,
+	ShieldOffIcon: () => vX,
+	ShieldPlus: () => bX,
+	ShieldPlusIcon: () => bX,
+	ShieldQuestion: () => SX,
+	ShieldQuestionIcon: () => SX,
+	ShieldQuestionMark: () => SX,
+	ShieldQuestionMarkIcon: () => SX,
+	ShieldUser: () => wX,
+	ShieldUserIcon: () => wX,
+	ShieldX: () => EX,
+	ShieldXIcon: () => EX,
+	Ship: () => PX,
+	ShipCargo: () => AX,
+	ShipCargoIcon: () => AX,
+	ShipIcon: () => PX,
+	ShipWheel: () => MX,
+	ShipWheelIcon: () => MX,
+	Shirt: () => IX,
+	ShirtIcon: () => IX,
+	ShoppingBag: () => BX,
+	ShoppingBagIcon: () => BX,
+	ShoppingBasket: () => RX,
+	ShoppingBasketIcon: () => RX,
+	ShoppingCart: () => KX,
+	ShoppingCartIcon: () => KX,
+	ShoppingCartMinus: () => HX,
+	ShoppingCartMinusIcon: () => HX,
+	ShoppingCartPlus: () => WX,
+	ShoppingCartPlusIcon: () => WX,
+	Shovel: () => JX,
+	ShovelIcon: () => JX,
+	ShowerHead: () => XX,
+	ShowerHeadIcon: () => XX,
+	Shredder: () => QX,
+	ShredderIcon: () => QX,
+	Shrimp: () => nZ,
+	ShrimpIcon: () => nZ,
+	ShrimpOff: () => eZ,
+	ShrimpOffIcon: () => eZ,
+	Shrink: () => iZ,
+	ShrinkIcon: () => iZ,
+	Shrub: () => oZ,
+	ShrubIcon: () => oZ,
+	Shuffle: () => cZ,
+	ShuffleIcon: () => cZ,
+	Sidebar: () => IV,
+	SidebarClose: () => OV,
+	SidebarCloseIcon: () => OV,
+	SidebarIcon: () => IV,
+	SidebarOpen: () => MV,
+	SidebarOpenIcon: () => MV,
+	Sigma: () => uZ,
+	SigmaIcon: () => uZ,
 	SigmaSquare: () => n0,
 	SigmaSquareIcon: () => n0,
-	Signal: () => yZ,
-	SignalHigh: () => dZ,
-	SignalHighIcon: () => dZ,
-	SignalIcon: () => yZ,
-	SignalLow: () => pZ,
-	SignalLowIcon: () => pZ,
-	SignalMedium: () => hZ,
-	SignalMediumIcon: () => hZ,
-	SignalZero: () => _Z,
-	SignalZeroIcon: () => _Z,
-	Signature: () => xZ,
-	SignatureIcon: () => xZ,
-	Signpost: () => TZ,
-	SignpostBig: () => CZ,
-	SignpostBigIcon: () => CZ,
-	SignpostIcon: () => TZ,
-	Siren: () => DZ,
-	SirenIcon: () => DZ,
+	Signal: () => bZ,
+	SignalHigh: () => fZ,
+	SignalHighIcon: () => fZ,
+	SignalIcon: () => bZ,
+	SignalLow: () => mZ,
+	SignalLowIcon: () => mZ,
+	SignalMedium: () => gZ,
+	SignalMediumIcon: () => gZ,
+	SignalZero: () => vZ,
+	SignalZeroIcon: () => vZ,
+	Signature: () => SZ,
+	SignatureIcon: () => SZ,
+	Signpost: () => EZ,
+	SignpostBig: () => wZ,
+	SignpostBigIcon: () => wZ,
+	SignpostIcon: () => EZ,
+	Siren: () => OZ,
+	SirenIcon: () => OZ,
 	SkipBack: () => kZ,
 	SkipBackIcon: () => kZ,
 	SkipForward: () => jZ,
@@ -53308,10 +53306,10 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SofaIcon: () => tQ,
 	SolarPanel: () => rQ,
 	SolarPanelIcon: () => rQ,
-	SortAsc: () => y,
-	SortAscIcon: () => y,
-	SortDesc: () => zn,
-	SortDescIcon: () => zn,
+	SortAsc: () => Tr,
+	SortAscIcon: () => Tr,
+	SortDesc: () => Un,
+	SortDescIcon: () => Un,
 	Soup: () => aQ,
 	SoupIcon: () => aQ,
 	Space: () => sQ,
@@ -53391,8 +53389,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareCenterlineDashedHorizontalIcon: () => x$,
 	SquareCenterlineDashedVertical: () => C$,
 	SquareCenterlineDashedVerticalIcon: () => C$,
-	SquareChartGantt: () => K,
-	SquareChartGanttIcon: () => K,
+	SquareChartGantt: () => q,
+	SquareChartGanttIcon: () => q,
 	SquareCheck: () => O$,
 	SquareCheckBig: () => E$,
 	SquareCheckBigIcon: () => E$,
@@ -53419,8 +53417,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareDashedMousePointerIcon: () => K$,
 	SquareDashedPlus: () => J$,
 	SquareDashedPlusIcon: () => J$,
-	SquareDashedText: () => q,
-	SquareDashedTextIcon: () => q,
+	SquareDashedText: () => J,
+	SquareDashedTextIcon: () => J,
 	SquareDashedTopSolid: () => Z$,
 	SquareDashedTopSolidIcon: () => Z$,
 	SquareDashedX: () => t1,
@@ -53439,8 +53437,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareExclamationPointIcon: () => p1,
 	SquareFunction: () => h1,
 	SquareFunctionIcon: () => h1,
-	SquareGanttChart: () => K,
-	SquareGanttChartIcon: () => K,
+	SquareGanttChart: () => q,
+	SquareGanttChartIcon: () => q,
 	SquareIcon: () => A0,
 	SquareKanban: () => _1,
 	SquareKanbanIcon: () => _1,
@@ -53462,8 +53460,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	SquareParkingOffIcon: () => j1,
 	SquarePause: () => F1,
 	SquarePauseIcon: () => F1,
-	SquarePen: () => J,
-	SquarePenIcon: () => J,
+	SquarePen: () => Y,
+	SquarePenIcon: () => Y,
 	SquarePercent: () => R1,
 	SquarePercentIcon: () => R1,
 	SquarePi: () => B1,
@@ -53566,8 +53564,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	StickyNotesIcon: () => O2,
 	Stone: () => A2,
 	StoneIcon: () => A2,
-	StopCircle: () => bm,
-	StopCircleIcon: () => bm,
+	StopCircle: () => ym,
+	StopCircleIcon: () => ym,
 	Store: () => I2,
 	StoreIcon: () => I2,
 	StretchHorizontal: () => M2,
@@ -53578,8 +53576,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	StrikethroughIcon: () => R2,
 	Subscript: () => B2,
 	SubscriptIcon: () => B2,
-	Subtitles: () => A,
-	SubtitlesIcon: () => A,
+	Subtitles: () => x,
+	SubtitlesIcon: () => x,
 	Summary: () => H2,
 	SummaryIcon: () => H2,
 	Sun: () => Q2,
@@ -53619,8 +53617,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	TableCellsSplitIcon: () => w4,
 	TableColumnsSplit: () => S4,
 	TableColumnsSplitIcon: () => S4,
-	TableConfig: () => V,
-	TableConfigIcon: () => V,
+	TableConfig: () => H,
+	TableConfigIcon: () => H,
 	TableIcon: () => M4,
 	TableOfContents: () => E4,
 	TableOfContentsIcon: () => E4,
@@ -53674,30 +53672,30 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	TestTubeIcon: () => v3,
 	TestTubes: () => b3,
 	TestTubesIcon: () => b3,
-	Text: () => Y,
+	Text: () => X,
 	TextAlignCenter: () => S3,
 	TextAlignCenterIcon: () => S3,
 	TextAlignEnd: () => w3,
 	TextAlignEndIcon: () => w3,
 	TextAlignJustify: () => E3,
 	TextAlignJustifyIcon: () => E3,
-	TextAlignStart: () => Y,
-	TextAlignStartIcon: () => Y,
+	TextAlignStart: () => X,
+	TextAlignStartIcon: () => X,
 	TextCursor: () => j3,
 	TextCursorIcon: () => j3,
 	TextCursorInput: () => k3,
 	TextCursorInputIcon: () => k3,
-	TextIcon: () => Y,
+	TextIcon: () => X,
 	TextInitial: () => N3,
 	TextInitialIcon: () => N3,
 	TextQuote: () => F3,
 	TextQuoteIcon: () => F3,
 	TextSearch: () => L3,
 	TextSearchIcon: () => L3,
-	TextSelect: () => q,
-	TextSelectIcon: () => q,
-	TextSelection: () => q,
-	TextSelectionIcon: () => q,
+	TextSelect: () => J,
+	TextSelectIcon: () => J,
+	TextSelection: () => J,
+	TextSelectionIcon: () => J,
 	TextWrap: () => z3,
 	TextWrapIcon: () => z3,
 	Theater: () => V3,
@@ -53774,48 +53772,48 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	TrafficConeIcon: () => r8,
 	Trailer: () => a8,
 	TrailerIcon: () => a8,
-	Train: () => p8,
+	Train: () => Z,
 	TrainFront: () => l8,
 	TrainFrontIcon: () => l8,
 	TrainFrontTunnel: () => s8,
 	TrainFrontTunnelIcon: () => s8,
-	TrainIcon: () => p8,
+	TrainIcon: () => Z,
 	TrainTrack: () => d8,
 	TrainTrackIcon: () => d8,
-	TramFront: () => p8,
-	TramFrontIcon: () => p8,
-	Transgender: () => h8,
-	TransgenderIcon: () => h8,
-	Trash: () => y8,
-	Trash2: () => y8,
-	Trash2Icon: () => y8,
-	TrashIcon: () => y8,
-	TrashOff: () => _8,
-	TrashOffIcon: () => _8,
-	TreeDeciduous: () => x8,
-	TreeDeciduousIcon: () => x8,
-	TreePalm: () => C8,
-	TreePalmIcon: () => C8,
-	TreePine: () => T8,
-	TreePineIcon: () => T8,
-	Trees: () => D8,
-	TreesIcon: () => D8,
-	TrendingDown: () => k8,
-	TrendingDownIcon: () => k8,
-	TrendingUp: () => N8,
-	TrendingUpDown: () => j8,
-	TrendingUpDownIcon: () => j8,
-	TrendingUpIcon: () => N8,
-	Triangle: () => V8,
-	TriangleAlert: () => F8,
-	TriangleAlertIcon: () => F8,
-	TriangleDashed: () => L8,
-	TriangleDashedIcon: () => L8,
-	TriangleIcon: () => V8,
-	TriangleRight: () => z8,
-	TriangleRightIcon: () => z8,
-	TrianglesCenterlineDashedHorizontal: () => X,
-	TrianglesCenterlineDashedHorizontalIcon: () => X,
+	TramFront: () => Z,
+	TramFrontIcon: () => Z,
+	Transgender: () => m8,
+	TransgenderIcon: () => m8,
+	Trash: () => v8,
+	Trash2: () => v8,
+	Trash2Icon: () => v8,
+	TrashIcon: () => v8,
+	TrashOff: () => g8,
+	TrashOffIcon: () => g8,
+	TreeDeciduous: () => b8,
+	TreeDeciduousIcon: () => b8,
+	TreePalm: () => S8,
+	TreePalmIcon: () => S8,
+	TreePine: () => w8,
+	TreePineIcon: () => w8,
+	Trees: () => E8,
+	TreesIcon: () => E8,
+	TrendingDown: () => O8,
+	TrendingDownIcon: () => O8,
+	TrendingUp: () => M8,
+	TrendingUpDown: () => A8,
+	TrendingUpDownIcon: () => A8,
+	TrendingUpIcon: () => M8,
+	Triangle: () => B8,
+	TriangleAlert: () => P8,
+	TriangleAlertIcon: () => P8,
+	TriangleDashed: () => I8,
+	TriangleDashedIcon: () => I8,
+	TriangleIcon: () => B8,
+	TriangleRight: () => R8,
+	TriangleRightIcon: () => R8,
+	TrianglesCenterlineDashedHorizontal: () => H8,
+	TrianglesCenterlineDashedHorizontalIcon: () => H8,
 	TrianglesCenterlineDashedVertical: () => W8,
 	TrianglesCenterlineDashedVerticalIcon: () => W8,
 	Trophy: () => K8,
@@ -53868,15 +53866,15 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	Unlink2: () => I5,
 	Unlink2Icon: () => I5,
 	UnlinkIcon: () => R5,
-	Unlock: () => dP,
-	UnlockIcon: () => dP,
-	UnlockKeyhole: () => sP,
-	UnlockKeyholeIcon: () => sP,
+	Unlock: () => fP,
+	UnlockIcon: () => fP,
+	UnlockKeyhole: () => cP,
+	UnlockKeyholeIcon: () => cP,
 	Unplug: () => B5,
 	UnplugIcon: () => B5,
 	Upload: () => H5,
-	UploadCloud: () => Rg,
-	UploadCloudIcon: () => Rg,
+	UploadCloud: () => jg,
+	UploadCloudIcon: () => jg,
 	UploadIcon: () => H5,
 	Usb: () => K5,
 	UsbCPort: () => W5,
@@ -53889,10 +53887,10 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	UserCheck2: () => r7,
 	UserCheck2Icon: () => r7,
 	UserCheckIcon: () => J5,
-	UserCircle: () => wm,
-	UserCircle2: () => Sm,
-	UserCircle2Icon: () => Sm,
-	UserCircleIcon: () => wm,
+	UserCircle: () => Cm,
+	UserCircle2: () => xm,
+	UserCircle2Icon: () => xm,
+	UserCircleIcon: () => Cm,
 	UserCog: () => Y5,
 	UserCog2: () => i7,
 	UserCog2Icon: () => i7,
@@ -53980,8 +53978,8 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	VenusAndMars: () => A7,
 	VenusAndMarsIcon: () => A7,
 	VenusIcon: () => j7,
-	Verified: () => S,
-	VerifiedIcon: () => S,
+	Verified: () => p,
+	VerifiedIcon: () => p,
 	Vibrate: () => N7,
 	VibrateIcon: () => N7,
 	VibrateOff: () => M7,
@@ -54105,13 +54103,13 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	WrenchOff: () => P9,
 	WrenchOffIcon: () => P9,
 	X: () => I9,
-	XCircle: () => Em,
-	XCircleIcon: () => Em,
+	XCircle: () => Tm,
+	XCircleIcon: () => Tm,
 	XIcon: () => I9,
 	XLineTop: () => F9,
 	XLineTopIcon: () => F9,
-	XOctagon: () => NB,
-	XOctagonIcon: () => NB,
+	XOctagon: () => PB,
+	XOctagonIcon: () => PB,
 	XSquare: () => O0,
 	XSquareIcon: () => O0,
 	Zap: () => R9,
@@ -54148,240 +54146,49 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 	ZoomInIcon: () => Q9,
 	ZoomOut: () => $9,
 	ZoomOutIcon: () => $9,
-	createLucideIcon: () => g,
-	icons: () => hie,
-	useLucideContext: () => ce
-}), _ie = /* @__PURE__ */ l(((e) => {
-	var t = Symbol.for("react.transitional.element"), n = Symbol.for("react.fragment");
-	function r(e, n, r) {
-		var i = null;
-		if (r !== void 0 && (i = "" + r), n.key !== void 0 && (i = "" + n.key), "key" in n) for (var a in r = {}, n) a !== "key" && (r[a] = n[a]);
-		else r = n;
-		return n = r.ref, {
-			$$typeof: t,
-			type: e,
-			key: i,
-			ref: n === void 0 ? null : n,
-			props: r
-		};
-	}
-	e.Fragment = n, e.jsx = r, e.jsxs = r;
-})), vie = /* @__PURE__ */ l(((e) => {
-	process.env.NODE_ENV !== "production" && (function() {
-		function t(e) {
-			if (e == null) return null;
-			if (typeof e == "function") return e.$$typeof === pe ? null : e.displayName || e.name || null;
-			if (typeof e == "string") return e;
-			switch (e) {
-				case h: return "Fragment";
-				case ie: return "Profiler";
-				case re: return "StrictMode";
-				case ce: return "Suspense";
-				case le: return "SuspenseList";
-				case de: return "Activity";
-				case fe: return "ViewTransition";
-			}
-			if (typeof e == "object") switch (typeof e.tag == "number" && console.error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), e.$$typeof) {
-				case m: return "Portal";
-				case oe: return e.displayName || "Context";
-				case ae: return (e._context.displayName || "Context") + ".Consumer";
-				case se:
-					var n = e.render;
-					return e = e.displayName, e ||= (e = n.displayName || n.name || "", e === "" ? "ForwardRef" : "ForwardRef(" + e + ")"), e;
-				case g: return n = e.displayName || null, n === null ? t(e.type) || "Memo" : n;
-				case ue:
-					n = e._payload, e = e._init;
-					try {
-						return t(e(n));
-					} catch {}
-			}
-			return null;
-		}
-		function n(e) {
-			return "" + e;
-		}
-		function r(e) {
-			try {
-				n(e);
-				var t = !1;
-			} catch {
-				t = !0;
-			}
-			if (t) {
-				t = console;
-				var r = t.error, i = typeof Symbol == "function" && Symbol.toStringTag && e[Symbol.toStringTag] || e.constructor.name || "Object";
-				return r.call(t, "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", i), n(e);
-			}
-		}
-		function i(e) {
-			if (e === h) return "<>";
-			if (typeof e == "object" && e && e.$$typeof === ue) return "<...>";
-			try {
-				var n = t(e);
-				return n ? "<" + n + ">" : "<...>";
-			} catch {
-				return "<...>";
-			}
-		}
-		function a() {
-			var e = me.A;
-			return e === null ? null : e.getOwner();
-		}
-		function o() {
-			return Error("react-stack-top-frame");
-		}
-		function s(e) {
-			if (he.call(e, "key")) {
-				var t = Object.getOwnPropertyDescriptor(e, "key").get;
-				if (t && t.isReactWarning) return !1;
-			}
-			return e.key !== void 0;
-		}
-		function c(e, t) {
-			function n() {
-				ve || (ve = !0, console.error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)", t));
-			}
-			n.isReactWarning = !0, Object.defineProperty(e, "key", {
-				get: n,
-				configurable: !0
-			});
-		}
-		function l() {
-			var e = t(this.type);
-			return ye[e] || (ye[e] = !0, console.error("Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release.")), e = this.props.ref, e === void 0 ? null : e;
-		}
-		function u(e, t, n, r, i, a) {
-			var o = n.ref;
-			return e = {
-				$$typeof: ne,
-				type: e,
-				key: t,
-				props: n,
-				_owner: r
-			}, (o === void 0 ? null : o) === null ? Object.defineProperty(e, "ref", {
-				enumerable: !1,
-				value: null
-			}) : Object.defineProperty(e, "ref", {
-				enumerable: !1,
-				get: l
-			}), e._store = {}, Object.defineProperty(e._store, "validated", {
-				configurable: !1,
-				enumerable: !1,
-				writable: !0,
-				value: 0
-			}), Object.defineProperty(e, "_debugInfo", {
-				configurable: !1,
-				enumerable: !1,
-				writable: !0,
-				value: null
-			}), Object.defineProperty(e, "_debugStack", {
-				configurable: !1,
-				enumerable: !1,
-				writable: !0,
-				value: i
-			}), Object.defineProperty(e, "_debugTask", {
-				configurable: !1,
-				enumerable: !1,
-				writable: !0,
-				value: a
-			}), Object.freeze && (Object.freeze(e.props), Object.freeze(e)), e;
-		}
-		function d(e, n, i, o, l, ee) {
-			var d = n.children;
-			if (d !== void 0) {
-				if (o) {
-					if (ge(d)) {
-						for (o = 0; o < d.length; o++) te(d[o]);
-						Object.freeze && Object.freeze(d);
-					} else console.error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
-				} else te(d);
-			}
-			if (he.call(n, "key")) {
-				d = t(e);
-				var f = Object.keys(n).filter(function(e) {
-					return e !== "key";
-				});
-				o = 0 < f.length ? "{key: someKey, " + f.join(": ..., ") + ": ...}" : "{key: someKey}", Se[d + o] || (f = 0 < f.length ? "{" + f.join(": ..., ") + ": ...}" : "{}", console.error("A props object containing a \"key\" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />", o, d, f, d), Se[d + o] = !0);
-			}
-			if (d = null, i !== void 0 && (r(i), d = "" + i), s(n) && (r(n.key), d = "" + n.key), "key" in n) for (var p in i = {}, n) p !== "key" && (i[p] = n[p]);
-			else i = n;
-			return d && c(i, typeof e == "function" ? e.displayName || e.name || "Unknown" : e), u(e, d, i, a(), l, ee);
-		}
-		function te(e) {
-			f(e) ? e._store && (e._store.validated = 1) : typeof e == "object" && e && e.$$typeof === ue && (e._payload.status === "fulfilled" ? f(e._payload.value) && e._payload.value._store && (e._payload.value._store.validated = 1) : e._store && (e._store.validated = 1));
-		}
-		function f(e) {
-			return typeof e == "object" && !!e && e.$$typeof === ne;
-		}
-		var p = ee("react"), ne = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), h = Symbol.for("react.fragment"), re = Symbol.for("react.strict_mode"), ie = Symbol.for("react.profiler"), ae = Symbol.for("react.consumer"), oe = Symbol.for("react.context"), se = Symbol.for("react.forward_ref"), ce = Symbol.for("react.suspense"), le = Symbol.for("react.suspense_list"), g = Symbol.for("react.memo"), ue = Symbol.for("react.lazy"), de = Symbol.for("react.activity"), fe = Symbol.for("react.view_transition"), pe = Symbol.for("react.client.reference"), me = p.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, he = Object.prototype.hasOwnProperty, ge = Array.isArray, _e = console.createTask ? console.createTask : function() {
-			return null;
-		};
-		p = { react_stack_bottom_frame: function(e) {
-			return e();
-		} };
-		var ve, ye = {}, be = p.react_stack_bottom_frame.bind(p, o)(), xe = _e(i(o)), Se = {};
-		e.Fragment = h, e.jsx = function(e, t, n) {
-			var r = 1e4 > me.recentlyCreatedOwnerStacks++;
-			if (r) {
-				var a = Error.stackTraceLimit;
-				Error.stackTraceLimit = 10;
-				var o = Error("react-stack-top-frame");
-				Error.stackTraceLimit = a;
-			} else o = be;
-			return d(e, t, n, !1, o, r ? _e(i(e)) : xe);
-		}, e.jsxs = function(e, t, n) {
-			var r = 1e4 > me.recentlyCreatedOwnerStacks++;
-			if (r) {
-				var a = Error.stackTraceLimit;
-				Error.stackTraceLimit = 10;
-				var o = Error("react-stack-top-frame");
-				Error.stackTraceLimit = a;
-			} else o = be;
-			return d(e, t, n, !0, o, r ? _e(i(e)) : xe);
-		};
-	})();
-})), Z = (/* @__PURE__ */ l(((e, t) => {
-	t.exports = process.env.NODE_ENV === "production" ? _ie() : vie();
-})))(), yie = ({ name: e, size: t = "md", className: n = "", ...r }) => {
-	let i = gie[e];
-	return i ? /* @__PURE__ */ (0, Z.jsx)("span", {
+	createLucideIcon: () => f,
+	icons: () => mie,
+	useLucideContext: () => fe
+}), gie = ({ name: e, size: t = "md", className: n = "", ...r }) => {
+	let i = hie[e];
+	return i ? /* @__PURE__ */ c("span", {
 		className: `icon icon--${t} ${n}`,
 		"aria-hidden": "true",
-		children: /* @__PURE__ */ (0, Z.jsx)(i, {
+		children: /* @__PURE__ */ c(i, {
 			"aria-hidden": "true",
 			focusable: "false",
 			...r
 		})
 	}) : null;
-}, bie = ({ variant: e = "primary", label: t, disabled: n = !1, iconRight: r = null, iconLeft: i = null, className: a = "", ariaLabel: o, onClick: s, ...c }) => {
-	let l = [
+}, _ie = ({ variant: e = "primary", label: t, disabled: n = !1, iconRight: r = null, iconLeft: i = null, className: a = "", ariaLabel: o, onClick: s, ...u }) => {
+	let ee = [
 		"btn",
 		`btn--${e}`,
 		(r || i) && !t ? "btn--icon-only" : "",
 		a
 	].filter(Boolean).join(" ");
-	return /* @__PURE__ */ (0, Z.jsxs)("button", {
+	return /* @__PURE__ */ l("button", {
 		type: "button",
-		className: l,
+		className: ee,
 		disabled: n,
 		"aria-label": o || t,
 		onClick: s,
-		...c,
+		...u,
 		children: [
-			i && /* @__PURE__ */ (0, Z.jsx)(yie, {
+			i && /* @__PURE__ */ c(gie, {
 				name: i,
 				size: "md",
 				className: "btn__icon"
 			}),
 			t,
-			r && /* @__PURE__ */ (0, Z.jsx)(yie, {
+			r && /* @__PURE__ */ c(gie, {
 				name: r,
 				size: "md",
 				className: "btn__icon"
 			})
 		]
 	});
-}, xie = {
+}, vie = {
 	required: {
 		validate: (e) => e.trim().length > 0,
 		message: "Ce champ est obligatoire"
@@ -54423,14 +54230,14 @@ var $9 = g(mie), hie = /* @__PURE__ */ u({
 		message: "Valeur invalide"
 	},
 	noEmail: {
-		validate: (e) => xie.pattern.validate(e, "^(?!.*@[^\\s@]+\\.[^\\s@]+$).*$"),
+		validate: (e) => vie.pattern.validate(e, "^(?!.*@[^\\s@]+\\.[^\\s@]+$).*$"),
 		message: "Les adresses e-mail ne sont pas acceptées"
 	},
 	noAuditeurFormat: {
 		validate: (e) => !e.toLowerCase().endsWith(".auditeur"),
 		message: "Les identifiants ENF ne sont pas utilisables ici. Cliquez sur Identifiant oublié."
 	}
-}, Sie = [
+}, yie = [
 	{
 		attr: "required",
 		key: "required",
@@ -54487,7 +54294,7 @@ var $ = {
 	inputContainerRadio: ".radio-group",
 	inputMessageContainer: `.${Q.inputMessageContainer}`,
 	label: `.${Q.label}`
-}, Cie = class {
+}, bie = class {
 	constructor(e, t = {}) {
 		this.formEl = e, this.options = t, this.state = {}, this.errors = {}, this.touched = {}, this.onChangeCallbacks = [], this.fields = this._parseFields(), this.fieldMap = Object.fromEntries(this.fields.map((e) => [e.name, e])), this._attachListeners();
 	}
@@ -54520,7 +54327,7 @@ var $ = {
 	}
 	_mergeRules(e) {
 		let t = {};
-		return Sie.forEach(({ attr: n, key: r, parse: i }) => {
+		return yie.forEach(({ attr: n, key: r, parse: i }) => {
 			e.hasAttribute(n) && (t[r] = i(e.getAttribute(n)));
 		}), e.type === "email" && (t.email = !0), {
 			...t,
@@ -54561,7 +54368,7 @@ var $ = {
 		};
 		let r = [];
 		for (let [e, i] of Object.entries(t.rules)) {
-			let t = xie[e];
+			let t = vie[e];
 			if (!t) continue;
 			let a = this._extractParam(i);
 			if (!(e === "match" || e === "notMatch" ? t.validate(n, a, this.getAllValues()) : t.validate(n, a))) {
@@ -54671,9 +54478,9 @@ var $ = {
 		for (; r && r !== t;) n += r.offsetTop, r = r.offsetParent;
 		return n;
 	}
-}, wie = () => {
+}, xie = () => {
 	let e = s(null), t = s(null);
-	return a(() => (e.current && (t.current = new Cie(e.current)), () => {
+	return a(() => (e.current && (t.current = new bie(e.current)), () => {
 		t.current = null;
 	}), []), {
 		formRef: e,
@@ -54684,55 +54491,55 @@ var $ = {
 		}, []),
 		validationInstance: t.current
 	};
-}, Tie = ({ children: e, onSubmit: t, className: n = "", title: r, description: i, enableValidation: a = !1, ...o }) => {
-	let { formRef: s, validateAll: c, getValues: l, reset: u } = wie();
-	return /* @__PURE__ */ (0, Z.jsxs)("form", {
+}, Sie = ({ children: e, onSubmit: t, className: n = "", title: r, description: i, enableValidation: a = !1, ...o }) => {
+	let { formRef: s, validateAll: u, getValues: ee, reset: te } = xie();
+	return /* @__PURE__ */ l("form", {
 		className: `form ${n}`,
 		onSubmit: (e) => {
-			e.preventDefault(), (!a || c()) && t && t(l());
+			e.preventDefault(), (!a || u()) && t && t(ee());
 		},
 		onReset: () => {
-			u();
+			te();
 		},
 		ref: s,
 		"data-formvalidator": a ? !0 : void 0,
 		...o,
-		children: [/* @__PURE__ */ (0, Z.jsxs)("div", {
+		children: [/* @__PURE__ */ l("div", {
 			className: "form__header",
-			children: [r && /* @__PURE__ */ (0, Z.jsx)("h2", {
+			children: [r && /* @__PURE__ */ c("h2", {
 				className: "form__title",
 				children: r
-			}), i && /* @__PURE__ */ (0, Z.jsx)("p", {
+			}), i && /* @__PURE__ */ c("p", {
 				className: "form__description",
 				children: i
 			})]
 		}), e]
 	});
-}, Eie = ({ label: e, inputId: t, messageId: n, helpId: r, children: i, optional: a = !1, helpText: o, message: s, status: c, className: l = "", readOnly: u, showMessages: ee = !0 }) => {
-	let d = [
+}, Cie = ({ label: e, inputId: t, messageId: n, helpId: r, children: i, optional: a = !1, helpText: o, message: s, status: u, className: ee = "", readOnly: te, showMessages: ne = !0 }) => {
+	let re = [
 		"input",
-		c ? `input--${c}` : "",
-		u && "input--readonly",
-		l
+		u ? `input--${u}` : "",
+		te && "input--readonly",
+		ee
 	].filter(Boolean).join(" ");
-	return /* @__PURE__ */ (0, Z.jsxs)("div", {
-		className: d,
+	return /* @__PURE__ */ l("div", {
+		className: re,
 		children: [
-			/* @__PURE__ */ (0, Z.jsxs)("label", {
+			/* @__PURE__ */ l("label", {
 				className: "input__label",
 				htmlFor: t,
-				children: [e, a && /* @__PURE__ */ (0, Z.jsx)("span", {
+				children: [e, a && /* @__PURE__ */ c("span", {
 					className: "input__optional",
 					children: " (Optionnel)"
 				})]
 			}),
-			o && /* @__PURE__ */ (0, Z.jsx)("p", {
+			o && /* @__PURE__ */ c("p", {
 				className: "input__help",
 				id: r,
 				children: o
 			}),
 			i,
-			ee && /* @__PURE__ */ (0, Z.jsx)("p", {
+			ne && /* @__PURE__ */ c("p", {
 				className: "input__message",
 				id: n,
 				"aria-live": "assertive",
@@ -54741,43 +54548,43 @@ var $ = {
 			})
 		]
 	});
-}, Die = ({ id: e, label: t, type: n = "text", optional: r = !1, helpText: i, message: a, status: o, className: s = "", fieldClassName: c = "", name: l = "", disabled: u = !1, placeholder: ee = "", iconName: d, iconAriaLabel: te, onIconClick: f, readOnly: p, showMessages: ne = !0, ...m }) => {
-	let h = e ? `input-${e}` : "input", re = ["input__field", c].filter(Boolean).join(" "), ie = i ? `${h}-help` : void 0, ae = a ? `${h}-message` : void 0;
-	return /* @__PURE__ */ (0, Z.jsx)(Eie, {
+}, wie = ({ id: e, label: t, type: n = "text", optional: r = !1, helpText: i, message: a, status: o, className: s = "", fieldClassName: u = "", name: ee = "", disabled: te = !1, placeholder: ne = "", iconName: re, iconAriaLabel: ie, onIconClick: ae, readOnly: d, showMessages: oe = !0, ...se }) => {
+	let ce = e ? `input-${e}` : "input", le = ["input__field", u].filter(Boolean).join(" "), ue = i ? `${ce}-help` : void 0, de = a ? `${ce}-message` : void 0;
+	return /* @__PURE__ */ c(Cie, {
 		label: t,
-		inputId: h,
-		messageId: ae,
+		inputId: ce,
+		messageId: de,
 		message: a,
-		helpId: ie,
+		helpId: ue,
 		helpText: i,
 		optional: r,
 		status: o,
 		className: s,
-		name: l,
-		readOnly: p,
-		showMessages: ne,
-		children: /* @__PURE__ */ (0, Z.jsxs)("div", {
+		name: ee,
+		readOnly: d,
+		showMessages: oe,
+		children: /* @__PURE__ */ l("div", {
 			className: "input__field-wrapper",
-			children: [/* @__PURE__ */ (0, Z.jsx)("input", {
-				id: h,
+			children: [/* @__PURE__ */ c("input", {
+				id: ce,
 				type: n,
-				className: re,
-				"aria-describedby": ae,
-				disabled: u,
+				className: le,
+				"aria-describedby": de,
+				disabled: te,
 				required: !r,
-				placeholder: ee,
-				readOnly: p,
-				...m
-			}), d && /* @__PURE__ */ (0, Z.jsx)(bie, {
+				placeholder: ne,
+				readOnly: d,
+				...se
+			}), re && /* @__PURE__ */ c(_ie, {
 				label: "",
 				variant: "tertiary",
 				className: "input__icon-button",
-				onClick: f,
-				"aria-label": te,
-				iconLeft: d
+				onClick: ae,
+				"aria-label": ie,
+				iconLeft: re
 			})]
 		})
 	});
 };
 //#endregion
-export { bie as Button, Tie as Form, Die as InputText };
+export { _ie as Button, Sie as Form, wie as InputText };

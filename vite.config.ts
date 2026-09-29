@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+import { defineConfig, esmExternalRequirePlugin  } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
@@ -11,7 +11,16 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),
+        esmExternalRequirePlugin({
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+      ],
+    }),
+  ],
   test: {
     projects: [{
       extends: true,
@@ -44,8 +53,8 @@ export default defineConfig({
     },
 
     // React should be supplied by the consuming application.
-    rolldownOptions: {
-      external: ['react', 'react-dom'],
-    },
+    //rolldownOptions: {
+    //  external: ['react', 'react-dom'],
+    //},
   }
 });
