@@ -19,6 +19,6 @@
       "import": "./dist/design-system-cnam.js",
       "require": "./dist/design-system-cnam.cjs"
     },
-    "./style.css": "./dist/design-system-cnam.css"
+    "./dist/design-system-cnam.css": "./dist/design-system-cnam.css"
     }
 }
