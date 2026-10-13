@@ -1,0 +1,181 @@
+import { Canvas, Meta, ArgTypes, Story } from "@storybook/addon-docs/blocks";
+
+import * as BreadcrumbStories from "./Breadcrumb.stories";
+import Breadcrumb from "./Breadcrumb";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={BreadcrumbStories} />
+
+# Fil d'Ariane
+
+Le fil d’Ariane est un système de navigation secondaire qui permet à l’usager de se situer sur le site qu’il consulte.
+
+<Canvas of={BreadcrumbStories.Standard} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+**Proposer un fil d'Ariane est fortement recommandé sur l’ensemble des sites**, particulièrement lorsque l’arborescence possède plus de 2 niveaux. Il permet à l’usager de revenir à une page de niveau supérieur en l’utilisant à la place du bouton « Retour » du navigateur ou de la navigation principale.
+
+**Utiliser le fil d’Ariane permet également d’aider l’usager à se repérer dans l’arborescence d’un site**. Il indique à l’usager sa position courante et donne des informations sur l’architecture du site.
+
+### Comment utiliser ce composant ?
+
+- **Afficher le fil d’Ariane sur l’ensemble des pages du site**, à l’exception de la page d'accueil.
+- **Conserver le même emplacement pour le fil d’Ariane** au sein de l’ensemble des pages, de préférence entre le header et le contenu principal de la page.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Breadcrumb\assets\do-1.png"
+  >
+     Positionner le fil d’Ariane sous le header  
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Breadcrumb\assets\dont-1.png"
+  >
+     Ne pas positionner le fil d’Ariane ailleurs que sous le header   
+  </DoDont>
+</div>
+
+- **Positionner le fil d’Ariane sur fond neutre**. Il ne doit pas être superposé à un arrière-plan de couleur ou une image.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Breadcrumb\assets\do-2.png"
+  >
+    Appliquer le fil d’Ariane sur fond blanc avant le haut de page s’il propose un fond de couleur ou un motif.   
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Breadcrumb\assets\dont-2.png"
+  >
+    Ne pas superposer le fil d’Ariane à un fond de couleur ou un motif.    
+  </DoDont>
+</div>
+
+- **Rendre chacun des éléments cliquable**, à l’exception de la page consultée.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Breadcrumb\assets\do-3.png"
+  >
+     Adapter le positionnement du fil d’Ariane lorsqu’il est accompagné d’un menu latéral.   
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Breadcrumb\assets\dont-3.png"
+  >
+    Ne pas proposer un fil d’Ariane non cliquable.    
+  </DoDont>
+</div>
+
+- **Mettre en place un fil d’Ariane basé sur la position courante de la page dans la hiérarchie principale du site** et non sur l’historique de navigation de l’usager, ce qui est susceptible de créer de la confusion. Si plusieurs chemins sont possibles pour une même page, le fil d’Ariane doit en présenter un seul afin de conserver une hiérarchie cohérente entre les pages.
+
+<DoDont status="do" imageSrc="src\components\Breadcrumb\assets\do-4.png">
+  Rendre chacun des éléments cliquable, à l’exception de la page consultée.
+</DoDont>
+
+### Règles éditoriales
+
+- **Eviter que le fil d’Ariane soit trop long** et passe sur plusieurs lignes, afin qu’il reste lisible. Si les titres des pages du site sont longs, il est conseillé de n’afficher que les 4 premiers mots du nom de la page courante et d’indiquer que l’élément est tronqué par l’affichage de “…”
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Breadcrumb\assets\do-5.png"
+  >
+     Tronquer le libellé de la page lorsque le titre est trop long.    
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Breadcrumb\assets\dont-5.png"
+  >
+    Ne pas proposer un titre long sur deux lignes.    
+  </DoDont>
+</div>
+
+## Accéssibilité
+
+Le composant Fil d’Ariane est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+Interactions clavier
+
+Aucune interaction au clavier spécifique au composant.
+Règles d’accessibilité
+
+<Message status="info">
+  <span>
+    Le fil d’Ariane n’est pas obligatoire dans le cadre du respect du RGAA. Il
+    s’agit d’un critère d’accessibilité de niveau AAA de WCAG. Son usage est
+    néanmoins fortement recommandé pour aider les personnes avec un handicap
+    cognitif notamment à mieux se repérer sur le site.
+  </span>
+</Message>
+
+### Structuration
+
+- Le fil d’Ariane est un système de navigation secondaire. Il doit être structuré dans un élément `nav` `role="navigation"`.
+- L’attribut `aria-label="vous êtes ici :"` est utilisé pour nommer et donner un contexte explicite à la navigation.
+- Le fil d’Ariane doit être placé en dehors du contenu principal (`main`) afin de permettre au lien d’accès au d’éviter tous les liens de navigation.
+- Les éléments du fil d’Ariane sont structurés dans une liste numérotée avec les éléments ol et li .
+
+En version mobile, l’affichage direct du fil d’Ariane est remplacé par un bouton « Voir le fil d’Ariane ». À l’activation du bouton, le bouton disparaît et le focus est replacé sur le premier élément du fil d’Ariane.
+
+### Identification de la page courante
+
+- La page courante n’est pas structurée dans un lien et n’est pas soulignée.
+- Elle est en plus identifiée explicitement avec un attribut `aria-current="page"` pour les personnes aveugles.
+
+### Restitution par les lecteurs d’écran
+
+L’attribut aria-current="page" peut être restitué différemment selon les lecteurs d’écran.
+
+- VoiceOver macOS, Narrateur : « page actuelle »
+- NVDA, JAWS : « page courante »
+- Talkback, VoiceOver iOS : « page active »
+
+À noter : VoiceOver iOS et Narrateur ne restituent pas `aria-current` sur un élément `a` sans attribut `href`.
+
+La page courante est alors indiquée implicitement aux personnes aveugles car celle-ci n’est pas structurée dans un lien, contrairement aux autres pages.
+
+## Variantes
+
+### Standard
+
+<Canvas>
+  <Story story={BreadcrumbStories.Standard} />
+</Canvas>
+
+### Avec icônes
+
+<Canvas>
+  <Story story={BreadcrumbStories.AvecIcônes} />
+</Canvas>
+
+### Compact
+
+Affiche uniquement le parent immédiat et la page courante, utile sur mobile.
+
+<Canvas>
+  <Story story={BreadcrumbStories.Compact} />
+</Canvas>
+
+### Séparateur personnalisé
+
+<Canvas>
+  <Story story={BreadcrumbStories.SéparateurPersonnalisé} />
+</Canvas>
+
+## Props
+
+<ArgTypes of={Breadcrumb} />

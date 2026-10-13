@@ -31,10 +31,6 @@ const meta: Meta<typeof Message> = {
       control: "boolean",
       description: "Masquer l'icône",
     },
-    dismissible: {
-      control: "boolean",
-      description: "Afficher le bouton de fermeture",
-    },
     autoFocus: {
       control: "boolean",
       description: "Focaliser le message à l'apparition",
@@ -84,15 +80,5 @@ export const SansIcône: Story = {
     title: "Information",
     children: "Message sans icône.",
     hideIcon: true,
-  },
-};
-
-export const Fermable: Story = {
-  args: {
-    type: "success",
-    title: "Message fermable",
-    children: "Cliquez sur la croix pour fermer.",
-    dismissible: true,
-    onDismiss: () => console.log("Message fermé"),
   },
 };

@@ -1,0 +1,130 @@
+import { Canvas, Meta, ArgTypes, Story } from "@storybook/addon-docs/blocks";
+import * as FooterStories from "./Footer.stories";
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={FooterStories} />
+
+# Pied de page
+
+Le pied de page est un élément de navigation secondaire mis à disposition de l’usager pour qu’il poursuive son parcours. Il propose également des éléments d’information complémentaires.
+
+<Canvas of={FooterStories.Complet} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+**Intégrer le pied de page sur l’ensemble des sites du Cnam** Au sein d’un site, le pied de page doit être affiché en bas de chacune des pages.
+
+### Comment utiliser ce composant ?
+
+- **Proposer a minima le pied de page simple** (bloc Marque, liens obligatoires et mention de la licence).
+- **Utiliser le pied de page complet** (avec listes de liens) pour les sites profonds nécessitant de réintégrer des liens en rebond de la navigation.
+- **Classer les listes de liens** lorsque vous le pouvez.
+- **Penser le pied de page comme un élément complémentaire à la navigation principale.** Il ne doit pas être le miroir de cette dernière. Un travail de conception particulier est de fait nécessaire pour proposer des contenus adaptés, qui répondent par exemple aux questions restantes de l’usager.
+- **Utiliser le pied de page complet pour les sites souhaitant regrouper informations légales**, liens secondaires, réseaux sociaux et partenaires.
+- **Utiliser la version minimale** (logo + copyright) pour les pages simples ou les one-pagers.
+- **Utiliser la zone d'interactions** pour insérer librement des liens, des formulaires (newsletter, contact) ou tout autre composant.
+- **Toujours inclure les mentions légales**.
+
+### Règles éditoriales
+
+- **Proposer des libellés de liens clairs et concis** afin que l’usager comprenne facilement les pages auxquelles il peut accéder.
+
+## Accéssibilité
+
+Le composant **Pied de page** est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+### Interactions clavier
+
+Les interactions clavier sont celles des liens et switch contenus dans le pied de page.
+
+### Règles d’accessibilité
+
+Les règles d’accessibilité du composant "Pied de page" découlent de celles des composants qui la compose.
+
+L'élément `<footer>` doit posséder un `role="contentinfo"`.
+
+### Mention obligatoire
+
+Une mention obligatoire de conformité au RGAA doit apparaître sur toutes les pages.
+
+Cette mention peut être cliquable et conduire vers la page Accessibilité ou vers la déclaration d’accessibilité.
+
+La mention se décline en :
+
+- « Accessibilité : non conforme » si le taux de conformité est inférieur à 50% (ou qu’aucun audit n’a été effectué)
+- « Accessibilité : partiellement conforme » si le taux de conformité est supérieur à 50%.
+- « Accessibilité : totalement conforme » si le taux de conformité est égal à 100%
+
+## Variantes
+
+### Complet
+
+Version avec logo, adresse, zone d'interactions, partenaires, copyright et liens légaux.
+
+<Canvas of={FooterStories.Complet} />
+
+### Logo et adresse
+
+Version minimale avec uniquement les informations institutionnelles.
+
+<Canvas of={FooterStories.LogoEtAdresse} />
+
+### Liens uniquement
+
+Version avec uniquement des liens de navigation secondaire.
+
+<Canvas of={FooterStories.LiensUniquement} />
+
+### Sans partenaires
+
+Version sans les logos partenaires.
+
+<Canvas of={FooterStories.SansPartenaires} />
+
+### Minimal
+
+Version la plus légère avec un simple copyright.
+
+<Canvas of={FooterStories.Minimal} />
+
+### Liens externes
+
+Exemple avec des liens externes (ouverture dans un nouvel onglet).
+
+<Canvas of={FooterStories.LiensExternes} />
+
+## Structure
+
+Le pied de page est composé de :
+
+- `.footer__inner` : grille principale en trois colonnes
+- `.footer__column--brand` : logo + adresse postale
+- `.footer__column--interactions` : zone libre (liens, formulaires, etc.)
+- `.footer__column--partners` : logos des partenaires
+
+### Zone d'interactions
+
+La colonne centrale accepte **n'importe quel composant** grâce à la prop `interactions` de type `ReactNode`. Vous pouvez y insérer :
+
+- Des groupes de liens (`<nav>` + listes)
+- Un formulaire d'inscription à la newsletter
+- Un sélecteur de langue
+- Des boutons d'action
+- Tout autre composant du design system
+
+Exemple :
+
+```tsx
+<Footer
+  interactions={
+    <form className="footer__newsletter">
+      <h2>Newsletter</h2>
+      <InputText id="email" label="Votre email" type="email" />
+      <Button label="S'inscrire" type="submit" />
+    </form>
+  }
+/>
+```

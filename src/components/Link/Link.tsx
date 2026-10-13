@@ -9,6 +9,8 @@ export interface LinkProps {
   download?: boolean;
   ariaLabel?: string;
   href?: string;
+  className?: string;
+  exertnal?: boolean;
 }
 
 const Link: React.FC<LinkProps> = ({
@@ -19,11 +21,17 @@ const Link: React.FC<LinkProps> = ({
   ariaLabel,
   onClick,
   href,
+  className,
+  exertnal,
   ...props
 }) => {
+  const classes = ["link", disabled && "link--disabled", className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <a
-      className={`link ${disabled ? "link--disabled" : ""}`}
+      className={classes}
       href={`${disabled ? undefined : href || "#"}`}
       onClick={onClick}
       aria-label={ariaLabel || label}
@@ -33,6 +41,9 @@ const Link: React.FC<LinkProps> = ({
       {icon && <Icon name={icon} size="sm" className="link__icon" />}
       {label}
       {download && <Icon name={"Download"} size="sm" className="link__icon" />}
+      {exertnal && (
+        <Icon name={"ArrowUpRight"} size="sm" className="link__icon" />
+      )}
     </a>
   );
 };

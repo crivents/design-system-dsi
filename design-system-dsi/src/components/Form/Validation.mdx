@@ -1,0 +1,23 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Documentation/Validation" />
+
+# Validation des formulaires
+
+Le système de validation utilise des règles déclarées via `data-rules` sur les champs.
+
+## Règles disponibles
+
+| Règle       | Description                        | Exemple                     |
+| ----------- | ---------------------------------- | --------------------------- |
+| `required`  | Champ obligatoire                  | `"required": true`          |
+| `email`     | Format email                       | `"email": true`             |
+| `minLength` | Longueur minimale                  | `"minLength": 8`            |
+| `maxLength` | Longueur maximale                  | `"maxLength": 50`           |
+| `pattern`   | Expression régulière               | `"pattern": "^[a-z]+$"`     |
+| `match`     | Correspondance avec un autre champ | `"match": "password"`       |
+| `notMatch`  | Différence avec un autre champ     | `"notMatch": "oldPassword"` |
+| `min`       | Valeur minimale (nombre ou date)   | `"min": 18"`                |
+| `max`       | Valeur maximale                    | `"max": 100"`               |
+
+## Utilisation

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import type { InputHTMLAttributes, ReactNode } from "react";
-import Icon from "../../Icon/Icon";
 
 /* ==========================================================================
    TYPES
@@ -13,7 +12,6 @@ export interface CheckboxOption {
   label: string;
   /** Sous texte du libellé */
   subtext?: string;
-
   /** Option désactivée */
   disabled?: boolean;
 }
@@ -108,17 +106,17 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   };
 
   return (
-    <div
+    <fieldset
       className={containerClasses}
       role="group"
       aria-labelledby={`${groupId}-label`}
     >
-      <span className="checkbox-group__label" id={`${groupId}-label`}>
+      <legend className="checkbox-group__label" id={`${groupId}-label`}>
         {label}
         {optional && (
           <span className="checkbox-group__optional"> (Optionnel)</span>
         )}
-      </span>
+      </legend>
 
       {helpText && (
         <p className="checkbox-group__help" id={helpId}>
@@ -170,7 +168,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           {message}
         </p>
       )}
-    </div>
+    </fieldset>
   );
 };
 

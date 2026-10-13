@@ -1,0 +1,134 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as ModalStories from "./Modal.stories";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={ModalStories} />
+
+# Modale
+
+La modale est un élément de mise en forme de contenu permettant de concentrer l’attention de l’usager exclusivement sur une tâche ou un élément d’information, sans perdre le contexte de la page en cours.
+
+<Canvas of={ModalStories.Interactive} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+Utiliser la modale pour hiérarchiser l’information au sein d’une page ou afficher un contenu à part. Elle permet de mettre en évidence une information importante, à la suite du clic sur un bouton.
+
+**Exemples de cas d’usage fréquents** :gestionnaire de consentement, paramètres d’affichage, formulaire simple, demande d’un choix à l’utilisateur, affichage d’un média etc.
+
+### Comment utiliser ce composant ?
+
+- **Utiliser les modales pour afficher des informations importantes**. Il est toutefois recommandé de les utiliser avec parcimonie car elles sont invasives dans l’expérience de l’usager.
+- **Permettre à l’usager de reprendre sa navigation** à l’endroit où il se trouvait auparavant dans la page simplement en fermant la modale.
+- **Figer la page en arrière plan** lorsqu’une modale est ouverte. L’usager ne peut pas scroller le contenu d’arrière plan avant d’avoir clôturé la modale.
+- **Limiter le nombre d'interactions** dans une modale, et si celle-ci en propose, rester sur des interactions simples (exemples : bouton, bouton radio, lien etc.).
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Modal\assets\do-1.png"
+  >
+    Proposer uniquement des interactions simples et limités au sein de la modale.  
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Modal\assets\dont-1.png"
+  >
+     Ne pas insérer de composants complexes, inadaptés à l’usage de la modale.  
+  </DoDont>
+</div>
+
+- **Éviter de présenter des décisions complexes** dans une modale, notamment lorsque celles-ci nécessitent la consultation de sources d’informations supplémentaires.
+- **Privilégier l’usage de l’accordéon** si l’objectif est de proposer un complément de contenu (exemple : “En savoir plus”).
+
+### Règles éditoriales
+
+- **Ajouter tout type de contenu à votre modale**, dans le respect des règles d’utilisation précédemment mentionnées.
+
+## Accéssibilité
+
+Le composant **Modale** est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+Interactions clavier
+
+À l’intérieur de la fenêtre modale :
+
+- `Échap` : referme la modale et place le focus sur le bouton d’ouverture de la modale ou à un endroit approprié si le bouton disparaît.
+- `Tab `: place le focus sur le prochain élément focalisable de la modale.
+- `Maj + Tab` : place le focus sur l'élément focalisable précédent.
+
+**Le focus doit rester dans la fenêtre modale tant qu’elle n’est pas fermée.**
+
+### Règles d’accessibilité
+
+Le composant **Modale** s’appuie sur le motif de conception ARIA Dialog de l’Authoring Practices Guide (APG).
+
+- L’élément qui déclenche l’ouverture de la fenêtre modale doit être un `button`. Il est possible d'ouvrir la modale programmatiquement au moyen d'un script, mais il faudra s'assurer que le focus est replacé sur un endroit approprié après la fermeture de la modale.
+- La modale utilise l’élément HTML `<dialog>` ou l’attribut role="dialog". Si aucun de ces deux éléments n’est utilisé, le JavaScript du DSFR ajoute automatiquement l’attribut `role="dialog"` à l’ouverture de la modale et le retire à la fermeture.
+- Elle dispose d’un attribut aria-modal="true" uniquement lorsqu’elle est affichée (le JavaScript du DSFR l’ajoute à l’ouverture et le retire à la fermeture).
+- La modale doit avoir un nom accessible. Elle est nommée avec un attribut `aria-labelledby` défini sur l’ID du titre de la fenêtre modale.
+- La modale a un titre de niveau `h2` à `h6`, en fonction de son positionnement dans le DOM, ou sous forme de balise `<p>`.
+- Le focus est placé sur le premier élément focalisable de la modale lors de son ouverture. Et replacé sur le bouton d’ouverture de la modale ou à un endroit approprié si le bouton disparaît lors de sa fermeture.
+- Le focus est capturé à l’intérieur de la modale tant qu’elle n’est pas fermée.
+- Lorsque la modale est ouverte, le défilement de la page est bloqué. L’attribut `data-fr-scrolling="false"` est appliqué sur l’élément `<html>`.
+
+<Message status="success">
+  <span>
+   Le `role="dialog"` n’est plus nécessaire sur l’élément HTML `<dialog>`.
+Restitution par les lecteurs d’écran
+  </span>
+</Message>
+
+L’élément `<dialog>` est restitué différemment selon les lecteurs d’écran.
+
+Tous les lecteurs d’écran restituent le nom accessible et le rôle de la modale.
+
+- Talkback, Narrateur et Jaws : nom, boîte de dialogue
+- NVDA : nom, dialogue
+- VO iOS / VO macOS : nom, boîte de dialogue web
+
+Note : VoiceOver macOS ne restitue pas le nom de la modale avec Firefox et Chrome.
+
+### Capture du focus
+
+Note : le focus n’est pas capturé avec les lecteurs d’écran mobiles sur la version actuelle du composant Modale.
+
+## Partie technique
+
+### Structure HTML
+
+La modale repose sur une structure HTML stricte, partagée entre les projets React et PHP/JS.
+
+```html
+<div
+  id="modal-<name>-overlay"
+  data-modal="<name>"
+  class="overlay"
+  aria-hidden="true|false"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-<name>-title"
+>
+  <div class="overlay__fond" data-modal-fond="true|false"></div>
+
+  <div class="modal modal--<position> modal--<size>" role="document">
+    <header class="modal__header">
+      <div class="modal__title-wrapper">
+        <Icon class="modal__icon" aria-hidden="true" />
+        <h2 id="modal-<name>-title" class="modal__title">Titre</h2>
+      </div>
+      <button data-modal-close="<name>" aria-label="Fermer la modale">…</button>
+    </header>
+
+    <div class="modal__body">{children}</div>
+
+    <footer class="modal__footer">{footer}</footer>
+  </div>
+</div>
+```

@@ -1,0 +1,247 @@
+import { Canvas, Meta, ArgTypes, Story } from "@storybook/addon-docs/blocks";
+
+import * as MenuStories from "./Menu.stories";
+import Menu from "./Menu";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={MenuStories} />
+
+# Menu latéral
+
+Le menu est un système de navigation primaire présentant une liste verticale de liens placée à côté du contenu.
+
+<Canvas of={MenuStories.Complet} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+Proposer le menu latéral pour permettre à l’usager de naviguer entre les différentes pages d’une rubrique ou d’un même thème.
+
+Il est recommandé d’utiliser le menu latéral sur des sites ayant un niveau de profondeur assez important (2 niveaux de navigation ou plus).
+
+<Message status="warning">
+  <span>
+    Bien différencier le menu latéral du sommaire. Le sommaire est utilisé pour
+    naviguer entre les différentes sections d’une même page. Il ne présente pas
+    des liens mais des ancres.
+  </span>
+</Message>
+
+### Comment utiliser ce composant ?
+
+- Utiliser un ou plusieurs **groupes dépliants** (`type: "group"`) pour organiser les liens par catégorie.
+- Utiliser des **items racine** (`type: "items"`) pour les liens qui ne nécessitent pas de regroupement.
+- Utiliser des **items racine** (`type: "items"`) pour les liens qui ne nécessitent pas de regroupement.
+- Utiliser une section **custom** pour insérer n’importe quel contenu (formulaire, encart, séparateur visuel…).
+- Toujours passer les sections dans l’**ordre souhaité** : le rendu respecte strictement l’ordre du tableau.
+
+- **Indiquer à l’usager où il se trouve dans la hiérarchie de navigation** en affichant la page active. Pour cela, l’élément de menu correspondant à la page courante doit être en état “actif”.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Menu\assets\do-1.png"
+  >
+      Indiquer la page active au sein du menu latéral pour que l’usager sache où il se trouve.     
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Menu\assets\dont-1.png"
+  >
+     Ne pas laisser l’usager déduire sa position au sein du menu latéral.    
+  </DoDont>
+</div>
+
+### Règles éditoriales
+
+- Les titres de groupes doivent être courts et explicites.
+- Éviter les libellés vagues (« Divers », « Autres »).
+- Éviter de dupliquer des liens déjà présents dans le header ou l’accès rapide.
+- Ne pas surcharger un groupe : au-delà de 7-8 liens, créer un sous-groupe ou une sous-partie
+- **Garder le même nom de rubrique dans le menu et dans le contenu**, pour donner un repère à l’usager.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Menu\assets\do-2.png"
+  >
+    Avoir le même nom de rubrique dans le contenu et au sein du menu latéral.     
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Menu\assets\dont-2.png"
+  >
+    Ne pas changer le nom de la rubrique au sein du menu latéral pour ne pas perdre l’usager.     
+  </DoDont>
+</div>
+
+- **Raccourcir les titres des liens au sein du menu latéral par rapport aux titres véritables des pages** si ces derniers apparaissent trop longs.
+
+## Accéssibilité
+
+Le composant Menu latéral est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+### Interactions clavier
+
+- `Entrée ou Espace` :
+  - Lorsque le focus est placé sur le bouton d'ouverture du menu latéral, et que sa sous-section associée est fermée, ouvre la sous-section.
+  - Lorsque le focus est placé sur le bouton d'ouverture du menu latéral, et que sa sous-section associée est déjà ouverte, referme la sous-section.
+- `Tab` : Place le focus sur le prochain élément focalisable.
+- `shift + Tab` : Place le focus sur l'élément focalisable précédent.
+
+### Règles d’accessibilité
+
+#### Structuration
+
+- Le menu latéral est un système de navigation primaire. Il doit être structuré dans un élément nav role="navigation".
+- Les éléments du menu latéral sont structurés dans une liste avec les éléments ul et li .
+
+#### Éléments actifs
+
+- Le lien actif dispose d’un attribut `aria-current="page"`.
+- Si une sous-section associée à un bouton d'ouverture de la navigation est active, le bouton a un attribut `aria-current` défini sur "true".
+
+#### Entrée de menu
+
+- Les boutons d’ouverture et de fermeture des menus déroulants et mega-menus possèdent :
+  - un attribut `aria-expanded` défini à truelorsque le sous-menu est affiché, à falselorsque la sous-section est fermée.
+  - un attribut `aria-controls` défini sur l'ID du bloc refermable associé.
+
+#### Contrastes de couleurs
+
+Le composant Menu latéral est suffisamment contrasté en thème clair.
+
+En thème sombre, le contraste est insuffisant au survol sur les items de menu actifs.
+
+### Restitution par les lecteurs d’écran
+
+Aucun test de restitution n’est nécessaire pour le composant Menu latéral.
+
+## Variantes
+
+### Complet
+
+Menu avec items racine, groupes dépliants, accès rapide et zone utilisateur.
+
+<Canvas of={MenuStories.Complet} />
+
+### Groupes fermés
+
+Tous les groupes sont fermés par défaut.
+
+<Canvas of={MenuStories.GroupesFermés} />
+
+### Uniquement items racine
+
+Menu sans groupe, uniquement des liens directs.
+
+<Canvas of={MenuStories.UniquementItemsRacine} />
+
+### Groupes puis items racine
+
+Illustration de l’ordre libre : groupes d’abord, items racine ensuite.
+
+<Canvas of={MenuStories.GroupesPuisItems} />
+
+### Ordre personnalisé
+
+Exemple d’ordre totalement libre : items → groupe → custom → items → groupe.
+
+<Canvas of={MenuStories.OrdrePersonnalisé} />
+
+### Sous-menus
+
+Illustration des sous-menus imbriqués dans un item. Les icônes des enfants sont ignorées (niveau ≥ 1).
+
+<Canvas of={MenuStories.SousMenus} />
+
+### Item actif
+
+Mise en évidence du lien correspondant à la page courante via `activeHref`.
+
+<Canvas of={MenuStories.ItemActif} />
+
+### Sans accès rapide
+
+Menu sans la section quick-access.
+
+<Canvas of={MenuStories.SansAccèsRapide} />
+
+### Sans utilisateur
+
+Menu sans sections utilisateur et déconnexion.
+
+<Canvas of={MenuStories.SansUtilisateur} />
+
+### Minimal
+
+Menu réduit à un seul groupe dépliant.
+
+<Canvas of={MenuStories.Minimal} />
+
+### Beaucoup de sections
+
+Exemple avec de nombreuses sections ordonnées.
+
+<Canvas of={MenuStories.BeaucoupDeSections} />
+
+## Structure
+
+Le menu est composé d’une zone scrollable et de sections épinglées en bas.
+
+<span>
+  ".menu" "├── .menu__scroll → zone scrollable" │ ├── .menu__list--root → items
+  racine │ ├── .menu__group → groupe dépliant │ │ ├── .menu__group-toggle │ │
+  ├── .menu__group-content │ │ └── .menu__list │ ├──
+  .menu__section--quick-access │ └── .menu__section--custom ├──
+  .menu__section--user → épinglé └── .menu__section--logout → épinglé
+</span>
+
+### Composition par sections
+
+Chaque section est un objet typé :
+
+| Type           | Description                      | Props obligatoires             |
+| -------------- | -------------------------------- | ------------------------------ |
+| `items`        | Liste de liens de premier niveau | `items: MenuLink[]`            |
+| `group`        | Groupe dépliant                  | `group: MenuGroupProps`        |
+| `quick-access` | Liens d’accès rapide             | `items: MenuQuickAccessLink[]` |
+| `custom`       | Contenu libre                    | `content: ReactNode`           |
+
+### Exemple
+
+```tsx
+<Menu
+  sections={[
+    {
+      type: "items",
+      id: "top",
+      items: [{ id: "home", label: "Accueil", href: "/" }],
+    },
+    {
+      type: "group",
+      id: "nav",
+      group: {
+        id: "nav",
+        title: "Navigation",
+        icon: "Menu",
+        defaultOpen: true,
+        items: [{ id: "formations", label: "Formations", href: "/formations" }],
+      },
+    },
+    {
+      type: "quick-access",
+      id: "qa",
+      title: "Accès rapide",
+      items: [{ id: "biblio", label: "Bibliothèque", href: "/biblio" }],
+    },
+  ]}
+  user={{ name: "Jean Dupont", id: "jdupont123" }}
+  onLogout={() => console.log("Déconnexion")}
+/>
+```

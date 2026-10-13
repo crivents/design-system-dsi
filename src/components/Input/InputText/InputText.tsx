@@ -1,5 +1,9 @@
 import React from "react";
-import type { InputHTMLAttributes, ReactNode } from "react";
+import type {
+  InputHTMLAttributes,
+  ReactNode,
+  TextareaHTMLAttributes,
+} from "react";
 import FieldWrapper from "../FieldWrapper/FieldWrapper";
 import Button from "../../Button/Button";
 
@@ -7,16 +11,21 @@ import Button from "../../Button/Button";
    TYPES
    ========================================================================== */
 
-export interface InputTextProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "id"
-> {
+interface InputTextCustomProps {
   /** Identifiant unique du champ (pour l'association label/input) */
   id: string;
   /** Libellé du champ */
   label: string;
   /** Type du champs */
-  type?: "text" | "email" | "number" | "password" | "date" | "tel" | "url";
+  type?:
+    | "text"
+    | "email"
+    | "number"
+    | "password"
+    | "date"
+    | "tel"
+    | "url"
+    | "textarea";
   /** Texte optionnel affiché dans le label */
   optional?: boolean;
   /** Texte d'aide (ex: format attendu) */
@@ -44,6 +53,19 @@ export interface InputTextProps extends Omit<
   /** Les messages d'erreur ou de succès sont affichés ? */
   showMessages?: boolean;
 }
+
+type InputAttributes = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "id" | "type"
+>;
+
+type TextareaAttributes = Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "id" | "type"
+>;
+
+export type InputTextProps = InputTextCustomProps &
+  (InputAttributes | TextareaAttributes);
 
 /* ==========================================================================
    COMPOSANT
@@ -90,17 +112,31 @@ const InputText: React.FC<InputTextProps> = ({
       showMessages={showMessages}
     >
       <div className="input__field-wrapper">
-        <input
-          id={inputId}
-          type={type}
-          className={fieldClasses}
-          aria-describedby={messageId}
-          disabled={disabled}
-          required={!optional}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          {...rest}
-        />
+        {type === "textarea" ? (
+          <textarea
+            id={inputId}
+            className={fieldClasses}
+            aria-describedby={messageId}
+            disabled={disabled}
+            required={!optional}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            {...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+          />
+        ) : (
+          <input
+            id={inputId}
+            type={type}
+            className={fieldClasses}
+            aria-describedby={messageId}
+            disabled={disabled}
+            required={!optional}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            {...rest}
+          />
+        )}
+
         {iconName && (
           <Button
             label=""

@@ -4,8 +4,12 @@ import "../src/styles/police.css";
 import "../src/components/docs/DoDont.css";
 import "../src/components/docs/Message.css";
 import { themes } from "@storybook/theming";
+import { useEffect } from "react";
+import { ModalManager } from "../src/components/Modal/ModalManager";
 
-const preview: Preview = {
+// Ajout de la gestion des modales
+
+const preview = {
   parameters: {
     controls: {
       matchers: {
@@ -21,6 +25,22 @@ const preview: Preview = {
       test: "todo",
     },
   },
+  decorators: [
+    (Story: () => any) => {
+      // Initialisation après le rendu de chaque story
+      setTimeout(() => {
+        const overlays = document.querySelectorAll<HTMLElement>("[data-modal]");
+        overlays.forEach((overlay) => {
+          const name = overlay.dataset.modal;
+          if (name) {
+            new ModalManager(name, overlay);
+          }
+        });
+      }, 0);
+
+      return Story();
+    },
+  ],
 };
 
 export default preview;

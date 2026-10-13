@@ -30,7 +30,9 @@ const Message: FC<DoDontProps> = ({ status, children, title }) => {
   return (
     <div className={`u-message u-message--${status}`}>
       <div className="u-message__header">
-        <span className="u-message__title">{showTitle}</span>
+        <span className={`u-message__title u-message__title--${status}`}>
+          {showTitle}
+        </span>
       </div>
       <div className="u-message__content">{children}</div>
     </div>

@@ -7,10 +7,13 @@ install:
 
 start-storybook:
 #	npm run storybook
-	docker compose up
+	docker compose up --build
 
 start-with-local-node-binaries:
 	npm run storybook
+
+connect-server: ## Start a terminal session in server container
+	docker compose -f docker-compose.yml exec server ash
 
 delete-local-node-dependencies:
 #	rm -rf ./app/node_modules
@@ -24,3 +27,9 @@ build-design-system-library:
 	rm -rf ./dist
 	docker compose -f docker-compose.yml run --rm --no-deps server ash -ci 'cd /app/ && npm run build'
 #	mv ./app/dist ./dist
+
+checkout-code-from-design-system-dsi-git:
+	rm -rf design-system-dsi/*
+	cd design-system-dsi && git archive --remote=git@arseche.cnam.fr:lebihanj/design-system-dsi.git main . | tar xvf -
+	cp -r design-system-dsi/.storybook/* ./.storybook
+	cp -r design-system-dsi/src/* ./src

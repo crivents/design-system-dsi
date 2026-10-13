@@ -16,6 +16,22 @@
   font-weight: var(--font-weight-bold);
 }
 
+.u-message__title--warning {
+  color: var(--color-text-status-alert);
+}
+
+.u-message__title--error {
+  color: var(--color-text-status-error);
+}
+
+.u-message__title--success {
+  color: var(--color-text-status-good);
+}
+
+.u-message__title--info {
+  color: var(--color-text-status-info);
+}
+
 .u-message--info {
   background-color: var(--color-background-status-info);
 }

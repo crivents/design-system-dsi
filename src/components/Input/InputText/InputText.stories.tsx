@@ -17,7 +17,7 @@ const meta: Meta<typeof InputText> = {
   argTypes: {
     type: {
       control: { type: "select" },
-      options: ["text", "email", "password", "number", "date"],
+      options: ["text", "email", "password", "number", "date", "textarea"],
       description: "Type de champ natif",
       table: {
         defaultValue: { summary: "text" },

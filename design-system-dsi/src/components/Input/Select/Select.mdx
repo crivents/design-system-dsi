@@ -1,0 +1,120 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as Select from "./Select.stories";
+
+import DoDont from "../../docs/DoDont";
+import Message from "../../docs/Message";
+
+<Meta of={Select} />
+
+# Liste déroulante
+
+La liste déroulante est un élément d’interaction avec l’interface permettant à l’usager de choisir un élément dans une liste donnée.
+
+<Canvas of={Select.Default} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+Utiliser la liste déroulante pour permettre à l’usager de sélectionner une unique option dans une liste.
+
+<Message status="info">
+  <span>
+    Bien différencier les listes déroulantes des boutons radio ou cases à
+    cocher. Les listes déroulantes sont à privilégier lorsque l’usager doit
+    choisir un seul élément parmi 6 à 15 choix possibles et que l’espace
+    d’affichage des options est limité.
+  </span>
+</Message>
+
+Évitez l’usage de listes déroulantes lorsqu’elles comportent peu de propositions. Dans ce cas, optez pour des boutons radio , dont la compréhension est plus simple pour les usagers.
+
+Si plusieurs choix sont possibles, optez pour des cases à cocher , plus simples à utiliser que l’option multiple de la liste déroulante (nécessitant une combinaison avec la touche ctrl).
+
+### Comment utiliser ce composant ?
+
+- **Contextualiser l’usage de la liste déroulante**, notamment lorsqu’elle est utilisée en dehors d’un panneau de filtres ou d’un formulaire. L’usager doit comprendre l’action proposée.
+
+<DoDont status="do" imageSrc="src\components\Input\Select\assets\do-1.png">
+  Contextualiser l’usage de la liste déroulante afin de permettre à l’usager de
+  comprendre l’action proposée.
+</DoDont>
+
+## Accéssibilité
+
+Le composant Liste déroulante est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+### Interactions clavier
+
+Lorsque le focus est positionné sur la liste déroulante :
+
+- `Flèche bas` : ouvre la liste déroulante et permet de naviguer entre les options.
+- `Flèche haut` : ouvre la liste déroulante et permet de naviguer entre les options.
+- `Espace` : ouvre la liste déroulante et sélectionne l’option mise en surbrillance.
+
+### Règles d’accessibilité
+
+#### Intitulé pertinent : nom accessible
+
+Une liste déroulante doit avoir une** étiquette pertinente**. On doit en comprendre la fonction sans ambiguïté.
+
+Son nom accessible est calculé par ordre de priorité à partir de :
+
+- l’attribut `aria-labelledby`,
+- l’attribut `aria-label`,
+- l’élément `<label>`,
+- l’attribut title en l’absence d’une autre méthode de nommage.
+
+Privilégier l’élément `<label>` pour nommer le composant.
+
+<Message status="error">
+  <span>
+    Le RGAA exige une **liaison explicite** entre l’attribut `for` de l’élément `<label> `et l'attribut `id` de la liste déroulante.
+    L’attribut `for` du label doit correspondre à l'attribut `id` de la liste déroulante. La valeur de l’attribut `id` doit être unique dans la page.
+  </span>
+</Message>
+
+La liaison explicite `for`/`id` permet d’assurer une compatibilité avec l’ensemble des technologies d’assistance (ex. le contrôle vocal).
+
+#### Étiquette visible et accolée
+
+L’étiquette est visible et accolée à la liste déroulante.
+
+#### État désactivé
+
+<Message status="error">
+  <span>
+    **L’état désactivé d’une liste déroulante peut poser des problèmes
+    d’utilisabilité et d’accessibilité pour les personnes handicapées
+    (perso**nnes déficientes visuelles ainsi que les personnes qui ont un
+    handicap cognitif ou mental).
+  </span>
+</Message>
+
+La bordure, la coche et l’étiquette de la liste déroulante désactivée sont insuffisamment contrastées. Il ne s’agit néanmoins pas d’une non-conformité au RGAA (cas particulier).
+
+#### Message d’information, d’avertissement ou d’erreur
+
+Il existe différentes méthodes pour gérer les messages d’information, d’avertissement ou d’erreur d’un formulaire de manière accessible selon le contexte.
+
+Il est possible d’indiquer l’information, l’avertissement ou l’erreur :
+
+- dans l’étiquette du champ,
+- dans un passage de texte avant le formulaire,
+- dans un passage de texte relié au champ de saisie avec l’attribut `aria-describedby`,
+- avec une live region : `role="alert"`, `role="status"`, `aria-live="assertive"`, `aria-live="polite"` (dans certains contextes uniquement).
+
+#### Champ obligatoire
+
+Ajouter une mention visible pour tout le monde au début du formulaire et utiliser l’attribut required pour indiquer que sélectionner une option est obligatoire.
+
+#### Restitution par les lecteurs d’écran
+
+Par défaut, les lecteurs d’écran restituent le **nom, la description, l’état et le type**. L’ordre peut varier en fonction des lecteurs d’écran et de leur configuration.
+
+L’attribut `disabled` est restitué différemment selon les lecteurs d’écran :
+
+- VoiceOver macOS et iOS : « estompé »
+- NVDA et JAWS : « bouton non disponible »
+- Narrateur et Talkback : « bouton désactivé »

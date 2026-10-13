@@ -28,9 +28,6 @@ export interface MessageProps {
   role?: string;
   /** Focaliser le message à l'apparition */
   autoFocus?: boolean;
-  /** Dismissible */
-  dismissible?: boolean;
-  onDismiss?: Function;
 }
 
 /* ==========================================================================

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: montserrat-wght;
+  src: url("../fonts/montserrat-wght/montserrat-wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Crimson;
+  src: url("../fonts/crimson/CrimsonPro-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url("../fonts/raleway/Raleway-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 800;
+  font-style: normal;
+}

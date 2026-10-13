@@ -1,0 +1,185 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+
+import * as MessageStories from "./Message.stories";
+
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={MessageStories} />
+
+# Message
+
+Le message est un élément d’indication poussé par l’interface pour relayer une information à l’usager.
+
+<Canvas of={MessageStories.Info} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+**Intégrer des messages pour attirer l’attention de l’usager** sur une information sans interrompre sa tâche en cours.
+
+Les messages s’affichent de manière contextuelle dans une page ou un formulaire, suite à une interaction de l’usager (exemple : à la soumission d’un formulaire) ou lors d’événements côté application/système (exemple : au rechargement d’une page).
+
+### Comment utiliser ce composant ?
+
+- **Choisir la variation de l’alerte adéquate**, correspondant à la nature de l’information qu’elle relaie (erreur, succès, information etc.)
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Message\assets\do-1.png"
+  >
+ Adapter l’alerte à la nature de l’information relayée. 
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Message\assets\dont-1.png"
+  >
+    Ne pas proposer une variation de l’alerte ne correspondant pas à la nature de l’information relayée. 
+  </DoDont>
+</div>
+
+- **Placer l’alerte en première place du contenu auquel elle est associée** (exemple : en haut d’une page, d’un formulaire, d’un container etc.)
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Message\assets\do-2.png"
+  >
+    Placer l’alerte de succès en haut de page suite à la soumission d’un formulaire, par exemple. 
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Message\assets\dont-2.png"
+  >
+     Ne pas placer l’alerte de succès en bas de page suite à la soumission d’un formulaire. 
+  </DoDont>
+</div>
+
+- **Rendre toute action induite suite à l’affichage d’une alerte aussi simple que possible**, notamment en détaillant ce qui est attendu de l’usager dans la description.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Message\assets\do-3.png"
+  >
+    Préciser à l’usager l’action attendue suite à l’apparition de l’alerte. 
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Message\assets\dont-3.png"
+  >
+    Ne pas laisser l’usager supposer du problème rencontré. La marche à suivre doit être claire. 
+  </DoDont>
+</div>
+
+### Règles éditoriales
+
+- **Choisir un titre de message clair et concis** permettant à l’usager de comprendre facilement la situation.
+- **Détailler clairement l’information ou le problème ainsi que l’action attendue** (si elle existe) à l’usager à l’aide de la description.
+- **Arborer un ton courtois**, l’objectif étant d’accompagner l’usager et non de le blâmer.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Message\assets\do-4.png"
+  >
+    Employer un ton courtois, l’objectif étant d’accompagner l’usager au sein de son parcours.  
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Message\assets\dont-4.png"
+  >
+    Ne pas employer un ton laissant suggérer que l’on blâme l’usager pour son erreur. 
+  </DoDont>
+</div>
+
+- **Employer un langage compréhensible facilement** en évitant tout jargon technique.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    title="Utiliser des verbes d'action"
+    imageSrc="src\components\Message\assets\do-5.png"
+  >
+     S’affranchir de tout terme technique pour permettre la compréhension par un plus grand nombre. 
+  </DoDont>
+
+  <DoDont
+    status="dont"
+    title="Éviter les libellés vagues"
+    imageSrc="src\components\Message\assets\dont-5.png"
+  >
+     Ne pas inclure de termes techniques à une alerte, au risque d’altérer la bonne compréhension des usagers.  
+  </DoDont>
+</div>
+
+- **Expliciter la nature du message** porté par le composant (succès, erreur, information etc.) dans le titre de l’alerte. L’icône et la couleur ne garantissent pas à elles seules la bonne compréhension du message pour la totalité des usagers.
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+  <DoDont
+    status="do"
+    imageSrc="src\components\Message\assets\do-6.png"
+  >
+    Préciser la nature du message porté par l’alerte dans son titre. 
+   </DoDont>
+
+  <DoDont
+    status="dont"
+    imageSrc="src\components\Message\assets\dont-6.png"
+  >
+    Ne pas s’appuyer uniquement sur l’icône et la couleur de l’alerte pour restituer la nature du message.  
+  </DoDont>
+</div>
+
+## Accessibilité
+
+Le composant **Alerte** est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+### Interactions clavier
+
+Aucune interaction au clavier spécifique au composant.
+
+### Règles d’accessibilité
+
+#### Contenu de l’alerte
+
+- Le type d’alerte (info, error, success, warning) doit être indiqué textuellement dans le contenu de l'alerte par les termes : « information », « erreur », « succès », ou « attention ».
+
+#### Alertes ajoutées dynamiquement
+
+Une alerte ajoutée après le chargement de la page doit être perçue par tous les utilisateurs.
+
+Pour les alertes simples, ajouter sur le conteneur de l’alerte :
+
+- un `role="alert"` pour les messages d’erreur ou les avertissements
+- un `role="status"` pour les messages de succès ou d’information.
+
+<Message status="warning">
+  <span>
+    Ne pas faire disparaître l’alerte sans action de l’utilisateur. Les alertes
+    temporaires (toast) posent d’importants problèmes d’accessibilité et
+    d’utilisabilité.
+  </span>
+</Message>
+
+### Restitution par les lecteurs d’écran
+
+La restitution des rôles `alert` et `status` par les lecteurs d’écran varie selon les implémentations.
+
+Le `role="alert"` est toujours correctement restitué par tous les lecteurs d’écran, peu importe la méthode d’implémentation, contrairement au `role="status"`.
+
+En cas de problème de restitution avec le `role="status"`, il peut également être utilisé sur les messages d’information ou de succès.

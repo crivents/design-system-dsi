@@ -1,0 +1,89 @@
+import { Canvas, Meta, ArgTypes, Story } from "@storybook/addon-docs/blocks";
+import * as HeaderStories from "./Header.stories";
+import DoDont from "../docs/DoDont";
+import Message from "../docs/Message";
+
+<Meta of={HeaderStories} />
+
+# En-tête
+
+L’en-tête est un élément de navigation permettant aux usagers d’identifier sur quel site ils se trouvent et de leur donner un accès simplifié au moteur de recherche et à certaines pages ou fonctionnalités clés du site.
+
+<Canvas of={HeaderStories.SansMenu} />
+
+## Présentation
+
+### Quand utiliser ce composant ?
+
+**Intégrer l’en-tête sur l’ensemble des sites du Cnam**. Au sein d’un site, l’en-tête doit être affiché en haut de chacune des pages.
+
+### Comment utiliser ce composant ?
+
+- Utiliser l’en-tête simple (bloc Marque, nom du site et baseline) pour les sites n’ayant pas de connexion ni de menu de navigation.
+- Utiliser l’en-tête avec accès rapides pour les sites souhaitant mettre en avant certaines pages ou fonctionnalités clés, par exemple la connexion à un espace sécurisé.
+- Utiliser la version complète (accès rapides et menu) pour les sites souhaitant combinés les deux fonctionnalités.
+- Ajouter un sous-titre comportant la mention "Bêta" à l’en-tête pour notifier l’usager que le site ou l’applicatif n’est pas en version stable.
+- Compléter l’en-tête d’une navigation principale si nécessaire. L’en-tête peut tout à fait vivre seul, sans système de navigation principale, par exemple dans le cas de one-pager ou de site outil. La navigation principale est un composant dissocié de l’en-tête.
+- Intégrer un lien vers la page d’accueil du site au sein de l’en-tête. Son emplacement peut varier selon les éléments présents dans l’en-tête.
+
+### Règles éditoriales
+
+- Proposer des libellés d’accès rapides clairs et concis afin que l’usager comprenne facilement les pages ou fonctionnalités auxquelles il peut accéder.
+- Éviter de proposer un logo opérateur seul et préférer l’accompagner du nom de site, voire d’un sous-titre, pour apporter du contexte à l’usager.
+
+## Accessibilité
+
+Le composant En-tête est conçu pour être accessible et respecter les critères du RGAA. Voici les points clés à prendre en compte pour en garantir l’accessibilité.
+
+### Interactions clavier
+
+Il n'y a aucune interaction spécifique au composant En-tête.
+
+### Règles d’accessibilité
+
+Les règles d’accessibilité du composant d'en-tête découlent de celles des composants qui le composent (cf. liste ci-dessus).
+
+- L'élément `<header>` doit posséder le `role="banner"`.
+- Le lien vers l’accueil du site est placé sur le nom du site (qu’il soit dans le bloc-marque, le nom du site et sa baseline ou le logo).
+- Le `title` du lien doit contenir le terme Accueil, suivi du nom du site (ex. `title="Accueil - [Nom du site]"`).
+
+## Variantes
+
+### Sans menu
+
+Utilisé pour les applications sans menu. L'utilisateur est connecté.
+Contient:
+
+- Le nom et l'identifiant de l'utilisateur
+- Un toggle pour le mode sombre
+- Un bouton de déconnexion
+
+<Canvas of={HeaderStories.SansMenu} />
+
+### Avec menu
+
+Utilisé pour les pages qui font partie d'une application avec un menu. Contient un bouton menu qui ouvre une navigation.
+
+<Canvas of={HeaderStories.AvecMenu} />
+
+## Structure
+
+Le header est composé de :
+
+- `.header__brand` : logo
+- `.header__titles` : titre + sous-titre
+- `.header__quick-access` : liens d'accès rapide
+- `.header__user` : zone utilisateur (sans menu)
+- `.header__menu` : menu déroulant (avec menu)
+
+## Accessibilité
+
+- Le logo est un lien vers l'accueil avec `aria-label`
+- Le bouton menu utilise `aria-expanded` et `aria-controls`
+- La navigation utilise `aria-label="Accès rapide"`
+- Le toggle dark mode utilise le composant `Switch` accessible
+- Le bouton de déconnexion a un `aria-label`
+
+## Props
+
+<ArgTypes of={HeaderStories} />

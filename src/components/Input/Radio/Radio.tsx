@@ -1,5 +1,7 @@
 import React from "react";
 import type { InputHTMLAttributes, ReactNode } from "react";
+import Icon, { type IconName } from "../../Icon/Icon";
+import Collapsible from "../../Collapsible/Collapsible";
 
 /* ==========================================================================
    TYPES
@@ -12,45 +14,30 @@ export interface RadioOption {
   label: string;
   /** Sous texte du libellé */
   subtext?: string;
-  /** Description optionnelle */
-  description?: string;
   /** Option désactivée */
   disabled?: boolean;
   /** Message du radio */
   message?: ReactNode;
-  /** Icone */
-  icon?: string;
+  /** Icône du radio */
+  icon?: IconName;
 }
 
 export interface RadioGroupProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "value" | "onChange" | "defaultValue"
 > {
-  /** Identifiant unique du groupe */
   id: string;
-  /** Nom du groupe (pour l'association des radios) */
   name: string;
-  /** Libellé du groupe */
   label: string;
-  /** Liste des options */
   options: RadioOption[];
-  /** Valeur sélectionnée */
   value?: string;
-  /** Valeur par défaut */
   defaultValue?: string;
-  /** Texte optionnel affiché dans le label */
   optional?: boolean;
-  /** Texte d'aide */
   helpText?: string;
-  /** Message d'erreur ou de succès */
   message?: string;
-  /** Statut du groupe */
   status?: "error" | "success" | "disabled" | "";
-  /** Direction d'affichage */
   direction?: "vertical" | "horizontal";
-  /** Classes additionnelles sur le conteneur */
   className?: string;
-  /** Évènement lors du changement */
   onChange?: (value: string) => void;
 }
 
@@ -103,6 +90,21 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     .filter(Boolean)
     .join(" ");
 
+  const hasMessage = options.some((option) => option.message != null);
+
+  const getRadioClass = (option: RadioOption) => {
+    const isChecked = selectedValue === option.value;
+
+    return [
+      "radio",
+      hasMessage && "radio--with-message",
+      isChecked && "radio--checked",
+      option.disabled && "radio--disabled",
+    ]
+      .filter(Boolean)
+      .join(" ");
+  };
+
   return (
     <div
       className={containerClasses}
@@ -131,10 +133,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
           const isChecked = selectedValue === option.value;
 
           return (
-            <div
-              key={option.value}
-              className={`radio ${option.disabled ? "radio--disabled" : ""}`}
-            >
+            <div key={option.value} className={getRadioClass(option)}>
               <input
                 type="radio"
                 id={optionId}
@@ -147,8 +146,18 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                 aria-describedby={optionMessageId || messageId}
                 {...(index === 0 ? rest : {})}
               />
+
               <label className="radio__label" htmlFor={optionId}>
-                <div className="radio__custom-input"></div>
+                {option.icon ? (
+                  <Icon
+                    name={option.icon}
+                    className="radio__icon"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <div className="radio__custom-input" aria-hidden="true" />
+                )}
+
                 <span className="radio__text">
                   <span className="radio__option-label">{option.label}</span>
                   {option.subtext && (
@@ -156,25 +165,30 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                       {option.subtext}
                     </span>
                   )}
-                  {option.description && (
-                    <span className="radio__description">
-                      {option.description}
-                    </span>
-                  )}
                 </span>
+
+                {option.icon && (
+                  <Icon
+                    name="ChevronRight"
+                    className="radio__icon-opening"
+                    aria-hidden="true"
+                  />
+                )}
               </label>
 
-              {/* Message spécifique à l'option (si présent) */}
-              {option.message && (
-                <p
-                  className="radio__message"
-                  id={optionMessageId}
-                  role="status"
-                  aria-live="polite"
-                >
-                  {option.message}
-                </p>
-              )}
+              <Collapsible
+                id={optionMessageId}
+                isOpen={isChecked}
+                role="status"
+                live="polite"
+                className="radio__message"
+              >
+                {option.message && (
+                  <div className="radio__message-children">
+                    {option.message}
+                  </div>
+                )}
+              </Collapsible>
             </div>
           );
         })}

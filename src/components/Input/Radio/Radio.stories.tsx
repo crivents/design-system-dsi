@@ -107,18 +107,15 @@ const defaultOptions: RadioOption[] = [
   {
     value: "student",
     label: "Étudiant",
-    description: "Inscrit en formation initiale",
     subtext: "sous-texte",
   },
   {
     value: "apprentice",
     label: "Apprenti",
-    description: "En alternance",
   },
   {
     value: "professional",
     label: "Professionnel",
-    description: "En reconversion",
   },
 ];
 
@@ -126,13 +123,11 @@ const disabledOptions: RadioOption[] = [
   {
     value: "student",
     label: "Étudiant",
-    description: "Inscrit en formation initiale",
     disabled: true,
   },
   {
     value: "apprentice",
     label: "Apprenti",
-    description: "En alternance",
     disabled: true,
   },
 ];
@@ -141,22 +136,18 @@ const messagesOptions: RadioOption[] = [
   {
     value: "student",
     label: "Étudiant",
-    description: "Inscrit en formation initiale",
     subtext: "sous-texte",
-    message: <span>Message de radio pour étudiant</span>,
+    message: "Message de radio pour étudiant",
   },
   {
     value: "apprentice",
     label: "Apprenti",
-    description: "En alternance",
     subtext: "sous-texte",
-    message: <span>Message de radio pour apprenti</span>,
+    message: "Message de radio pour étudiant",
   },
   {
     value: "professional",
     label: "Professionnel",
-    description: "En reconversion",
-    message: <span>Message de radio pour professionnel</span>,
   },
 ];
 
@@ -164,7 +155,6 @@ const iconOptions: RadioOption[] = [
   {
     value: "accessibility",
     label: "Accessibilité",
-    description: "Inscrit en formation initiale",
     subtext: "sous-texte",
     icon: "Accessibility",
     message: <span>Message de radio avec icône</span>,
@@ -172,7 +162,6 @@ const iconOptions: RadioOption[] = [
   {
     value: "clock",
     label: "Horloge",
-    description: "En alternance",
     subtext: "sous-texte",
     icon: "AlarmClock",
     message: <span>Message de radio avec icône</span>,
@@ -180,7 +169,6 @@ const iconOptions: RadioOption[] = [
   {
     value: "calendar",
     label: "Calendrier",
-    description: "En reconversion",
     subtext: "sous-texte",
     icon: "Calendar",
     message: <span>Message de radio avec icône</span>,
